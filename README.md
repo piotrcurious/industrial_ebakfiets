@@ -15,6 +15,22 @@ To simplify the rim and free the user from dependency of tire shops to install t
 two parts rim can be used - similar to une used in wheelbarrows and Piaggio trikes 
 Rim disassembles into two parts , hiding tube inside. 
 
+Two electric motors are used 
+
+- 250W direct drive in the front
+to provide efficiency during high speed and cruise.
+Also for regen braking. 
+
+- 300W geared rear hub - to provide torque for uphill climb,
+acceleration and starting up from a standstill.
+
+Pedals could ideally provide only basic gears with wide gear ratio distribution.
+Simplest chain etc. as most torque would be taken over by electric motors.
+Reason to use derailleur instead of fixed gear is that chain tensioning is always needed anyway.
+Also one gets about 500W peak from user, which is 
+important.
+
+
 this GitHub repo is to house design plans of components, like hubs, rims ESC and software.
 
 Below is example BOM made by BingAI:
