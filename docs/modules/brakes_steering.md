@@ -8,11 +8,13 @@ The brakes and steering of the industrial bakfiets are designed to handle high l
 - **Steering Linkage Rod**: 12mm-15mm diameter steel tubing or 10mm-12mm solid steel rod.
 - **Rod Ends**: Standard industrial rod ends (M10 or M12) for durability and easy adjustment.
 
-### 2. Dimensions and Clearances
-- **Inner Steering Tube**: 1-1/8" or 1.5" diameter.
-- **Head Tube**: Compatible with standard bicycle headsets or industrial tapered roller bearings.
+### 2. Dimensions, Clearances & Fits
+- **Steering Column OD**: 28.6mm (1-1/8\").
+- **Headset Bearing ID**: 28.65mm (**Fit Class: Snug, 0.05mm clearance**).
+- **Rod End Bolt (M10)**: 10.0mm diameter.
+- **Rod End Hole**: 10.05mm (**Fit Class: Snug, 0.05mm clearance**).
 - **Steering Travel**: 45 degrees in each direction (left and right).
-- **Rod End Clearance**: Minimum 35mm clearance within any channel or fork area.
+- **Rod End Clearance**: Minimum 35mm clearance (**Fit Class: Wide**) within any channel or fork area.
 
 ### 3. Safety and Control
 - **Handlebars**: Wide, ergonomic handlebars for better leverage (minimum width 600mm-700mm).

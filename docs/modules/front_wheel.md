@@ -25,8 +25,10 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 
 ### 4. Front Hub Motor
 - **Type**: 250W Direct Drive (Brushless DC).
-- **Axle Dimensions**:
-  - **Diameter**: M14 with 10mm flats.
+- **Axle Dimensions & Fits**:
+  - **Main Shaft Diameter**: 14mm.
+  - **Flats Diameter**: 10.0mm (**Tolerance: -0.05mm / -0.1mm**).
+  - **Dropout Slot**: 10.2mm (**Fit Class: Loose, 0.2mm clearance**).
   - **Dropout Width**: 175mm (Fat bike style).
 - **Mounting**: Integrated into the center of the split rim or connected via a reinforced flange.
 - **Regenerative Braking**: Direct drive motors allow for electrical braking, reducing wear on mechanical components.
