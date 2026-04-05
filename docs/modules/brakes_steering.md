@@ -4,48 +4,49 @@ The brakes and steering of the industrial bakfiets are designed to handle high l
 
 ## Steering System
 ### 1. Steering Geometry
-- **Design**: For a two-wheeled cargo bike, a low-slung steering linkage with heavy-duty rod ends.
+- **Design**: Low-slung steering linkage with heavy-duty rod ends.
 - **Steering Linkage Rod**: 12mm-15mm diameter steel tubing or 10mm-12mm solid steel rod.
 - **Rod Ends**: Standard industrial rod ends (M10 or M12).
 
 ### 2. Dimensions, Clearances & Fits
-- **Steering Column OD**: 28.6mm (1-1/8\").
-- **Headset Bearing ID**: 28.65mm (**Fit Class: Snug, 0.05mm clearance**).
-- **Rod End Bolt (M10)**: 10.0mm diameter.
-- **Rod End Hole**: 10.1mm (**Fit Class: Snug, 0.1mm clearance**).
-- **Steering Travel**: 45 degrees in each direction (left and right).
-- **Rod End Clearance**: Minimum 35mm clearance within any channel or fork area.
+- **Steering Column OD**: 15.0mm precision steel rod.
+- **Bearing**: **Pair of 7202 Angular Contact Bearings** (15mm ID, 35mm OD, 11mm Width).
+- **Bearing ID Fit**: 15.0mm (**Fit Class: Snug, 0.00mm clearance**).
+- **Outer Housing**: 1-1/4\" Schedule 40 Steel Pipe (**ID: ~35.05mm**).
+- **Bearing OD Fit**: 35.00mm OD vs 35.05mm ID (**Fit Class: Slip-Fit, 0.05mm clearance**).
 
-### 3. Mechanical Integration & Assembly
-- **Steering Head (EC34 Standard)**:
-  - **Fork Crown Seat**: 30.1mm.
-  - **Crown Race ID**: 30.0mm (**Press-Fit, 0.1mm interference**).
-  - **Headset Cup OD**: 34.1mm.
-  - **Head Tube ID**: 33.9mm (**Press-Fit, 0.2mm interference**).
-- **Locking Method**: Headset cups are press-fitted into the head tube and the crown race is press-fitted onto the fork. The entire assembly is locked in place by an **A-Head cap and bolt** (M6) which preloads the bearings.
+### 3. Mechanical Integration & Assembly (Non-Machined Design)
+The design avoids expensive internal machining or threading of the pipes by using standard industrial parts and a simple hole pattern.
 
-- **Steering Linkage Locking**: Rod ends are secured to the fork and handlebar stem using **M10 Grade 12.9 bolts** with **Nyloc nuts**. Washers are used on both sides of the rod end ball for smooth movement.
+- **Bearing Locking (Radial Holes Method)**:
+  - Six 5mm holes are drilled radially through the 1-1/4\" outer pipe at two levels (top and bottom bearing seats).
+  - **Stopping Elements**: Machined or laser-cut steel collars/inserts (35mm OD) are inserted into the pipe to act as bearing shoulders.
+  - These collars are secured in place by **M5 locking screws** passed through the six radial holes.
+  - The bearings sit against these secured collars.
+
+- **Axial Preload**:
+  - The 15mm inner shaft is secured by **shaft collars** with set screws above the top bearing and below the bottom bearing.
+  - Preload is adjusted by sliding the shaft collars tightly against the inner races of the 7202 bearings before tightening the set screws.
 
 ## Assembly & Disassembly Methods
 ### Assembly
-1. Press-fit the headset cups into the head tube using a bearing press tool.
-2. Press-fit the crown race onto the fork steerer tube.
-3. Slide the lower bearing onto the fork, pass the steerer through the head tube, and add the upper bearing and centering ring.
-4. Install the stem and tighten the top cap to preload the bearings.
-5. Tighten the stem's side bolts to lock the steering column.
-6. Bolt the steering linkage rod ends to the fork and stem using M10 bolts and nyloc nuts.
+1. Drill 6 radial 5mm holes at the top and bottom of the 1-1/4\" head tube pipe (12 holes total).
+2. Insert the lower "stopping element" collar and secure it with 6 M5 screws.
+3. Drop the lower 7202 bearing into the pipe against the collar.
+4. Pass the 15mm steering shaft through the lower bearing.
+5. Install the upper 7202 bearing and the upper stopping element; secure with M5 screws.
+6. Install 15mm shaft collars on the inner shaft, apply preload, and tighten set screws.
+7. Bolt the steering linkage rod ends to the fork and shaft using M10 bolts and nyloc nuts.
 
 ### Disassembly
-1. Loosen the M10 rod end bolts and disconnect the linkage.
-2. Loosen the stem side bolts and remove the top cap and stem.
-3. Slide the fork out of the head tube.
-4. Use a headset cup remover tool to drive out the cups if replacement is needed.
+1. Loosen the set screws on the 15mm shaft collars and remove them.
+2. Remove the M5 locking screws from the upper stopping element.
+3. Pull the steering shaft and bearings out of the head tube.
 
 ## Braking System
 ### 1. Front Braking
 - **Regenerative Braking**: The front 250W direct drive hub motor provides electric braking.
 - **Mechanical Backup**: A mechanical or hydraulic disc brake with **180mm-203mm rotors**.
-- **Brake Calipers**: Post-mount or IS-mount high-performance calipers.
 
 ### 2. Rear Braking
 - **Disc or Drum**: Standard 160mm-180mm disc brake or internal drum brake integrated into the rear hub motor.
@@ -58,4 +59,4 @@ The brakes and steering of the industrial bakfiets are designed to handle high l
 ## Tolerances and Fit
 - **Steering Alignment**: Handlebars aligned within +/- 1 degree of the front wheel.
 - **Brake Rotor True**: Maximum runout of 0.2mm.
-- **Brake Cable Tension**: 0.5mm to 1mm of free play.
+- **Hole Pattern Accuracy**: +/- 0.5mm for the 6-hole radial pattern.

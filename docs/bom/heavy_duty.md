@@ -12,10 +12,13 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Rear Spokes | 10G/12G heavy-duty stainless | $30 |
 | | Rear Hub Motor | 500W Geared (48V/60V, 135mm, M14) | $250 |
 | **Frame** | Steel Tubing | 50x25x3mm rectangular steel (6m) | $90 |
-| | Headset/Pipes | 1.5" Tapered + 1.5" Steel Pipe (Tapered Roller) | $50 |
+| | Headset/Pipes | 1-1/4\" Sch 40 Steel Pipe (Head Tube) | $40 |
+| | Steering Bearings | Pair of 7202 Angular Contact (High Load) | $30 |
+| | Stopping Elements | 35mm OD precision collars (machined/laser-cut) | $20 |
+| | Locking Screws | 12x M5 Grade 12.9 with nyloc nuts/washers | $10 |
 | | Paint/Finish | Industrial Powder Coating | $60 |
 | **Drivetrain** | Crankset | 170mm, 42T Steel (heavy duty, HTII) | $50 |
-| | Chain | 1/2"x1/8" Heavy-duty (industrial-grade) | $30 |
+| | Chain | 1/2\"x1/8\" Heavy-duty (industrial-grade) | $30 |
 | | Derailleur/Shifter | Shimano Deore 10-Speed | $80 |
 | | Pedals | Aluminum Flat (with studs) | $40 |
 | **Electrical** | Battery | 48V/60V 30Ah LiFePO4 (incl. 60A BMS) | $600 |
@@ -27,4 +30,4 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Brake Cables | Hydraulic Lines (Shielded) | $40 |
 | **Misc** | Cargo Box | 12mm Marine Plywood (810mm x 1210mm) | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$2,355** |
+| **Total** | | | **~$2,450** |
