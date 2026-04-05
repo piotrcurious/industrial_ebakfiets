@@ -20,9 +20,17 @@ The cargo deck is positioned as low as possible, just above the front wheel's gr
 
 ### 3. Modular Cargo Box
 - **Interface**: Bolt-on mounting points on the frame for various box designs (wood, metal, plastic).
-- **Size**: Optimized for standard Euro-pallets or industrial plastic crates.
+- **Dimensions**:
+  - **Internal Bed Width**: 810mm (Supports 800mm Euro-pallet with 5mm clearance on each side).
+  - **Internal Bed Length**: 1210mm (Supports 1200mm Euro-pallet with 5mm clearance on each end).
+- **Construction**: 9mm or 12mm Marine Plywood or reinforced Aluminum.
 
 ## Construction Techniques
 - **Welding**: MIG or TIG welding is preferred for strength and aesthetics.
 - **Bolted Joints**: Certain sections can be bolted for disassembly or transport, using M10/M12 Grade 8.8 bolts.
 - **Corrosion Protection**: Powder coating or industrial-grade primer and paint.
+
+## Tolerances and Fit
+- **Tube Cut Accuracy**: +/- 1mm over 2000mm length.
+- **Cargo Bed Squareness**: Corner-to-corner measurement within +/- 2mm.
+- **Dropout Parallelism**: Within +/- 0.5mm to ensure wheel alignment.

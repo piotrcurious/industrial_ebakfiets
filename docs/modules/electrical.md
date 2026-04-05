@@ -13,20 +13,28 @@ The industrial bakfiets uses a dual-motor electrical system for redundant power,
 
 ## Power Source
 ### 1. Battery Pack
-- **Voltage**: 36V or 48V.
+- **Voltage**: 48V (Recommended for dual-motor current demands).
 - **Chemistry**: Lithium Iron Phosphate (LiFePO4) or Lithium-Ion (NMC).
-- **Capacity**: At least 15-20Ah (540-960Wh) to support dual motors over reasonable distances.
+- **Capacity**: At least 15-20Ah (720-960Wh).
+- **Enclosure Dimensions**:
+  - **Size**: 320mm x 160mm x 90mm.
+  - **Internal Mount Space**: 330mm x 170mm x 100mm.
 
 ### 2. Battery Management System (BMS)
-- **Specification**: 30-50A continuous discharge capacity to handle both motor controllers simultaneously.
+- **Specification**: **40-50A continuous discharge capacity** to handle both motor controllers simultaneously.
 - **Protection**: Overcurrent, overvoltage, undervoltage, and thermal protection.
 
 ## Control System
 ### 1. Motor Controllers
-- **Dual Controllers**: Two separate 15-20A BLDC controllers (sinusoidal for quiet operation).
-- **Throttle**: Split-signal or dual-input thumb/twist throttle.
+- **Dual Controllers**: Two separate 36V/48V 15-22A BLDC controllers.
+- **Wiring Harness**: 12AWG silicone power cables, XT90 main battery connector, and XT60 or Anderson motor connectors.
 - **Brake Cutoff**: Industrial-grade e-brake levers that cut power to both motors.
 
 ### 2. Wiring and Integration
-- **Harness**: Heavy-duty 12-14AWG power cables, IP65 rated connectors (e.g., Anderson or XT60/90).
-- **Enclosure**: Waterproof industrial enclosure for controllers and BMS, mounted under the cargo bed.
+- **Harness**: IP65 rated connectors and waterproof industrial enclosure (minimum 200mm x 150mm x 75mm).
+- **Enclosure**: Waterproof industrial enclosure for controllers and BMS, mounted under the cargo bed for a low center of gravity.
+
+## Tolerances and Safety
+- **Voltage Drop**: Maximum allowable voltage drop in wiring is 2.5% under full load.
+- **Thermal Margin**: Controllers and BMS must be mounted in an enclosure with at least 50mm of clearance for heat dissipation.
+- **Fuse/Breaker**: Integrated 60A DC circuit breaker for the main battery supply.
