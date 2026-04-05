@@ -21,16 +21,21 @@ The industrial bakfiets uses a dual-motor electrical system for redundant power,
   - **Internal Mount Space**: 330mm x 170mm x 100mm.
 
 ### 2. Battery Management System (BMS)
-- **Specification**: **40-50A continuous discharge capacity** to handle both motor controllers simultaneously.
+- **Specification**: **40-60A continuous discharge capacity** to handle both motor controllers simultaneously.
 - **Protection**: Overcurrent, overvoltage, undervoltage, and thermal protection.
 
 ## Control System
 ### 1. Motor Controllers
-- **Dual Controllers**: Two separate 36V/48V 15-22A BLDC controllers.
-- **Wiring Harness**: 12AWG silicone power cables, XT90 main battery connector, and XT60 or Anderson motor connectors.
-- **Brake Cutoff**: Industrial-grade e-brake levers that cut power to both motors.
+- **Dual Controllers**: Two separate 36V/48V 15-22A BLDC controllers (Sinewave for quiet operation).
+- **Wiring and Connectors**:
+  - **Main Battery Bus**: 10AWG or 12AWG silicone wire.
+  - **Connectors**: XT90 (main battery), XT60 (motor phase and controllers), and Waterproof IP65 signal connectors (JST-SM or Higo).
 
-### 2. Wiring and Integration
+### 2. Throttle and Display
+- **Specification**: LCD SW900 or color TFT display for speed, mileage, and battery status.
+- **Throttle**: Thumb or half-twist throttle (standard 22mm handlebar mount).
+
+### 3. Wiring and Integration
 - **Harness**: IP65 rated connectors and waterproof industrial enclosure (minimum 200mm x 150mm x 75mm).
 - **Enclosure**: Waterproof industrial enclosure for controllers and BMS, mounted under the cargo bed for a low center of gravity.
 

@@ -9,7 +9,15 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 
 ### 2. Round Steel Pipes (Steering and Seat Post)
 - **Standard Sizes**: 1.25" or 1.5" (32mm or 38mm) nominal pipe size.
-- **Integration**: Can be adapted to standard bicycle headset bearings or industrial tapered roller bearings.
+- **Integration**: Can be adapted to standard bicycle headset bearings (1-1/8" or 1.5" tapered).
+
+### 3. Paint and Finish
+- **Specification**: Industrial-grade Hammered Paint (e.g., Hammerite) or Powder Coating.
+- **Why**: High impact and corrosion resistance for heavy-duty use.
+
+### 4. Headset and Bearings
+- **Specification**: 1-1/8" Threadless or 1.5" Tapered Roller Bearings.
+- **Standard**: ZS44 or ZS56 for semi-integrated headsets.
 
 ## Design Philosophy
 ### 1. Longitudinal Stiffness

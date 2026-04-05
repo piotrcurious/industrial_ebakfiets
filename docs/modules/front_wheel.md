@@ -19,7 +19,11 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 - **Maintenance**: Allows for easy tire and tube replacement without the need for specialized tire shop equipment (tire levers, bead breakers).
 - **Construction**: Can be fabricated from laser-cut 5mm steel plates or modified industrial wheels.
 
-### 3. Front Hub Motor
+### 3. Inner Tube
+- **Specification**: 13-inch automotive tube (G13/G14 size).
+- **Valve**: Standard Schrader valve (auto style).
+
+### 4. Front Hub Motor
 - **Type**: 250W Direct Drive (Brushless DC).
 - **Axle Dimensions**:
   - **Diameter**: M14 with 10mm flats.

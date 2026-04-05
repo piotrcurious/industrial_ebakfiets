@@ -6,6 +6,7 @@ The drivetrain of the industrial bakfiets is designed to provide secondary power
 ### 1. Simple Derailleur System
 - **Benefit**: Provides wide gear ratio distribution for different terrains and loads.
 - **Why**: Chain tensioning is inherently necessary; a derailleur serves this purpose while also offering gear options.
+- **Standard**: Shimano Altus or Deore 7-10 speed derailleur and matching shifter.
 
 ### 2. Pedal Assist Sensor (PAS)
 - **Integration**: Integrated with the electrical system to provide motor support based on pedaling.
@@ -19,13 +20,19 @@ The drivetrain of the industrial bakfiets is designed to provide secondary power
 ### 2. Bottom Bracket and Crankset
 - **Dimensions**:
   - **Bottom Bracket**: 68mm or 73mm BSA-threaded.
-  - **Spindle Length**: 122mm or 127mm (to provide clearance for wide rear tires/frames).
-- **Crankset**: 170mm or 175mm length, 42T steel chainring.
+  - **Spindle Length**: 122mm or 127mm.
+- **Crankset**: 170mm or 175mm length, 42T steel chainring, Square Taper or HTII.
+
+### 3. Pedals
+- **Specification**: Aluminum flat pedals with non-slip studs for industrial environments.
+- **Size**: Large platform for use with work boots.
 
 ## Rear Drive Integration
-### 1. Rear Hub
-- **Integration**: 300W geared hub motor with standard derailleur threads (135mm spacing).
-- **Tensioning**: Derailleur serves as the chain tensioner for the rear-drive chain.
+### 1. Rear Wheel Assembly
+- **Rear Rim**: 26-inch (559mm) Double Wall MTB rim, 36H or 48H.
+- **Rear Spokes**: 12G (2.6mm) or 13G (2.3mm) heavy-duty stainless steel.
+- **Rear Hub Motor**: 300W Geared hub motor with standard derailleur threads (135mm spacing).
+- **Axle**: M12 or M14 with 10mm flats.
 
 ## Alternative: Belt Drive
 - **Benefit**: Lower maintenance, quieter operation, and no grease.
