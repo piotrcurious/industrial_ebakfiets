@@ -27,44 +27,46 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 The main cargo bed is supported by two parallel rails, providing a stable platform for the cargo box.
 
 ### 2. Low Center of Gravity (16-inch Rear Wheel)
-The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design while providing superior starting torque for cargo.
+The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design.
 
 ### 3. Modular Cargo Box
 - **Interface**: Bolt-on mounting points on the frame for various box designs.
 - **Dimensions**:
   - **Internal Bed Width**: 810mm.
   - **Internal Bed Length**: 1210mm.
-- **Construction**: 9mm or 12mm Marine Plywood or reinforced Aluminum.
 
-### 4. Decentralized Component Mounting
-- **Integrated Mounting Plates**: Custom-welded plates for the **Rear BLDC Housing Box** and **Rear Battery Enclosure**.
+### 4. Cargo Bed Stabilizer System (Forklift Loading)
+To allow for safe loading of Euro-pallets using a forklift, the frame is equipped with four corner stabilizer feet.
+
+- **Design**: Telescopic square steel tubing.
+  - **Outer Sleeve**: 30x30x2.5mm square tube (150mm length) welded to the frame corners.
+  - **Inner Leg**: 25x25x2.5mm square tube (250mm length) that slides inside the outer sleeve.
+  - **Foot Pad**: 100x100x5mm steel plate welded to the bottom of the inner leg.
+- **Locking Method**: 10mm steel hitch pins or locking bolts passed through matching holes in the inner and outer tubes.
+- **Function**: When deployed, these legs lift the cargo bed slightly off the tires and provide a 4-point stable base, preventing the bike from tipping while a forklift positions a 350kg+ Euro-pallet.
 
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
 - **Dropout Plate**: 6mm-8mm laser-cut steel plates welded to the frame spars.
-- **Slot Width**: 10.2mm for standard 10mm axle flats.
 
 ### 2. Headset Integration (No-Machining Design)
 - **Head Tube ID**: 35.05mm for 7202 bearings.
-- **Locking Method**: Six 5mm holes are drilled radially through the head tube to secure internal bearing stopping collars with M5 screws.
 
-## Assembly & Disassembly Methods
+## Assembly & Operation Methods
 ### Assembly
-1. Weld the main spars and head tube according to the frame jig.
-2. Clean and deburr the internal surface of the 1-1/4\" head tube pipe.
-3. Drill the radial hole pattern (6 holes per bearing seat).
-4. Apply corrosion protection.
-5. Mount the rear BLDC box.
+1. Weld the 30mm outer stabilizer sleeves at the four extreme corners of the cargo bed spars.
+2. Drill 10.5mm holes through both sleeves and legs for the hitch pins.
+3. Weld the 100mm foot pads to the 25mm inner legs.
 
-### Disassembly
-1. Remove all components (wheels, steering, drivetrain).
-2. Loosen the M5 locking screws to release the bearing stopping collars.
-3. Drive out the headset components.
+### Operation (Forklift Loading)
+1. Position the bakfiets on level ground.
+2. Remove the hitch pins and lower all four stabilizer legs until the foot pads touch the ground.
+3. Apply further downward pressure to lift the bike slightly (taking the load off the tires).
+4. Re-insert the hitch pins into the closest matching hole.
+5. Proceed with forklift loading.
+6. Once loaded, retract the legs and secure with hitch pins in the "up" position before riding.
 
 ## Tolerances and Fit
 - **Tube Cut Accuracy**: +/- 1mm over 2000mm length.
-- **Cargo Bed Squareness**: Corner-to-corner measurement within +/- 2mm.
-- **Dropout Parallelism**: Within +/- 0.5mm.
-- **Hole Position Tolerance**: +/- 0.5mm for the radial pattern.
-- **Box Clearance**: **Minimum 50mm vertical clearance** to the chain and gears.
-- **Ground Clearance**: Optimized for 16-inch rear wheel to provide at least **150mm ground clearance** for the main frame rails.
+- **Stabilizer Sleeve-to-Leg Fit**: **Loose-Fit (2.5mm clearance total)** to allow for easy sliding even with dirt or minor paint buildup.
+- **Ground Clearance**: 16-inch rear wheel provides **150mm ground clearance**.
