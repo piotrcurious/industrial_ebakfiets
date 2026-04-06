@@ -6,35 +6,27 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | --- | --- | --- | --- |
 | **Front Wheel** | Car Tire | 155/70 R13 (new) | $40 |
 | | Split Rim | 13-inch steel split rim (new/Piaggio type, 4x98) | $50 |
-| | Inner Tube | 13-inch automotive tube (G13) | $10 |
 | | Front Hub Motor | 250W Direct Drive (36V/48V, 175mm Dropout, M14) | $120 |
-| **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type, 36H) | $50 |
-| | Rear Spokes | 10G/12G heavy-duty stainless | $30 |
-| | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm, M12/M14) | $180 |
+| | Torque Arm | 6mm steel laser-cut plate | $15 |
+| **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type) | $50 |
+| | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm) | $180 |
 | | Rear Tire | 16x2.50 or 3.50-16 rugged tire | $40 |
-| **Frame** | Steel Tubing | 40x20x2.5mm rectangular steel (6m) | $60 |
-| | Headset/Pipes | 1-1/4\" Sch 40 Steel Pipe (Head Tube) | $30 |
+| **Frame** | Steel Tubing | 40x20x2.5mm rectangular + 1-1/4\" Sch 40 Pipe | $90 |
 | | Steering Bearings | Pair of 7202 Angular Contact (15x35x11) | $20 |
-| | Stopping Elements | 35mm OD steel collars (machined/laser-cut) | $15 |
-| | Locking Screws | 12x M5 Grade 10.9 with locking washers | $5 |
-| | Stabilizer Tubing | 1m 35x35x2.5mm + 1m 25x25x2.5mm (Square) | $20 |
 | | Stabilizer Screws | 4x M16x250mm Threaded Rod (Grade 8.8) | $20 |
-| | Drive Hex Nuts | 4x M16 Heavy Hex Nuts (Welded top) | $5 |
-| | Foot Pads | 4x 100x100x5mm Steel Plates (Laser cut/Scrap) | $10 |
-| | Paint/Finish | Industrial Hammered Paint | $20 |
-| **Drivetrain** | Crankset | 170mm, 42T Steel, Square Taper | $30 |
-| | Chain | 1/2\"x1/8\" Heavy-duty (KMC Z1) | $15 |
-| | Derailleur/Shifter | Shimano Altus 7-8 Speed | $40 |
-| | Pedals | Aluminum Flat | $20 |
-| **Electrical** | Batteries | 2x 48V 10Ah LiFePO4 (incl. 40A BMS each) | $400 |
+| **Brakes** | Front Caliper | Hydraulic 4-piston (PM mount) | $60 |
+| | Rear Caliper | Hydraulic/Mechanical (IS mount) | $40 |
+| | Rotors | 1x 203mm Front, 1x 180mm Rear (6-bolt) | $45 |
+| **Electrical** | Batteries | 2x 48V 10Ah LiFePO4 | $400 |
 | | Controllers | Dual 36V/48V 15-22A BLDC (Sinewave) | $80 |
-| | Housing Boxes | 2x Oversized Waterproof Enclosures (250x180x100mm) | $40 |
-| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S Connectors | $30 |
-| | Throttle/Display | LCD SW900 + Thumb Throttle | $50 |
-| | Wiring/Connectors | 12AWG Silicone + XT60 | $20 |
-| **Brakes** | Brake Levers | E-brake with cutoff switches | $25 |
-| | Brake Calipers | Mechanical Disc (Front 180mm, Rear 160mm) | $60 |
-| | Brake Cables | Standard Stainless | $15 |
-| **Misc** | Cargo Box | 9mm Marine Plywood (810mm x 1210mm) | $60 |
+| | Housing Boxes | 2x Oversized Waterproof Enclosures | $40 |
+| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S | $30 |
+| **Fasteners** | Rim Bolts | 6x M8x30mm Grade 10.9 Hex + Nyloc | $10 |
+| | Linkage Bolts | 2x M10x40mm Grade 12.9 Hex + Nyloc | $8 |
+| | Axle Nuts | 4x M14x1.5 Flange Nuts | $12 |
+| | Steering Locking | 12x M5x10mm Grade 10.9 Flat Head | $5 |
+| | Caliper Bolts | 4x M6x20mm Grade 10.9 Socket Head | $5 |
+| | Misc Screws | Assorted M5/M6/M8 for box and fenders | $15 |
+| **Misc** | Cargo Box | 9mm Marine Plywood | $60 |
 | | Steering Rod | 12mm Steel + M10 Rod Ends | $30 |
-| **Total** | | | **~$1,570** |
+| **Total** | | | **~$1,615** |
