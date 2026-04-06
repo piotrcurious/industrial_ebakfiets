@@ -5,58 +5,54 @@ The brakes and steering of the industrial bakfiets are designed to handle high l
 ## Steering System
 ### 1. Steering Geometry
 - **Design**: Low-slung steering linkage with heavy-duty rod ends.
-- **Steering Linkage Rod**: 12mm-15mm diameter steel tubing or 10mm-12mm solid steel rod.
+- **Steering Linkage Rod**: 12mm-15mm diameter steel tubing.
 - **Rod Ends**: Standard industrial rod ends (M10 or M12).
 
 ### 2. Dimensions, Clearances & Fits
 - **Steering Column OD**: 15.0mm precision steel rod.
-- **Bearing**: **Pair of 7202 Angular Contact Bearings** (15mm ID, 35mm OD, 11mm Width).
-- **Bearing ID Fit**: 15.0mm (**Fit Class: Snug, 0.00mm clearance**).
-- **Outer Housing**: 1-1/4\" Schedule 40 Steel Pipe (**ID: ~35.05mm**).
-- **Bearing OD Fit**: 35.00mm OD vs 35.05mm ID (**Fit Class: Slip-Fit, 0.05mm clearance**).
+- **Bearing**: Pair of 7202 Angular Contact Bearings (15x35x11).
 
-### 3. Mechanical Integration & Assembly (Non-Machined Design)
-The design avoids expensive internal machining or threading of the pipes by using standard industrial parts and a simple hole pattern.
+### 3. Mechanical Integration & Assembly (Fasteners Included)
+- **Bearing Locking**: Secured by **12x M5x10mm Grade 10.9 Flat Head Socket Screws**.
+- **Shaft Locking**: Locked axially using **2x 15mm Two-Piece Clamping Shaft Collars**.
 
-- **Bearing Locking (Radial Holes Method)**:
-  - Six 5mm holes are drilled radially through the 1-1/4\" outer pipe at two levels (top and bottom bearing seats).
-  - **Stopping Elements**: Machined or laser-cut steel collars/inserts (35mm OD) are inserted into the pipe to act as bearing shoulders.
-  - These collars are secured in place by **M5 locking screws** passed through the six radial holes.
-  - The bearings sit against these secured collars.
+## Braking System
+The industrial bakfiets uses a triple-redundant braking system: Regenerative, Front Mechanical, and Rear Mechanical.
 
-- **Axial Preload**:
-  - The 15mm inner shaft is secured by **shaft collars** with set screws above the top bearing and below the bottom bearing.
-  - Preload is adjusted by sliding the shaft collars tightly against the inner races of the 7202 bearings before tightening the set screws.
+### 1. Front Braking (Main Stopping Power)
+- **Disc Rotor**: 203mm diameter, 2.0mm thick.
+- **Caliper**: Hydraulic 4-piston caliper.
+- **Mounting**: Post-mount adapter.
+
+### 2. Rear Braking (Control and Parking)
+- **Disc Rotor**: 180mm diameter.
+- **Caliper**: Mechanical or Hydraulic disc brake with **Parking Lock**.
+
+## Cable Management & Routing (Brakes & Steering)
+Precise routing of Bowden and hydraulic lines is critical for steering response and safety.
+
+### 1. Shortest Path Routing
+- **Front Brake**: Routed directly down the front fork leg.
+- **Rear Brake**: Routed along the left main frame spar to the rear dropout.
+- **Path Lengths**: Optimized to minimize line friction and hydraulic fluid volume.
+
+### 2. Protection and Anti-Friction
+- **Housing**: Use **compressionless reinforced Bowden housing** for mechanical brakes.
+- **Outer Protection**: Lines are sleeved in **heavy-duty PVC or Braided Nylon tubing** where they pass near the cargo bed.
+- **Rub Protection**: Self-adhesive **clear protection film** or rubber grommets are used at every point where a line touches the frame.
+
+### 3. Loop and Radius Control
+- **Steering Head Loop**: A large, 250mm diameter loop is maintained between the handlebar and the first frame guide to accommodate the full **90-degree steering sweep** without pulling or kinking.
+- **Bending Constraint**: No cable or line shall have a bend tighter than **50mm radius** at any point in its travel.
 
 ## Assembly & Disassembly Methods
 ### Assembly
-1. Drill 6 radial 5mm holes at the top and bottom of the 1-1/4\" head tube pipe (12 holes total).
-2. Insert the lower "stopping element" collar and secure it with 6 M5 screws.
-3. Drop the lower 7202 bearing into the pipe against the collar.
-4. Pass the 15mm steering shaft through the lower bearing.
-5. Install the upper 7202 bearing and the upper stopping element; secure with M5 screws.
-6. Install 15mm shaft collars on the inner shaft, apply preload, and tighten set screws.
-7. Bolt the steering linkage rod ends to the fork and shaft using M10 bolts and nyloc nuts.
-
-### Disassembly
-1. Loosen the set screws on the 15mm shaft collars and remove them.
-2. Remove the M5 locking screws from the upper stopping element.
-3. Pull the steering shaft and bearings out of the head tube.
-
-## Braking System
-### 1. Front Braking
-- **Regenerative Braking**: The front 250W direct drive hub motor provides electric braking.
-- **Mechanical Backup**: A mechanical or hydraulic disc brake with **180mm-203mm rotors**.
-
-### 2. Rear Braking
-- **Disc or Drum**: Standard 160mm-180mm disc brake or internal drum brake integrated into the rear hub motor.
-
-### 3. Brake Levers and Cables
-- **E-Brake Levers**: High-quality alloy levers with integrated electrical cut-off switches.
-- **Brake Cables**: 1.5mm stainless steel inner cables with 5.0mm reinforced housing.
-- **Parking Brake**: A locking brake lever is essential for a heavy cargo bike.
+1. Install calipers and rotors.
+2. Route lines through **integrated frame guides** (welded tabs).
+3. Secure lines with heavy-duty zip ties, ensuring no binding during steering.
+4. Bleed hydraulic lines (Right: Front, Left: Rear).
 
 ## Tolerances and Fit
-- **Steering Alignment**: Handlebars aligned within +/- 1 degree of the front wheel.
-- **Brake Rotor True**: Maximum runout of 0.2mm.
-- **Hole Pattern Accuracy**: +/- 0.5mm for the 6-hole radial pattern.
+- **Steering Alignment**: Within +/- 1 degree.
+- **Brake Line Clearance**: **Minimum 30mm** from the tires at all steering angles.
+- **Cable Tension**: 0.5mm free play at levers.

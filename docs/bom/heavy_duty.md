@@ -4,37 +4,33 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 
 | Category | Component | Specification | Estimated Cost |
 | --- | --- | --- | --- |
-| **Front Wheel** | Car Tire | 155/70 R13 (new, Load Index 75+) | $60 |
-| | Split Rim | 13-inch steel split rim (new, 4x98/100, 5mm steel) | $75 |
-| | Inner Tube | 13-inch heavy duty tube (G13/G14) | $15 |
-| | Front Hub Motor | 350-500W Direct Drive (48V/60V, 175mm, M14) | $180 |
-| **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ type, 36H/48H) | $80 |
-| | Rear Spokes | 8G/10G heavy-duty stainless | $40 |
-| | Rear Hub Motor | 500W-800W Geared or Direct Drive (48V/60V) | $300 |
-| | Rear Tire | 110/80-16 or 3.50-16 rugged moped tire | $60 |
-| **Frame** | Steel Tubing | 50x25x3mm rectangular steel (6m) | $90 |
-| | Headset/Pipes | 1-1/4\" Sch 40 Steel Pipe (Head Tube) | $40 |
+| **Front Wheel** | Car Tire | 155/70 R13 (Load Index 75+) | $60 |
+| | Split Rim | 13-inch steel split rim (5mm steel) | $75 |
+| | Front Hub Motor | 350-500W Direct Drive (48V/60V, M14) | $180 |
+| | Torque Arm | 8mm steel laser-cut plate (Heavy duty) | $25 |
+| **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ type) | $80 |
+| | Rear Hub Motor | 500W-800W Geared or Direct Drive | $300 |
+| | Rear Tire | 110/80-16 rugged moped tire | $60 |
+| **Frame** | Steel Tubing | 50x25x3mm rectangular + 1-1/4\" Sch 40 Pipe | $130 |
 | | Steering Bearings | Pair of 7202 Angular Contact (High Load) | $30 |
-| | Stopping Elements | 35mm OD precision collars (machined/laser-cut) | $20 |
-| | Locking Screws | 12x M5 Grade 12.9 with nyloc nuts/washers | $10 |
-| | Stabilizer Tubing | 1m 40x40x3mm + 1m 35x35x3mm (Square) | $40 |
 | | Stabilizer Screws | 4x M20x300mm Threaded Rod (Grade 10.9) | $40 |
-| | Drive Hex Nuts | 4x M20 Heavy Hex Nuts (Welded top) | $10 |
-| | Foot Pads | 4x 120x120x6mm Steel Plates (Laser cut) | $20 |
-| | Paint/Finish | Industrial Powder Coating | $60 |
-| **Drivetrain** | Crankset | 170mm, 42T Steel (heavy duty, HTII) | $50 |
-| | Chain | 1/2\"x1/8\" Heavy-duty (industrial-grade) | $30 |
-| | Derailleur/Shifter | Shimano Deore 10-Speed | $80 |
-| | Pedals | Aluminum Flat (with studs) | $40 |
-| **Electrical** | Batteries | 2x 48V/60V 20Ah LiFePO4 (incl. 60A BMS each) | $900 |
-| | Controllers | Dual 48V/60V 25-35A BLDC (Programmable) | $150 |
-| | Housing Boxes | 2x Oversized Aluminum Enclosures (250x180x100mm) | $80 |
-| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S Connectors | $40 |
-| | Throttle/Display | Advanced LCD with data logging | $100 |
-| | Wiring/Connectors | 10AWG Silicone + XT150 Connectors | $40 |
-| **Brakes** | Brake Levers | High-quality e-brake with cutoff switches | $50 |
-| | Brake Calipers | Hydraulic Disc (Front 203mm, Rear 180mm) | $120 |
-| | Brake Cables | Hydraulic Lines (Shielded) | $40 |
-| **Misc** | Cargo Box | 12mm Marine Plywood (810mm x 1210mm) | $120 |
+| **Brakes** | Front Caliper | Hydraulic 4-piston (e.g., Magura MT5) | $120 |
+| | Rear Caliper | Hydraulic 2-piston (e.g., Shimano MT200) | $60 |
+| | Rotors | 1x 203mm Front, 1x 180mm Rear (2.0mm thick) | $80 |
+| **Electrical** | Batteries | 2x 48V/60V 20Ah LiFePO4 | $900 |
+| | Controllers | Dual 48V/60V 25-35A BLDC | $150 |
+| | Housing Boxes | 2x Aluminum Waterproof Enclosures | $80 |
+| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S | $40 |
+| **Cable Mgmt** | Conduits | 5m Braided Stainless/Nylon Sleeving | $40 |
+| | Spiral Wrap | 2m Heavy Duty Spiral Wrap | $15 |
+| | Cable Ties | 100x Stainless Steel Locking Ties | $25 |
+| | Cable Guides | 20x Bolt-on CNC Machined Guides | $50 |
+| **Fasteners** | Rim Bolts | 6x M8x30mm Grade 12.9 + Nyloc | $15 |
+| | Linkage Bolts | 2x M10x40mm Grade 12.9 + Nyloc | $10 |
+| | Axle Nuts | 4x M14x1.5 Flange Nuts (Hardened) | $15 |
+| | Steering Locking | 12x M5 Grade 12.9 Flat Head | $10 |
+| | Caliper Bolts | 4x M6x20mm Grade 12.9 Socket Head | $10 |
+| | Misc Fasteners | Stainless steel M5/M6/M8 assortments | $40 |
+| **Misc** | Cargo Box | 12mm Marine Plywood | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$3,425** |
+| **Total** | | | **~$3,810** |
