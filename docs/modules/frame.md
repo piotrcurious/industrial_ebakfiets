@@ -5,7 +5,7 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 ## Material Selection
 ### 1. Steel Rectangular Tubes (Main Spars)
 - **Dimensions**: 40x20mm or 50x25mm with 2-3mm wall thickness.
-- **Why**: High torsional rigidity for the long cargo section.
+- **Why**: High torsional rigidity for the long cargo section. Steel is easily weldable and repairable.
 
 ### 2. Head Tube (Redesigned 7202 Setup)
 - **Standard**: **1-1/4\" Schedule 40 Steel Pipe** (Nominal ID: 35.05mm).
@@ -36,6 +36,10 @@ The cargo deck is positioned as low as possible, just above the front wheel's gr
   - **Internal Bed Length**: 1210mm.
 - **Construction**: 9mm or 12mm Marine Plywood or reinforced Aluminum.
 
+### 4. Decentralized Component Mounting
+- **Integrated Mounting Plates**: Custom-welded plates on the frame spars for the **Rear BLDC Housing Box** and **Rear Battery Enclosure**.
+- **Location**: Typically mounted above the chain line and near the rear hub motor for short wiring runs.
+
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
 - **Dropout Plate**: 6mm-8mm laser-cut steel plates welded to the frame spars.
@@ -51,6 +55,7 @@ The cargo deck is positioned as low as possible, just above the front wheel's gr
 2. Clean and deburr the internal surface of the 1-1/4\" head tube pipe.
 3. Drill the radial hole pattern (6 holes per bearing seat) using a template.
 4. Apply corrosion protection (industrial paint or powder coating).
+5. Mount the rear BLDC box and connect to the rear hub motor and battery.
 
 ### Disassembly
 1. Remove all components (wheels, steering, drivetrain).
@@ -62,3 +67,4 @@ The cargo deck is positioned as low as possible, just above the front wheel's gr
 - **Cargo Bed Squareness**: Corner-to-corner measurement within +/- 2mm.
 - **Dropout Parallelism**: Within +/- 0.5mm to ensure wheel alignment.
 - **Hole Position Tolerance**: +/- 0.5mm for the radial pattern.
+- **Box Clearance**: **Minimum 50mm vertical clearance** to the chain and gears.

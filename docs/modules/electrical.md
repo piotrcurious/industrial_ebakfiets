@@ -1,45 +1,47 @@
 # Electrical Module
 
-The industrial bakfiets uses a dual-motor electrical system for redundant power, high torque, and increased efficiency.
+The industrial bakfiets uses a decentralized, dual-battery, dual-motor electrical system for maximum efficiency, redundancy, and reduced wiring losses.
 
-## Dual Motor Setup
-### 1. Front: 250W Direct Drive Hub Motor
-- **Function**: Cruise efficiency and regenerative braking.
-- **Benefit**: Smooth power delivery and low maintenance (no internal gears).
+## Decentralized Architecture
+Instead of a single central battery and controller, the system is split into two localized power units to keep high-current motor wires as short as possible.
 
-### 2. Rear: 300W Geared Hub Motor
-- **Function**: Starting torque and hill climbing.
-- **Benefit**: High internal reduction (planetary gears) provides massive torque for heavy loads at low speeds.
+### 1. Front Power Unit (Fork Mounted)
+- **Location**: Mounted on the custom front fork, directly behind the head tube.
+- **Components**:
+  - **Front Battery**: 36V or 48V (10-15Ah).
+  - **Front BLDC Controller**: 250W Direct Drive controller.
+  - **Front Housing Box**: Oversized waterproof enclosure (250x180x100mm) to accommodate salvaged controllers.
+- **Benefit**: Significantly reduces resistance and complexity in the front motor wiring.
 
-## Power Source
-### 1. Battery Pack
-- **Voltage**: 48V (Recommended for dual-motor current demands).
-- **Chemistry**: Lithium Iron Phosphate (LiFePO4) or Lithium-Ion (NMC).
-- **Capacity**: At least 15-20Ah (720-960Wh).
-- **Enclosure Dimensions**:
-  - **Size**: 320mm x 160mm x 90mm.
-  - **Internal Mount Space**: 330mm x 170mm x 100mm.
+### 2. Rear Power Unit (Frame Mounted)
+- **Location**: Mounted on the main frame, above the chain line and near the rear hub motor.
+- **Components**:
+  - **Rear Battery**: 36V or 48V (10-15Ah).
+  - **Rear BLDC Controller**: 300W Geared hub motor controller.
+  - **Rear Housing Box**: Oversized waterproof enclosure (250x180x100mm).
+- **Benefit**: Keeps high-torque rear motor wires short and protected from cargo area.
 
-### 2. Battery Management System (BMS)
-- **Specification**: **40-60A continuous discharge capacity** to handle both motor controllers simultaneously.
-- **Protection**: Overcurrent, overvoltage, undervoltage, and thermal protection.
+## Dual-Battery Equalizer System
+The two batteries are connected by a single, thick **Equalizer Wire** to balance the load and provide redundancy.
 
-## Control System
-### 1. Motor Controllers
-- **Dual Controllers**: Two separate 36V/48V 15-22A BLDC controllers (Sinewave for quiet operation).
-- **Wiring and Connectors**:
-  - **Main Battery Bus**: 10AWG or 12AWG silicone wire.
-  - **Connectors**: XT90 (main battery), XT60 (motor phase and controllers), and Waterproof IP65 signal connectors (JST-SM or Higo).
+- **Specification**: **8AWG or 10AWG silicone-insulated wire**.
+- **Function**: Allows the system to draw power from both batteries simultaneously, reducing voltage sag and allowing the bike to run if one battery fails.
+- **Protection**: Each battery must have its own 40-60A fuse before the equalizer junction.
 
-### 2. Throttle and Display
-- **Specification**: LCD SW900 or color TFT display for speed, mileage, and battery status.
-- **Throttle**: Thumb or half-twist throttle (standard 22mm handlebar mount).
+## Housing & Clearance
+### BLDC Housing Box (Large Margin Design)
+- **Internal Dimensions**: 250mm x 180mm x 100mm.
+- **Why**: Specifically designed with a large margin to accommodate various salvaged controllers with different dimensions and cooling fins.
+- **Clearance Requirements**:
+  - **Chain/Gears**: Minimum 50mm vertical clearance from the chain line to the bottom of the housing.
+  - **Brakes/Tires**: Minimum 25mm clearance from any moving part or brake caliper.
 
-### 3. Wiring and Integration
-- **Harness**: IP65 rated connectors and waterproof industrial enclosure (minimum 200mm x 150mm x 75mm).
-- **Enclosure**: Waterproof industrial enclosure for controllers and BMS, mounted under the cargo bed for a low center of gravity.
+## Control System Integration
+- **Throttle/Display**: Single throttle and display unit connected via a Y-splitter cable to both controllers.
+- **Brake Cutoff**: Industrial-grade e-brake levers connected in parallel to both controllers to stop all motors instantly.
+- **Wiring Harness**: IP65 rated signal connectors (Higo/Julet style).
 
 ## Tolerances and Safety
-- **Voltage Drop**: Maximum allowable voltage drop in wiring is 2.5% under full load.
-- **Thermal Margin**: Controllers and BMS must be mounted in an enclosure with at least 50mm of clearance for heat dissipation.
-- **Fuse/Breaker**: Integrated 60A DC circuit breaker for the main battery supply.
+- **Voltage Drop**: Minimized by short localized runs (< 1.0% drop).
+- **Thermal Margin**: 50mm internal clearance around salvaged controllers for air circulation.
+- **Equalizer Connector**: XT90-S (Anti-spark) for safe connection of the two battery systems.

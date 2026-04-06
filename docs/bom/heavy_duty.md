@@ -21,8 +21,10 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Chain | 1/2\"x1/8\" Heavy-duty (industrial-grade) | $30 |
 | | Derailleur/Shifter | Shimano Deore 10-Speed | $80 |
 | | Pedals | Aluminum Flat (with studs) | $40 |
-| **Electrical** | Battery | 48V/60V 30Ah LiFePO4 (incl. 60A BMS) | $600 |
+| **Electrical** | Batteries | 2x 48V/60V 20Ah LiFePO4 (incl. 60A BMS each) | $900 |
 | | Controllers | Dual 48V/60V 25-35A BLDC (Programmable) | $150 |
+| | Housing Boxes | 2x Oversized Aluminum Enclosures (250x180x100mm) | $80 |
+| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S Connectors | $40 |
 | | Throttle/Display | Advanced LCD with data logging | $100 |
 | | Wiring/Connectors | 10AWG Silicone + XT150 Connectors | $40 |
 | **Brakes** | Brake Levers | High-quality e-brake with cutoff switches | $50 |
@@ -30,4 +32,4 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Brake Cables | Hydraulic Lines (Shielded) | $40 |
 | **Misc** | Cargo Box | 12mm Marine Plywood (810mm x 1210mm) | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$2,450** |
+| **Total** | | | **~$3,100** |

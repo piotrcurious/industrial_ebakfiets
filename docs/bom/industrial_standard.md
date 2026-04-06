@@ -21,13 +21,15 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Chain | 1/2\"x1/8\" Heavy-duty (KMC Z1) | $15 |
 | | Derailleur/Shifter | Shimano Altus 7-8 Speed | $40 |
 | | Pedals | Aluminum Flat | $20 |
-| **Electrical** | Battery | 48V 15Ah LiFePO4 (incl. 40A BMS) | $300 |
+| **Electrical** | Batteries | 2x 48V 10Ah LiFePO4 (incl. 40A BMS each) | $400 |
 | | Controllers | Dual 36V/48V 15-22A BLDC (Sinewave) | $80 |
+| | Housing Boxes | 2x Oversized Waterproof Enclosures (250x180x100mm) | $40 |
+| | Equalizer Wire | 3m of 8AWG Silicone + XT90-S Connectors | $30 |
 | | Throttle/Display | LCD SW900 + Thumb Throttle | $50 |
-| | Wiring/Connectors | 12AWG Silicone + XT90/XT60 | $20 |
+| | Wiring/Connectors | 12AWG Silicone + XT60 | $20 |
 | **Brakes** | Brake Levers | E-brake with cutoff switches | $25 |
 | | Brake Calipers | Mechanical Disc (Front 180mm, Rear 160mm) | $60 |
 | | Brake Cables | Standard Stainless | $15 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (810mm x 1210mm) | $60 |
 | | Steering Rod | 12mm Steel + M10 Rod Ends | $30 |
-| **Total** | | | **~$1,325** |
+| **Total** | | | **~$1,445** |

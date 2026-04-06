@@ -21,13 +21,15 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Chain | 1/2\"x1/8\" Heavy-duty (salvaged) | $0 |
 | | Derailleur/Shifter | Shimano Tourney (salvaged) | $0 |
 | | Pedals | Aluminum Flat (salvaged) | $0 |
-| **Electrical** | Battery | 36V/48V 10-12Ah (salvaged, 30A+ BMS) | $150 |
-| | Controllers | Dual 36V/48V 15A BLDC (basic) | $40 |
+| **Electrical** | Batteries | 2x 36V/48V 10Ah (salvaged, 30A+ BMS each) | $250 |
+| | Controllers | Dual 36V/48V 15A BLDC (salvaged/basic) | $40 |
+| | Housing Boxes | 2x Enclosures (salvaged plastic/metal) | $10 |
+| | Equalizer Wire | 3m of 10AWG Silicone + XT90 Connectors | $20 |
 | | Throttle/Display | Basic LED + Thumb Throttle | $25 |
-| | Wiring/Connectors | 12AWG Silicone + XT90 Connectors | $15 |
+| | Wiring/Connectors | 12AWG Silicone + XT60 Connectors | $15 |
 | **Brakes** | Brake Levers | E-brake with cutoff switches (salvaged) | $10 |
 | | Brake Calipers | Mechanical Disc (salvaged) | $20 |
 | | Brake Cables | Standard Stainless (salvaged) | $5 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (salvaged/scrap) | $10 |
 | | Steering Rod | 10mm Steel + M10 Rod Ends (salvaged) | $15 |
-| **Total** | | | **~$542** |
+| **Total** | | | **~$667** |
