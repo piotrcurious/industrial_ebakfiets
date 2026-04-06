@@ -28,14 +28,19 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
   - **Flats Diameter**: 10.0mm.
   - **Dropout Slot**: 10.2mm (**Loose-Fit, 0.2mm clearance**).
   - **Dropout Width**: 175mm.
-- **Bearings**: **Internal 6202-series sealed bearings** (standard for most hub motors).
+- **Bearings**: **Internal 6202-series sealed bearings**.
 
 ## Mechanical Integration & Assembly
 ### 1. Axle to Dropout Fit
-- **Locking Method**: The axle is fixed using **M14 flange nuts** and high-torque washers (torque arms).
-- **Torque Arm**: Essential for direct-drive motors. A 4mm-6mm steel plate torque arm is bolted to the fork leg to prevent the axle from spinning and damaging the dropouts.
+- **Locking Method**: Fixed using **M14 flange nuts** and high-torque washers (torque arms).
+- **Torque Arm**: 4mm-6mm steel plate torque arm bolted to the fork leg.
 
-### 2. Rim to Motor Integration
+### 2. Front Power Housing (Fork Mounted)
+- **Design**: The custom-welded front fork includes integrated mounting tabs for the **Front BLDC Housing Box** (250x180x100mm).
+- **Placement**: Mounted on the fork crown or between the legs, ideally behind the head tube, keeping it close to the hub motor.
+- **Clearance**: **Minimum 25mm clearance** to the front tire and brake caliper.
+
+### 3. Rim to Motor Integration
 - **Connection**: Custom laser-cut 5mm steel flange plates.
 - **Locking**: 4 to 6 **M8 Grade 10.9 bolts** with nyloc nuts secure the split rim halves and the motor flange.
 
@@ -47,6 +52,7 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 4. Pass M8 bolts through the assembly and tighten to **25-30Nm**.
 5. Slide the motor axle into the fork dropouts.
 6. Attach torque arms and tighten M14 nuts to **40-50Nm**.
+7. Mount the front BLDC box and connect to the motor and battery.
 
 ### Disassembly
 1. Deflate the tire fully.
