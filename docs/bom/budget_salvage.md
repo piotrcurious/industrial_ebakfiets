@@ -17,8 +17,9 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Steering Bearings | Pair of 7202 Angular Contact (new) | $15 |
 | | Stopping Elements | 35mm OD steel collars (salvaged/scrap) | $5 |
 | | Locking Screws | 12x M5 Grade 10.9 | $2 |
-| | Stabilizer Tubing | 1m of 30x30 + 1m of 25x25 (Square, salvaged/scrap) | $10 |
-| | Stabilizer Pins | 4x 10mm Steel Pins (salvaged hitch/clevis pins) | $5 |
+| | Stabilizer Tubing | 1m 35x35 + 1m 25x25 (Square, salvaged/scrap) | $10 |
+| | Stabilizer Screws | 4x M16 Threaded Rod (salvaged/scrap) | $10 |
+| | Drive Hex Nuts | 4x M16 Heavy Hex Nuts (Welded top) | $5 |
 | | Foot Pads | 4x 100x100x5mm Steel Plates (Scrap) | $5 |
 | | Paint/Finish | Industrial Hammered Paint | $15 |
 | **Drivetrain** | Crankset | 170mm, 42T Steel (salvaged) | $0 |
@@ -36,4 +37,4 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Brake Cables | Standard Stainless (salvaged) | $5 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (salvaged/scrap) | $10 |
 | | Steering Rod | 10mm Steel + M10 Rod Ends (salvaged) | $15 |
-| **Total** | | | **~$687** |
+| **Total** | | | **~$697** |

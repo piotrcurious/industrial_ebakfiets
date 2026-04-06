@@ -35,15 +35,16 @@ The use of a **16-inch rear wheel** lowers the center of gravity and allows for 
   - **Internal Bed Width**: 810mm.
   - **Internal Bed Length**: 1210mm.
 
-### 4. Cargo Bed Stabilizer System (Forklift Loading)
-To allow for safe loading of Euro-pallets using a forklift, the frame is equipped with four corner stabilizer feet.
+### 4. Screw-Driven Cargo Bed Stabilizer System
+To allow for safe loading of Euro-pallets using a forklift, the frame is equipped with four corner stabilizer feet driven by a screw mechanism.
 
-- **Design**: Telescopic square steel tubing.
-  - **Outer Sleeve**: 30x30x2.5mm square tube (150mm length) welded to the frame corners.
-  - **Inner Leg**: 25x25x2.5mm square tube (250mm length) that slides inside the outer sleeve.
+- **Design**: Screw-driven telescopic square steel tubing.
+  - **Outer Sleeve**: 35x35x2.5mm square tube (150mm length) welded to the frame corners.
+  - **Inner Leg**: 25x25x2.5mm square tube (200mm length) that slides inside the outer sleeve.
+  - **Screw Mechanism**: **M16 Threaded Rod** (Grade 8.8) and matching **M16 Heavy Hex Nut** welded into the top of the outer sleeve.
+  - **Drive Interface**: A 19mm or 24mm hex head (welded nut or socket adapter) at the top of the screw allows for operation using a **wrench or cordless drill**.
   - **Foot Pad**: 100x100x5mm steel plate welded to the bottom of the inner leg.
-- **Locking Method**: 10mm steel hitch pins or locking bolts passed through matching holes in the inner and outer tubes.
-- **Function**: When deployed, these legs lift the cargo bed slightly off the tires and provide a 4-point stable base, preventing the bike from tipping while a forklift positions a 350kg+ Euro-pallet.
+- **Function**: Rotating the screw extends or retracts the inner leg, providing precise height adjustment and lifting the cargo bed slightly to create a 4-point stable base.
 
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
@@ -54,19 +55,21 @@ To allow for safe loading of Euro-pallets using a forklift, the frame is equippe
 
 ## Assembly & Operation Methods
 ### Assembly
-1. Weld the 30mm outer stabilizer sleeves at the four extreme corners of the cargo bed spars.
-2. Drill 10.5mm holes through both sleeves and legs for the hitch pins.
-3. Weld the 100mm foot pads to the 25mm inner legs.
+1. Weld the 35mm outer stabilizer sleeves at the four corners of the cargo bed spars.
+2. Weld an M16 heavy hex nut into the top center of each outer sleeve.
+3. Pass the M16 threaded rod through the nut and weld a foot pad to the bottom of the inner 25mm leg.
+4. Integrate the inner leg into the outer sleeve so the screw drives the leg (captive screw design).
+5. Weld a 19mm hex drive nut to the top of the M16 rod.
 
 ### Operation (Forklift Loading)
 1. Position the bakfiets on level ground.
-2. Remove the hitch pins and lower all four stabilizer legs until the foot pads touch the ground.
-3. Apply further downward pressure to lift the bike slightly (taking the load off the tires).
-4. Re-insert the hitch pins into the closest matching hole.
-5. Proceed with forklift loading.
-6. Once loaded, retract the legs and secure with hitch pins in the "up" position before riding.
+2. Use a **cordless drill with a 19mm socket** or a manual wrench to drive the screw clockwise.
+3. Extend all four stabilizer legs until the foot pads touch the ground and lift the bike slightly (taking the load off the tires).
+4. Proceed with forklift loading.
+5. After loading, reverse the drill to retract the legs fully before riding.
 
 ## Tolerances and Fit
 - **Tube Cut Accuracy**: +/- 1mm over 2000mm length.
-- **Stabilizer Sleeve-to-Leg Fit**: **Loose-Fit (2.5mm clearance total)** to allow for easy sliding even with dirt or minor paint buildup.
+- **Stabilizer Sleeve-to-Leg Fit**: **Loose-Fit (5.0mm clearance total)**.
+- **Screw Thread Fit**: Standard ISO metric thread fit.
 - **Ground Clearance**: 16-inch rear wheel provides **150mm ground clearance**.
