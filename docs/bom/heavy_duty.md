@@ -8,9 +8,10 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Split Rim | 13-inch steel split rim (new, 4x98/100, 5mm steel) | $75 |
 | | Inner Tube | 13-inch heavy duty tube (G13/G14) | $15 |
 | | Front Hub Motor | 350-500W Direct Drive (48V/60V, 175mm, M14) | $180 |
-| **Rear Wheel** | Rear Rim | 26-inch Double Wall Heavy Duty MTB (48H, 135mm) | $75 |
-| | Rear Spokes | 10G/12G heavy-duty stainless | $30 |
-| | Rear Hub Motor | 500W Geared (48V/60V, 135mm, M14) | $250 |
+| **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ type, 36H/48H) | $80 |
+| | Rear Spokes | 8G/10G heavy-duty stainless | $40 |
+| | Rear Hub Motor | 500W-800W Geared or Direct Drive (48V/60V) | $300 |
+| | Rear Tire | 110/80-16 or 3.50-16 rugged moped tire | $60 |
 | **Frame** | Steel Tubing | 50x25x3mm rectangular steel (6m) | $90 |
 | | Headset/Pipes | 1-1/4\" Sch 40 Steel Pipe (Head Tube) | $40 |
 | | Steering Bearings | Pair of 7202 Angular Contact (High Load) | $30 |
@@ -32,4 +33,4 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Brake Cables | Hydraulic Lines (Shielded) | $40 |
 | **Misc** | Cargo Box | 12mm Marine Plywood (810mm x 1210mm) | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$3,100** |
+| **Total** | | | **~$3,275** |

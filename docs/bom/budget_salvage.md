@@ -8,9 +8,10 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Split Rim | 13-inch steel split rim (salvaged/Piaggio 4x98) | $20 |
 | | Inner Tube | 13-inch automotive tube (salvaged) | $5 |
 | | Front Hub Motor | 250W Direct Drive (175mm Dropout, salvaged) | $60 |
-| **Rear Wheel** | Rear Rim | 26-inch MTB (salvaged, 135mm) | $0 |
+| **Rear Wheel** | Rear Rim | 16-inch Bicycle/E-bike Rim (salvaged/children's bike) | $0 |
 | | Rear Spokes | 12G/13G heavy-duty stainless | $15 |
-| | Rear Hub Motor | 300W Geared (135mm, salvaged) | $80 |
+| | Rear Hub Motor | 300W-500W Geared (135mm, salvaged/standard 16\") | $80 |
+| | Rear Tire | 16x2.125 bicycle tire (salvaged) | $0 |
 | **Frame** | Steel Tubing | 40x20x2mm steel (scrap/salvaged) | $20 |
 | | Headset/Pipes | 1-1/4\" Sch 40 Pipe (salvaged) | $0 |
 | | Steering Bearings | Pair of 7202 Angular Contact (new) | $15 |

@@ -5,17 +5,17 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 ## Material Selection
 ### 1. Steel Rectangular Tubes (Main Spars)
 - **Dimensions**: 40x20mm or 50x25mm with 2-3mm wall thickness.
-- **Why**: High torsional rigidity for the long cargo section. Steel is easily weldable and repairable.
+- **Why**: High torsional rigidity for the long cargo section.
 
 ### 2. Head Tube (Redesigned 7202 Setup)
 - **Standard**: **1-1/4\" Schedule 40 Steel Pipe** (Nominal ID: 35.05mm).
-- **Benefit**: No internal machining required for 7202 bearings (OD: 35.00mm).
+- **Benefit**: No internal machining required for 7202 bearings.
 
 ### 3. Round Steel Pipes (Seat Post)
 - **Standard Sizes**: 1.25\" or 1.5\" (32mm or 38mm).
 
 ### 4. Paint and Finish
-- **Specification**: Industrial-grade Hammered Paint (e.g., Hammerite) or Powder Coating.
+- **Specification**: Industrial-grade Hammered Paint or Powder Coating.
 - **Why**: High impact and corrosion resistance for heavy-duty use.
 
 ### 5. Bearings
@@ -26,19 +26,18 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 ### 1. Longitudinal Stiffness
 The main cargo bed is supported by two parallel rails, providing a stable platform for the cargo box.
 
-### 2. Low Center of Gravity
-The cargo deck is positioned as low as possible, just above the front wheel's ground clearance, to improve stability when loaded.
+### 2. Low Center of Gravity (16-inch Rear Wheel)
+The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design while providing superior starting torque for cargo.
 
 ### 3. Modular Cargo Box
-- **Interface**: Bolt-on mounting points on the frame for various box designs (wood, metal, plastic).
+- **Interface**: Bolt-on mounting points on the frame for various box designs.
 - **Dimensions**:
   - **Internal Bed Width**: 810mm.
   - **Internal Bed Length**: 1210mm.
 - **Construction**: 9mm or 12mm Marine Plywood or reinforced Aluminum.
 
 ### 4. Decentralized Component Mounting
-- **Integrated Mounting Plates**: Custom-welded plates on the frame spars for the **Rear BLDC Housing Box** and **Rear Battery Enclosure**.
-- **Location**: Typically mounted above the chain line and near the rear hub motor for short wiring runs.
+- **Integrated Mounting Plates**: Custom-welded plates for the **Rear BLDC Housing Box** and **Rear Battery Enclosure**.
 
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
@@ -53,18 +52,19 @@ The cargo deck is positioned as low as possible, just above the front wheel's gr
 ### Assembly
 1. Weld the main spars and head tube according to the frame jig.
 2. Clean and deburr the internal surface of the 1-1/4\" head tube pipe.
-3. Drill the radial hole pattern (6 holes per bearing seat) using a template.
-4. Apply corrosion protection (industrial paint or powder coating).
-5. Mount the rear BLDC box and connect to the rear hub motor and battery.
+3. Drill the radial hole pattern (6 holes per bearing seat).
+4. Apply corrosion protection.
+5. Mount the rear BLDC box.
 
 ### Disassembly
 1. Remove all components (wheels, steering, drivetrain).
 2. Loosen the M5 locking screws to release the bearing stopping collars.
-3. Drive out the headset components if replacement is needed.
+3. Drive out the headset components.
 
 ## Tolerances and Fit
 - **Tube Cut Accuracy**: +/- 1mm over 2000mm length.
 - **Cargo Bed Squareness**: Corner-to-corner measurement within +/- 2mm.
-- **Dropout Parallelism**: Within +/- 0.5mm to ensure wheel alignment.
+- **Dropout Parallelism**: Within +/- 0.5mm.
 - **Hole Position Tolerance**: +/- 0.5mm for the radial pattern.
 - **Box Clearance**: **Minimum 50mm vertical clearance** to the chain and gears.
+- **Ground Clearance**: Optimized for 16-inch rear wheel to provide at least **150mm ground clearance** for the main frame rails.

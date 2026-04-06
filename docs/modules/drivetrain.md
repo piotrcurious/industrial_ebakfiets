@@ -28,34 +28,39 @@ The drivetrain of the industrial bakfiets is designed to provide secondary power
 - **Specification**: Aluminum flat pedals with non-slip studs for industrial environments.
 - **Size**: Large platform for use with work boots.
 
-## Mechanical Integration & Assembly
-### 1. Bottom Bracket Fit
-- **Locking Method**: **Threaded engagement** (BSA 1.37\" x 24 TPI). The BB cups are tightened into the frame shell and locked by the reverse-threading on the drive side.
-- **Crank-to-Spindle Fit**: **Square taper (snug-fit)** or external cup splined (HTII). Crank bolts are tightened to **35-45Nm**.
+## Rear Wheel Assembly (16-inch Design)
+The industrial bakfiets uses a **16-inch rear wheel** to maximize torque, lower the center of gravity, and allow for more rugged tire options.
 
-### 2. Rear Wheel Assembly
-- **Rear Rim**: 26-inch (559mm) Double Wall MTB rim, 36H or 48H.
-- **Rear Spokes**: 12G (2.6mm) or 13G (2.3mm) heavy-duty stainless steel.
-- **Rear Hub Motor**: 300W Geared hub motor with standard derailleur threads (135mm spacing).
-- **Axle**: M12 or M14 with 10mm flats.
+### 1. Rim Options
+- **MZ ETZ 150/251 Moped Rim (Recommended)**: 16-inch steel rim (2.15x16 or 2.50x16). Steel is preferred for its high strength and ability to handle high tire pressures (up to 4.0-5.0 bar).
+- **Standard 16\" Bicycle Rim**: 305mm or 349mm (cheapest and most available option).
+- **Complete 16\" E-bike Wheel**: 36V/48V 350W-800W integrated motor wheel.
+
+### 2. Tire Options
+- **Moped Tires**: 3.50-16 or 110/80-16 (extremely rugged, high load rating).
+- **Standard 16\" Bicycle Tires**: 16x2.125 or 16x2.4 (good availability).
+
+### 3. Rear Hub Motor
+- **300W-500W Geared hub motor**: Provides high internal reduction, and when paired with a 16\" wheel, offers massive starting torque for heavy cargo.
+- **800W Direct Drive option**: If high speed and extreme load capacity are required.
+- **Axle**: M12 or M14 with 10mm flats (135mm spacing).
 
 ## Assembly & Disassembly Methods
 ### Assembly
-1. Thread the bottom bracket cups into the frame shell (note reverse thread on drive side).
+1. Thread the bottom bracket cups into the frame shell.
 2. Tighten the cups with a BB tool to **35-50Nm**.
 3. Press the crank arms onto the spindle and tighten the crank bolts.
-4. Mount the rear derailleur to the derailleur hanger and tighten to **8-10Nm**.
-5. Thread the cassette or freewheel onto the rear hub motor and tighten.
-6. Install the chain and adjust the derailleur indexing.
+4. Mount the rear derailleur to the derailleur hanger.
+5. Thread the cassette or freewheel onto the rear hub motor.
+6. Install the chain and adjust indexing.
 
 ### Disassembly
 1. Use a crank puller tool to remove the crank arms.
 2. Unscrew the bottom bracket cups with a BB tool.
 3. Remove the chain using a chain tool or master link.
-4. Unscrew the derailleur mounting bolt and remove the unit.
 
 ## Tolerances and Fit
 - **Chain Line Alignment**: Within +/- 3mm over the entire drivetrain length.
-- **Pedal Clearance**: Minimum 100mm ground clearance when crank is at the 6 o'clock position (on level ground).
+- **Pedal Clearance**: Minimum 100mm ground clearance when crank is at the 6 o'clock position.
 - **Sprocket Concentricity**: Runout should not exceed 0.5mm.
 - **BB Shell Parallelism**: Faces must be faced and parallel within +/- 0.05mm.
