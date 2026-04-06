@@ -17,6 +17,10 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Steering Bearings | Pair of 7202 Angular Contact (15x35x11) | $20 |
 | | Stopping Elements | 35mm OD steel collars (machined/laser-cut) | $15 |
 | | Locking Screws | 12x M5 Grade 10.9 with locking washers | $5 |
+| | Stabilizer Tubing | 1m 35x35x2.5mm + 1m 25x25x2.5mm (Square) | $20 |
+| | Stabilizer Screws | 4x M16x250mm Threaded Rod (Grade 8.8) | $20 |
+| | Drive Hex Nuts | 4x M16 Heavy Hex Nuts (Welded top) | $5 |
+| | Foot Pads | 4x 100x100x5mm Steel Plates (Laser cut/Scrap) | $10 |
 | | Paint/Finish | Industrial Hammered Paint | $20 |
 | **Drivetrain** | Crankset | 170mm, 42T Steel, Square Taper | $30 |
 | | Chain | 1/2\"x1/8\" Heavy-duty (KMC Z1) | $15 |
@@ -33,4 +37,4 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Brake Cables | Standard Stainless | $15 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (810mm x 1210mm) | $60 |
 | | Steering Rod | 12mm Steel + M10 Rod Ends | $30 |
-| **Total** | | | **~$1,515** |
+| **Total** | | | **~$1,570** |

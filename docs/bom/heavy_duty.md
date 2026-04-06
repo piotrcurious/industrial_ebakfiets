@@ -17,6 +17,10 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Steering Bearings | Pair of 7202 Angular Contact (High Load) | $30 |
 | | Stopping Elements | 35mm OD precision collars (machined/laser-cut) | $20 |
 | | Locking Screws | 12x M5 Grade 12.9 with nyloc nuts/washers | $10 |
+| | Stabilizer Tubing | 1m 40x40x3mm + 1m 35x35x3mm (Square) | $40 |
+| | Stabilizer Screws | 4x M20x300mm Threaded Rod (Grade 10.9) | $40 |
+| | Drive Hex Nuts | 4x M20 Heavy Hex Nuts (Welded top) | $10 |
+| | Foot Pads | 4x 120x120x6mm Steel Plates (Laser cut) | $20 |
 | | Paint/Finish | Industrial Powder Coating | $60 |
 | **Drivetrain** | Crankset | 170mm, 42T Steel (heavy duty, HTII) | $50 |
 | | Chain | 1/2\"x1/8\" Heavy-duty (industrial-grade) | $30 |
@@ -33,4 +37,4 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Brake Cables | Hydraulic Lines (Shielded) | $40 |
 | **Misc** | Cargo Box | 12mm Marine Plywood (810mm x 1210mm) | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$3,275** |
+| **Total** | | | **~$3,425** |

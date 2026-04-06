@@ -27,44 +27,49 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 The main cargo bed is supported by two parallel rails, providing a stable platform for the cargo box.
 
 ### 2. Low Center of Gravity (16-inch Rear Wheel)
-The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design while providing superior starting torque for cargo.
+The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design.
 
 ### 3. Modular Cargo Box
 - **Interface**: Bolt-on mounting points on the frame for various box designs.
 - **Dimensions**:
   - **Internal Bed Width**: 810mm.
   - **Internal Bed Length**: 1210mm.
-- **Construction**: 9mm or 12mm Marine Plywood or reinforced Aluminum.
 
-### 4. Decentralized Component Mounting
-- **Integrated Mounting Plates**: Custom-welded plates for the **Rear BLDC Housing Box** and **Rear Battery Enclosure**.
+### 4. Screw-Driven Cargo Bed Stabilizer System
+To allow for safe loading of Euro-pallets using a forklift, the frame is equipped with four corner stabilizer feet driven by a screw mechanism.
+
+- **Design**: Screw-driven telescopic square steel tubing.
+  - **Outer Sleeve**: 35x35x2.5mm square tube (150mm length) welded to the frame corners.
+  - **Inner Leg**: 25x25x2.5mm square tube (200mm length) that slides inside the outer sleeve.
+  - **Screw Mechanism**: **M16 Threaded Rod** (Grade 8.8) and matching **M16 Heavy Hex Nut** welded into the top of the outer sleeve.
+  - **Drive Interface**: A 19mm or 24mm hex head (welded nut or socket adapter) at the top of the screw allows for operation using a **wrench or cordless drill**.
+  - **Foot Pad**: 100x100x5mm steel plate welded to the bottom of the inner leg.
+- **Function**: Rotating the screw extends or retracts the inner leg, providing precise height adjustment and lifting the cargo bed slightly to create a 4-point stable base.
 
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
 - **Dropout Plate**: 6mm-8mm laser-cut steel plates welded to the frame spars.
-- **Slot Width**: 10.2mm for standard 10mm axle flats.
 
 ### 2. Headset Integration (No-Machining Design)
 - **Head Tube ID**: 35.05mm for 7202 bearings.
-- **Locking Method**: Six 5mm holes are drilled radially through the head tube to secure internal bearing stopping collars with M5 screws.
 
-## Assembly & Disassembly Methods
+## Assembly & Operation Methods
 ### Assembly
-1. Weld the main spars and head tube according to the frame jig.
-2. Clean and deburr the internal surface of the 1-1/4\" head tube pipe.
-3. Drill the radial hole pattern (6 holes per bearing seat).
-4. Apply corrosion protection.
-5. Mount the rear BLDC box.
+1. Weld the 35mm outer stabilizer sleeves at the four corners of the cargo bed spars.
+2. Weld an M16 heavy hex nut into the top center of each outer sleeve.
+3. Pass the M16 threaded rod through the nut and weld a foot pad to the bottom of the inner 25mm leg.
+4. Integrate the inner leg into the outer sleeve so the screw drives the leg (captive screw design).
+5. Weld a 19mm hex drive nut to the top of the M16 rod.
 
-### Disassembly
-1. Remove all components (wheels, steering, drivetrain).
-2. Loosen the M5 locking screws to release the bearing stopping collars.
-3. Drive out the headset components.
+### Operation (Forklift Loading)
+1. Position the bakfiets on level ground.
+2. Use a **cordless drill with a 19mm socket** or a manual wrench to drive the screw clockwise.
+3. Extend all four stabilizer legs until the foot pads touch the ground and lift the bike slightly (taking the load off the tires).
+4. Proceed with forklift loading.
+5. After loading, reverse the drill to retract the legs fully before riding.
 
 ## Tolerances and Fit
 - **Tube Cut Accuracy**: +/- 1mm over 2000mm length.
-- **Cargo Bed Squareness**: Corner-to-corner measurement within +/- 2mm.
-- **Dropout Parallelism**: Within +/- 0.5mm.
-- **Hole Position Tolerance**: +/- 0.5mm for the radial pattern.
-- **Box Clearance**: **Minimum 50mm vertical clearance** to the chain and gears.
-- **Ground Clearance**: Optimized for 16-inch rear wheel to provide at least **150mm ground clearance** for the main frame rails.
+- **Stabilizer Sleeve-to-Leg Fit**: **Loose-Fit (5.0mm clearance total)**.
+- **Screw Thread Fit**: Standard ISO metric thread fit.
+- **Ground Clearance**: 16-inch rear wheel provides **150mm ground clearance**.
