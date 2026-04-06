@@ -12,10 +12,13 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Rear Spokes | 12G/13G heavy-duty stainless | $15 |
 | | Rear Hub Motor | 300W Geared (135mm, salvaged) | $80 |
 | **Frame** | Steel Tubing | 40x20x2mm steel (scrap/salvaged) | $20 |
-| | Headset/Pipes | 1-1/8" Threadless (salvaged) | $0 |
+| | Headset/Pipes | 1-1/4\" Sch 40 Pipe (salvaged) | $0 |
+| | Steering Bearings | Pair of 7202 Angular Contact (new) | $15 |
+| | Stopping Elements | 35mm OD steel collars (salvaged/scrap) | $5 |
+| | Locking Screws | 12x M5 Grade 10.9 | $2 |
 | | Paint/Finish | Industrial Hammered Paint | $15 |
 | **Drivetrain** | Crankset | 170mm, 42T Steel (salvaged) | $0 |
-| | Chain | 1/2"x1/8" Heavy-duty (salvaged) | $0 |
+| | Chain | 1/2\"x1/8\" Heavy-duty (salvaged) | $0 |
 | | Derailleur/Shifter | Shimano Tourney (salvaged) | $0 |
 | | Pedals | Aluminum Flat (salvaged) | $0 |
 | **Electrical** | Battery | 36V/48V 10-12Ah (salvaged, 30A+ BMS) | $150 |
@@ -27,4 +30,4 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Brake Cables | Standard Stainless (salvaged) | $5 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (salvaged/scrap) | $10 |
 | | Steering Rod | 10mm Steel + M10 Rod Ends (salvaged) | $15 |
-| **Total** | | | **~$515** |
+| **Total** | | | **~$542** |
