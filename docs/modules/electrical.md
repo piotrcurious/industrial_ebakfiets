@@ -10,8 +10,7 @@ Instead of a single central battery and controller, the system is split into two
 - **Components**:
   - **Front Battery**: 36V or 48V (10-15Ah).
   - **Front BLDC Controller**: 250W Direct Drive controller.
-  - **Front Housing Box**: Oversized waterproof enclosure (250x180x100mm) to accommodate salvaged controllers.
-- **Benefit**: Significantly reduces resistance and complexity in the front motor wiring.
+  - **Front Housing Box**: Oversized waterproof enclosure (250x180x100mm).
 
 ### 2. Rear Power Unit (Frame Mounted)
 - **Location**: Mounted on the main frame, above the chain line and near the rear hub motor.
@@ -19,29 +18,28 @@ Instead of a single central battery and controller, the system is split into two
   - **Rear Battery**: 36V or 48V (10-15Ah).
   - **Rear BLDC Controller**: 300W Geared hub motor controller.
   - **Rear Housing Box**: Oversized waterproof enclosure (250x180x100mm).
-- **Benefit**: Keeps high-torque rear motor wires short and protected from cargo area.
 
 ## Dual-Battery Equalizer System
-The two batteries are connected by a single, thick **Equalizer Wire** to balance the load and provide redundancy.
-
 - **Specification**: **8AWG or 10AWG silicone-insulated wire**.
-- **Function**: Allows the system to draw power from both batteries simultaneously, reducing voltage sag and allowing the bike to run if one battery fails.
-- **Protection**: Each battery must have its own 40-60A fuse before the equalizer junction.
+- **Equalizer Connector**: XT90-S (Anti-spark).
 
-## Housing & Clearance
-### BLDC Housing Box (Large Margin Design)
-- **Internal Dimensions**: 250mm x 180mm x 100mm.
-- **Why**: Specifically designed with a large margin to accommodate various salvaged controllers with different dimensions and cooling fins.
-- **Clearance Requirements**:
-  - **Chain/Gears**: Minimum 50mm vertical clearance from the chain line to the bottom of the housing.
-  - **Brakes/Tires**: Minimum 25mm clearance from any moving part or brake caliper.
+## Cable Management & Routing (Electrical)
+To ensure the longest possible life for the electrical system, cables are routed on the shortest paths and protected from environmental and mechanical damage.
 
-## Control System Integration
-- **Throttle/Display**: Single throttle and display unit connected via a Y-splitter cable to both controllers.
-- **Brake Cutoff**: Industrial-grade e-brake levers connected in parallel to both controllers to stop all motors instantly.
-- **Wiring Harness**: IP65 rated signal connectors (Higo/Julet style).
+### 1. Routing Paths
+- **High-Current (Motor/Battery)**: These runs are restricted to the localized power units (Fork and Rear Frame), keeping lengths under **500mm**.
+- **Control/Signal Cables**: Routed along the main frame spars and steering linkage using the **shortest path method**.
+- **Head Tube Junction**: Cables passing from the handlebar to the frame must have a **smooth loop (200mm radius)** to prevent fatigue from steering movement.
+
+### 2. Protection Systems
+- **Primary Protection**: All main runs are encased in **PA6 UV-resistant corrugated tubing** (10mm or 16mm OD).
+- **Flexible Junctions**: Areas requiring movement (e.g., steering head) use **Spiral PE Wrap** for maximum flexibility without binding.
+- **Impact Protection**: Where cables pass near the cargo bed, they are routed through **welded steel "Cable Bridges"** (half-moon sections of tube) to prevent crushing by cargo or forklifts.
+
+### 3. Securing Methods
+- **Fasteners**: Heavy-duty **4.8mm x 200mm UV-resistant Nylon cable ties** (e.g., Panduit or equivalent).
+- **Spacing**: Cables must be secured every **150mm** to prevent sagging and vibration wear.
 
 ## Tolerances and Safety
-- **Voltage Drop**: Minimized by short localized runs (< 1.0% drop).
-- **Thermal Margin**: 50mm internal clearance around salvaged controllers for air circulation.
-- **Equalizer Connector**: XT90-S (Anti-spark) for safe connection of the two battery systems.
+- **Bend Radius**: Minimum bend radius for power cables is **10x the cable diameter**.
+- **Clearance**: **Minimum 50mm clearance** to all moving parts (chain, wheels).

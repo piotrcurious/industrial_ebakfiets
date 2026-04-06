@@ -21,6 +21,10 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Controllers | Dual 36V/48V 15-22A BLDC (Sinewave) | $80 |
 | | Housing Boxes | 2x Oversized Waterproof Enclosures | $40 |
 | | Equalizer Wire | 3m of 8AWG Silicone + XT90-S | $30 |
+| **Cable Mgmt** | Conduits | 5m PA6 Corrugated Tubing (12mm/16mm) | $25 |
+| | Spiral Wrap | 2m Spiral PE Wrap (Flexible junctions) | $10 |
+| | Cable Ties | 100x 4.8mm UV-resistant Nylon | $12 |
+| | Cable Guides | 20x Welded Steel Tabs / Rubber Grommets | $15 |
 | **Fasteners** | Rim Bolts | 6x M8x30mm Grade 10.9 Hex + Nyloc | $10 |
 | | Linkage Bolts | 2x M10x40mm Grade 12.9 Hex + Nyloc | $8 |
 | | Axle Nuts | 4x M14x1.5 Flange Nuts | $12 |
@@ -29,4 +33,4 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Misc Screws | Assorted M5/M6/M8 for box and fenders | $15 |
 | **Misc** | Cargo Box | 9mm Marine Plywood | $60 |
 | | Steering Rod | 12mm Steel + M10 Rod Ends | $30 |
-| **Total** | | | **~$1,615** |
+| **Total** | | | **~$1,677** |

@@ -21,6 +21,10 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Controllers | Dual 48V/60V 25-35A BLDC | $150 |
 | | Housing Boxes | 2x Aluminum Waterproof Enclosures | $80 |
 | | Equalizer Wire | 3m of 8AWG Silicone + XT90-S | $40 |
+| **Cable Mgmt** | Conduits | 5m Braided Stainless/Nylon Sleeving | $40 |
+| | Spiral Wrap | 2m Heavy Duty Spiral Wrap | $15 |
+| | Cable Ties | 100x Stainless Steel Locking Ties | $25 |
+| | Cable Guides | 20x Bolt-on CNC Machined Guides | $50 |
 | **Fasteners** | Rim Bolts | 6x M8x30mm Grade 12.9 + Nyloc | $15 |
 | | Linkage Bolts | 2x M10x40mm Grade 12.9 + Nyloc | $10 |
 | | Axle Nuts | 4x M14x1.5 Flange Nuts (Hardened) | $15 |
@@ -29,4 +33,4 @@ This BOM is for a build that is over-engineered for maximum cargo capacity, with
 | | Misc Fasteners | Stainless steel M5/M6/M8 assortments | $40 |
 | **Misc** | Cargo Box | 12mm Marine Plywood | $120 |
 | | Steering Rod | 15mm Steel + M12 Rod Ends | $50 |
-| **Total** | | | **~$3,680** |
+| **Total** | | | **~$3,810** |

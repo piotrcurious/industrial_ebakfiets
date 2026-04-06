@@ -5,54 +5,54 @@ The brakes and steering of the industrial bakfiets are designed to handle high l
 ## Steering System
 ### 1. Steering Geometry
 - **Design**: Low-slung steering linkage with heavy-duty rod ends.
-- **Steering Linkage Rod**: 12mm-15mm diameter steel tubing or 10mm-12mm solid steel rod.
+- **Steering Linkage Rod**: 12mm-15mm diameter steel tubing.
 - **Rod Ends**: Standard industrial rod ends (M10 or M12).
 
 ### 2. Dimensions, Clearances & Fits
 - **Steering Column OD**: 15.0mm precision steel rod.
 - **Bearing**: Pair of 7202 Angular Contact Bearings (15x35x11).
-- **Bearing ID Fit**: 15.0mm (Snug-Fit).
-- **Outer Housing**: 1-1/4\" Schedule 40 Steel Pipe (ID: ~35.05mm).
 
 ### 3. Mechanical Integration & Assembly (Fasteners Included)
-- **Bearing Locking**:
-  - Internal stopping collars (35mm OD) are secured by **12x M5x10mm Grade 10.9 Flat Head Socket Screws** passed through 6 radial holes per seat.
-- **Shaft Locking**:
-  - The 15mm steering shaft is locked axially using **2x 15mm Two-Piece Clamping Shaft Collars** (30mm OD) with M5 socket head cap screws.
-- **Linkage Fasteners**:
-  - Rod ends are secured to the fork and steering shaft using **2x M10x40mm Grade 12.9 Hex Bolts**, with 4x M10 flat washers and **2x M10 Nyloc nuts**.
+- **Bearing Locking**: Secured by **12x M5x10mm Grade 10.9 Flat Head Socket Screws**.
+- **Shaft Locking**: Locked axially using **2x 15mm Two-Piece Clamping Shaft Collars**.
 
 ## Braking System
 The industrial bakfiets uses a triple-redundant braking system: Regenerative, Front Mechanical, and Rear Mechanical.
 
 ### 1. Front Braking (Main Stopping Power)
-- **Disc Rotor**: **203mm diameter, 2.0mm thick** (Standard 6-bolt mounting).
-- **Caliper**: **Hydraulic 4-piston caliper** (Shimano MT420 or equivalent) for high thermal mass.
-- **Mounting**: Post-mount (PM) adapter bolted to the fork leg using **2x M6x20mm Grade 10.9 Socket Head Bolts**.
-- **Regenerative Braking**: The front 250W direct drive hub motor provides significant slowing force, reducing mechanical wear.
+- **Disc Rotor**: 203mm diameter, 2.0mm thick.
+- **Caliper**: Hydraulic 4-piston caliper.
+- **Mounting**: Post-mount adapter.
 
 ### 2. Rear Braking (Control and Parking)
-- **Disc Rotor**: **180mm diameter** (Standard 6-bolt).
-- **Caliper**: Mechanical or Hydraulic disc brake.
-- **Mounting**: International Standard (IS) to Post-mount adapter secured with **2x M6x16mm Grade 10.9 Bolts**.
+- **Disc Rotor**: 180mm diameter.
+- **Caliper**: Mechanical or Hydraulic disc brake with **Parking Lock**.
 
-### 3. Brake Synchronization & Levers
-- **Control**: Left lever operates the rear brake; Right lever operates the front brake.
-- **E-Brake Integration**: Levers must have **integrated NC (Normally Closed) sensors** connected to the BLDC controllers.
-- **Parking Brake**: A **locking brake lever** is required on the rear brake to prevent the bike from rolling during forklift loading.
+## Cable Management & Routing (Brakes & Steering)
+Precise routing of Bowden and hydraulic lines is critical for steering response and safety.
+
+### 1. Shortest Path Routing
+- **Front Brake**: Routed directly down the front fork leg.
+- **Rear Brake**: Routed along the left main frame spar to the rear dropout.
+- **Path Lengths**: Optimized to minimize line friction and hydraulic fluid volume.
+
+### 2. Protection and Anti-Friction
+- **Housing**: Use **compressionless reinforced Bowden housing** for mechanical brakes.
+- **Outer Protection**: Lines are sleeved in **heavy-duty PVC or Braided Nylon tubing** where they pass near the cargo bed.
+- **Rub Protection**: Self-adhesive **clear protection film** or rubber grommets are used at every point where a line touches the frame.
+
+### 3. Loop and Radius Control
+- **Steering Head Loop**: A large, 250mm diameter loop is maintained between the handlebar and the first frame guide to accommodate the full **90-degree steering sweep** without pulling or kinking.
+- **Bending Constraint**: No cable or line shall have a bend tighter than **50mm radius** at any point in its travel.
 
 ## Assembly & Disassembly Methods
 ### Assembly
-1. Install brake rotors to hub motors using **12x M5x10mm T25 Torx bolts** (standard disc bolts) with blue threadlocker (Tighten to 6Nm).
-2. Bolt calipers/adapters to frame and fork using M6 bolts (Tighten to 10-12Nm).
-3. Bleed hydraulic lines or adjust mechanical cables to eliminate sponginess.
-4. Route signal wires from levers to the decentralized BLDC housing boxes.
-
-### Disassembly
-1. Disconnect e-brake signal wires.
-2. Unbolt calipers from adapters to service pads without removing rotors.
+1. Install calipers and rotors.
+2. Route lines through **integrated frame guides** (welded tabs).
+3. Secure lines with heavy-duty zip ties, ensuring no binding during steering.
+4. Bleed hydraulic lines (Right: Front, Left: Rear).
 
 ## Tolerances and Fit
 - **Steering Alignment**: Within +/- 1 degree.
-- **Brake Rotor True**: Maximum runout of 0.2mm.
-- **Fastener Standards**: All structural fasteners must be **Zinc-plated Grade 8.8 or 10.9**.
+- **Brake Line Clearance**: **Minimum 30mm** from the tires at all steering angles.
+- **Cable Tension**: 0.5mm free play at levers.

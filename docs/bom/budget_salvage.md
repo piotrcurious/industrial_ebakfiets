@@ -19,9 +19,12 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Controllers | Dual 36V/48V 15A BLDC (salvaged) | $40 |
 | | Housing Boxes | 2x Enclosures (salvaged) | $10 |
 | | Equalizer Wire | 3m of 10AWG Silicone + XT90 | $20 |
+| **Cable Mgmt** | Conduits | 5m Salvaged garden hose or PVC tubing | $0 |
+| | Cable Ties | 100x 4.8mm Nylon (new) | $10 |
+| | Protection | Assorted rubber scraps for rub-points | $0 |
 | **Fasteners** | Structural Bolts | Assorted M8/M10 Grade 8.8 (salvaged/new) | $20 |
 | | Axle Nuts | 4x M12/M14 Flange Nuts (new) | $10 |
 | | Steering Locking | 12x M5 Socket Screws (new) | $5 |
 | **Misc** | Cargo Box | 9mm Marine Plywood (salvaged) | $10 |
 | | Steering Rod | 10mm Steel + M10 Rod Ends (salvaged) | $15 |
-| **Total** | | | **~$735** |
+| **Total** | | | **~$745** |
