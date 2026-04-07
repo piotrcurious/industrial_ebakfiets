@@ -1,0 +1,26 @@
+<svg width="1000" height="800" viewBox="0 0 1000 800" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Top/Side Perspective Hybrid -->
+
+  <!-- Floor Panel (1210 x 810) -->
+  <rect id="floor_panel" x="100" y="100" width="810" height="600" fill="tan" stroke="black" stroke-width="2" />
+
+  <!-- Steel Angle Edges (25x25mm) -->
+  <rect id="angle_back" x="100" y="100" width="810" height="10" fill="gray" />
+  <rect id="angle_front" x="100" y="690" width="810" height="10" fill="gray" />
+  <rect id="angle_left" x="100" y="110" width="10" height="580" fill="gray" />
+  <rect id="angle_right" x="900" y="110" width="10" height="580" fill="gray" />
+
+  <!-- E-track Rails (50mm) -->
+  <rect id="etrack_l" x="120" y="200" width="5" height="400" fill="blue" stroke="black" />
+  <rect id="etrack_r" x="875" y="200" width="5" height="400" fill="blue" stroke="black" />
+
+  <!-- Anchor Points (D-rings) -->
+  <circle cx="150" cy="150" r="10" fill="none" stroke="black" stroke-width="2" />
+  <circle cx="860" cy="150" r="10" fill="none" stroke="black" stroke-width="2" />
+  <circle cx="150" cy="650" r="10" fill="none" stroke="black" stroke-width="2" />
+  <circle cx="860" cy="650" r="10" fill="none" stroke="black" stroke-width="2" />
+
+  <!-- Annotation -->
+  <text x="50" y="50" font-family="Arial" font-size="20" font-weight="bold">Cargo Box Structure (Internal: 810x1210mm)</text>
+  <text x="130" y="230" transform="rotate(90 130 230)" font-family="Arial" font-size="14">50mm E-Track Rails</text>
+</svg>

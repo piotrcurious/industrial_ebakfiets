@@ -1,40 +1,56 @@
-<svg width="2500" height="1000" viewBox="0 0 2500 1000" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Programmatic Composition of Sub-components -->
+<svg width="2500" height="1200" viewBox="0 0 2500 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Full Assembly Composition v2 -->
 
-  <!-- 1. MAIN FRAME -->
+  <!-- 1. MAIN FRAME (from frame_side.svg) -->
   <g id="frame_layer">
-    <rect id="main_spar" x="500" y="680" width="1800" height="40" fill="none" stroke="black" stroke-width="3" />
-    <rect id="cargo_bed_mount" x="900" y="640" width="1210" height="40" fill="none" stroke="green" stroke-width="2" stroke-dasharray="5,5" />
-    <!-- Head Tube -->
-    <g transform="rotate(-22 2300 680)">
-      <rect id="head_tube_housing" x="2279" y="530" width="42" height="150" fill="none" stroke="blue" stroke-width="2" />
+    <rect id="main_spar" x="500" y="800" width="1800" height="40" fill="gray" stroke="black" stroke-width="3" />
+    <!-- Head Tube (68 deg) -->
+    <g transform="rotate(-22 2300 800)">
+      <rect x="2279" y="650" width="42" height="150" fill="none" stroke="blue" stroke-width="3" />
     </g>
+    <!-- Seat Tube -->
+    <rect x="730" y="600" width="40" height="200" fill="none" stroke="black" stroke-width="2" />
+    <circle cx="750" cy="580" r="15" fill="none" stroke="black" stroke-width="2" /> <!-- Saddle -->
   </g>
 
-  <!-- 2. FRONT FORK & STEERING (Composed) -->
-  <g id="fork_steering_layer" transform="translate(2020, 200) rotate(0)">
-     <!-- Fork Crown -->
+  <!-- 2. CARGO BOX (side profile) -->
+  <g id="cargo_box_layer">
+    <rect x="900" y="650" width="1210" height="150" fill="tan" stroke="black" stroke-width="2" opacity="0.6" />
+    <!-- Weather Protection Canopy -->
+    <path d="M 900 650 Q 1500 400 2110 650" fill="none" stroke="blue" stroke-width="3" stroke-dasharray="10,5" />
+  </g>
+
+  <!-- 3. FORK & STEERING -->
+  <g id="fork_steering_layer" transform="translate(2020, 320) rotate(0)">
      <rect x="250" y="480" width="60" height="10" fill="black" />
-     <!-- Fork Legs -->
-     <rect x="250" y="490" width="10" height="350" fill="none" stroke="black" stroke-width="2" />
-     <!-- Steerer Rod -->
-     <rect x="272.5" y="180" width="15" height="300" fill="gray" />
+     <rect x="250" y="490" width="10" height="350" fill="none" stroke="black" stroke-width="3" />
   </g>
 
-  <!-- 3. WHEELS -->
+  <!-- 4. WHEELS -->
   <g id="wheels_layer">
     <!-- Rear Wheel (16") -->
-    <circle cx="500" cy="700" r="205" fill="none" stroke="black" stroke-width="5" opacity="0.4" />
+    <circle cx="500" cy="800" r="205" fill="none" stroke="black" stroke-width="10" />
+    <circle cx="500" cy="800" r="10" fill="red" /> <!-- Rear Motor -->
     <!-- Front Wheel (13") -->
-    <circle cx="2300" cy="730" r="274" fill="none" stroke="black" stroke-width="5" opacity="0.4" />
+    <circle cx="2300" cy="830" r="274" fill="none" stroke="black" stroke-width="10" />
+    <circle cx="2300" cy="830" r="20" fill="red" /> <!-- Front Motor -->
   </g>
 
-  <!-- 4. STABILIZERS -->
+  <!-- 5. DECENTRALIZED ELECTRONICS -->
+  <g id="elec_layer">
+    <rect id="esc_box_front" x="2150" y="700" width="100" height="60" fill="blue" opacity="0.8" />
+    <rect id="esc_box_rear" x="650" y="750" width="100" height="60" fill="blue" opacity="0.8" />
+  </g>
+
+  <!-- 6. STABILIZERS (Extended) -->
   <g id="stabilizer_layer">
-     <rect x="900" y="680" width="35" height="150" fill="none" stroke="blue" stroke-width="1" />
-     <rect x="2110" y="680" width="35" height="150" fill="none" stroke="blue" stroke-width="1" />
+     <rect x="900" y="800" width="35" height="150" fill="none" stroke="red" stroke-width="2" />
+     <rect x="2110" y="800" width="35" height="150" fill="none" stroke="red" stroke-width="2" />
   </g>
 
-  <text x="1000" y="50" font-family="Arial" font-size="30" font-weight="bold">Industrial E-Bakfiets: Full Assembly Design</text>
-  <text x="500" y="950" font-family="Arial" font-size="20">Scale: 1px = 1mm | Verified for dimensional consistency</text>
+  <!-- 7. CHAIN PROTECTION -->
+  <rect x="550" y="810" width="1700" height="10" fill="black" rx="5" />
+
+  <text x="1000" y="50" font-family="Arial" font-size="36" font-weight="bold">Industrial E-Bakfiets: Full Assembly Design v2</text>
+  <text x="500" y="1150" font-family="Arial" font-size="20">Scale: 1px = 1mm | Decentralized dual-motor design with stabilizers and weather protection.</text>
 </svg>

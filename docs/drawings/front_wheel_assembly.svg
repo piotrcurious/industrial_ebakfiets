@@ -1,19 +1,24 @@
-<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Front view -->
+<svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Front section through hub -->
 
-  <!-- Hub Motor (175mm Dropout) -->
-  <rect id="hub_motor" x="112.5" y="150" width="175" height="100" fill="gray" stroke="black" stroke-width="2" />
+  <!-- Hub Motor (175mm spacing) -->
+  <rect id="hub_motor" x="212.5" y="250" width="175" height="120" fill="gray" stroke="black" stroke-width="2" />
 
-  <!-- Flange Plates (5mm) -->
-  <rect id="flange_left" x="112.5" y="100" width="5" height="200" fill="silver" stroke="black" stroke-width="1" />
-  <rect id="flange_right" x="282.5" y="100" width="5" height="200" fill="silver" stroke="black" stroke-width="1" />
+  <!-- Flange Plates (5mm Steel) with M8 Bolts -->
+  <rect id="flange_l" x="212.5" y="150" width="5" height="300" fill="silver" stroke="black" />
+  <rect id="flange_r" x="382.5" y="150" width="5" height="300" fill="silver" stroke="black" />
+  <!-- Fastener locations (M8) -->
+  <circle cx="215" cy="200" r="4" fill="black" />
+  <circle cx="385" cy="200" r="4" fill="black" />
+  <circle cx="215" cy="400" r="4" fill="black" />
+  <circle cx="385" cy="400" r="4" fill="black" />
 
-  <!-- 13" Car Tire (155mm width, 548mm dia) -->
-  <!-- Outer circle dia = 548 -->
-  <circle id="tire_outer" cx="200" cy="200" r="274" fill="none" stroke="black" stroke-width="155" opacity="0.3" />
+  <!-- 13-inch Car Tire (155mm width, 548mm dia) -->
+  <rect id="tire_section" x="222.5" y="26" width="155" height="548" rx="20" fill="none" stroke="black" stroke-width="3" opacity="0.4" />
 
-  <!-- Split Rim (13") -->
-  <circle id="rim_inner" cx="200" cy="200" r="165" fill="none" stroke="gray" stroke-width="10" />
+  <!-- Brake Rotor (203mm) -->
+  <circle id="brake_rotor" cx="210" cy="300" r="101.5" fill="none" stroke="red" stroke-width="2" />
 
-  <text x="50" y="30" font-family="Arial" font-size="16">Front Wheel Assy (155mm Width)</text>
+  <text x="100" y="40" font-family="Arial" font-size="18" font-weight="bold">Front Wheel Motor Assembly</text>
+  <text x="100" y="580" font-family="Arial" font-size="14">Motor: 175mm Dropout | Tire: 155mm Width</text>
 </svg>

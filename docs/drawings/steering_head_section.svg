@@ -1,0 +1,35 @@
+<svg width="400" height="600" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Vertical Cross Section -->
+
+  <!-- Outer Housing (1-1/4" Sch 40 Pipe, OD 42mm, ID 35.05mm) -->
+  <rect id="head_tube_wall_l" x="179" y="100" width="3.5" height="400" fill="gray" />
+  <rect id="head_tube_wall_r" x="217.5" y="100" width="3.5" height="400" fill="gray" />
+
+  <!-- Internal ID = 35.05 -->
+  <!-- Upper 7202 Bearing (OD 35, ID 15, H 11) -->
+  <rect id="upper_bearing" x="182.5" y="120" width="35" height="11" fill="blue" stroke="black" />
+  <!-- Upper Stopping Element (35mm OD) -->
+  <rect id="upper_stop" x="182.5" y="112" width="35" height="8" fill="silver" stroke="black" />
+  <!-- M5 Locking Screw (Radial) -->
+  <circle cx="179" cy="116" r="2.5" fill="red" />
+  <circle cx="221" cy="116" r="2.5" fill="red" />
+
+  <!-- Lower 7202 Bearing -->
+  <rect id="lower_bearing" x="182.5" y="470" width="35" height="11" fill="blue" stroke="black" />
+  <!-- Lower Stopping Element -->
+  <rect id="lower_stop" x="182.5" y="481" width="35" height="8" fill="silver" stroke="black" />
+  <!-- M5 Locking Screw -->
+  <circle cx="179" cy="485" r="2.5" fill="red" />
+  <circle cx="221" cy="485" r="2.5" fill="red" />
+
+  <!-- 15mm Steering Shaft -->
+  <rect id="steering_shaft" x="192.5" y="50" width="15" height="500" fill="gray" stroke="black" />
+
+  <!-- Shaft Collars (Axial locking) -->
+  <rect x="185" y="100" width="30" height="10" fill="black" />
+  <rect x="185" y="490" width="30" height="10" fill="black" />
+
+  <text x="50" y="50" font-family="Arial" font-size="18" font-weight="bold">Steering Head Section (7202 Bearings)</text>
+  <text x="230" y="125" font-family="Arial" font-size="12">Radial M5 Lock</text>
+  <text x="230" y="530" font-family="Arial" font-size="12">Shaft Collars</text>
+</svg>
