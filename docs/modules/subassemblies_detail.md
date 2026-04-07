@@ -1,36 +1,35 @@
 # Subassemblies Detail Module
 
-Detailed technical specifications for custom-fabricated mechanical components required for the industrial e-bakfiets.
+Detailed technical specifications for custom-fabricated mechanical components.
 
-## 1. Bearing Stopping Elements (Collars)
-Used to secure the 7202 angular contact bearings inside the 1-1/4\" head tube.
+## 1. Industrial Mudguards (Fenders)
+Designed to shield the operator and electrical units from road spray and debris.
+- **Material**: 1.5mm Mild Steel sheet.
+- **Width**: 170mm (For the 155mm car tire).
+- **Radius**: Matches the 548mm tire diameter with 20mm clearance.
+- **Safety**: 5mm rolled edges to prevent injury.
+- **Mounting**: 4mm steel brackets bolted with **M6 Grade 10.9** fasteners.
+
+## 2. Heavy-Duty Central Bipod Kickstand
+Provides quick stability during stops without deploying the screw stabilizers.
+- **Design**: Wide-base (350mm) bipod stand.
+- **Material**: 25mm x 3mm round steel tubing.
+- **Pivot**: 10mm hardened steel pin with grease nipple.
+- **Return System**: Dual 200N tension springs.
+- **Mounting**: Welded 8mm steel plate located under the cargo bed center-line.
+
+## 3. Rear Wheel Spoke Specification
+Adapting the 16\" MZ ETZ moped rim to the e-bike hub motor.
+- **Spoke Gauge**: **10G (3.2mm)** oversized stainless steel spokes.
+- **Lacing Pattern**: **2-cross** for maximum lateral stiffness.
+- **Hub Adaptation**: Flanges must be re-drilled to **4.0mm** to accept heavy-duty moped nipples.
+- **Tension**: Targeted at 1200N for heavy cargo loads.
+
+## 4. Bearing Stopping Elements
 - **Material**: Mild Steel or Stainless Steel.
-- **Outside Diameter (OD)**: 35.00mm (+0.0 / -0.05mm).
-- **Inside Diameter (ID)**: 16.00mm (Clearance for 15mm shaft).
-- **Thickness**: 8.00mm.
-- **Fastening**: 6x M5 threaded holes evenly spaced on the outer circumference (60-degree intervals).
+- **OD**: 35.00mm.
+- **Fastening**: 6x M5 threaded radial holes.
 
-## 2. Motor Flange Plates
-Adapts the front hub motor to the 13-inch split car rim.
-- **Material**: 5mm Steel Plate (Grade S235 or higher).
-- **Bolt Pattern (Rim Side)**: 4x98mm or 4x100mm (M12 clearance holes).
-- **Bolt Pattern (Motor Side)**: Custom to motor (e.g., 6x M6 or 6x M8 on 100mm BCD).
-- **Center Bore**: 40mm - 60mm (Depending on hub motor cable exit).
-
-## 3. Torque Arms
-Prevents the motor axle from spinning in the dropouts under heavy regenerative braking or starting torque.
-- **Material**: 6mm - 8mm Tool Steel or Reinforced Mild Steel.
-- **Axle Interface**: 10.1mm x 14.1mm slot to fit M14 axle flats snugly.
-- **Securing Hole**: 6.5mm hole for M6 frame bolt.
-- **Length**: 80mm - 100mm from center of axle to securing point.
-
-## 4. Stabilizer Foot Pads
-Provides a large surface area for the cargo bed stabilizers.
+## 5. Motor Flange Plates
 - **Material**: 5mm Steel Plate.
-- **Dimensions**: 100mm x 100mm.
-- **Design**: Slightly chamfered edges to prevent tripping. Welded to the bottom of the 25mm inner stabilizer leg.
-
-## Technical Drawings (Conceptual)
-- **Stopping Element**: [Diagram: Ring with 35mm OD and 6 radial M5 holes].
-- **Motor Flange**: [Diagram: Disk with 100mm BCD motor holes and 100mm BCD rim holes].
-- **Torque Arm**: [Diagram: Flat bar with axle slot at one end and bolt hole at the other].
+- **Bolt Pattern**: 4x98mm / 4x100mm.
