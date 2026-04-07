@@ -1,0 +1,19 @@
+<svg width="400" height="400" viewBox="0 0 400 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Front view -->
+
+  <!-- Hub Motor (175mm Dropout) -->
+  <rect id="hub_motor" x="112.5" y="150" width="175" height="100" fill="gray" stroke="black" stroke-width="2" />
+
+  <!-- Flange Plates (5mm) -->
+  <rect id="flange_left" x="112.5" y="100" width="5" height="200" fill="silver" stroke="black" stroke-width="1" />
+  <rect id="flange_right" x="282.5" y="100" width="5" height="200" fill="silver" stroke="black" stroke-width="1" />
+
+  <!-- 13" Car Tire (155mm width, 548mm dia) -->
+  <!-- Outer circle dia = 548 -->
+  <circle id="tire_outer" cx="200" cy="200" r="274" fill="none" stroke="black" stroke-width="155" opacity="0.3" />
+
+  <!-- Split Rim (13") -->
+  <circle id="rim_inner" cx="200" cy="200" r="165" fill="none" stroke="gray" stroke-width="10" />
+
+  <text x="50" y="30" font-family="Arial" font-size="16">Front Wheel Assy (155mm Width)</text>
+</svg>
