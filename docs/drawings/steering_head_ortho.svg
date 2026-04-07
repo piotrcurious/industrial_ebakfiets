@@ -1,0 +1,38 @@
+<svg width="600" height="1000" viewBox="0 0 600 1000" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. First Angle Ortho -->
+  <title>Steering Head Orthographic Projection</title>
+
+  <!-- 1. FRONT SECTIONAL VIEW (Central) -->
+  <g id="front_section" transform="translate(300, 300)">
+    <!-- Sch 40 Pipe (42 OD, 35 ID) -->
+    <rect x="-21" y="-150" width="42" height="300" fill="none" stroke="black" stroke-width="2" />
+    <!-- ID lines -->
+    <line x1="-17.5" y1="-150" x2="-17.5" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+    <line x1="17.5" y1="-150" x2="17.5" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+
+    <!-- 7202 Bearings -->
+    <rect x="-17.5" y="-140" width="35" height="11" fill="none" stroke="blue" stroke-width="2" />
+    <rect x="-17.5" y="129" width="35" height="11" fill="none" stroke="blue" stroke-width="2" />
+
+    <!-- 15mm Shaft -->
+    <rect x="-7.5" y="-200" width="15" height="400" fill="none" stroke="black" stroke-width="1" />
+    <text x="0" y="220" font-family="Arial" font-size="16" text-anchor="middle">FRONT SECTIONAL VIEW</text>
+  </g>
+
+  <!-- 2. TOP VIEW (Below) -->
+  <g id="top_view" transform="translate(300, 750)">
+    <circle cx="0" cy="0" r="21" fill="none" stroke="black" stroke-width="2" />
+    <circle cx="0" cy="0" r="17.5" fill="none" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+    <circle cx="0" cy="0" r="7.5" fill="none" stroke="black" stroke-width="2" />
+    <!-- 6x M5 holes -->
+    <circle cx="0" cy="-19" r="2.5" fill="red" />
+    <circle cx="16.5" cy="-9.5" r="2.5" fill="red" />
+    <circle cx="16.5" cy="9.5" r="2.5" fill="red" />
+    <circle cx="0" cy="19" r="2.5" fill="red" />
+    <circle cx="-16.5" cy="9.5" r="2.5" fill="red" />
+    <circle cx="-16.5" cy="-9.5" r="2.5" fill="red" />
+    <text x="0" y="60" font-family="Arial" font-size="16" text-anchor="middle">TOP VIEW</text>
+  </g>
+
+  <text x="300" y="50" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle">Steering Head: Orthographic Projection</text>
+</svg>

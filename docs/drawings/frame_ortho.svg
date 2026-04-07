@@ -1,0 +1,37 @@
+<svg width="2500" height="2000" viewBox="0 0 2500 2000" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. First Angle Orthographic -->
+  <title>Main Frame Orthographic Projection</title>
+
+  <!-- 1. SIDE VIEW (Upper Center) -->
+  <g id="side_view" transform="translate(100, 100)">
+    <!-- Main Spars (40x20) -->
+    <rect x="500" y="680" width="1800" height="40" fill="none" stroke="black" stroke-width="2" />
+    <rect x="500" y="640" width="1800" height="20" fill="none" stroke="black" stroke-width="2" />
+    <!-- Head Tube -->
+    <g transform="rotate(-22 2300 680)">
+       <rect x="2279" y="530" width="42" height="150" fill="none" stroke="blue" stroke-width="2" />
+    </g>
+    <text x="1400" y="800" font-family="Arial" font-size="20" text-anchor="middle">SIDE VIEW</text>
+  </g>
+
+  <!-- 2. TOP VIEW (Below Side View) -->
+  <g id="top_view" transform="translate(100, 1000)">
+    <!-- Spars (810mm spacing) -->
+    <rect x="500" y="95" width="1800" height="20" fill="none" stroke="black" stroke-width="2" />
+    <rect x="500" y="885" width="1800" height="20" fill="none" stroke="black" stroke-width="2" />
+    <!-- Cargo bed internal -->
+    <rect x="900" y="115" width="1210" height="770" fill="none" stroke="green" stroke-width="1" stroke-dasharray="5,5" />
+    <!-- Rear Taper -->
+    <path d="M 500 115 L 250 452 L 250 548 L 500 885" fill="none" stroke="black" stroke-width="2" />
+    <text x="1400" y="950" font-family="Arial" font-size="20" text-anchor="middle">TOP VIEW</text>
+  </g>
+
+  <!-- 3. REAR VIEW (To the Left of Side View) -->
+  <g id="rear_view" transform="translate(10, 100)">
+     <rect x="0" y="680" width="810" height="40" fill="none" stroke="black" stroke-width="2" />
+     <rect x="0" y="640" width="810" height="20" fill="none" stroke="black" stroke-width="2" />
+     <text x="400" y="800" font-family="Arial" font-size="20" text-anchor="middle">REAR VIEW</text>
+  </g>
+
+  <text x="1250" y="50" font-family="Arial" font-size="36" font-weight="bold" text-anchor="middle">Main Frame: Orthographic Projection</text>
+</svg>
