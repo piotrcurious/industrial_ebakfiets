@@ -19,18 +19,15 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | | Rotors | 1x 203mm Front, 1x 180mm Rear (6-bolt) | $45 |
 | **Electrical** | Batteries | 2x 48V 10Ah LiFePO4 | $400 |
 | | Controllers | Dual 36V/48V 15-22A BLDC (Sinewave) | $80 |
-| | Housing Boxes | 2x Oversized Waterproof Enclosures | $40 |
+| | DC-DC Converter | 48V to 12V 10A Industrial | $20 |
 | | Equalizer Wire | 3m of 8AWG Silicone + XT90-S | $30 |
-| **Cable Mgmt** | Conduits | 5m PA6 Corrugated Tubing (12mm/16mm) | $25 |
-| | Spiral Wrap | 2m Spiral PE Wrap (Flexible junctions) | $10 |
-| | Cable Ties | 100x 4.8mm UV-resistant Nylon | $12 |
-| | Cable Guides | 20x Welded Steel Tabs / Rubber Grommets | $15 |
-| **Fasteners** | Rim Bolts | 6x M8x30mm Grade 10.9 Hex + Nyloc | $10 |
-| | Linkage Bolts | 2x M10x40mm Grade 12.9 Hex + Nyloc | $8 |
-| | Axle Nuts | 4x M14x1.5 Flange Nuts | $12 |
-| | Steering Locking | 12x M5x10mm Grade 10.9 Flat Head | $5 |
-| | Caliper Bolts | 4x M6x20mm Grade 10.9 Socket Head | $5 |
-| | Misc Screws | Assorted M5/M6/M8 for box and fenders | $15 |
-| **Misc** | Cargo Box | 9mm Marine Plywood | $60 |
-| | Steering Rod | 12mm Steel + M10 Rod Ends | $30 |
-| **Total** | | | **~$1,677** |
+| **Lighting/Safe** | Headlights | Dual 10W LED Floodlights (IP67) | $25 |
+| | Horn/Mirrors | 110dB Horn + Dual 100mm Wide Mirrors | $30 |
+| **Ergonomics** | Seat/Post | 31.6mm Post + Suspenion Saddle | $45 |
+| | Stem/Bars | Adjustable Stem + 720mm Riser Bars | $40 |
+| **Cargo Box** | Panels | 12mm Marine Plywood (3 sheets) | $80 |
+| | Reinforcement | 6m of 25x25x3mm Steel Angle | $30 |
+| | Anchor Points | 4x D-ring rated for 250kg | $15 |
+| **Fasteners** | Structural | M8/M10/M14 assortment (Grade 10.9) | $40 |
+| | Cable Mgmt | Corrugated Tubing + Spiral Wraps | $35 |
+| **Total** | | | **~$1,940** |
