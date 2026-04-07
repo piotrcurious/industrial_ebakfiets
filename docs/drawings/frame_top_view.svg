@@ -1,25 +1,41 @@
-<svg width="2500" height="1000" viewBox="0 0 2500 1000" xmlns="http://www.w3.org/2000/svg">
+<svg width="2500" height="1100" viewBox="0 0 2500 1100" xmlns="http://www.w3.org/2000/svg">
   <!-- Scale: 1px = 1mm. Top View -->
-  <title>Frame Top View</title>
+  <title>Detailed Frame Top View</title>
 
-  <!-- Main Spars (810mm spacing) -->
-  <rect id="spar_left" x="500" y="95" width="1800" height="20" fill="gray" stroke="black" stroke-width="2" />
-  <rect id="spar_right" x="500" y="885" width="1800" height="20" fill="gray" stroke="black" stroke-width="2" />
+  <rect x="0" y="0" width="2500" height="1100" fill="#fcfcfc" />
 
-  <!-- Cargo Bed Internal Area (1210x810) -->
-  <rect id="bed_area" x="900" y="95" width="1210" height="810" fill="none" stroke="green" stroke-width="2" stroke-dasharray="10,5" />
+  <!-- MAIN FRAME SPARS (40x20mm) -->
+  <!-- 810mm Internal Spacing -->
+  <rect id="spar_left" x="500" y="95" width="1800" height="20" fill="#7f8c8d" stroke="black" stroke-width="2" />
+  <rect id="spar_right" x="500" y="925" width="1800" height="20" fill="#7f8c8d" stroke="black" stroke-width="2" />
 
-  <!-- Cross Members -->
-  <rect x="900" y="115" width="10" height="770" fill="black" />
-  <rect x="2100" y="115" width="10" height="770" fill="black" />
-  <rect x="1500" y="115" width="10" height="770" fill="black" />
+  <!-- CARGO BED INTERNAL AREA (1210x810mm) -->
+  <!-- Internal width = 925 - (95 + 20) = 810mm -->
+  <rect id="bed_area" x="900" y="115" width="1210" height="810" fill="none" stroke="#27ae60" stroke-width="3" stroke-dasharray="10,5" />
+  <text x="1500" y="520" font-family="Arial" font-size="30" fill="#27ae60" text-anchor="middle" font-weight="bold">Euro-pallet Cargo Bed (1210x810)</text>
 
-  <!-- Tapered Rear (810 -> 135) -->
-  <path id="rear_taper" d="M 500 115 L 300 432 L 300 567 L 500 885" fill="none" stroke="black" stroke-width="3" />
+  <!-- CROSS MEMBERS (Bridge Plates) -->
+  <rect id="cross_front" x="900" y="115" width="15" height="810" fill="#2c3e50" />
+  <rect id="cross_mid" x="1500" y="115" width="15" height="810" fill="#2c3e50" />
+  <rect id="cross_rear" x="2100" y="115" width="15" height="810" fill="#2c3e50" />
 
-  <!-- Rear Hub Spacing (135mm) -->
-  <rect x="250" y="432" width="50" height="135" fill="none" stroke="red" stroke-width="2" />
+  <!-- REAR TRIANGLE TAPER (810mm -> 135mm) -->
+  <!-- Center is at y=520 (925+115)/2 approx -->
+  <path id="rear_taper" d="M 500 115 L 250 452 L 250 587 L 500 925" fill="none" stroke="black" stroke-width="4" />
+  <rect id="rear_hub_spacing" x="200" y="452" width="50" height="135" fill="none" stroke="red" stroke-width="2" />
 
-  <text x="1000" y="50" font-family="Arial" font-size="24" font-weight="bold">Frame Top View (1:1 Scale)</text>
-  <text x="1500" y="500" font-family="Arial" font-size="20">Internal Width: 810mm (Euro-pallet Ready)</text>
+  <!-- HEAD TUBE BRIDGE -->
+  <rect id="head_bridge" x="2250" y="499" width="60" height="42" fill="#2980b9" />
+  <circle id="head_tube_top" cx="2280" cy="520" r="21" fill="none" stroke="blue" stroke-width="3" />
+
+  <!-- ANNOTATIONS -->
+  <text x="1250" y="60" font-family="Arial" font-size="36" font-weight="bold" text-anchor="middle" fill="#2c3e50">Industrial E-Bakfiets: Frame Top View</text>
+
+  <line x1="900" y1="960" x2="2110" y2="960" stroke="black" stroke-width="1" />
+  <text x="1500" y="985" font-family="Arial" font-size="18" text-anchor="middle">1210mm Internal Length</text>
+
+  <line x1="450" y1="115" x2="450" y2="925" stroke="black" stroke-width="1" />
+  <text x="430" y="520" font-family="Arial" font-size="18" text-anchor="middle" transform="rotate(-90 430 520)">810mm Width</text>
+
+  <text x="50" y="1050" font-family="Arial" font-size="14" fill="#7f8c8d">Scale: 1px = 1mm | Material: 40x20mm / 50x25mm Steel</text>
 </svg>
