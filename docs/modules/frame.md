@@ -19,12 +19,12 @@ The use of a **16-inch rear wheel** lowers the center of gravity.
 ### 3. Modular Cargo Box
 - **Dimensions**: 810mm x 1210mm internal.
 
-### 4. Bipod Kickstand Integration
-- **Mounting Point**: The main frame includes a dedicated **8mm steel cross-member** located 100mm behind the cargo bed for the central bipod kickstand.
+### 4. Component Integration (BB & Hanger)
+- **Bottom Bracket**: A standard BSA 68mm threaded shell is welded to a **10mm steel bridge plate** between the main frame spars, ensuring exact perpendicularity to the drivetrain axis.
+- **Derailleur Hanger**: A custom 8mm laser-cut hanger is integrated into the drive-side rear dropout plate, providing a stable mounting for the gear system.
 
 ### 5. Screw-Driven Cargo Bed Stabilizer System
 - **Design**: Telescopic square steel tubing with M16/M20 threaded rod.
-- **Placement**: Four corners of the cargo bed spars.
 
 ## Mechanical Integration & Assembly
 ### 1. Dropout Integration
@@ -36,4 +36,4 @@ The use of a **16-inch rear wheel** lowers the center of gravity.
 ## Tolerances and Fit
 - **Stabilizer Sleeve-to-Leg Fit**: Loose-Fit (5.0mm clearance total).
 - **Ground Clearance**: 150mm.
-- **Parallelism**: Spars must be parallel within +/- 0.5mm.
+- **BB Squareness**: Within +/- 0.2mm across the shell width.
