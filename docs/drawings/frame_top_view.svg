@@ -1,0 +1,25 @@
+<svg width="2500" height="1000" viewBox="0 0 2500 1000" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Top View -->
+  <title>Frame Top View</title>
+
+  <!-- Main Spars (810mm spacing) -->
+  <rect id="spar_left" x="500" y="95" width="1800" height="20" fill="gray" stroke="black" stroke-width="2" />
+  <rect id="spar_right" x="500" y="885" width="1800" height="20" fill="gray" stroke="black" stroke-width="2" />
+
+  <!-- Cargo Bed Internal Area (1210x810) -->
+  <rect id="bed_area" x="900" y="95" width="1210" height="810" fill="none" stroke="green" stroke-width="2" stroke-dasharray="10,5" />
+
+  <!-- Cross Members -->
+  <rect x="900" y="115" width="10" height="770" fill="black" />
+  <rect x="2100" y="115" width="10" height="770" fill="black" />
+  <rect x="1500" y="115" width="10" height="770" fill="black" />
+
+  <!-- Tapered Rear (810 -> 135) -->
+  <path id="rear_taper" d="M 500 115 L 300 432 L 300 567 L 500 885" fill="none" stroke="black" stroke-width="3" />
+
+  <!-- Rear Hub Spacing (135mm) -->
+  <rect x="250" y="432" width="50" height="135" fill="none" stroke="red" stroke-width="2" />
+
+  <text x="1000" y="50" font-family="Arial" font-size="24" font-weight="bold">Frame Top View (1:1 Scale)</text>
+  <text x="1500" y="500" font-family="Arial" font-size="20">Internal Width: 810mm (Euro-pallet Ready)</text>
+</svg>

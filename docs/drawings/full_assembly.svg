@@ -1,56 +1,52 @@
 <svg width="2500" height="1200" viewBox="0 0 2500 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Full Assembly Composition v2 -->
+  <!-- Scale: 1px = 1mm. Full Assembly Master v3 -->
+  <title>Master Assembly Drawing</title>
 
-  <!-- 1. MAIN FRAME (from frame_side.svg) -->
+  <!-- 1. MAIN FRAME -->
   <g id="frame_layer">
     <rect id="main_spar" x="500" y="800" width="1800" height="40" fill="gray" stroke="black" stroke-width="3" />
-    <!-- Head Tube (68 deg) -->
+    <!-- Head Tube -->
     <g transform="rotate(-22 2300 800)">
       <rect x="2279" y="650" width="42" height="150" fill="none" stroke="blue" stroke-width="3" />
     </g>
-    <!-- Seat Tube -->
-    <rect x="730" y="600" width="40" height="200" fill="none" stroke="black" stroke-width="2" />
-    <circle cx="750" cy="580" r="15" fill="none" stroke="black" stroke-width="2" /> <!-- Saddle -->
+    <!-- Seat Tube & Saddle -->
+    <rect x="730" y="550" width="38" height="250" fill="none" stroke="black" stroke-width="2" />
+    <path d="M 700 550 Q 750 500 800 550 Z" fill="none" stroke="black" stroke-width="2" />
   </g>
 
-  <!-- 2. CARGO BOX (side profile) -->
+  <!-- 2. CARGO BOX & CANOPY -->
   <g id="cargo_box_layer">
     <rect x="900" y="650" width="1210" height="150" fill="tan" stroke="black" stroke-width="2" opacity="0.6" />
-    <!-- Weather Protection Canopy -->
-    <path d="M 900 650 Q 1500 400 2110 650" fill="none" stroke="blue" stroke-width="3" stroke-dasharray="10,5" />
+    <!-- Canopy (Modular) -->
+    <path id="weather_canopy" d="M 900 650 L 900 350 Q 1500 300 2110 350 L 2110 650" fill="none" stroke="blue" stroke-width="3" />
+    <text x="1400" y="320" font-family="Arial" font-size="20" fill="blue">PVC Weather Canopy</text>
   </g>
 
   <!-- 3. FORK & STEERING -->
-  <g id="fork_steering_layer" transform="translate(2020, 320) rotate(0)">
+  <g id="fork_steering_layer" transform="translate(2020, 320)">
      <rect x="250" y="480" width="60" height="10" fill="black" />
      <rect x="250" y="490" width="10" height="350" fill="none" stroke="black" stroke-width="3" />
+     <!-- Front Mudguard -->
+     <path d="M 230 480 Q 180 650 230 820" fill="none" stroke="gray" stroke-width="5" />
   </g>
 
   <!-- 4. WHEELS -->
   <g id="wheels_layer">
     <!-- Rear Wheel (16") -->
-    <circle cx="500" cy="800" r="205" fill="none" stroke="black" stroke-width="10" />
-    <circle cx="500" cy="800" r="10" fill="red" /> <!-- Rear Motor -->
+    <circle cx="500" cy="800" r="205" fill="none" stroke="black" stroke-width="12" />
+    <text x="450" y="1030" font-family="Arial" font-size="16">16" Rear Wheel</text>
     <!-- Front Wheel (13") -->
-    <circle cx="2300" cy="830" r="274" fill="none" stroke="black" stroke-width="10" />
-    <circle cx="2300" cy="830" r="20" fill="red" /> <!-- Front Motor -->
+    <circle cx="2300" cy="830" r="274" fill="none" stroke="black" stroke-width="12" />
+    <text x="2250" y="1130" font-family="Arial" font-size="16">13" Front Car Tire</text>
   </g>
 
-  <!-- 5. DECENTRALIZED ELECTRONICS -->
-  <g id="elec_layer">
-    <rect id="esc_box_front" x="2150" y="700" width="100" height="60" fill="blue" opacity="0.8" />
-    <rect id="esc_box_rear" x="650" y="750" width="100" height="60" fill="blue" opacity="0.8" />
+  <!-- 5. ACCESSORIES -->
+  <g id="access_layer">
+    <circle id="headlight_l" cx="900" cy="660" r="10" fill="yellow" stroke="black" />
+    <circle id="headlight_r" cx="2110" cy="660" r="10" fill="yellow" stroke="black" />
+    <rect id="kickstand" x="800" y="840" width="300" height="10" fill="none" stroke="black" stroke-width="5" />
   </g>
 
-  <!-- 6. STABILIZERS (Extended) -->
-  <g id="stabilizer_layer">
-     <rect x="900" y="800" width="35" height="150" fill="none" stroke="red" stroke-width="2" />
-     <rect x="2110" y="800" width="35" height="150" fill="none" stroke="red" stroke-width="2" />
-  </g>
-
-  <!-- 7. CHAIN PROTECTION -->
-  <rect x="550" y="810" width="1700" height="10" fill="black" rx="5" />
-
-  <text x="1000" y="50" font-family="Arial" font-size="36" font-weight="bold">Industrial E-Bakfiets: Full Assembly Design v2</text>
-  <text x="500" y="1150" font-family="Arial" font-size="20">Scale: 1px = 1mm | Decentralized dual-motor design with stabilizers and weather protection.</text>
+  <text x="1000" y="60" font-family="Arial" font-size="48" font-weight="bold">Industrial E-Bakfiets: Master Assembly Drawing</text>
+  <text x="500" y="1180" font-family="Arial" font-size="20">Scale: 1px = 1mm | Industrial design utilizing standard parts and no-machining assembly.</text>
 </svg>

@@ -1,0 +1,21 @@
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Top View -->
+  <title>Steering Stopping Element Detail</title>
+
+  <!-- Outer Diameter (35mm for Sch 40 Pipe) -->
+  <circle id="outer_dia" cx="100" cy="100" r="17.5" fill="silver" stroke="black" stroke-width="1" />
+
+  <!-- Radial Locking Holes (6x M5) -->
+  <circle cx="100" cy="84" r="2" fill="red" />
+  <circle cx="100" cy="116" r="2" fill="red" />
+  <circle cx="86" cy="92" r="2" fill="red" />
+  <circle cx="114" cy="92" r="2" fill="red" />
+  <circle cx="86" cy="108" r="2" fill="red" />
+  <circle cx="114" cy="108" r="2" fill="red" />
+
+  <!-- Center Hole (16mm for 15mm shaft) -->
+  <circle id="center_hole" cx="100" cy="100" r="8" fill="white" stroke="black" stroke-width="1" />
+
+  <text x="10" y="30" font-family="Arial" font-size="14" font-weight="bold">Steering Stop Element</text>
+  <text x="10" y="180" font-family="Arial" font-size="10">OD 35mm | 6x M5 Radial</text>
+</svg>

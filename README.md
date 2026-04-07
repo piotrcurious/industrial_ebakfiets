@@ -32,13 +32,22 @@ Detailed descriptions of the core components and systems:
 
 ## Technical Drawings (SVG)
 
-The design is supported by dimensionally accurate SVG drawings (1px = 1mm scale):
+The design is supported by a complete suite of dimensionally accurate SVG drawings (1px = 1mm scale):
 
-- **[Full Assembly Drawing](docs/drawings/full_assembly.svg)**: Composed side view of the complete vehicle.
+### Assembly Views
+- **[Master Assembly Drawing](docs/drawings/full_assembly.svg)**: Composed master view of the complete vehicle.
+- **[Frame Top View](docs/drawings/frame_top_view.svg)**: Structural alignment and bed width detail.
 - **[Frame Side View](docs/drawings/frame_side.svg)**: Main spars, head tube, and cargo mounts.
+- **[Electrical Wiring Layout](docs/drawings/electrical_wiring_layout.svg)**: Routing of power and signal cabling.
+
+### Component Details
 - **[Front Fork Detail](docs/drawings/front_fork.svg)**: Crown, dropouts, and steering arms.
-- **[Steering Head Section](docs/drawings/steering_head_section.svg)**: Cross-section of 7202 bearing integration.
 - **[Front Wheel Assembly](docs/drawings/front_wheel_assembly.svg)**: Motor, flange, rim, and tire cross-section.
+- **[Steering Head Section](docs/drawings/steering_head_section.svg)**: Cross-section of 7202 bearing integration.
+- **[Motor Flange Detail](docs/drawings/motor_flange_detail.svg)**: Pattern for hub-to-rim adapter plates.
+- **[Torque Arm Detail](docs/drawings/torque_arm_detail.svg)**: Reinforcement for motor dropouts.
+- **[Steering Stopping Element](docs/drawings/steering_stopping_element.svg)**: Radial-locking bearing seat.
+- **[Rear Dropout Detail](docs/drawings/rear_dropout_detail.svg)**: Axle slot and integrated derailleur hanger.
 - **[Bipod Kickstand Detail](docs/drawings/bipod_kickstand.svg)**: Wide-base stand with pivot and springs.
 - **[Stabilizer Unit Detail](docs/drawings/stabilizer_unit.svg)**: Screw-driven telescopic leg mechanism.
 - **[Cargo Box Structure](docs/drawings/cargo_box_structure.svg)**: Perspective view of box and E-track rails.
