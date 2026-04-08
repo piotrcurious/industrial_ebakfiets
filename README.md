@@ -4,61 +4,52 @@ Welcome to the **industrial_ebakfiets** repository. This project aims to design 
 
 ## Project Concept
 
-Most bicycles use specialized, often proprietary parts to minimize weight. The **Industrial E-Bakfiets** takes a different approach:
+The **Industrial E-Bakfiets** takes a different approach:
 - **Prioritize Durability and Serviceability**: Use heavy-duty parts that are easy to find and replace.
-- **Electric-First Design**: Leverage powerful motors to offset the weight of a robust, industrial-grade frame.
-- **Automotive Components**: Incorporate standard car tires and split rims for maximum load capacity and easy maintenance.
+- **Electric-First Design**: Leverage powerful motors to offset the weight of a robust frame.
+- **Automotive Components**: Incorporate standard car tires and split rims.
+
+## 3D Mechanical Design (OpenSCAD)
+
+The project features a full 3D mechanical model developed in **OpenSCAD**, ensuring dimensional accuracy and zero mechanical interference.
+
+### Visual Renders (Orthographic & Perspective)
+- **[Full Assembly Perspective](docs/renders/full_assembly_perspective.png)**
+- **[Frame Side View](docs/renders/frame_side.png)**
+- **[Front Fork Front View](docs/renders/front_fork_front.png)**
+- **[Steering Head Section](docs/renders/steering_head_perspective.png)**
+- **[Wheel & Hub Assembly](docs/renders/front_wheel_assy_perspective.png)**
+
+### OpenSCAD Source Files
+- **[Master Assembly](docs/models/full_assembly.scad)**
+- **[Parts Library](docs/models/parts.scad)**
+- **[Frame Model](docs/models/frame.scad)**
+- **[Fork Model](docs/models/front_fork.scad)**
 
 ## Technical Documentation
 
 Detailed descriptions of the core components and systems:
 
 ### Core Hardware Modules
-- **[Front Wheel Module](docs/modules/front_wheel.md)**: 13\" car tire, split rim, and direct drive hub motor.
-- **[Frame Module](docs/modules/frame.md)**: Steel rectangular tube construction and screw-driven stabilizers.
-- **[Drivetrain Module](docs/modules/drivetrain.md)**: 16\" rear wheel (moped rim) and pedal drive integration.
-- **[Brakes & Steering Module](docs/modules/brakes_steering.md)**: 7202-bearing steering and high-performance braking.
-- **[Mechanical Geometry](docs/modules/mechanical_geometry.md)**: Frame angles, rake, trail, and fork design.
-- **[Cargo Box Module](docs/modules/cargo_box.md)**: 12mm Marine Plywood box with steel angle reinforcement.
-- **[Subassemblies Detail](docs/modules/subassemblies_detail.md)**: Technical specs for custom-fabricated components.
+- **[Front Wheel Module](docs/modules/front_wheel.md)**
+- **[Frame Module](docs/modules/frame.md)**
+- **[Drivetrain Module](docs/modules/drivetrain.md)**
+- **[Brakes & Steering Module](docs/modules/brakes_steering.md)**
+- **[Mechanical Geometry](docs/modules/mechanical_geometry.md)**
+- **[Cargo Box Module](docs/modules/cargo_box.md)**
 
 ### Systems, Software & Maintenance
-- **[Electrical Module](docs/modules/electrical.md)**: Decentralized dual-motor/dual-battery architecture.
-- **[Control & Software Module](docs/modules/control_software.md)**: Signal synchronization, PAS, and firmware configuration.
-- **[Ergonomics & Accessories](docs/modules/ergonomics_accessories.md)**: Operator interface, lighting, and safety systems.
-- **[Weather Protection](docs/modules/weather_protection.md)**: Modular canopy and windshield system.
-- **[Manufacturing Jigs](docs/modules/manufacturing_jigs.md)**: Guides for frame alignment and welding.
-- **[Maintenance & Safety](docs/modules/maintenance_safety.md)**: PM schedule, safety protocols, and build checklists.
-
-## Technical Drawings (SVG)
-
-The design is supported by a complete suite of dimensionally accurate SVG drawings (1px = 1mm scale):
-
-### Assembly Views
-- **[Master Assembly Drawing](docs/drawings/full_assembly.svg)**: Composed master view of the complete vehicle.
-- **[Frame Top View](docs/drawings/frame_top_view.svg)**: Structural alignment and bed width detail.
-- **[Frame Side View](docs/drawings/frame_side.svg)**: Main spars, head tube, and cargo mounts.
-- **[Electrical Wiring Layout](docs/drawings/electrical_wiring_layout.svg)**: Routing of power and signal cabling.
-
-### Component Details
-- **[Front Fork Detail](docs/drawings/front_fork.svg)**: Crown, dropouts, and steering arms.
-- **[Front Wheel Assembly](docs/drawings/front_wheel_assembly.svg)**: Motor, flange, rim, and tire cross-section.
-- **[Steering Head Section](docs/drawings/steering_head_section.svg)**: Cross-section of 7202 bearing integration.
-- **[Motor Flange Detail](docs/drawings/motor_flange_detail.svg)**: Pattern for hub-to-rim adapter plates.
-- **[Torque Arm Detail](docs/drawings/torque_arm_detail.svg)**: Reinforcement for motor dropouts.
-- **[Steering Stopping Element](docs/drawings/steering_stopping_element.svg)**: Radial-locking bearing seat.
-- **[Rear Dropout Detail](docs/drawings/rear_dropout_detail.svg)**: Axle slot and integrated derailleur hanger.
-- **[Bipod Kickstand Detail](docs/drawings/bipod_kickstand.svg)**: Wide-base stand with pivot and springs.
-- **[Stabilizer Unit Detail](docs/drawings/stabilizer_unit.svg)**: Screw-driven telescopic leg mechanism.
-- **[Cargo Box Structure](docs/drawings/cargo_box_structure.svg)**: Perspective view of box and E-track rails.
+- **[Electrical Module](docs/modules/electrical.md)**
+- **[Control & Software Module](docs/modules/control_software.md)**
+- **[Ergonomics & Accessories](docs/modules/ergonomics_accessories.md)**
+- **[Weather Protection](docs/modules/weather_protection.md)**
+- **[Manufacturing Jigs](docs/modules/manufacturing_jigs.md)**
+- **[Maintenance & Safety](docs/modules/maintenance_safety.md)**
 
 ## Bill of Materials (BOM) Alternatives
-
-Choose the configuration that best fits your budget and requirements:
-
-1. **[Industrial Standard](docs/bom/industrial_standard.md)**: Balanced cost and reliability (~$1,940).
-2. **[Budget Salvage](docs/bom/budget_salvage.md)**: Optimized for lowest cost using salvaged parts (~$625).
-3. **[Heavy Duty](docs/bom/heavy_duty.md)**: Over-engineered for maximum performance (~$3,810).
+1. **[Industrial Standard](docs/bom/industrial_standard.md)** (~$1,940)
+2. **[Budget Salvage](docs/bom/budget_salvage.md)** (~$625)
+3. **[Heavy Duty](docs/bom/heavy_duty.md)** (~$3,810)
 
 ---
 
