@@ -1,73 +1,74 @@
 <svg width="2500" height="1200" viewBox="0 0 2500 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Master Assembly Drawing v4 -->
+  <!-- Scale: 1px = 1mm. Master Assembly Drawing v5 (Integrated Design) -->
   <title>Master Assembly Drawing - Industrial E-Bakfiets</title>
 
   <rect x="0" y="0" width="2500" height="1200" fill="#fdfdfd" />
 
-  <!-- 1. MAIN FRAME (Side View Reference) -->
+  <!-- Ground Plane -->
+  <line x1="100" y1="1100" x2="2400" y2="1100" stroke="#cccccc" stroke-width="2" />
+
+  <!-- 1. FRONT ANCHOR: 13" Car Tire (OD 548mm) -->
+  <!-- Contact point at y=1100, x=2100. Center at y=1100 - 274 = 826 -->
+  <g id="front_wheel_anchor">
+    <circle cx="2100" cy="826" r="274" fill="none" stroke="#333333" stroke-width="25" />
+    <circle cx="2100" cy="826" r="90" fill="#7f8c8d" stroke="black" stroke-width="2" />
+    <circle cx="2100" cy="826" r="7" fill="black" /> <!-- Axle -->
+    <text x="2100" y="1130" font-family="Arial" font-size="16" text-anchor="middle">Anchor: 155/70 R13 Tire</text>
+  </g>
+
+  <!-- 2. FRONT FORK (Tilted 68 deg from horiz, so 22 deg from vertical) -->
+  <g id="fork_layer" transform="rotate(-22 2100 826)">
+     <!-- Blade -->
+     <rect x="2085" y="466" width="30" height="360" fill="#555555" stroke="black" />
+     <!-- Crown -->
+     <rect x="2040" y="446" width="120" height="40" fill="#2c3e50" stroke="black" />
+     <!-- Steering Shaft -->
+     <rect x="2092" y="246" width="15" height="200" fill="#95a5a6" />
+  </g>
+
+  <!-- 3. STEERING HEAD & HT -->
+  <g id="steering_head_layer" transform="rotate(-22 2100 826)">
+    <rect x="2079" y="266" width="42" height="200" fill="none" stroke="firebrick" stroke-width="3" />
+    <!-- HT Gusset face -->
+    <rect x="2059" y="300" width="20" height="120" fill="firebrick" />
+  </g>
+
+  <!-- 4. MAIN FRAME (Connects to Gusset) -->
   <g id="frame_layer">
-    <rect id="main_spar" x="500" y="800" width="1800" height="40" fill="#7f8c8d" stroke="black" stroke-width="3" />
-    <!-- Head Tube (68 deg) -->
-    <g transform="rotate(-22 2300 800)">
-      <rect x="2279" y="650" width="42" height="180" fill="none" stroke="blue" stroke-width="3" />
-    </g>
-    <!-- Seat Tube & Saddle -->
-    <rect x="730" y="550" width="38" height="250" fill="#95a5a6" stroke="black" stroke-width="2" />
-    <path d="M 700 550 Q 750 500 800 550 Z" fill="#34495e" stroke="black" stroke-width="2" />
+    <!-- Main Rails (from HT area back) -->
+    <rect x="150" y="910" width="1910" height="40" fill="#000080" stroke="black" stroke-width="2" />
+    <!-- HT to Rails connection -->
+    <path d="M 2050 480 L 1800 910" fill="none" stroke="#000080" stroke-width="40" />
+
+    <!-- Cargo Box (Bed) -->
+    <rect x="400" y="760" width="1250" height="150" fill="#d2b48c" stroke="black" stroke-width="1" opacity="0.6" />
+    <text x="1025" y="840" font-family="Arial" font-size="24" text-anchor="middle">Cargo Bed (810mm Width)</text>
   </g>
 
-  <!-- 2. CARGO BOX & WEATHER CANOPY -->
-  <g id="cargo_box_layer">
-    <rect x="900" y="650" width="1210" height="150" fill="#d2b48c" stroke="black" stroke-width="2" opacity="0.7" />
-    <!-- Weather Protection Canopy (Modular) -->
-    <path id="weather_canopy" d="M 900 650 L 900 350 Q 1500 250 2110 350 L 2110 650" fill="none" stroke="#2980b9" stroke-width="4" stroke-dasharray="10,5" />
-    <text x="1500" y="320" font-family="Arial" font-size="24" fill="#2980b9" text-anchor="middle" font-weight="bold">PVC Weather Canopy</text>
+  <!-- 5. REAR END -->
+  <g id="rear_layer">
+    <!-- Seat Mast -->
+    <rect x="350" y="610" width="35" height="300" fill="#000080" />
+    <path d="M 320 610 Q 365 560 410 610 Z" fill="#333" /> <!-- Saddle -->
+
+    <!-- Rear Wheel (16" ~410mm) -->
+    <!-- Center at y=1100 - 205 = 895. X at wheelbase 1950 from front contact -->
+    <!-- Front contact x=2100. Rear contact x = 2100 - 1950 = 150 -->
+    <circle cx="150" cy="895" r="205" fill="none" stroke="#333" stroke-width="15" />
+    <circle cx="150" cy="895" r="10" fill="#e74c3c" />
+    <text x="150" y="1130" font-family="Arial" font-size="16" text-anchor="middle">16" Rear Wheel</text>
   </g>
 
-  <!-- 3. FORK & STEERING ASSEMBLY -->
-  <g id="fork_steering_layer" transform="translate(2020, 320)">
-     <rect x="250" y="480" width="60" height="10" fill="#2c3e50" />
-     <rect x="250" y="490" width="20" height="350" fill="#7f8c8d" stroke="black" stroke-width="3" />
-     <!-- Front Mudguard -->
-     <path d="M 230 480 Q 170 650 230 820" fill="none" stroke="#666666" stroke-width="6" />
+  <!-- 6. ANNOTATIONS -->
+  <text x="1250" y="80" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="#2c3e50">Integrated Surface-to-Surface Design</text>
+  <text x="1250" y="120" font-family="Arial" font-size="20" text-anchor="middle" fill="#7f8c8d">Master Assembly Drawing v5 | Origin: Front Tire Center</text>
+
+  <!-- Dimension Lines -->
+  <g stroke="red" stroke-width="1">
+    <line x1="150" y1="1150" x2="2100" y2="1150" />
+    <line x1="150" y1="1140" x2="150" y2="1160" />
+    <line x1="2100" y1="1140" x2="2100" y2="1160" />
+    <text x="1125" y="1175" fill="red" font-size="20" text-anchor="middle">Wheelbase: 1950mm</text>
   </g>
 
-  <!-- 4. WHEELS (13" Front, 16" Rear) -->
-  <g id="wheels_layer">
-    <!-- Rear Wheel (16" diameter ~410mm) -->
-    <circle cx="500" cy="800" r="205" fill="none" stroke="#333333" stroke-width="15" />
-    <circle cx="500" cy="800" r="10" fill="#e74c3c" /> <!-- Geared Motor -->
-    <text x="500" y="1040" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">16" Rear Moped Wheel</text>
-
-    <!-- Front Wheel (13" tire ~548mm) -->
-    <circle cx="2300" cy="830" r="274" fill="none" stroke="#333333" stroke-width="20" />
-    <circle cx="2300" cy="830" r="20" fill="#e74c3c" /> <!-- DD Motor -->
-    <text x="2300" y="1140" font-family="Arial" font-size="18" text-anchor="middle" font-weight="bold">13" Front Car Tire</text>
-  </g>
-
-  <!-- 5. SCREW STABILIZERS (Deployed) -->
-  <g id="stabilizer_layer">
-     <rect x="900" y="800" width="35" height="150" fill="#2980b9" stroke="black" opacity="0.6" />
-     <rect x="2110" y="800" width="35" height="150" fill="#2980b9" stroke="black" opacity="0.6" />
-     <rect x="880" y="945" width="75" height="5" fill="black" /> <!-- Foot pad -->
-     <rect x="2090" y="945" width="75" height="5" fill="black" />
-  </g>
-
-  <!-- 6. CHAIN PROTECTION (Full HDPE Tube) -->
-  <rect x="550" y="815" width="1700" height="12" fill="#2c3e50" rx="6" />
-  <text x="1400" y="845" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Full HDPE Chain Protection</text>
-
-  <!-- 7. LIGHTING & SAFETY -->
-  <circle id="headlight" cx="2110" cy="670" r="12" fill="#f1c40f" stroke="black" />
-  <rect id="rear_light" x="450" y="780" width="10" height="30" fill="#c0392b" />
-
-  <text x="1250" y="80" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="#2c3e50">Industrial E-Bakfiets: Master Assembly</text>
-  <text x="1250" y="120" font-family="Arial" font-size="20" text-anchor="middle" fill="#7f8c8d">Engineering Specification Drawing | 1px = 1mm Scale</text>
-
-  <rect x="1800" y="1000" width="600" height="150" fill="none" stroke="black" stroke-width="1" />
-  <text x="1820" y="1030" font-family="Arial" font-size="18" font-weight="bold">Technical Summary:</text>
-  <text x="1820" y="1055" font-family="Arial" font-size="14">- Payload: 350kg Cargo + 100kg Operator</text>
-  <text x="1820" y="1075" font-family="Arial" font-size="14">- Drive: Dual Motor (250W DD / 300W Geared)</text>
-  <text x="1820" y="1095" font-family="Arial" font-size="14">- Chassis: 40x20mm Steel Rectangular Tube</text>
-  <text x="1820" y="1115" font-family="Arial" font-size="14">- Steering: No-Machining 7202 Bearing System</text>
 </svg>

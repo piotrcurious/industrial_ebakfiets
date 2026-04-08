@@ -1,28 +1,24 @@
 include <master_dims.scad>
-include <parts.scad>
+use <parts.scad>
 
+// The Steering Head houses the shaft and connects to the Frame.
+// Origin = Center of Head Tube
 module steering_head_assy() {
-    // 1-1/4" Sch 40 Pipe Housing
+    // 1. Main Head Tube
+    color("firebrick")
     pipe(head_tube_od, head_tube_id, head_tube_length);
 
-    // 7202 Bearings (15x35x11)
-    // Positioned inside the ID 35.05mm
-    translate([0, 0, head_tube_length/2 - 20]) bearing_7202();
-    translate([0, 0, -head_tube_length/2 + 20]) bearing_7202();
+    // 2. Bearings (Top and Bottom)
+    for(z=[-head_tube_length/2 + 10, head_tube_length/2 - 10])
+    translate([0, 0, z])
+    color("blue")
+    pipe(bearing_od, steering_shaft_dia + 0.5, 11);
 
-    // Internal Collars (Stopping Elements)
-    color("silver") {
-        translate([0, 0, head_tube_length/2 - 10]) pipe(35, 16, 8);
-        translate([0, 0, -head_tube_length/2 + 10]) pipe(35, 16, 8);
-    }
-
-    // 15mm Steering Shaft
-    color("gray")
-    cylinder(d=steering_shaft_dia, h=head_tube_length + 100, center=true);
-
-    // Axial Lock: Shaft Collars
-    translate([0, 0, head_tube_length/2 + 10]) shaft_collar_15();
-    translate([0, 0, -head_tube_length/2 - 10]) shaft_collar_15();
+    // 3. Frame Connection Gusset (Surface for Frame spars)
+    // Centered on the HT
+    translate([-head_tube_od/2 - 10, 0, 0])
+    color("firebrick")
+    cube([20, 60, head_tube_length - 40], center=true);
 }
 
 steering_head_assy();
