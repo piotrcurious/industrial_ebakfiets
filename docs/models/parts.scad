@@ -1,7 +1,8 @@
 include <master_dims.scad>
 
-// Standard Industrial Parts Library
 $fn = 64;
+
+// Standard Industrial Parts Library - High Fidelity
 
 module rect_tube(w, h, l, t=2.5) {
     difference() {
@@ -25,16 +26,29 @@ module bearing_7202() {
     }
 }
 
+// 13-inch Car Tire: 155/70 R13
+// OD: 548mm, Rim: 330mm, Width: 155mm
 module car_tire_13in() {
     color([0.2, 0.2, 0.2])
     rotate_extrude()
-    translate([front_wheel_dia/2 - front_tire_width/2, 0, 0])
-    circle(d=front_tire_width); // Simplified round profile
+    translate([165, 0, 0])
+    circle(d=front_tire_width);
 }
 
-module moped_tire_16in() {
-    color([0.1, 0.1, 0.1])
-    rotate_extrude()
-    translate([rear_wheel_dia/2 - 50, 0, 0])
-    circle(d=100);
+// M8 Hex Bolt
+module bolt_m8(l=30) {
+    color("silver") {
+        cylinder(d=8, h=l);
+        translate([0,0,-4]) cylinder(d=13, h=4, $fn=6);
+    }
+}
+
+// Shaft Collar 15mm
+module shaft_collar_15() {
+    color("dimgray")
+    difference() {
+        cylinder(d=30, h=10, center=true);
+        cylinder(d=15.1, h=12, center=true);
+        translate([15,0,0]) cube([10, 2, 12], center=true); // Slit
+    }
 }

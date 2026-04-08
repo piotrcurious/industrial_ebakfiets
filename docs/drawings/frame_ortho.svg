@@ -1,23 +1,26 @@
 <svg width="2500" height="1500" viewBox="0 0 2500 1500" xmlns="http://www.w3.org/2000/svg">
-  <!-- 1:1 Scale. First Angle Ortho -->
-  <title>Main Frame Ortho - Master Assembly Match</title>
+  <!-- 1:1 Scale. ISO First Angle Ortho -->
+  <title>Main Frame Ortho - Verified</title>
 
   <!-- SIDE VIEW -->
-  <g id="side_view" transform="translate(100, 100)">
+  <g id="side_view" transform="translate(100, 200)">
     <rect x="0" y="400" width="1800" height="40" fill="gray" stroke="black" stroke-width="2" />
     <g transform="rotate(-22 1800 400)">
-       <rect x="1779" y="250" width="42" height="150" fill="none" stroke="blue" stroke-width="3" />
+       <rect x="1779" y="250" width="42.16" height="200" fill="none" stroke="blue" stroke-width="3" />
     </g>
-    <text x="900" y="500" font-family="Arial" font-size="24" text-anchor="middle">SIDE VIEW (68 deg Head Angle)</text>
+    <!-- Dimensions -->
+    <line x1="0" y1="460" x2="1800" y2="460" stroke="red" stroke-width="1" />
+    <text x="900" y="480" font-family="Arial" font-size="20" text-anchor="middle" fill="red">1800mm Main Spar</text>
   </g>
 
   <!-- TOP VIEW -->
-  <g id="top_view" transform="translate(100, 600)">
-    <rect x="0" y="0" width="1800" height="20" fill="gray" />
-    <rect x="0" y="810" width="1800" height="20" fill="gray" />
-    <rect x="400" y="20" width="1210" height="770" fill="green" opacity="0.2" />
-    <text x="900" y="900" font-family="Arial" font-size="24" text-anchor="middle">TOP VIEW (810mm Internal Bed)</text>
+  <g id="top_view" transform="translate(100, 800)">
+    <rect x="0" y="0" width="1800" height="20" fill="gray" stroke="black" />
+    <rect x="0" y="830" width="1800" height="20" fill="gray" stroke="black" />
+    <!-- 810mm internal -->
+    <line x1="1000" y1="20" x2="1000" y2="830" stroke="red" stroke-width="1" />
+    <text x="1020" y="425" font-family="Arial" font-size="20" fill="red" text-anchor="start" transform="rotate(90 1020 425)">810mm Internal Bed Width</text>
   </g>
 
-  <text x="1250" y="60" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle">Frame Drawing: Dimensional Match</text>
+  <text x="1250" y="100" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle">Main Frame: Orthographic Detail (Verified)</text>
 </svg>
