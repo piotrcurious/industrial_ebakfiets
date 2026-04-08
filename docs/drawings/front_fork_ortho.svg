@@ -1,48 +1,24 @@
 <svg width="1000" height="1200" viewBox="0 0 1000 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. First Angle Orthographic Projection -->
-  <title>Front Fork Orthographic Projection</title>
+  <!-- 1:1 Scale. First Angle Ortho -->
+  <title>Front Fork Ortho - Master Assembly Match</title>
 
-  <!-- 1. FRONT VIEW (Central) -->
-  <g id="front_view" transform="translate(300, 400)">
-    <!-- Steerer Shaft (15mm) -->
-    <rect x="92.5" y="-300" width="15" height="300" fill="none" stroke="black" stroke-width="2" />
-    <!-- Crown (250mm wide) -->
-    <rect x="-25" y="0" width="250" height="10" fill="none" stroke="black" stroke-width="2" />
-    <!-- Legs (Inner spacing 200) -->
-    <rect x="-25" y="10" width="25" height="350" fill="none" stroke="black" stroke-width="2" />
-    <rect x="200" y="10" width="25" height="350" fill="none" stroke="black" stroke-width="2" />
-    <!-- Dropouts -->
-    <rect x="-25" y="360" width="25" height="40" fill="none" stroke="black" stroke-width="2" />
-    <rect x="200" y="360" width="25" height="40" fill="none" stroke="black" stroke-width="2" />
-    <text x="100" y="420" font-family="Arial" font-size="16" text-anchor="middle">FRONT VIEW</text>
+  <!-- FRONT VIEW -->
+  <g id="front_view" transform="translate(300, 300)">
+    <rect x="-125" y="0" width="250" height="10" fill="gray" stroke="black" stroke-width="2" />
+    <rect x="-110" y="10" width="20" height="350" fill="none" stroke="black" stroke-width="2" />
+    <rect x="90" y="10" width="20" height="350" fill="none" stroke="black" stroke-width="2" />
+    <rect x="100" y="-300" width="15" height="300" fill="gray" stroke="black" stroke-width="1" />
+    <text x="0" y="400" font-family="Arial" font-size="16" text-anchor="middle">FRONT VIEW (Inner 200mm)</text>
   </g>
 
-  <!-- 2. TOP VIEW (Below Front View) -->
-  <g id="top_view" transform="translate(300, 900)">
-    <!-- Crown -->
-    <rect x="-25" y="0" width="250" height="40" fill="none" stroke="black" stroke-width="2" />
-    <!-- Steerer center -->
-    <circle cx="100" cy="20" r="7.5" fill="none" stroke="black" stroke-width="2" />
-    <!-- Leg sections -->
-    <rect x="-25" y="0" width="25" height="40" fill="none" stroke="black" stroke-width="2" />
-    <rect x="200" y="0" width="25" height="40" fill="none" stroke="black" stroke-width="2" />
-    <text x="100" y="70" font-family="Arial" font-size="16" text-anchor="middle">TOP VIEW</text>
+  <!-- SIDE VIEW -->
+  <g id="side_view" transform="translate(700, 300)">
+    <rect x="0" y="0" width="40" height="10" fill="gray" stroke="black" />
+    <!-- Rake 35mm -->
+    <line x1="20" y1="10" x2="55" y2="360" stroke="black" stroke-width="3" />
+    <circle cx="55" cy="360" r="7" fill="none" stroke="red" />
+    <text x="20" y="400" font-family="Arial" font-size="16" text-anchor="middle">SIDE VIEW (35mm Rake)</text>
   </g>
 
-  <!-- 3. RIGHT SIDE VIEW (To the Left of Front View) -->
-  <g id="side_view" transform="translate(50, 400)">
-    <!-- Steerer -->
-    <rect x="12.5" y="-300" width="15" height="300" fill="none" stroke="black" stroke-width="2" />
-    <!-- Crown -->
-    <rect x="0" y="0" width="40" height="10" fill="none" stroke="black" stroke-width="2" />
-    <!-- Leg (40x20mm) -->
-    <rect x="0" y="10" width="40" height="350" fill="none" stroke="black" stroke-width="2" />
-    <!-- Dropout with axle centerline -->
-    <rect x="0" y="360" width="40" height="40" fill="none" stroke="black" stroke-width="2" />
-    <circle cx="20" cy="380" r="7" fill="none" stroke="red" stroke-width="1" />
-    <text x="20" y="420" font-family="Arial" font-size="16" text-anchor="middle">SIDE VIEW</text>
-  </g>
-
-  <text x="500" y="50" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle">Front Fork: Orthographic Projection</text>
-  <text x="500" y="80" font-family="Arial" font-size="14" text-anchor="middle">ISO First Angle | 1px = 1mm</text>
+  <text x="500" y="50" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle">Fork Drawing: Dimensional Match</text>
 </svg>

@@ -1,25 +1,24 @@
+include <master_dims.scad>
 include <parts.scad>
 
 module steering_head() {
-    // 1-1/4" Sch 40 Pipe (OD 42.16, ID 35.05)
+    // Sch 40 Housing
     color("gray", 0.5)
-    pipe(42.16, 35.05, 200);
+    pipe(head_tube_od, head_tube_id, head_tube_length);
 
-    // Internal Stopping Elements (35mm OD)
+    // Stop Elements
     color("silver") {
-        translate([0, 0, 80]) pipe(35, 16, 8);
-        translate([0, 0, -80]) pipe(35, 16, 8);
+        translate([0, 0, head_tube_length/2 - 10]) pipe(head_tube_id, steering_shaft_dia + 1, 8);
+        translate([0, 0, -head_tube_length/2 + 10]) pipe(head_tube_id, steering_shaft_dia + 1, 8);
     }
 
-    // 7202 Bearings (15x35x11)
-    color("blue") {
-        translate([0, 0, 70.5]) bearing_7202();
-        translate([0, 0, -70.5]) bearing_7202();
-    }
+    // Bearings
+    translate([0, 0, head_tube_length/2 - 20]) bearing_7202();
+    translate([0, 0, -head_tube_length/2 + 20]) bearing_7202();
 
-    // 15mm Steering Shaft
+    // Shaft
     color("dim gray")
-    cylinder(d=15, h=300, center=true);
+    cylinder(d=steering_shaft_dia, h=head_tube_length + 100, center=true);
 }
 
 steering_head();
