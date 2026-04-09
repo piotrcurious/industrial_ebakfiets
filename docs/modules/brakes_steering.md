@@ -24,10 +24,11 @@ The industrial bakfiets uses a triple-redundant braking system.
 
 ### 1. Front Braking (Main Stopping Power)
 - **Disc Rotor**: 203mm diameter, 2.0mm thick.
-- **Caliper**: Hydraulic 4-piston caliper.
+- **Caliper**: Hydraulic 4-piston caliper (PM mount).
 
 ### 2. Rear Braking (Control and Parking)
 - **Disc Rotor**: 180mm diameter.
+- **Caliper**: Hydraulic/Mechanical (IS mount).
 - **Parking Brake**: A **locking brake lever** is required on the rear brake.
 
 ## Tolerances and Fit

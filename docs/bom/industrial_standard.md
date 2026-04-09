@@ -5,9 +5,9 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | Category | Component | Specification | Estimated Cost |
 | --- | --- | --- | --- |
 | **Front Wheel** | Car Tire | 155/70 R13 (new) | $40 |
-| | Split Rim | 13-inch steel split rim (new/Piaggio type, 4x98) | $50 |
+| | Split Rim | 13-inch steel industrial split rim (6-bolt PCD 270) | $50 |
 | | Front Hub Motor | 250W Direct Drive (36V/48V, 175mm Dropout, M14) | $120 |
-| | Motor Flanges | 2x 5mm Steel plates (laser-cut) | $30 |
+| | Motor Flanges | 2x 10mm Steel plates (laser-cut, 290mm OD) | $40 |
 | | Torque Arm | 6mm steel laser-cut plate | $15 |
 | **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type) | $50 |
 | | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm) | $180 |
@@ -29,5 +29,5 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | **Ergonomics** | Seat/Stem/Bars | 31.6mm Post + Adjustable Stem + 720mm Bars | $85 |
 | **Cargo Box** | Panels/Steel | 12mm Marine Plywood + 25x25mm Steel Angle | $110 |
 | | Anchor Points | 4x D-ring rated for 250kg | $15 |
-| **Fasteners** | Structural | Grade 10.9 structural assortment (M8/M10/M14) | $40 |
+| **Fasteners** | Structural | Grade 10.9 structural assortment (M8x50, M10, M14) | $45 |
 | **Total** | | | **~$1,940** |

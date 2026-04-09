@@ -24,3 +24,9 @@ To ensure operator safety and minimize maintenance in industrial environments, t
 
 ### 2. Bottom Bracket and Crankset
 - **Crankset**: 170mm or 175mm length, 42T steel chainring.
+
+## Rear Hub Motor
+### 1. Motor Specification
+- **Type**: 350W-500W Geared Hub Motor.
+- **Dropout Spacing**: 135mm.
+- **Mating**: Standard IS 6-bolt brake rotor mount.

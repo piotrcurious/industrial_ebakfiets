@@ -4,22 +4,27 @@
 
   <!-- 1. PLAN VIEW (Central) -->
   <g id="plan_view" transform="translate(150, 200)">
-    <circle r="75" fill="none" stroke="black" stroke-width="2" />
-    <!-- Bolt patterns -->
-    <circle cx="0" cy="-65" r="6" fill="none" stroke="black" />
-    <circle cx="0" cy="65" r="6" fill="none" stroke="black" />
-    <circle cx="-65" cy="0" r="6" fill="none" stroke="black" />
-    <circle cx="65" cy="0" r="6" fill="none" stroke="black" />
-    <circle r="25" fill="none" stroke="black" stroke-width="2" />
-    <text x="0" y="100" font-family="Arial" font-size="14" text-anchor="middle">PLAN VIEW</text>
+    <!-- Flange OD 290 (R=145) -->
+    <circle r="145" fill="none" stroke="black" stroke-width="2" />
+
+    <!-- 6-Bolt pattern PCD 270 (R=135) -->
+    <circle cx="135" cy="0" r="4.5" fill="none" stroke="black" />
+    <circle cx="67.5" cy="116.9" r="4.5" fill="none" stroke="black" />
+    <circle cx="-67.5" cy="116.9" r="4.5" fill="none" stroke="black" />
+    <circle cx="-135" cy="0" r="4.5" fill="none" stroke="black" />
+    <circle cx="-67.5" cy="-116.9" r="4.5" fill="none" stroke="black" />
+    <circle cx="67.5" cy="-116.9" r="4.5" fill="none" stroke="black" />
+
+    <circle r="7.5" fill="none" stroke="black" stroke-width="1" stroke-dasharray="2,2" /> <!-- Axle hole -->
+    <text x="0" y="170" font-family="Arial" font-size="14" text-anchor="middle">PLAN VIEW (290mm Flange)</text>
   </g>
 
   <!-- 2. SECTION VIEW (Right) -->
   <g id="section_view" transform="translate(450, 200)">
-    <rect x="-2.5" y="-75" width="5" height="150" fill="gray" stroke="black" />
-    <line x1="-10" y1="-65" x2="10" y2="-65" stroke="black" stroke-width="1" />
-    <line x1="-10" y1="65" x2="10" y2="65" stroke="black" stroke-width="1" />
-    <text x="0" y="100" font-family="Arial" font-size="14" text-anchor="middle">SECTION VIEW (5mm Steel)</text>
+    <rect x="-5" y="-145" width="10" height="290" fill="gray" stroke="black" />
+    <line x1="-15" y1="-135" x2="15" y2="-135" stroke="red" stroke-width="1" stroke-dasharray="2,2" />
+    <line x1="-15" y1="135" x2="15" y2="135" stroke="red" stroke-width="1" stroke-dasharray="2,2" />
+    <text x="0" y="170" font-family="Arial" font-size="14" text-anchor="middle">SECTION VIEW (10mm Steel)</text>
   </g>
 
   <text x="300" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Motor Flange detail (Orthographic)</text>

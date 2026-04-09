@@ -10,15 +10,16 @@
     <rect x="-125" y="0" width="250" height="40" fill="#2c3e50" stroke="black" stroke-width="2" />
 
     <!-- Fork Blades (connecting to dropouts) -->
-    <rect x="-110" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
-    <rect x="80" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
+    <!-- Inner spacing 185. Edges at +/- 92.5. Blade width 30. -->
+    <rect x="-122.5" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
+    <rect x="92.5" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
 
     <!-- Steering Shaft (15mm OD) -->
     <rect x="-7.5" y="-200" width="15" height="200" fill="silver" stroke="black" stroke-width="1" />
 
     <!-- Dimensions -->
-    <line x1="-110" y1="380" x2="110" y2="380" stroke="red" stroke-width="1" />
-    <text x="0" y="400" font-family="Arial" font-size="14" text-anchor="middle" fill="red">220mm Center-to-Center</text>
+    <line x1="-107.5" y1="380" x2="107.5" y2="380" stroke="red" stroke-width="1" />
+    <text x="0" y="400" font-family="Arial" font-size="14" text-anchor="middle" fill="red">215mm Center-to-Center</text>
 
     <line x1="-125" y1="-20" x2="125" y2="-20" stroke="red" stroke-width="1" />
     <text x="0" y="-30" font-family="Arial" font-size="14" text-anchor="middle" fill="red">250mm Crown Width</text>

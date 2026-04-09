@@ -1,5 +1,5 @@
 <svg width="2500" height="1200" viewBox="0 0 2500 1200" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Master Assembly Drawing v5 (Integrated Design) -->
+  <!-- Scale: 1px = 1mm. Master Assembly Drawing v7 (Integrated Design) -->
   <title>Master Assembly Drawing - Industrial E-Bakfiets</title>
 
   <rect x="0" y="0" width="2500" height="1200" fill="#fdfdfd" />
@@ -11,9 +11,16 @@
   <!-- Contact point at y=1100, x=2100. Center at y=1100 - 274 = 826 -->
   <g id="front_wheel_anchor">
     <circle cx="2100" cy="826" r="274" fill="none" stroke="#333333" stroke-width="25" />
-    <circle cx="2100" cy="826" r="90" fill="#7f8c8d" stroke="black" stroke-width="2" />
+    <circle cx="2100" cy="826" r="165" fill="none" stroke="#777" stroke-width="5" /> <!-- Rim -->
+    <circle cx="2100" cy="826" r="145" fill="#7f8c8d" stroke="black" stroke-width="2" /> <!-- Hub Flange 290mm -->
+    <circle cx="2100" cy="826" r="110" fill="#34495e" stroke="black" stroke-width="1" /> <!-- Hub Body 220mm -->
     <circle cx="2100" cy="826" r="7" fill="black" /> <!-- Axle -->
-    <text x="2100" y="1130" font-family="Arial" font-size="16" text-anchor="middle">Anchor: 155/70 R13 Tire</text>
+
+    <!-- Fasteners (PCD 270mm -> R=135) -->
+    <circle cx="2235" cy="826" r="4" fill="#444" />
+    <circle cx="1965" cy="826" r="4" fill="#444" />
+
+    <text x="2100" y="1130" font-family="Arial" font-size="16" text-anchor="middle">Anchor: 155/70 R13 Tire (Split Rim)</text>
   </g>
 
   <!-- 2. FRONT FORK (Tilted 68 deg from horiz, so 22 deg from vertical) -->
@@ -61,7 +68,7 @@
 
   <!-- 6. ANNOTATIONS -->
   <text x="1250" y="80" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="#2c3e50">Integrated Surface-to-Surface Design</text>
-  <text x="1250" y="120" font-family="Arial" font-size="20" text-anchor="middle" fill="#7f8c8d">Master Assembly Drawing v5 | Origin: Front Tire Center</text>
+  <text x="1250" y="120" font-family="Arial" font-size="20" text-anchor="middle" fill="#7f8c8d">Master Assembly Drawing v7 | Industrial Refinement</text>
 
   <!-- Dimension Lines -->
   <g stroke="red" stroke-width="1">

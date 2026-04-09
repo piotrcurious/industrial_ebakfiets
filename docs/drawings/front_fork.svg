@@ -14,10 +14,10 @@
   <!-- FORK CROWN (10mm Plate, 250mm Width) -->
   <rect id="fork_crown" x="175" y="350" width="250" height="10" fill="#2c3e50" stroke="black" stroke-width="2" />
 
-  <!-- FORK LEGS (40x20x3mm Rectangular Tubing) -->
-  <!-- Inner width between legs: 200mm -->
-  <rect id="fork_leg_left" x="175" y="360" width="25" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
-  <rect id="fork_leg_right" x="400" y="360" width="25" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
+  <!-- FORK LEGS (30mm Width Rectangular Tubing) -->
+  <!-- Inner width between legs: 185mm. Center 300. Inner edges at 207.5, 392.5 -->
+  <rect id="fork_leg_left" x="177.5" y="360" width="30" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
+  <rect id="fork_leg_right" x="392.5" y="360" width="30" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
 
   <!-- POST MOUNT BRAKE TABS (M6, 203mm rotor setup) -->
   <rect id="brake_tab_upper" x="155" y="600" width="20" height="10" fill="#c0392b" stroke="black" />
@@ -42,8 +42,8 @@
   <!-- ANNOTATIONS & DIMENSIONS -->
   <text x="300" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Front Fork Construction Detail</text>
 
-  <line x1="200" y1="400" x2="400" y2="400" stroke="black" stroke-width="1" />
-  <text x="300" y="420" font-family="Arial" font-size="12" text-anchor="middle">200mm Inner Clearance</text>
+  <line x1="207.5" y1="400" x2="392.5" y2="400" stroke="black" stroke-width="1" />
+  <text x="300" y="420" font-family="Arial" font-size="12" text-anchor="middle">185mm Inner Clearance</text>
 
   <text x="410" y="345" font-family="Arial" font-size="12" fill="red">100mm Steering Arm</text>
   <text x="145" y="635" font-family="Arial" font-size="12" text-anchor="end" fill="#c0392b">PM Brake Mount</text>

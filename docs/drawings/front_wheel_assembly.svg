@@ -1,42 +1,45 @@
 <svg width="600" height="600" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. Front Cross Section -->
-  <title>Front Wheel Hub and Split Rim Assembly</title>
+  <!-- Scale: 1px = 1mm. Front Cross Section v7 -->
+  <title>Front Wheel Hub and Split Rim Assembly v7</title>
 
   <rect x="0" y="0" width="600" height="600" fill="#f0f0f0" />
 
   <!-- HUB MOTOR (250W Direct Drive, 175mm Dropout) -->
-  <rect id="hub_motor_body" x="212.5" y="240" width="175" height="120" rx="10" fill="#34495e" stroke="black" stroke-width="2" />
-  <rect id="axle_left" x="187.5" y="293" width="25" height="14" fill="#95a5a6" stroke="black" />
-  <rect id="axle_right" x="387.5" y="293" width="25" height="14" fill="#95a5a6" stroke="black" />
+  <!-- Body covers the dropout range. 220mm Dia -->
+  <rect id="hub_motor_body" x="212.5" y="190" width="175" height="220" rx="10" fill="#34495e" stroke="black" stroke-width="2" />
 
-  <!-- MOTOR FLANGE PLATES (5mm Steel) -->
-  <rect id="flange_left" x="212.5" y="150" width="5" height="300" fill="#bdc3c7" stroke="black" />
-  <rect id="flange_right" x="382.5" y="150" width="5" height="300" fill="#bdc3c7" stroke="black" />
+  <!-- AXLE (M14) -->
+  <rect id="axle" x="185" y="293" width="230" height="14" fill="#95a5a6" stroke="black" />
 
-  <!-- RIM INTERFACE (4x100 Bolt Pattern) -->
-  <circle cx="215" cy="180" r="6" fill="#e74c3c" stroke="black" />
-  <circle cx="385" cy="180" r="6" fill="#e74c3c" stroke="black" />
-  <circle cx="215" cy="420" r="6" fill="#e74c3c" stroke="black" />
-  <circle cx="385" cy="420" r="6" fill="#e74c3c" stroke="black" />
+  <!-- MOTOR FLANGE PLATES (10mm Steel, sandwiching rim) -->
+  <!-- Positioned at +/- 15mm from center (300). 290mm Dia -->
+  <rect id="flange_left" x="280" y="155" width="10" height="290" fill="#bdc3c7" stroke="black" />
+  <rect id="flange_right" x="310" y="155" width="10" height="290" fill="#bdc3c7" stroke="black" />
+
+  <!-- SPLIT RIM HALVES (13 inch, 10mm thick mating flange) -->
+  <!-- Meet at x=300 -->
+  <rect id="rim_half_l" x="290" y="135" width="10" height="330" fill="#7f8c8d" stroke="black" />
+  <rect id="rim_half_r" x="300" y="135" width="10" height="330" fill="#7f8c8d" stroke="black" />
 
   <!-- 13-inch Car Tire (155/70 R13) -->
-  <rect id="tire_section" x="222.5" y="26" width="155" height="548" rx="25" fill="none" stroke="black" stroke-width="4" opacity="0.4" />
-  <text x="300" y="50" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle">155mm Car Tire</text>
+  <!-- 155mm Wide, 548mm OD. Centered on 300 -->
+  <rect id="tire_section" x="222.5" y="26" width="155" height="548" rx="25" fill="none" stroke="#222" stroke-width="4" opacity="0.6" />
 
-  <!-- SPLIT RIM HALVES (13 inch) -->
-  <rect id="rim_half_l" x="222.5" y="150" width="10" height="300" fill="#7f8c8d" stroke="black" />
-  <rect id="rim_half_r" x="367.5" y="150" width="10" height="300" fill="#7f8c8d" stroke="black" />
-
-  <!-- BRAKE ROTOR (203mm, 6-bolt) -->
-  <circle id="brake_rotor" cx="210" cy="300" r="101.5" fill="none" stroke="#c0392b" stroke-width="2" />
-  <line x1="208" y1="200" x2="212" y2="200" stroke="#c0392b" stroke-width="1" />
-  <line x1="208" y1="400" x2="212" y2="400" stroke="#c0392b" stroke-width="1" />
+  <!-- Fasteners (M8) -->
+  <circle cx="300" cy="165" r="5" fill="#444" stroke="black" />
+  <circle cx="300" cy="435" r="5" fill="#444" stroke="black" />
 
   <!-- ANNOTATIONS -->
-  <text x="300" y="40" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Front Wheel and Motor Assembly</text>
+  <text x="300" y="40" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle" fill="#2c3e50">Front Wheel and Motor Assembly (v7)</text>
 
-  <line x1="187.5" y1="330" x2="412.5" y2="330" stroke="black" stroke-width="1" />
-  <text x="300" y="345" font-family="Arial" font-size="12" text-anchor="middle">175mm Dropout Spacing</text>
+  <!-- Dimension Lines -->
+  <g stroke="red" stroke-width="1">
+    <line x1="212.5" y1="450" x2="387.5" y2="450" />
+    <text x="300" y="470" font-family="Arial" font-size="12" text-anchor="middle" fill="red">175mm Dropout Spacing</text>
 
-  <text x="20" y="580" font-family="Arial" font-size="12" fill="#7f8c8d">Scale: 1px = 1mm | 13 inch Car Tire / 250W Motor</text>
+    <line x1="222.5" y1="580" x2="377.5" y2="580" />
+    <text x="300" y="595" font-family="Arial" font-size="12" text-anchor="middle" fill="red">155mm Tread Width</text>
+  </g>
+
+  <text x="20" y="580" font-family="Arial" font-size="12" fill="#7f8c8d">Scale: 1px = 1mm | Industrial Split Rim Detail</text>
 </svg>
