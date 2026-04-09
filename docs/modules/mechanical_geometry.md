@@ -4,9 +4,10 @@ The handling and stability of the industrial bakfiets depend on precise frame an
 
 ## Frame Geometry
 ### 1. Head Angle and Steering Axis
-- **Head Angle**: **68 degrees**.
-- **Steering Axis Offset (Rake)**: **35mm rake**.
-- **Resulting Trail**: **~73mm**.
+- **Head Angle**: **68 degrees** from horizontal.
+- **Steering Axis Offset (Rake)**: **45mm rake**.
+- **Wheelbase**: **1950mm**.
+- **Resulting Trail**: **~73mm** (calculated with 548mm OD front tire).
 
 ### 2. Drivetrain Geometry (Pedal Clearance)
 To ensure the rider can pedal safely even when fully loaded:
@@ -20,15 +21,17 @@ To ensure the rider can pedal safely even when fully loaded:
 - **Kinematics**: With a +/- 45-degree limit, the linkage rod maintains an optimal angle to prevent over-centering or mechanical binding.
 
 ## Front Fork Design
-- **Crown Inner Width**: 200mm.
-- **Axle-to-Crown Length**: 350mm.
-- **Construction**: 10mm steel crown plate with integrated 100mm steering arm.
+- **Crown Width**: **250mm**.
+- **Axle-to-Crown Length**: **360mm**.
+- **Construction**: 40mm thick rectangular section crown with 30mm width blades.
+- **Dropouts**: 8mm laser-cut plates for M14 axle.
 
 ## Rear Frame Geometry
-- **Transition**: The 40x20mm main rails taper to meet the 16\" rear wheel dropouts.
-- **Rigidity**: A **25mm round steel cross-member** is welded behind the BB shell to bridge the main spars.
-- **Bottom Bracket Drop**: 50mm relative to the rear axle height.
+- **Transition**: The main rails narrow via a header spar assembly to meet the steering head.
+- **Rear Dropouts**: Spaced for **135mm** hub width (16" wheel).
+- **Ground Clearance**: **150mm** (at the main frame rails).
 
 ## Mechanical Clearances
+- **Tire to Fork**: 15mm per side.
 - **Tire to Frame**: Minimum 20mm.
-- **Ground Clearance**: 150mm (at the main frame rails).
+- **Chainline Clearance**: Optimized for 1x derailleur setup.

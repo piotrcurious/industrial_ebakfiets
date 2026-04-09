@@ -1,38 +1,49 @@
 <svg width="600" height="1000" viewBox="0 0 600 1000" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. First Angle Ortho -->
-  <title>Steering Head Orthographic Projection</title>
+  <!-- Scale: 1px = 1mm. First Angle Ortho. v6 Integrated Design -->
+  <title>Steering Head Orthographic Projection - Verified v6</title>
+
+  <rect x="0" y="0" width="600" height="1000" fill="#fcfcfc" />
 
   <!-- 1. FRONT SECTIONAL VIEW (Central) -->
   <g id="front_section" transform="translate(300, 300)">
-    <!-- Sch 40 Pipe (42 OD, 35 ID) -->
-    <rect x="-21" y="-150" width="42" height="300" fill="none" stroke="black" stroke-width="2" />
+    <!-- Sch 40 Pipe (42.16 OD, 35.05 ID) -->
+    <rect x="-21" y="-100" width="42.16" height="200" fill="none" stroke="black" stroke-width="2" />
     <!-- ID lines -->
-    <line x1="-17.5" y1="-150" x2="-17.5" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
-    <line x1="17.5" y1="-150" x2="17.5" y2="150" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+    <line x1="-17.5" y1="-100" x2="-17.5" y2="100" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+    <line x1="17.5" y1="-100" x2="17.5" y2="100" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
 
-    <!-- 7202 Bearings -->
-    <rect x="-17.5" y="-140" width="35" height="11" fill="none" stroke="blue" stroke-width="2" />
-    <rect x="-17.5" y="129" width="35" height="11" fill="none" stroke="blue" stroke-width="2" />
+    <!-- Chassis Gusset Plate (Mating Surface) -->
+    <rect x="-31" y="-90" width="10" height="180" fill="firebrick" stroke="black" />
 
-    <!-- 15mm Shaft -->
-    <rect x="-7.5" y="-200" width="15" height="400" fill="none" stroke="black" stroke-width="1" />
+    <!-- 7202 Bearings (35mm OD, 15mm ID, 11mm H) -->
+    <rect x="-17.5" y="-95" width="35" height="11" fill="blue" opacity="0.3" />
+    <rect x="-17.5" y="84" width="35" height="11" fill="blue" opacity="0.3" />
+
+    <!-- Dimensions -->
+    <line x1="30" y1="-100" x2="30" y2="100" stroke="red" stroke-width="1" />
+    <text x="45" y="0" font-family="Arial" font-size="14" transform="rotate(90 45 0)" fill="red">200mm HT Length</text>
+
     <text x="0" y="220" font-family="Arial" font-size="16" text-anchor="middle">FRONT SECTIONAL VIEW</text>
   </g>
 
   <!-- 2. TOP VIEW (Below) -->
   <g id="top_view" transform="translate(300, 750)">
-    <circle cx="0" cy="0" r="21" fill="none" stroke="black" stroke-width="2" />
-    <circle cx="0" cy="0" r="17.5" fill="none" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+    <!-- Head Tube -->
+    <circle cx="0" cy="0" r="21.08" fill="none" stroke="black" stroke-width="2" />
+    <circle cx="0" cy="0" r="17.52" fill="none" stroke="gray" stroke-width="1" stroke-dasharray="5,2" />
+
+    <!-- Chassis Gusset Plate -->
+    <rect x="-31" y="-50" width="10" height="100" fill="firebrick" stroke="black" />
+
+    <!-- Internal Shaft (15mm) -->
     <circle cx="0" cy="0" r="7.5" fill="none" stroke="black" stroke-width="2" />
-    <!-- 6x M5 holes -->
-    <circle cx="0" cy="-19" r="2.5" fill="red" />
-    <circle cx="16.5" cy="-9.5" r="2.5" fill="red" />
-    <circle cx="16.5" cy="9.5" r="2.5" fill="red" />
-    <circle cx="0" cy="19" r="2.5" fill="red" />
-    <circle cx="-16.5" cy="9.5" r="2.5" fill="red" />
-    <circle cx="-16.5" cy="-9.5" r="2.5" fill="red" />
-    <text x="0" y="60" font-family="Arial" font-size="16" text-anchor="middle">TOP VIEW</text>
+
+    <!-- Dimensions -->
+    <line x1="-31" y1="60" x2="0" y2="60" stroke="red" stroke-width="1" />
+    <text x="-15" y="80" font-family="Arial" font-size="14" text-anchor="middle" fill="red">31mm Offset</text>
+
+    <text x="0" y="110" font-family="Arial" font-size="16" text-anchor="middle">TOP VIEW (Chassis Mating Face at Left)</text>
   </g>
 
-  <text x="300" y="50" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle">Steering Head: Orthographic Projection</text>
+  <text x="300" y="50" font-family="Arial" font-size="30" font-weight="bold" text-anchor="middle">Steering Head Detail (Verified v6)</text>
 </svg>

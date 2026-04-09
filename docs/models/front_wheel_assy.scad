@@ -1,13 +1,17 @@
 include <master_dims.scad>
 use <parts.scad>
 
-// The Front Wheel assembly
-module wheel_assy() {
-    // 1. 13" Car Tire
+// COMPLETE FRONT WHEEL ASSEMBLY
+// Origin = Axle Center (0,0,0)
+module front_wheel_assy() {
+    // 1. Tire
     car_tire_13in();
 
-    // 2. Hub Motor
-    front_hub_motor();
+    // 2. Rim (Mated to Tire)
+    car_rim_13in();
+
+    // 3. Hub Motor (Mated to Rim and provides the Axle)
+    hub_motor_dd();
 }
 
-wheel_assy();
+front_wheel_assy();

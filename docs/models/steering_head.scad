@@ -1,24 +1,30 @@
 include <master_dims.scad>
 use <parts.scad>
 
-// The Steering Head houses the shaft and connects to the Frame.
-// Origin = Center of Head Tube
+// STEERING HEAD ASSEMBLY
+// Origin = CENTER OF HEAD TUBE (0,0,0)
 module steering_head_assy() {
-    // 1. Main Head Tube
+    // 1. MAIN HEAD TUBE (1-1/4" Sch 40)
     color("firebrick")
     pipe(head_tube_od, head_tube_id, head_tube_length);
 
-    // 2. Bearings (Top and Bottom)
-    for(z=[-head_tube_length/2 + 10, head_tube_length/2 - 10])
+    // 2. BEARING SEATS (Internal)
+    for(z=[-head_tube_length/2 + 5.5, head_tube_length/2 - 5.5])
     translate([0, 0, z])
     color("blue")
-    pipe(bearing_od, steering_shaft_dia + 0.5, 11);
+    pipe(bearing_od, steering_shaft_dia + 0.5, bearing_h);
 
-    // 3. Frame Connection Gusset (Surface for Frame spars)
-    // Centered on the HT
-    translate([-head_tube_od/2 - 10, 0, 0])
+    // 3. CHASSIS GUSSET PLATE (Mating surface for the Frame)
+    // This is the "Header Plate" that the frame rails weld to.
+    translate([-head_tube_od/2 - 5, 0, 0])
     color("firebrick")
-    cube([20, 60, head_tube_length - 40], center=true);
+    cube([10, 100, head_tube_length - 20], center=true);
+
+    // 4. STEERING STOPS
+    for(s=[-1, 1])
+    translate([-15, s * 25, -head_tube_length/2])
+    color("black")
+    cylinder(d=10, h=10);
 }
 
 steering_head_assy();
