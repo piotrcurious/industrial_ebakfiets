@@ -19,7 +19,10 @@
     <g transform="translate(1860, 420) rotate(-22)">
        <rect x="0" y="-100" width="42.16" height="200" fill="none" stroke="firebrick" stroke-width="3" stroke-dasharray="5,2" />
        <!-- HT Gusset face (Mating Surface) -->
-       <rect x="-10" y="-60" width="10" height="120" fill="firebrick" opacity="0.5"/>
+       <rect x="-10" y="-90" width="10" height="180" fill="firebrick" opacity="0.5"/>
+       <!-- Reinforcing Gussets -->
+       <path d="M 0 -100 L -40 -100 L 0 -60 Z" fill="firebrick" opacity="0.3" />
+       <path d="M 0 100 L -40 100 L 0 60 Z" fill="firebrick" opacity="0.3" />
     </g>
 
     <!-- Rear Subframe -->

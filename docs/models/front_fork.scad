@@ -9,7 +9,7 @@ module front_fork_assy() {
     // Hub dropout is 175mm. Dropout centers are at +/- 87.5mm.
     for(s=[-1, 1]) {
         translate([0, s * (front_hub_dropout/2 + 5), 0])
-        color("silver")
+        color(color_fastener)
         difference() {
             // 8mm laser cut plate
             cube([60, 10, 100], center=true);
@@ -35,18 +35,18 @@ module front_fork_assy() {
     // 3. FORK CROWN (Connecting Blades)
     // Mating surface for the steering shaft is the TOP CENTER.
     translate([fork_rake, 0, fork_length])
-    color("darkslategray")
+    color(color_subframe)
     rect_tube(fork_crown_width, 40, 60);
 
     // 4. STEERING SHAFT (Mates to Crown Top Center)
     // 15mm Shaft for 7202 bearings.
     translate([fork_rake, 0, fork_length + 20])
-    color("silver")
+    color(color_fastener)
     cylinder(d=steering_shaft_dia, h=head_tube_length + 100);
 
     // Shaft Collar (Locking the bearing stack)
     translate([fork_rake, 0, fork_length + 25])
-    color("dimgray")
+    color(color_fixed)
     pipe(30, 15.1, 10);
 }
 

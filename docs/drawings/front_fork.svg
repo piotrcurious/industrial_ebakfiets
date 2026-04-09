@@ -13,6 +13,9 @@
 
   <!-- FORK CROWN (10mm Plate, 250mm Width) -->
   <rect id="fork_crown" x="175" y="350" width="250" height="10" fill="#2c3e50" stroke="black" stroke-width="2" />
+  <!-- Reinforcement Plates -->
+  <path d="M 177.5 360 L 177.5 400 L 217.5 360 Z" fill="#2c3e50" opacity="0.5" />
+  <path d="M 422.5 360 L 422.5 400 L 382.5 360 Z" fill="#2c3e50" opacity="0.5" />
 
   <!-- FORK LEGS (30mm Width Rectangular Tubing) -->
   <!-- Inner width between legs: 185mm. Center 300. Inner edges at 207.5, 392.5 -->

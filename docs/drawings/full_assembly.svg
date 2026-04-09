@@ -38,12 +38,19 @@
     <rect x="2079" y="266" width="42" height="200" fill="none" stroke="firebrick" stroke-width="3" />
     <!-- HT Gusset face -->
     <rect x="2059" y="300" width="20" height="120" fill="firebrick" />
+    <!-- Reinforcing Gussets -->
+    <path d="M 2079 266 L 2039 266 L 2079 306 Z" fill="firebrick" opacity="0.4" />
+    <path d="M 2079 466 L 2039 466 L 2079 426 Z" fill="firebrick" opacity="0.4" />
   </g>
 
   <!-- 4. MAIN FRAME (Connects to Gusset) -->
   <g id="frame_layer">
     <!-- Main Rails (from HT area back) -->
     <rect x="150" y="910" width="1910" height="40" fill="#000080" stroke="black" stroke-width="2" />
+    <!-- Cable Guides -->
+    <circle cx="1000" cy="955" r="3" fill="black" />
+    <circle cx="1300" cy="955" r="3" fill="black" />
+    <circle cx="1600" cy="955" r="3" fill="black" />
     <!-- HT to Rails connection -->
     <path d="M 2050 480 L 1800 910" fill="none" stroke="#000080" stroke-width="40" />
 

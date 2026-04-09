@@ -17,6 +17,10 @@
     <!-- Steering Shaft (15mm OD) -->
     <rect x="-7.5" y="-200" width="15" height="200" fill="silver" stroke="black" stroke-width="1" />
 
+    <!-- Crown-to-Blade Gussets -->
+    <path d="M -92.5 40 L -92.5 80 L -52.5 40 Z" fill="#2c3e50" opacity="0.6" stroke="black" />
+    <path d="M 92.5 40 L 92.5 80 L 52.5 40 Z" fill="#2c3e50" opacity="0.6" stroke="black" />
+
     <!-- Dimensions -->
     <line x1="-107.5" y1="380" x2="107.5" y2="380" stroke="red" stroke-width="1" />
     <text x="0" y="400" font-family="Arial" font-size="14" text-anchor="middle" fill="red">215mm Center-to-Center</text>

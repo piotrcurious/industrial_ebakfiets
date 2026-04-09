@@ -30,6 +30,8 @@ The use of a **16-inch rear wheel** lowers the center of gravity and allows for 
 
 ### 2. Headset Integration (No-Machining Design)
 - **Locking Method**: Six 5mm radial holes for internal bearing stopping collars.
+- **Reinforcement**: Triangular gussets (60x60x10mm) at top and bottom of the head tube to frame header plate junction.
+- **Cable Management**: Integrated eyelets every 300mm along the left spar.
 
 ## Tolerances and Fit
 - **BB Squareness**: Within +/- 0.2mm.

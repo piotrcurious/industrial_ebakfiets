@@ -15,6 +15,10 @@
     <!-- Chassis Gusset Plate (Mating Surface) -->
     <rect x="-31" y="-90" width="10" height="180" fill="firebrick" stroke="black" />
 
+    <!-- Reinforcing Gussets (Top and Bottom) -->
+    <path d="M -21 -100 L -61 -100 L -21 -60 Z" fill="firebrick" stroke="black" />
+    <path d="M -21 100 L -61 100 L -21 60 Z" fill="firebrick" stroke="black" />
+
     <!-- 7202 Bearings (35mm OD, 15mm ID, 11mm H) -->
     <rect x="-17.5" y="-95" width="35" height="11" fill="blue" opacity="0.3" />
     <rect x="-17.5" y="84" width="35" height="11" fill="blue" opacity="0.3" />
