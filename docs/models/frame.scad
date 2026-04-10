@@ -1,5 +1,5 @@
 include <master_dims.scad>
-use <parts.scad>
+include <parts.scad>
 
 // MAIN FRAME ASSEMBLY
 // Origin = MATING SURFACE OF THE HEADER PLATE (Gusset face)

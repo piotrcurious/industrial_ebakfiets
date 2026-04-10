@@ -34,34 +34,44 @@ module car_tire_13in() {
 
 // ---------------------------------------------------------
 // 2. FRONT RIM (Mates to Tire)
-// Split Rim: Two halves bolted together
+// Split Rim: Two halves bolted together.
+// Industrial type with safety hump and deep bead seat.
 // ---------------------------------------------------------
 module car_rim_half() {
     rotate([90, 0, 0])
     rotate_extrude()
     difference() {
         union() {
-            // Main bead seat and flange
-            translate([front_rim_dia/2 - 10, 0, 0])
-            square([20, front_tire_width/2 - 5], center=false);
+            // 1. Bead Flange (Vertical lip)
+            translate([front_rim_dia/2 + 15, 0, 0])
+            square([10, 20]);
 
-            // Mating flange for splitting (10mm thick)
-            translate([front_rim_dia/2 - 100, 0, 0])
-            square([100, 10], center=false);
+            // 2. Bead Seat (Horizontal)
+            translate([front_rim_dia/2, 0, 0])
+            square([15, front_tire_width/2 - 20]);
+
+            // 3. Transition / Drop Well (Safety Hump)
+            translate([front_rim_dia/2 - 30, front_tire_width/2 - 25, 0])
+            square([30, 10]);
+
+            // 4. Main Mating Flange (8mm thick industrial plate)
+            // Stretches inward to meet the motor flange
+            translate([front_rim_dia/2 - 120, 0, 0])
+            square([120, 8]);
         }
-        // Bead seat profile
-        translate([front_rim_dia/2, front_tire_width/2 - 5, 0])
-        circle(d=10);
+        // Chamfers and fillets for tire mounting safety
+        translate([front_rim_dia/2 + 25, 20, 0]) circle(r=5);
+        translate([front_rim_dia/2, front_tire_width/2 - 20, 0]) circle(r=5);
     }
 }
 
 module car_rim_13in_split() {
     color(color_fastener) {
-        // Left half (Meets at y=0, Outer at y=10)
+        // Half 1: Mates at Y=0 (Start of 16mm sandwich)
         translate([0, 0, 0])
         car_rim_half();
 
-        // Right half (Meets at y=0, Outer at y=-10)
+        // Half 2: Mates at Y=0
         translate([0, 0, 0])
         mirror([0, 1, 0])
         car_rim_half();
@@ -101,35 +111,44 @@ module rim_fastener_pattern() {
 // 4. HUB MOTOR (Mates to Rim)
 // ---------------------------------------------------------
 module hub_motor_dd() {
-    // Motor body
+    // 1. MAIN STATOR HOUSING
     color(color_fixed)
     rotate([90, 0, 0])
-    cylinder(d=220, h=front_hub_dropout - 40, center=true);
+    cylinder(d=240, h=80, center=true);
 
-    // Wire Exit Detail
-    translate([30, 0, 0])
+    // 2. SIDE COVERS (Bolt-on)
+    for(s=[-1, 1]) translate([0, s * 45, 0])
     rotate([90, 0, 0])
-    color("black")
-    cylinder(d=12, h=front_hub_dropout + 50, center=true);
-
-    // Mounting Flanges (Sandwich the rim halves)
-    // Outer faces of rim are at +/- 10.
-    // Flanges should be at +/- 15 (centered on 10mm width)
-    // so inner faces are at +/- 10.
-    // Flange diameter 290mm to capture the 270mm PCD bolt pattern.
-    for(s=[-1, 1]) translate([0, s * 15, 0])
-    rotate([90, 0, 0])
-    color(color_subframe) {
-        cylinder(d=290, h=10, center=true);
-        // Bolt head detailing for the 6-bolt pattern
-        for(a=[0:60:359]) rotate([0, 0, a]) translate([135, 0, 5*s])
-        cylinder(d=13, h=5, $fn=6, center=false);
+    color(color_fixed) {
+        cylinder(d=240, h=10, center=true);
+        // Perimeter cover bolts
+        for(a=[0:45:359]) rotate([0,0,a]) translate([110, 0, 5])
+        color(color_fastener) cylinder(d=6, h=5, center=false);
     }
 
-    // AXLE (The physical connection to the Fork)
+    // 3. INTEGRATED MOUNTING FLANGES (Heavy Duty)
+    // Inner faces at +/- 8mm to sandwich the 16mm rim.
+    // Flange centers at +/- 13mm. Flange thickness 10mm.
+    for(s=[-1, 1]) translate([0, s * 13, 0])
+    rotate([90, 0, 0])
+    color(color_subframe) {
+        cylinder(d=310, h=10, center=true);
+        // 6-Bolt M8 Pattern PCD 270 (as per front_wheel.md)
+        for(a=[0:60:359]) rotate([0, 0, a]) translate([135, 0, 5*s])
+        color(color_fastener) cylinder(d=13, h=6, $fn=6, center=false);
+    }
+
+    // 4. AXLE (M14 Steel with 10mm flats)
     color("black")
     rotate([90, 0, 0])
-    cylinder(d=front_axle_dia, h=front_hub_dropout + 40, center=true);
+    difference() {
+        cylinder(d=front_axle_dia, h=front_hub_dropout + 40, center=true);
+        // Axle flats for torque retention (Vertical orientation in dropout)
+        // We translate in X before the rotate([90,0,0]) to get Y-aligned flats
+        for(s=[-1, 1]) translate([0, 0, s * (front_hub_dropout/2 + 10)])
+        for(side=[-1, 1]) translate([side * 10, 0, 0])
+        cube([10, 30, 30], center=true);
+    }
 }
 
 // ---------------------------------------------------------

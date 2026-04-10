@@ -1,5 +1,5 @@
 include <master_dims.scad>
-use <parts.scad>
+include <parts.scad>
 
 // FORK ASSEMBLY
 // Origin = FRONT AXLE CENTER (0,0,0)
@@ -13,8 +13,17 @@ module front_fork_assy() {
         difference() {
             // 8mm laser cut plate
             cube([60, 10, 100], center=true);
-            // Axle hole (M14)
-            rotate([90, 0, 0]) cylinder(d=front_axle_dia+1, h=20, center=true);
+
+            // Axle Slot (10.2mm wide for M14 axle flats)
+            // Open bottom for easy installation
+            translate([0, 0, -25])
+            cube([10.2, 20, 50], center=true);
+
+            // Torque Arm Mounting Point (M6 hole)
+            if (s == 1) { // Right side torque arm
+                translate([20, 0, 30])
+                rotate([90, 0, 0]) cylinder(d=6.2, h=20, center=true);
+            }
         }
     }
 
@@ -36,7 +45,12 @@ module front_fork_assy() {
     // Mating surface for the steering shaft is the TOP CENTER.
     translate([fork_rake, 0, fork_length])
     color(color_subframe)
-    rect_tube(fork_crown_width, 40, 60);
+    union() {
+        rect_tube(fork_crown_width, 40, 60);
+        // Reinforcing Gussets for crown-to-blade transition
+        for(s=[-1, 1]) translate([0, s * (fork_inner_spacing/2 - 10), -20])
+        cube([40, 40, 40], center=true);
+    }
 
     // 4. STEERING SHAFT (Mates to Crown Top Center)
     // 15mm Shaft for 7202 bearings.
