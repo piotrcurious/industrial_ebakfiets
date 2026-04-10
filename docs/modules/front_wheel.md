@@ -18,7 +18,8 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 ### 4. Front Hub Motor (250W Direct Drive)
 - **Axle**: 14mm with 10mm flats.
 - **Axle Fasteners**: **2x M14x1.5 Flange Nuts** with **2x M14 High-Torque Washers** (tabbed).
-- **Torque Arm**: 6mm steel plate secured to the fork leg using **1x M6x25mm Grade 10.9 Bolt and Nut**.
+- **Braking**: 180mm Disc Rotor with 6-bolt ISO mount (44mm PCD).
+- **Torque Arm**: 6mm laser-cut steel plate (10.2mm cutout) secured to the fork leg using **1x M6x25mm Grade 10.9 Bolt and Nut**.
 
 ## Mechanical Integration & Assembly
 ### 1. Front Power Housing (Fork Mounted)
@@ -39,5 +40,5 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 3. Remove wheel and unbolt M8 rim bolts.
 
 ## Tolerances
-- **Axle-to-Dropout**: 0.2mm clearance.
+- **Axle-to-Dropout**: 0.2mm clearance (10.2mm slot for 10.0mm flats).
 - **Fastener Grade**: Grade 10.9 required for rim and axle-related hardware.

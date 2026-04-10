@@ -21,14 +21,25 @@ color_tire = [0.15, 0.15, 0.15];
 module car_tire_13in() {
     color(color_tire)
     rotate([90, 0, 0])
-    rotate_extrude()
-    translate([front_rim_dia/2, 0, 0])
-    hull() {
-        // Sidewall inner
-        circle(d=40);
-        // Tread outer (flattened)
-        translate([(front_tire_od - front_rim_dia)/2, 0, 0])
-        square([10, front_tire_width], center=true);
+    union() {
+        rotate_extrude()
+        translate([front_rim_dia/2, 0, 0])
+        hull() {
+            // Sidewall inner
+            circle(d=40);
+            // Tread outer (flattened)
+            translate([(front_tire_od - front_rim_dia)/2, 0, 0])
+            square([10, front_tire_width], center=true);
+        }
+
+        // Detailed Tread blocks (Simplified)
+        for(a=[0:10:359]) rotate([0, 0, a])
+        translate([front_tire_od/2, 0, 0])
+        cube([5, front_tire_width - 10, 20], center=true);
+
+        // Schrader Valve
+        rotate([0, 0, 45]) translate([front_rim_dia/2 + 20, 0, 20])
+        color("black") cylinder(d=8, h=30);
     }
 }
 
@@ -149,6 +160,33 @@ module hub_motor_dd() {
         for(side=[-1, 1]) translate([side * 10, 0, 0])
         cube([10, 30, 30], center=true);
     }
+
+    // 5. DISC BRAKE ROTOR (180mm)
+    translate([0, 45, 0]) // Mounted on left-side motor flange
+    rotate([90, 0, 0])
+    color("silver")
+    difference() {
+        cylinder(d=180, h=2, center=true);
+        // 6-bolt ISO mount
+        for(a=[0:60:359]) rotate([0, 0, a]) translate([22, 0, 0])
+        cylinder(d=5, h=10, center=true);
+        cylinder(d=44, h=10, center=true);
+    }
+}
+
+// 10. TORQUE ARM (6mm Steel Plate)
+module torque_arm() {
+    color(color_fixed)
+    difference() {
+        hull() {
+            cylinder(d=40, h=6);
+            translate([60, 0, 0]) cylinder(d=20, h=6);
+        }
+        // Axle flat cutout (10mm)
+        cube([10.2, 14.5, 20], center=true);
+        // Fork mounting slot
+        translate([60, 0, 0]) cylinder(d=6.5, h=20, center=true);
+    }
 }
 
 // ---------------------------------------------------------
@@ -179,4 +217,84 @@ module cable_guide() {
         }
         cylinder(d=6, h=6, center=true);
     }
+}
+
+// ---------------------------------------------------------
+// 6. SADDLE & POST
+// ---------------------------------------------------------
+module saddle() {
+    // Post
+    color(color_fastener)
+    cylinder(d=27.2, h=300);
+
+    // Saddle Body
+    translate([0, 0, 300]) {
+        color([0.2, 0.2, 0.2])
+        hull() {
+            translate([-100, 0, 0]) sphere(d=40);
+            translate([150, 0, 0]) sphere(d=60);
+        }
+        // Rails
+        color(color_fixed)
+        for(s=[-1, 1]) translate([20, s * 20, -15])
+        rotate([0, 90, 0]) cylinder(d=7, h=100, center=true);
+    }
+}
+
+// ---------------------------------------------------------
+// 7. HANDLEBAR & STEERING COLUMN
+// ---------------------------------------------------------
+module handlebars() {
+    // Stem
+    color(color_fixed)
+    cylinder(d=28.6, h=150);
+
+    // Bars
+    translate([0, 0, 150]) {
+        color("black")
+        rotate([0, 90, 0])
+        cylinder(d=22.2, h=700, center=true);
+
+        // Grips
+        for(s=[-1, 1]) translate([0, s * 300, 0])
+        rotate([0, 90, 0])
+        color([0.1, 0.1, 0.1]) cylinder(d=30, h=130, center=true);
+    }
+}
+
+// ---------------------------------------------------------
+// 8. DRIVETRAIN (Crankset & Pedals)
+// ---------------------------------------------------------
+module drivetrain_assy() {
+    // Chainring
+    color("silver")
+    rotate([90, 0, 0])
+    cylinder(d=180, h=2, center=true);
+
+    // Cranks
+    for(a=[0, 180])
+    rotate([0, a, 0])
+    translate([85, 0, 0]) {
+        color(color_fixed)
+        cube([170, 10, 30], center=true);
+
+        // Pedals
+        translate([85, 10 * (a==0 ? 1 : -1), 0])
+        color([0.3, 0.3, 0.3])
+        cube([80, 100, 20], center=true);
+    }
+}
+
+// ---------------------------------------------------------
+// 9. REAR GEARED HUB MOTOR (16" Wheel)
+// ---------------------------------------------------------
+module rear_hub_motor_geared() {
+    color(color_fixed)
+    rotate([90, 0, 0])
+    cylinder(d=140, h=135, center=true); // Compact geared motor
+
+    // Axle
+    color("black")
+    rotate([90, 0, 0])
+    cylinder(d=12, h=200, center=true);
 }

@@ -3,8 +3,9 @@
 The frame of the industrial bakfiets is designed to be sturdy, repairable, and built from standard materials available at any steel supplier.
 
 ## Material Selection
-### 1. Steel Rectangular Tubes (Main Spars)
+### 1. Steel Rectangular Tubes (Main Spars & Gooseneck)
 - **Dimensions**: 40x20mm or 50x25mm with 2-3mm wall thickness.
+- **Gooseneck Riser**: 500mm vertical offset with 400mm horizontal reach to bridge high steering head to low bed. Reinforced with 10mm diagonal gussets.
 
 ### 2. Head Tube (Redesigned 7202 Setup)
 - **Standard**: **1-1/4\" Schedule 40 Steel Pipe** (Nominal ID: 35.05mm).
@@ -31,6 +32,7 @@ The use of a **16-inch rear wheel** lowers the center of gravity and allows for 
 ### 2. Headset Integration (No-Machining Design)
 - **Locking Method**: Six 5mm radial holes for internal bearing stopping collars.
 - **Reinforcement**: Triangular gussets (60x60x10mm) at top and bottom of the head tube to frame header plate junction.
+- **Steering Linkage**: 15mm steel rod connecting the fork lower pivot to the handlebar column.
 - **Cable Management**: Integrated eyelets every 300mm along the left spar.
 
 ## Tolerances and Fit
