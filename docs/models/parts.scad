@@ -140,12 +140,12 @@ module hub_motor_dd() {
     // 3. INTEGRATED MOUNTING FLANGES (Heavy Duty)
     // Inner faces at +/- 8mm to sandwich the 16mm rim.
     // Flange centers at +/- 13mm. Flange thickness 10mm.
-    for(s=[-1, 1]) translate([0, s * 13, 0])
+    for(s=[-1, 1]) translate([0, s * (rim_sandwich_t/4 + 5), 0])
     rotate([90, 0, 0])
     color(color_subframe) {
         cylinder(d=310, h=10, center=true);
-        // 6-Bolt M8 Pattern PCD 270 (as per front_wheel.md)
-        for(a=[0:60:359]) rotate([0, 0, a]) translate([135, 0, 5*s])
+        // 6-Bolt M8 Pattern
+        for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 5*s])
         color(color_fastener) cylinder(d=13, h=6, $fn=6, center=false);
     }
 
@@ -179,8 +179,8 @@ module torque_arm() {
     color(color_fixed)
     difference() {
         hull() {
-            cylinder(d=40, h=6);
-            translate([60, 0, 0]) cylinder(d=20, h=6);
+            cylinder(d=40, h=torque_arm_t);
+            translate([60, 0, 0]) cylinder(d=20, h=torque_arm_t);
         }
         // Axle flat cutout (10mm)
         cube([10.2, 14.5, 20], center=true);
@@ -222,6 +222,31 @@ module steering_arm() {
         cylinder(d=15.2, h=20, center=true);
         // Tie-rod Mounting Hole
         translate([steering_arm_len, 0, 0]) cylinder(d=8.2, h=20, center=true);
+    }
+}
+
+// Rod-end (Heim Joint) for Steering Linkage
+module rod_end_m8() {
+    color("silver")
+    union() {
+        difference() {
+            // Housing
+            sphere(d=22);
+            // Ball pivot hole
+            rotate([0, 90, 0]) cylinder(d=12, h=30, center=true);
+            // Necking for clearance
+            translate([0, 0, 8]) cube([30, 30, 10], center=true);
+            translate([0, 0, -18]) cube([30, 30, 10], center=true);
+        }
+        // The Ball
+        color("dimgray")
+        rotate([0, 90, 0])
+        difference() {
+            sphere(d=11.8);
+            cylinder(d=8.1, h=25, center=true);
+        }
+        // Shank
+        translate([0, 0, -20]) cylinder(d=10, h=20);
     }
 }
 
@@ -282,7 +307,7 @@ module cable_guide() {
 module saddle() {
     // Post
     color(color_fastener)
-    cylinder(d=27.2, h=300);
+    cylinder(d=seat_post_dia, h=300);
 
     // Saddle Body
     translate([0, 0, 300]) {
@@ -304,13 +329,13 @@ module saddle() {
 module handlebars() {
     // Stem
     color(color_fixed)
-    cylinder(d=28.6, h=150);
+    cylinder(d=stem_dia, h=150);
 
     // Bars
     translate([0, 0, 150]) {
         color("black")
         rotate([0, 90, 0])
-        cylinder(d=22.2, h=700, center=true);
+        cylinder(d=handlebar_dia, h=700, center=true);
 
         // Grips
         for(s=[-1, 1]) translate([0, s * 300, 0])
@@ -331,12 +356,12 @@ module drivetrain_assy() {
     // Cranks
     for(a=[0, 180])
     rotate([0, a, 0])
-    translate([85, 0, 0]) {
+    translate([crank_length/2, 0, 0]) {
         color(color_fixed)
-        cube([170, 10, 30], center=true);
+        cube([crank_length, 10, 30], center=true);
 
         // Pedals
-        translate([85, 10 * (a==0 ? 1 : -1), 0])
+        translate([crank_length/2, 10 * (a==0 ? 1 : -1), 0])
         color([0.3, 0.3, 0.3])
         cube([80, 100, 20], center=true);
     }
@@ -354,4 +379,109 @@ module rear_hub_motor_geared() {
     color("black")
     rotate([90, 0, 0])
     cylinder(d=12, h=200, center=true);
+}
+
+// ---------------------------------------------------------
+// 14. BIPOD KICKSTAND (Heavy Duty)
+// ---------------------------------------------------------
+module bipod_kickstand(deployed=false) {
+    // Rotation around pivot axis (X-axis)
+    // Deployed: tilted forward/down. Stowed: tucked under bed.
+    angle = deployed ? 25 : -10;
+
+    color(color_subframe)
+    union() {
+        // Pivot Housing (Main cross-bar)
+        rotate([0, 90, 0]) pipe(40, 20, 120);
+
+        // Legs
+        for(s=[-1, 1]) rotate([angle, 0, 0]) {
+            translate([0, s * 40, 0])
+            rotate([0, 0, s * 12]) // Splay legs for stability
+            union() {
+                // Main leg tube (Verticalized rect_tube)
+                translate([0, 0, -kickstand_leg_len/2])
+                rotate([0, 90, 0])
+                rect_tube(30, 30, kickstand_leg_len);
+
+                // Feet (Swivel pads)
+                translate([0, 0, -kickstand_leg_len])
+                cube([80, 80, 12], center=true);
+            }
+        }
+    }
+}
+
+// ---------------------------------------------------------
+// 16. CARGO BOX (Internal Structure)
+// ---------------------------------------------------------
+module cargo_box_assy() {
+    internal_l = bed_length - 2 * box_wall_t;
+    internal_w = bed_width - 2 * box_wall_t;
+
+    // 1. FLOOR (Plywood/Composite)
+    color("burlywood")
+    translate([bed_length/2, 0, box_wall_t/2])
+    cube([bed_length, bed_width, box_wall_t], center=true);
+
+    // 2. WALLS
+    color("lightgray", 0.8)
+    difference() {
+        union() {
+            // Front & Rear
+            for(x=[box_wall_t/2, bed_length - box_wall_t/2]) translate([x, 0, box_height/2 + box_wall_t])
+            cube([box_wall_t, bed_width, box_height], center=true);
+
+            // Sides
+            for(s=[-1, 1]) translate([bed_length/2, s * (bed_width/2 - box_wall_t/2), box_height/2 + box_wall_t])
+            cube([bed_length, box_wall_t, box_height], center=true);
+        }
+        // Top Opening
+        translate([bed_length/2, 0, box_height + box_wall_t + 10]) cube([bed_length + 100, bed_width + 100, 20], center=true);
+    }
+
+    // 3. INTERNAL MOUNTING RAILS (E-Track style)
+    color("dimgray")
+    for(s=[-1, 1]) {
+        // High and Low Rails
+        for(z=[150, 450]) translate([bed_length/2, s * (internal_w/2 - 5), z + box_wall_t])
+        rotate([0, 90, 0])
+        difference() {
+            cube([10, 50, internal_l], center=true);
+            // Tie-down slots (E-track pattern)
+            for(x=[-(internal_l/2 - 50) : 100 : (internal_l/2 - 50)])
+            translate([0, 0, x]) cube([20, 15, 60], center=true);
+        }
+    }
+
+    // 4. STEEL CORNER ANGLES
+    color("dimgray")
+    for(s=[-1, 1]) {
+        // Horizontal side angles
+        for(z=[box_wall_t, box_height + box_wall_t])
+        translate([bed_length/2, s * (bed_width/2), z])
+        rotate([0, 90, 0])
+        difference() {
+            cube([25, 25, bed_length], center=true);
+            translate([3, 3, 0]) cube([25, 25, bed_length + 2], center=true);
+        }
+    }
+}
+
+// ---------------------------------------------------------
+// 15. MUDGUARDS (Fenders)
+// ---------------------------------------------------------
+module mudguard(dia, width, angle_start=0, angle_end=180) {
+    color([0.1, 0.1, 0.1])
+    rotate([90, 0, 0])
+    rotate([0, 0, angle_start])
+    difference() {
+        rotate_extrude(angle = angle_end - angle_start)
+        translate([dia/2 + mudguard_clearance, 0, 0])
+        difference() {
+            circle(d=width);
+            circle(d=width-4);
+            translate([-width/2, 0, 0]) square([width, width], center=true);
+        }
+    }
 }

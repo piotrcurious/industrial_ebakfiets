@@ -31,12 +31,15 @@ The project features a full 3D mechanical model developed in **OpenSCAD**, ensur
 Detailed descriptions of the core components and systems:
 
 ### Core Hardware Modules
-- **[Front Wheel Module](docs/modules/front_wheel.md)**
-- **[Frame Module](docs/modules/frame.md)**
-- **[Drivetrain Module](docs/modules/drivetrain.md)**
-- **[Brakes & Steering Module](docs/modules/brakes_steering.md)**
+- **[Mechanical Concept](docs/modules/mechanical_concept.md)**
 - **[Mechanical Geometry](docs/modules/mechanical_geometry.md)**
+- **[Frame Module](docs/modules/frame.md)**
+- **[Front Wheel Module](docs/modules/front_wheel.md)**
+- **[Steering Head Module](docs/modules/steering_head.md)**
+- **[Brakes & Steering Module](docs/modules/brakes_steering.md)**
+- **[Drivetrain Module](docs/modules/drivetrain.md)**
 - **[Cargo Box Module](docs/modules/cargo_box.md)**
+- **[Sub-Assemblies Detail](docs/modules/subassemblies_detail.md)**
 
 ### Systems, Software & Maintenance
 - **[Electrical Module](docs/modules/electrical.md)**
@@ -47,9 +50,9 @@ Detailed descriptions of the core components and systems:
 - **[Maintenance & Safety](docs/modules/maintenance_safety.md)**
 
 ## Bill of Materials (BOM) Alternatives
-1. **[Industrial Standard](docs/bom/industrial_standard.md)** (~$1,940)
+1. **[Industrial Standard](docs/bom/industrial_standard.md)** (~$1,975)
 2. **[Budget Salvage](docs/bom/budget_salvage.md)** (~$625)
-3. **[Heavy Duty](docs/bom/heavy_duty.md)** (~$3,810)
+3. **[Heavy Duty](docs/bom/heavy_duty.md)** (~$3,275)
 
 ---
 

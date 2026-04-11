@@ -12,13 +12,6 @@ module frame_assy() {
     cube([10, 100, head_tube_length - 20], center=true);
 
     // 2. GOOSENECK RISER (Transition from Head Tube to Low Bed)
-    // Drops from steering head height to ground_clearance + spar_size/2
-    // Steering head center is at approx 500mm above axle (774mm above ground)
-    // Bed center is at 150 + 20 = 170mm above ground.
-    // Drop is approx 600mm.
-    riser_drop = 500; // Calculated drop from header center to bed center
-    riser_length = 400;
-
     color(color_frame)
     for(s=[-1, 1]) {
         hull() {
@@ -84,7 +77,7 @@ module frame_assy() {
         translate([bed_length - 150, 0, 85])
         rotate([90, 0, 0])
         color(color_fastener)
-        pipe(40, 34, 68);
+        pipe(40, 34, 68); // Standard BB shell
     }
 }
 

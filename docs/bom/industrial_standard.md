@@ -28,6 +28,7 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | **Lighting/Safe** | Lighting/Horn | Dual 10W LED + 110dB Horn + Mirrors | $55 |
 | **Ergonomics** | Seat/Stem/Bars | 31.6mm Post + Adjustable Stem + 720mm Bars | $85 |
 | **Cargo Box** | Panels/Steel | 12mm Marine Plywood + 25x25mm Steel Angle | $110 |
+| | Logistics Rails | 2m E-track (zinc plated steel) | $35 |
 | | Anchor Points | 4x D-ring rated for 250kg | $15 |
 | **Fasteners** | Structural | Grade 10.9 structural assortment (M8x50, M10, M14) | $45 |
-| **Total** | | | **~$1,940** |
+| **Total** | | | **~$1,975** |

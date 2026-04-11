@@ -27,7 +27,7 @@ module front_fork_assy() {
 
             // IS Disc Brake Caliper Tabs (Left side)
             if (s == -1) {
-                translate([0, 0, 80]) {
+                translate([0, 0, brake_mount_height]) {
                     // Lower Tab
                     translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=10, h=10, center=true);
                     // Upper Tab

@@ -29,8 +29,8 @@ head_tube_id = 35.05;
 head_tube_length = 200;
 
 // 5. FRAME
-bed_width = 810;
-bed_length = 1250;
+bed_width = 834;  // Total width (810 internal + 2x12mm walls)
+bed_length = 1274; // Total length (1250 internal + 2x12mm walls)
 main_spar_size = 40;
 ground_clearance = 150;
 wheelbase = 1950;
@@ -53,14 +53,33 @@ stab_deploy_len = 250;
 riser_drop = 500;
 riser_length = 400;
 
-// 10. BRAKES & STEERING LINKAGE
+// 10. COMPONENTS & HARDWARE
+torque_arm_t = 6;
+rim_bolt_pcd = 270; // PCD for rim to motor bolts
+rim_sandwich_t = 16; // 8mm + 8mm flanges
+
+// 11. BRAKES & STEERING LINKAGE
 brake_rotor_dia = 180;
 brake_caliper_offset = 51; // IS standard offset
+brake_mount_height = 80;
 steering_arm_len = 100;
 steering_rod_dia = 15;
 
-// 11. ELECTRONICS
+// 12. DRIVETRAIN & COMFORT
+crank_length = 170;
+seat_post_dia = 27.2;
+handlebar_dia = 22.2;
+stem_dia = 28.6;
+
+// 13. ELECTRONICS
 battery_box_w = 200;
 battery_box_h = 100;
 battery_box_l = 300;
 controller_box_size = 120;
+
+// 14. UTILITY & ACCESSORIES
+kickstand_leg_len = 350;
+kickstand_width = 400;
+mudguard_clearance = 20; // Distance from tire
+mudguard_width_front = 170;
+mudguard_width_rear = 60;

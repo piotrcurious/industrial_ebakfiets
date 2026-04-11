@@ -1,9 +1,9 @@
 include <master_dims.scad>
 include <parts.scad>
-use <front_fork.scad>
-use <steering_head.scad>
-use <frame.scad>
-use <front_wheel_assy.scad>
+include <front_fork.scad>
+include <steering_head.scad>
+include <frame.scad>
+include <front_wheel_assy.scad>
 
 // ---------------------------------------------------------
 // FULL ASSEMBLY - NESTED SERIAL TRANSFORMATION CHAIN
@@ -14,6 +14,10 @@ module full_bicycle_assembly() {
 
     // 1. ROOT: Front Wheel (Includes Hub & Axle)
     front_wheel_assy();
+
+    // Front Mudguard
+    rotate([0, 0, 0])
+    mudguard(front_tire_od, mudguard_width_front, 20, 160);
 
     // Torque Arm (Installed on axle)
     translate([0, front_hub_dropout/2 + 12, 0])
@@ -26,7 +30,7 @@ module full_bicycle_assembly() {
         front_fork_assy();
 
         // Disc Caliper (Mated to Fork Tabs)
-        translate([0, -front_hub_dropout/2 - 20, 80])
+        translate([0, -front_hub_dropout/2 - 20, brake_mount_height])
         rotate([0, 0, 0])
         disc_caliper();
 
@@ -40,6 +44,10 @@ module full_bicycle_assembly() {
             rotate([0, 0, 180])
             union() {
                 frame_assy();
+
+                // 12. CARGO BOX
+                translate([riser_length, 0, -riser_drop])
+                cargo_box_assy();
 
                 // 7. DRIVETRAIN (At Bottom Bracket)
                 translate([riser_length + bed_length - 150, 0, -riser_drop + 85])
@@ -57,7 +65,11 @@ module full_bicycle_assembly() {
                     steering_arm();
                 }
 
-                // 10. ELECTRONICS (Mounted to Riser/Frame Junction)
+                // 10. KICKSTAND (Under Bed)
+                translate([riser_length + 100, 0, -riser_drop + 10])
+                bipod_kickstand(deployed=true);
+
+                // 11. ELECTRONICS (Mounted to Riser/Frame Junction)
                 // Battery Packs (Dual)
                 for(s=[-1, 1]) translate([riser_length + 200, s * 150, -riser_drop + 60])
                 battery_pack();
@@ -75,14 +87,34 @@ module full_bicycle_assembly() {
         rotate([90, 0, 0])
         color("black", 0.7)
         cylinder(d=rear_wheel_dia, h=40, center=true);
+
+        // Rear Mudguard
+        rotate([0, 0, 180])
+        mudguard(rear_wheel_dia, mudguard_width_rear, 30, 180);
     }
 
     // 6. STEERING LINKAGE (Dual Bell Crank System)
     // Connecting Lower (Fork) arm to Upper (Handlebar) arm
+
+    // Geometry calculated based on assembly offsets:
+    // Lower arm tip is at [fork_rake + steering_arm_len, 0, fork_length + 15] relative to wheel center.
+    // Upper arm tip is relative to frame: [riser_length/2 + steering_arm_len, 0, -50]
+    // The link spans roughly from X=145 to X=350, Z=fork_length to Z=fork_length+riser_drop
+
     color("dimgray")
-    translate([fork_rake + 100, 40, fork_length + 20]) // Start at fork arm tip
-    rotate([0, atan2(riser_drop, riser_length + bed_length/2), 0])
-    cylinder(d=12, h=1400);
+    translate([fork_rake + steering_arm_len, 0, fork_length + 15]) {
+        // Lower Rod End
+        rod_end_m8();
+
+        // Tie Rod (Approximate alignment)
+        rotate([0, 70, 0])
+        cylinder(d=steering_rod_dia, h=550);
+
+        // Upper Rod End
+        translate([steering_arm_len + 80, 0, 500])
+        rotate([0, 180, 0])
+        rod_end_m8();
+    }
 }
 
 // ---------------------------------------------------------
