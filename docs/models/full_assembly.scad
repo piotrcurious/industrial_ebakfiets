@@ -5,10 +5,6 @@ use <steering_head.scad>
 use <frame.scad>
 use <front_wheel_assy.scad>
 
-// Internal constants for positioning
-riser_length = 400;
-riser_drop = 500;
-
 // ---------------------------------------------------------
 // FULL ASSEMBLY - NESTED SERIAL TRANSFORMATION CHAIN
 // ROOT = FRONT TIRE CENTER (0,0,0)
@@ -29,10 +25,12 @@ module full_bicycle_assembly() {
     rotate([0, -(90-head_angle), 0]) {
         front_fork_assy();
 
+        // Disc Caliper (Mated to Fork Tabs)
+        translate([0, -front_hub_dropout/2 - 20, 80])
+        rotate([0, 0, 0])
+        disc_caliper();
+
         // 3. STEERING HEAD (Mated to Fork Steering Shaft)
-        // The Fork Crown top is at Z = fork_length.
-        // The Head Tube is centered on the shaft, starting 40mm above crown
-        // (20mm crown thickness + 20mm clearance for lower bearing stack)
         translate([fork_rake, 0, fork_length + 40 + head_tube_length/2]) {
             steering_head_assy();
 
@@ -44,8 +42,6 @@ module full_bicycle_assembly() {
                 frame_assy();
 
                 // 7. DRIVETRAIN (At Bottom Bracket)
-                // BB is at [bed_length - 150, 0, 85] relative to bed start
-                // Bed start is riser_length from header
                 translate([riser_length + bed_length - 150, 0, -riser_drop + 85])
                 drivetrain_assy();
 
@@ -54,15 +50,26 @@ module full_bicycle_assembly() {
                 saddle();
 
                 // 9. HANDLEBARS (At Steering Column Post)
-                // Positioned on the frame riser/bridge
-                translate([riser_length/2, 0, 0])
-                handlebars();
+                translate([riser_length/2, 0, 0]) {
+                    handlebars();
+                    // Upper Steering Bell Crank
+                    translate([0, 0, -50])
+                    steering_arm();
+                }
+
+                // 10. ELECTRONICS (Mounted to Riser/Frame Junction)
+                // Battery Packs (Dual)
+                for(s=[-1, 1]) translate([riser_length + 200, s * 150, -riser_drop + 60])
+                battery_pack();
+
+                // Controllers
+                translate([riser_length + 100, 0, -riser_drop + 100])
+                motor_controller();
             }
         }
     }
 
     // 5. REAR WHEEL ASSEMBLY
-    // Placed at wheelbase distance. Z adjusted for tire radius difference.
     translate([-wheelbase, 0, (rear_wheel_dia/2 - front_tire_od/2)]) {
         rear_hub_motor_geared();
         rotate([90, 0, 0])
@@ -70,12 +77,12 @@ module full_bicycle_assembly() {
         cylinder(d=rear_wheel_dia, h=40, center=true);
     }
 
-    // 6. STEERING LINKAGE (Connecting Handlebars to Fork)
-    // We model the steering rod connecting the two columns.
+    // 6. STEERING LINKAGE (Dual Bell Crank System)
+    // Connecting Lower (Fork) arm to Upper (Handlebar) arm
     color("dimgray")
-    translate([fork_rake - 50, 40, fork_length + 20]) // Lower pivot on fork
-    rotate([0, atan2(500, 1300), 0])
-    cylinder(d=15, h=1400);
+    translate([fork_rake + 100, 40, fork_length + 20]) // Start at fork arm tip
+    rotate([0, atan2(riser_drop, riser_length + bed_length/2), 0])
+    cylinder(d=12, h=1400);
 }
 
 // ---------------------------------------------------------

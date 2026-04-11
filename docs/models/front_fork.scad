@@ -24,6 +24,16 @@ module front_fork_assy() {
                 translate([20, 0, 30])
                 rotate([90, 0, 0]) cylinder(d=6.2, h=20, center=true);
             }
+
+            // IS Disc Brake Caliper Tabs (Left side)
+            if (s == -1) {
+                translate([0, 0, 80]) {
+                    // Lower Tab
+                    translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=10, h=10, center=true);
+                    // Upper Tab
+                    translate([0, 0, 25.5]) rotate([0, 90, 0]) cylinder(d=10, h=10, center=true);
+                }
+            }
         }
     }
 
@@ -62,6 +72,11 @@ module front_fork_assy() {
     translate([fork_rake, 0, fork_length + 25])
     color(color_fixed)
     pipe(30, 15.1, 10);
+
+    // 5. STEERING BELL CRANK (Lower Pivot)
+    translate([fork_rake, 0, fork_length + 15])
+    rotate([0, 0, 0])
+    steering_arm();
 }
 
 front_fork_assy();

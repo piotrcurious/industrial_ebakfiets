@@ -48,3 +48,19 @@ box_wall_t = 12;
 // 8. STABILIZERS
 stab_size = 35;
 stab_deploy_len = 250;
+
+// 9. FRAME RISER (Gooseneck)
+riser_drop = 500;
+riser_length = 400;
+
+// 10. BRAKES & STEERING LINKAGE
+brake_rotor_dia = 180;
+brake_caliper_offset = 51; // IS standard offset
+steering_arm_len = 100;
+steering_rod_dia = 15;
+
+// 11. ELECTRONICS
+battery_box_w = 200;
+battery_box_h = 100;
+battery_box_l = 300;
+controller_box_size = 120;

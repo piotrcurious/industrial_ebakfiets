@@ -190,6 +190,63 @@ module torque_arm() {
 }
 
 // ---------------------------------------------------------
+// 11. DISC BRAKE CALIPER (Mechanical)
+// ---------------------------------------------------------
+module disc_caliper() {
+    color("firebrick")
+    difference() {
+        union() {
+            // Main Body
+            cube([60, 40, 40], center=true);
+            // Mounting Tabs (IS Standard)
+            translate([0, 0, 25]) cube([80, 10, 10], center=true);
+        }
+        // Rotor Slot
+        cube([10, 30, 50], center=true);
+        // Mounting Holes
+        for(s=[-1, 1]) translate([s * 25.5, 0, 25]) rotate([90, 0, 0]) cylinder(d=6, h=20, center=true);
+    }
+}
+
+// ---------------------------------------------------------
+// 12. STEERING ARMS (Bell Cranks)
+// ---------------------------------------------------------
+module steering_arm() {
+    color(color_fixed)
+    difference() {
+        hull() {
+            cylinder(d=30, h=10);
+            translate([steering_arm_len, 0, 0]) cylinder(d=20, h=10);
+        }
+        // Center Shaft Hole
+        cylinder(d=15.2, h=20, center=true);
+        // Tie-rod Mounting Hole
+        translate([steering_arm_len, 0, 0]) cylinder(d=8.2, h=20, center=true);
+    }
+}
+
+// ---------------------------------------------------------
+// 13. ELECTRONICS PACKAGING
+// ---------------------------------------------------------
+module battery_pack() {
+    color("darkgreen")
+    union() {
+        cube([battery_box_l, battery_box_w, battery_box_h], center=true);
+        // Straps
+        for(x=[-100, 100]) translate([x, 0, 0]) color("black") cube([10, battery_box_w + 5, battery_box_h + 5], center=true);
+    }
+}
+
+module motor_controller() {
+    color("silver")
+    difference() {
+        cube([controller_box_size, controller_box_size, controller_box_size/2], center=true);
+        // Cooling Fins
+        for(x=[-50:10:50]) translate([x, 0, controller_box_size/4]) cube([2, controller_box_size, 5], center=true);
+    }
+}
+
+// ---------------------------------------------------------
 // UTILITY SHAPES
 // ---------------------------------------------------------
 module rect_tube(w, h, l, t=2.5) {
