@@ -16,7 +16,7 @@ To ensure the rider can pedal safely even when fully loaded:
 - **BB Offset**: The BB shell is mounted **85mm** above the centerline of the 40x20mm main frame rails.
 
 ## Steering Linkage Geometry
-- **Steering Arms**: 10mm thick steel plates, **100mm length** from pivot center to rod end center.
+- **Steering Arms**: 10mm thick steel plates, **120mm length** from pivot center to rod end center.
 - **Ratio**: **1:1 steering ratio** between handlebar and fork.
 - **Kinematics**: With a +/- 45-degree limit, the linkage rod maintains an optimal angle to prevent over-centering or mechanical binding.
 

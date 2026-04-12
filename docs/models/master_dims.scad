@@ -31,7 +31,7 @@ head_tube_length = 200;
 // 5. FRAME
 box_wall_t = 12; // Moved up to satisfy dependencies
 bed_internal_width = 810;
-bed_internal_length = 1250;
+bed_internal_length = 1350; // Slightly longer for stability
 bed_width = bed_internal_width + 2 * box_wall_t;  // Total width
 bed_length = bed_internal_length + 2 * box_wall_t; // Total length
 main_spar_size = 40;
@@ -55,7 +55,7 @@ stab_deploy_len = 250;
 
 // 9. FRAME RISER (Gooseneck)
 riser_drop = 500;
-riser_length = 400;
+riser_length = 450;
 
 // 10. COMPONENTS & HARDWARE
 torque_arm_t = 6;
@@ -70,7 +70,7 @@ tube_wall_t = 2.5;
 brake_rotor_dia = 203;
 brake_caliper_offset = 51; // IS standard offset
 brake_mount_height = 80;
-steering_arm_len = 100;
+steering_arm_len = 120;
 steering_rod_dia = 15;
 
 // 12. DRIVETRAIN & COMFORT

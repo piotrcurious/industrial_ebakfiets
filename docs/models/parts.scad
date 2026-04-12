@@ -125,7 +125,12 @@ module hub_motor_dd() {
     // 1. MAIN STATOR HOUSING
     color(color_fixed)
     rotate([90, 0, 0])
-    cylinder(d=240, h=80, center=true);
+    union() {
+        cylinder(d=240, h=80, center=true);
+        // Radial Cooling Fins
+        for(a=[0:5:359]) rotate([0, 0, a])
+        translate([120, 0, 0]) cube([10, 2, 70], center=true);
+    }
 
     // 2. SIDE COVERS (Bolt-on)
     for(s=[-1, 1]) translate([0, s * 45, 0])
@@ -151,16 +156,22 @@ module hub_motor_dd() {
         color(color_fastener) cylinder(d=13, h=6, $fn=6, center=false);
     }
 
-    // 4. AXLE (M14 Steel with 10mm flats)
+    // 4. AXLE (M14 Steel with 10mm flats and wire exit)
     color("black")
     rotate([90, 0, 0])
     difference() {
-        cylinder(d=front_axle_dia, h=front_hub_dropout + 40, center=true);
-        // Axle flats for torque retention (Vertical orientation in dropout)
-        // We translate in X before the rotate([90,0,0]) to get Y-aligned flats
+        union() {
+            cylinder(d=front_axle_dia, h=front_hub_dropout + 40, center=true);
+            // Wire exit reinforcement nut
+            translate([0, 0, -front_hub_dropout/2 - 25]) cylinder(d=25, h=10, center=true);
+        }
+        // Axle flats
         for(s=[-1, 1]) translate([0, 0, s * (front_hub_dropout/2 + 10)])
         for(side=[-1, 1]) translate([side * 10, 0, 0])
         cube([10, 30, 30], center=true);
+
+        // Internal wire channel (hollow axle)
+        cylinder(d=8, h=front_hub_dropout + 100, center=true);
     }
 
     // 5. DISC BRAKE ROTOR

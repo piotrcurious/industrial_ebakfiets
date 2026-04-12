@@ -12,7 +12,7 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 
 ## Design Philosophy
 ### 1. Longitudinal Stiffness
-The main cargo bed is supported by two parallel rails. Total bed width is **834mm** (810mm internal + 12mm walls), and length is **1274mm** (1250mm internal).
+The main cargo bed is supported by two parallel rails. Total bed width is **834mm** (810mm internal + 12mm walls), and length is **1274mm** (1350mm internal).
 
 ### 2. Low Center of Gravity (16-inch Rear Wheel)
 The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design.
