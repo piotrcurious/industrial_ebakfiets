@@ -3,113 +3,39 @@ include <parts.scad>
 
 // MAIN FRAME ASSEMBLY
 // Origin = MATING SURFACE OF THE HEADER PLATE (Gusset face)
-// Frame grows in +X from this point.
 module frame_assy() {
-
-    // 1. FRAME HEADER PLATE (Mates to Steering Head Gusset)
-    color(color_frame)
-    translate([5, 0, 0])
-    cube([10, 100, head_tube_length - 20], center=true);
-
-    // 2. GOOSENECK RISER (Transition from Head Tube to Low Bed)
-    // Refined geometry: Triple-point hull for organic taper and structural rigidity
-    color(color_frame)
-    for(s=[-1, 1]) {
+    color(color_frame) translate([5, 0, 0]) cube([10, 100, head_tube_length - 20], center=true);
+    color(color_frame) for(s=[-1, 1]) {
         hull() {
-            // Top attachment at Header Plate (Beefy junction)
-            translate([10, s * 40, 0])
-            sphere(d=50);
-
-            // Midpoint (Defining the neck curvature)
-            translate([riser_length/2, s * (bed_internal_width/6), -riser_drop/2])
-            sphere(d=45);
-
-            // Bottom attachment at Bed start (Spreads load across spar)
-            translate([riser_length, s * (bed_width/2 - 20), -riser_drop])
-            sphere(d=main_spar_size + 10);
+            translate([10, s * 40, 0]) sphere(d=50);
+            translate([riser_length/2, s * (bed_internal_width/6), -riser_drop/2]) sphere(d=45);
+            translate([riser_length, s * (bed_width/2 - 20), -riser_drop]) sphere(d=main_spar_size + 10);
         }
     }
-
-    // 3. REAR CHASSIS (Starts after riser)
     translate([riser_length, 0, -riser_drop]) {
-
-        // A. Cargo Bed
         translate([bed_length/2, 0, 0]) {
-            // Outer Spars
-            for(s=[-1, 1]) {
-                translate([0, s * (bed_width/2 - main_spar_size/2), 0])
-                color(color_frame)
-                rect_tube(main_spar_size, main_spar_size, bed_length);
-            }
-
-            // Bed Cross-members (Euro-pallet supports)
-            for(x=[-bed_length/2 + 20 : 400 : bed_length/2 - 20])
-            translate([x, 0, 0])
-            color(color_moving)
-            rect_tube(bed_width - 2*main_spar_size, 20, 40);
-
-            // Cable guides along left spar
-            for(x=[-bed_length/2 + 100 : 300 : bed_length/2])
-            translate([x, -bed_width/2 - 10, -10])
-            cable_guide();
+            for(s=[-1, 1]) translate([0, s * (bed_width/2 - main_spar_size/2), 0]) color(color_frame) rect_tube(main_spar_size, main_spar_size, bed_length);
+            for(x=[-bed_length/2 + 20 : 400 : bed_length/2 - 20]) translate([x, 0, 0]) color(color_moving) rect_tube(bed_width - 2*main_spar_size, 20, 40);
+            for(x=[-bed_length/2 + 100 : 300 : bed_length/2]) translate([x, -bed_width/2 - 10, -10]) cable_guide();
         }
-
-        // B. Rear Subframe (Seat & Wheel)
-        // Transition from wide bed to narrow rear wheel (135mm dropout spacing)
-
-        // Calculate exact dropout position for wheelbase alignment
-        // We want the rear axle at X = wheelbase (relative to front axle)
-        // This logic is easier handled in full_assembly, but here we define the geometry.
         rear_extension = 150;
-
-        // Height adjustment: Rear axle Z should be (rear_wheel_dia/2) from ground.
-        // Ground is at - (front_tire_od/2).
-        // Riser drop puts bed at -riser_drop relative to HT.
-        // We want dropout_z such that:
-        // HT_global_z - riser_drop + dropout_z = -front_tire_od/2 + rear_wheel_dia/2
-        // dropout_z = -front_tire_od/2 + rear_wheel_dia/2 - HT_global_z + riser_drop
-
-        dropout_z_offset = -50; // Calculated approx 34.4mm
-
+        dropout_z_offset = -50;
         for(s=[-1, 1]) {
-            color(color_frame)
-            hull() {
-                // Wide Bed End
-                translate([bed_length, s * (bed_width/2 - main_spar_size/2), 0])
-                cube([main_spar_size, main_spar_size, main_spar_size], center=true);
-
-                // Narrow Dropout Top
-                translate([bed_length + rear_extension, s * (135/2 + 5), dropout_z_offset + 30])
-                cube([20, 10, 20], center=true);
+            color(color_frame) hull() {
+                translate([bed_length, s * (bed_width/2 - main_spar_size/2), 0]) cube([main_spar_size, main_spar_size, main_spar_size], center=true);
+                translate([bed_length + rear_extension, s * (135/2 + 5), dropout_z_offset + 30]) cube([20, 10, 20], center=true);
             }
         }
-
         translate([bed_length + rear_extension, 0, 0]) {
-            // Seat tube mast - moved forward from axle for better reach
-            translate([-400, 0, 350])
-            color(color_subframe)
-            pipe(35, 30, 500);
-
-            // Bridge to seat mast
-            translate([-400, 0, 100])
-            color(color_frame)
-            rotate([0, 90, 0]) pipe(40, 35, 200);
-
-            // Rear dropouts (16" Wheel)
+            translate([-400, 0, 350]) color(color_subframe) pipe(35, 30, 500);
+            translate([-400, 0, 100]) color(color_frame) rotate([0, 90, 0]) pipe(40, 35, 200);
             for(s=[-1, 1]) {
-                translate([0, s*(135/2 + 5), dropout_z_offset])
-                color(color_fastener)
-                difference() {
+                translate([0, s*(135/2 + 5), dropout_z_offset]) color(color_fastener) difference() {
                     cube([60, 12, 80], center=true);
                     rotate([90, 0, 0]) cylinder(d=12, h=30, center=true);
                 }
             }
         }
-
-        // C. Bottom Bracket (Drivetrain Anchor)
-        translate([bed_length - 150, 0, 85])
-        rotate([90, 0, 0])
-        color(color_fastener)
-        pipe(40, 34, 68); // Standard BB shell
+        translate([bed_length - 150, 0, 85]) rotate([90, 0, 0]) color(color_fastener) pipe(40, 34, 68);
     }
 }
