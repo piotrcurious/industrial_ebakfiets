@@ -60,8 +60,10 @@ module full_bicycle_assembly() {
                 // 9. HANDLEBARS (At Steering Column Post)
                 translate([riser_length/2, 0, 0]) {
                     handlebars();
-                    // Upper Steering Bell Crank
+                    // Upper Steering Bell Crank (Pointed to Left side)
+                    // Frame is rotated 180, so -90 in frame coords = +90 globally
                     translate([0, 0, -50])
+                    rotate([0, 0, -90])
                     steering_arm();
                 }
 
@@ -99,43 +101,45 @@ module full_bicycle_assembly() {
     // Coordinates relative to Root (Front Tire Center)
 
     // Point A: Lower Bell Crank Tip (Fork-mounted)
-    // Fork is rotated by -(90-head_angle). Lower arm is at fork_length + 15.
+    // Fork is rotated by -alpha = -(90-head_angle).
     alpha = 90 - head_angle;
-    p_a_local = [steering_arm_len, 0, 15]; // Relative to fork crown top center
-    p_crown = [fork_rake, 0, fork_length];
 
-    // Rotation matrix for fork: R_y(-alpha)
-    // [ cos(-alpha)  0  sin(-alpha) ]   [ x ]
-    // [      0       1       0      ] * [ y ]
-    // [ -sin(-alpha) 0  cos(-alpha) ]   [ z ]
+    // Exact kinematic mapping for p_a:
+    p_a_fork_local_origin = [fork_rake, 0, fork_length + 15];
+    p_a_fork_local_tip = [fork_rake, steering_arm_len, fork_length + 15 + 5];
 
     p_a = [
-        p_crown[0] + p_a_local[0]*cos(alpha) + p_a_local[2]*sin(alpha),
-        0,
-        p_crown[2] - p_a_local[0]*sin(alpha) + p_a_local[2]*cos(alpha)
+        p_a_fork_local_tip[0] * cos(alpha) - p_a_fork_local_tip[2] * sin(alpha),
+        p_a_fork_local_tip[1],
+        p_a_fork_local_tip[0] * sin(alpha) + p_a_fork_local_tip[2] * cos(alpha)
     ];
 
     // Point B: Upper Bell Crank Tip (Handlebar-mounted)
-    // Frame is at p_crown + steering_head translation.
-    // We'll simplify to find Point B in Root coordinates.
-    // Upper arm is at frame position [riser_length/2, 0, 0] relative to frame header.
-    // Handlebar column is vertical in frame assembly.
+    // Path: Axle -> rotate(-alpha) -> translate(p_ht_rel_axle) -> rotate(alpha)
+    //            -> translate(-(head_tube_od/2+10)) -> rotate_z(180) -> Frame
 
-    // Position of Frame Header Plate in Root coords:
-    p_header = [
-        p_crown[0] + 0*cos(alpha) + (40 + head_tube_length/2)*sin(alpha),
-        0,
-        p_crown[2] - 0*sin(alpha) + (40 + head_tube_length/2)*cos(alpha)
+    p_ht_rel_axle = [fork_rake, 0, fork_length + 40 + head_tube_length/2];
+
+    // Point B in Frame coords:
+    p_b_frame = [riser_length/2, steering_arm_len, -45]; // After rotate_z(-90) in frame
+
+    // 1. rotate_z(180):
+    p_b_1 = [-p_b_frame[0], -p_b_frame[1], p_b_frame[2]];
+    // 2. translate(-(head_tube_od/2 + 10)):
+    p_b_2 = [p_b_1[0] - (head_tube_od/2 + 10), p_b_1[1], p_b_1[2]];
+    // 3. rotate_y(alpha):
+    p_b_3 = [
+        p_b_2[0] * cos(alpha) + p_b_2[2] * sin(alpha),
+        p_b_2[1],
+        -p_b_2[0] * sin(alpha) + p_b_2[2] * cos(alpha)
     ];
-
-    // Frame rotation is alpha (to make it horizontal again)
-    // Point B local to frame header:
-    p_b_frame_local = [riser_length/2 + steering_arm_len, 0, -50];
-
+    // 4. translate(p_ht_rel_axle):
+    p_b_4 = [p_b_3[0] + p_ht_rel_axle[0], p_b_3[1], p_b_3[2] + p_ht_rel_axle[2]];
+    // 5. rotate_y(-alpha):
     p_b = [
-        p_header[0] - p_b_frame_local[0], // Frame grows in -X relative to header in our assembly
-        0,
-        p_header[2] + p_b_frame_local[2]  // Adjusted to use p_header[2] for Z
+        p_b_4[0] * cos(alpha) - p_b_4[2] * sin(alpha),
+        p_b_4[1],
+        p_b_4[0] * sin(alpha) + p_b_4[2] * cos(alpha)
     ];
 
     // Draw the rod connecting p_a and p_b

@@ -79,9 +79,8 @@ module front_fork_assy() {
     pipe(30, 15.1, 10);
 
     // 5. STEERING BELL CRANK (Lower Pivot)
+    // Pointed to the LEFT side (+Y)
     translate([fork_rake, 0, fork_length + 15])
-    rotate([0, 0, 0])
+    rotate([0, 0, 90])
     steering_arm();
 }
-
-front_fork_assy();

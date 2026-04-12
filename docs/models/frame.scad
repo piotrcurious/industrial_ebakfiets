@@ -98,5 +98,3 @@ module frame_assy() {
         pipe(40, 34, 68); // Standard BB shell
     }
 }
-
-frame_assy();

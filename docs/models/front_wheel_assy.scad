@@ -16,5 +16,3 @@ module front_wheel_assy() {
     // 4. Hub Motor (Sandwiches the rim)
     hub_motor_dd();
 }
-
-front_wheel_assy();

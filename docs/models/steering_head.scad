@@ -33,5 +33,3 @@ module steering_head_assy() {
     color("black")
     cylinder(d=10, h=10);
 }
-
-steering_head_assy();
