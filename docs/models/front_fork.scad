@@ -38,16 +38,17 @@ module front_fork_assy() {
     }
 
     // 2. FORK BLADES (From Dropout TOP SURFACE to CROWN BOTTOM SURFACE)
-    // Dropout top is at Z = 50. Crown bottom is at Z = fork_length.
+    // Optimized for welding: Tapered profile using hull() between spheres for smoother transitions
     for(s=[-1, 1]) {
+        color(color_frame)
         hull() {
-            // Mating to Dropout
-            translate([0, s * (front_hub_dropout/2 + 15), 45])
-            cube([30, 30, 10], center=true);
+            // Lower joint at dropout (wide base)
+            translate([0, s * (front_hub_dropout/2 + 5), 50])
+            sphere(d=30);
 
-            // Mating to Crown
-            translate([fork_rake, s * (fork_inner_spacing/2 + 15), fork_length - 20])
-            cube([30, 30, 10], center=true);
+            // Upper joint at crown (reinforced transition)
+            translate([fork_rake, s * (fork_inner_spacing/2 + 15), fork_length - 10])
+            sphere(d=40);
         }
     }
 
@@ -56,10 +57,14 @@ module front_fork_assy() {
     translate([fork_rake, 0, fork_length])
     color(color_subframe)
     union() {
-        rect_tube(fork_crown_width, 40, 60);
-        // Reinforcing Gussets for crown-to-blade transition
-        for(s=[-1, 1]) translate([0, s * (fork_inner_spacing/2 - 10), -20])
-        cube([40, 40, 40], center=true);
+        // Main crossbar
+        rotate([0, 90, 0]) rect_tube(40, 60, fork_crown_width);
+
+        // Reinforcing Gussets / Plate (Structural bridge)
+        hull() {
+            for(s=[-1, 1]) translate([0, s * (fork_inner_spacing/2 + 15), -15])
+            sphere(d=40);
+        }
     }
 
     // 4. STEERING SHAFT (Mates to Crown Top Center)

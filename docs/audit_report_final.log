@@ -1,0 +1,182 @@
+Loaded 60 dimensions from docs/models/master_dims.scad
+MATCH: brakes_steering.md has 10.0mm (matches motor_flange_t)
+MATCH: brakes_steering.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: brakes_steering.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: brakes_steering.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: brakes_steering.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: brakes_steering.md has 20.0mm (matches mudguard_clearance)
+MATCH: brakes_steering.md has 203.0mm (matches brake_rotor_dia)
+MATCH: brakes_steering.md has 203.0mm (matches brake_rotor_dia)
+MATCH: brakes_steering.md has 6.0mm (matches torque_arm_t)
+MATCH: cargo_box.md has 12.0mm (matches box_wall_t)
+MATCH: cargo_box.md has 25.0mm (matches steel_angle_size)
+MATCH: cargo_box.md has 25.0mm (matches steel_angle_size)
+MATCH: cargo_box.md has 50.0mm (matches etrack_width)
+MATCH: cargo_box.md has 810.0mm (matches bed_internal_width)
+MATCH: drivetrain.md has 12.0mm (matches box_wall_t)
+MATCH: drivetrain.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: drivetrain.md has 16.0mm (matches rim_sandwich_t)
+MATCH: drivetrain.md has 170.0mm (matches crank_length, mudguard_width_front)
+MATCH: drivetrain.md has 175.0mm (matches front_hub_dropout)
+MATCH: drivetrain.md has 20.0mm (matches mudguard_clearance)
+MATCH: electrical.md has 20.0mm (matches mudguard_clearance)
+MATCH: electrical.md has 500.0mm (matches riser_drop)
+MATCH: ergonomics_accessories.md has 100.0mm (matches steering_arm_len, battery_box_h)
+MATCH: ergonomics_accessories.md has 120.0mm (matches controller_box_size)
+MATCH: ergonomics_accessories.md has 31.6mm (matches seat_post_dia)
+MATCH: frame.md has 10.0mm (matches motor_flange_t)
+MATCH: frame.md has 10.0mm (matches motor_flange_t)
+MATCH: frame.md has 10.0mm (matches motor_flange_t)
+MATCH: frame.md has 12.0mm (matches box_wall_t)
+MATCH: frame.md has 1250.0mm (matches bed_internal_length)
+MATCH: frame.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: frame.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: frame.md has 150.0mm (matches ground_clearance)
+MATCH: frame.md has 20.0mm (matches mudguard_clearance)
+MATCH: frame.md has 20.0mm (matches mudguard_clearance)
+MATCH: frame.md has 25.0mm (matches steel_angle_size)
+MATCH: frame.md has 300.0mm (matches battery_box_l)
+MATCH: frame.md has 35.05mm (matches head_tube_id)
+MATCH: frame.md has 400.0mm (matches riser_length, kickstand_width)
+MATCH: frame.md has 500.0mm (matches riser_drop)
+MATCH: frame.md has 6.0mm (matches torque_arm_t)
+MATCH: frame.md has 68.0mm (matches head_angle)
+MATCH: frame.md has 8.0mm (matches rim_flange_t)
+MATCH: frame.md has 8.0mm (matches rim_flange_t)
+MATCH: frame.md has 810.0mm (matches bed_internal_width)
+MATCH: frame.md has 810.0mm (matches bed_internal_width)
+MATCH: front_wheel.md has 10.0mm (matches motor_flange_t)
+MATCH: front_wheel.md has 10.0mm (matches motor_flange_t)
+MATCH: front_wheel.md has 14.0mm (matches front_axle_dia)
+MATCH: front_wheel.md has 155.0mm (matches front_tire_width)
+MATCH: front_wheel.md has 16.0mm (matches rim_sandwich_t)
+MATCH: front_wheel.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: front_wheel.md has 25.0mm (matches steel_angle_size)
+MATCH: front_wheel.md has 270.0mm (matches rim_bolt_pcd)
+MATCH: front_wheel.md has 50.0mm (matches etrack_width)
+MATCH: front_wheel.md has 50.0mm (matches etrack_width)
+MATCH: front_wheel.md has 548.0mm (matches front_tire_od)
+MATCH: front_wheel.md has 6.0mm (matches torque_arm_t)
+MATCH: heavy_duty.md has 120.0mm (matches controller_box_size)
+MATCH: heavy_duty.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: heavy_duty.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: heavy_duty.md has 203.0mm (matches brake_rotor_dia)
+MATCH: heavy_duty.md has 300.0mm (matches battery_box_l)
+MATCH: industrial_standard.md has 10.0mm (matches motor_flange_t)
+MATCH: industrial_standard.md has 12.0mm (matches box_wall_t)
+MATCH: industrial_standard.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: industrial_standard.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: industrial_standard.md has 175.0mm (matches front_hub_dropout)
+MATCH: industrial_standard.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: industrial_standard.md has 2.5mm (matches tube_wall_t)
+MATCH: industrial_standard.md has 2.5mm (matches tube_wall_t)
+MATCH: industrial_standard.md has 2.5mm (matches tube_wall_t)
+MATCH: industrial_standard.md has 203.0mm (matches brake_rotor_dia)
+MATCH: industrial_standard.md has 25.0mm (matches steel_angle_size)
+MATCH: industrial_standard.md has 250.0mm (matches fork_crown_width, stab_deploy_len)
+MATCH: industrial_standard.md has 290.0mm (matches motor_flange_od)
+MATCH: industrial_standard.md has 31.6mm (matches seat_post_dia)
+MATCH: industrial_standard.md has 35.0mm (matches bearing_od, stab_size)
+MATCH: industrial_standard.md has 500.0mm (matches riser_drop)
+MATCH: industrial_standard.md has 6.0mm (matches torque_arm_t)
+MATCH: maintenance_safety.md has 180.0mm (matches front_hub_flange_dia)
+MATCH: maintenance_safety.md has 203.0mm (matches brake_rotor_dia)
+MATCH: manufacturing_jigs.md has 10.0mm (matches motor_flange_t)
+MATCH: manufacturing_jigs.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: manufacturing_jigs.md has 20.0mm (matches mudguard_clearance)
+MATCH: manufacturing_jigs.md has 810.0mm (matches bed_internal_width)
+MATCH: manufacturing_jigs.md has 810.0mm (matches bed_internal_width)
+MATCH: mechanical_concept.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: mechanical_concept.md has 150.0mm (matches ground_clearance)
+MATCH: mechanical_concept.md has 1950.0mm (matches wheelbase)
+MATCH: mechanical_concept.md has 2.5mm (matches tube_wall_t)
+MATCH: mechanical_concept.md has 2.5mm (matches tube_wall_t)
+MATCH: mechanical_concept.md has 35.05mm (matches head_tube_id)
+MATCH: mechanical_concept.md has 45.0mm (matches fork_rake)
+MATCH: mechanical_concept.md has 548.0mm (matches front_tire_od)
+MATCH: mechanical_concept.md has 6.0mm (matches torque_arm_t)
+MATCH: mechanical_concept.md has 810.0mm (matches bed_internal_width)
+MATCH: mechanical_geometry.md has 10.0mm (matches motor_flange_t)
+MATCH: mechanical_geometry.md has 100.0mm (matches steering_arm_len, battery_box_h)
+MATCH: mechanical_geometry.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: mechanical_geometry.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: mechanical_geometry.md has 150.0mm (matches ground_clearance)
+MATCH: mechanical_geometry.md has 170.0mm (matches crank_length, mudguard_width_front)
+MATCH: mechanical_geometry.md has 1950.0mm (matches wheelbase)
+MATCH: mechanical_geometry.md has 20.0mm (matches mudguard_clearance)
+MATCH: mechanical_geometry.md has 20.0mm (matches mudguard_clearance)
+MATCH: mechanical_geometry.md has 250.0mm (matches fork_crown_width, stab_deploy_len)
+MATCH: mechanical_geometry.md has 285.0mm (matches bb_height)
+MATCH: mechanical_geometry.md has 30.0mm (matches fork_blade_width)
+MATCH: mechanical_geometry.md has 360.0mm (matches fork_length)
+MATCH: mechanical_geometry.md has 40.0mm (matches main_spar_size)
+MATCH: mechanical_geometry.md has 45.0mm (matches fork_rake)
+MATCH: mechanical_geometry.md has 548.0mm (matches front_tire_od)
+MATCH: mechanical_geometry.md has 8.0mm (matches rim_flange_t)
+MATCH: steering_head.md has 10.0mm (matches motor_flange_t)
+MATCH: steering_head.md has 11.0mm (matches bearing_h)
+MATCH: steering_head.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: steering_head.md has 20.0mm (matches mudguard_clearance)
+MATCH: steering_head.md has 35.05mm (matches head_tube_id)
+MATCH: steering_head.md has 42.16mm (matches head_tube_od)
+MATCH: subassemblies_detail.md has 10.0mm (matches motor_flange_t)
+MATCH: subassemblies_detail.md has 10.0mm (matches motor_flange_t)
+MATCH: subassemblies_detail.md has 135.0mm (matches rear_dropout_spacing)
+MATCH: subassemblies_detail.md has 170.0mm (matches crank_length, mudguard_width_front)
+MATCH: subassemblies_detail.md has 2.5mm (matches tube_wall_t)
+MATCH: subassemblies_detail.md has 25.0mm (matches steel_angle_size)
+MATCH: subassemblies_detail.md has 35.0mm (matches bearing_od, stab_size)
+MATCH: subassemblies_detail.md has 350.0mm (matches kickstand_leg_len)
+MATCH: subassemblies_detail.md has 8.0mm (matches rim_flange_t)
+MATCH: subassemblies_detail.md has 8.0mm (matches rim_flange_t)
+MATCH: weather_protection.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: weather_protection.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+MATCH: weather_protection.md has 15.0mm (matches steering_shaft_dia, steering_rod_dia)
+UNMATCHED: brakes_steering.md has 0.5mm
+UNMATCHED: brakes_steering.md has 2.0mm
+UNMATCHED: brakes_steering.md has 2.0mm
+UNMATCHED: budget_salvage.md has 2.0mm
+UNMATCHED: cargo_box.md has 1210.0mm
+UNMATCHED: cargo_box.md has 3.0mm
+UNMATCHED: cargo_box.md has 9.0mm
+UNMATCHED: electrical.md has 4.0mm
+UNMATCHED: ergonomics_accessories.md has 0.1mm
+UNMATCHED: ergonomics_accessories.md has 31.8mm
+UNMATCHED: ergonomics_accessories.md has 34.9mm
+UNMATCHED: ergonomics_accessories.md has 720.0mm
+UNMATCHED: ergonomics_accessories.md has 780.0mm
+UNMATCHED: ergonomics_accessories.md has 90.0mm
+UNMATCHED: frame.md has 0.2mm
+UNMATCHED: frame.md has 1.0mm
+UNMATCHED: frame.md has 1274.0mm
+UNMATCHED: frame.md has 3.0mm
+UNMATCHED: frame.md has 5.0mm
+UNMATCHED: frame.md has 834.0mm
+UNMATCHED: frame.md has 85.0mm
+UNMATCHED: front_wheel.md has 0.2mm
+UNMATCHED: front_wheel.md has 10.2mm
+UNMATCHED: front_wheel.md has 10.2mm
+UNMATCHED: front_wheel.md has 44.0mm
+UNMATCHED: heavy_duty.md has 2.0mm
+UNMATCHED: heavy_duty.md has 3.0mm
+UNMATCHED: heavy_duty.md has 3.0mm
+UNMATCHED: heavy_duty.md has 5.0mm
+UNMATCHED: heavy_duty.md has 780.0mm
+UNMATCHED: industrial_standard.md has 720.0mm
+UNMATCHED: manufacturing_jigs.md has 1000.0mm
+UNMATCHED: manufacturing_jigs.md has 1210.0mm
+UNMATCHED: manufacturing_jigs.md has 2.0mm
+UNMATCHED: manufacturing_jigs.md has 2500.0mm
+UNMATCHED: manufacturing_jigs.md has 3.0mm
+UNMATCHED: manufacturing_jigs.md has 5.0mm
+UNMATCHED: mechanical_concept.md has 73.0mm
+UNMATCHED: mechanical_geometry.md has 115.0mm
+UNMATCHED: mechanical_geometry.md has 73.0mm
+UNMATCHED: mechanical_geometry.md has 85.0mm
+UNMATCHED: subassemblies_detail.md has 1.5mm
+UNMATCHED: subassemblies_detail.md has 3.0mm
+UNMATCHED: subassemblies_detail.md has 3.2mm
+UNMATCHED: subassemblies_detail.md has 4.0mm
+UNMATCHED: subassemblies_detail.md has 5.0mm
+UNMATCHED: weather_protection.md has 1.5mm
+UNMATCHED: weather_protection.md has 2.0mm

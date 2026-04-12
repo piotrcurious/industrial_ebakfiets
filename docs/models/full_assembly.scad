@@ -96,24 +96,59 @@ module full_bicycle_assembly() {
     // 6. STEERING LINKAGE (Dual Bell Crank System)
     // Connecting Lower (Fork) arm to Upper (Handlebar) arm
 
-    // Geometry calculated based on assembly offsets:
-    // Lower arm tip is at [fork_rake + steering_arm_len, 0, fork_length + 15] relative to wheel center.
-    // Upper arm tip is relative to frame: [riser_length/2 + steering_arm_len, 0, -50]
-    // The link spans roughly from X=145 to X=350, Z=fork_length to Z=fork_length+riser_drop
+    // Coordinates relative to Root (Front Tire Center)
 
-    color("dimgray")
-    translate([fork_rake + steering_arm_len, 0, fork_length + 15]) {
-        // Lower Rod End
-        rod_end_m8();
+    // Point A: Lower Bell Crank Tip (Fork-mounted)
+    // Fork is rotated by -(90-head_angle). Lower arm is at fork_length + 15.
+    alpha = 90 - head_angle;
+    p_a_local = [steering_arm_len, 0, 15]; // Relative to fork crown top center
+    p_crown = [fork_rake, 0, fork_length];
 
-        // Tie Rod (Approximate alignment)
-        rotate([0, 70, 0])
-        cylinder(d=steering_rod_dia, h=550);
+    // Rotation matrix for fork: R_y(-alpha)
+    // [ cos(-alpha)  0  sin(-alpha) ]   [ x ]
+    // [      0       1       0      ] * [ y ]
+    // [ -sin(-alpha) 0  cos(-alpha) ]   [ z ]
 
-        // Upper Rod End
-        translate([steering_arm_len + 80, 0, 500])
-        rotate([0, 180, 0])
-        rod_end_m8();
+    p_a = [
+        p_crown[0] + p_a_local[0]*cos(alpha) + p_a_local[2]*sin(alpha),
+        0,
+        p_crown[2] - p_a_local[0]*sin(alpha) + p_a_local[2]*cos(alpha)
+    ];
+
+    // Point B: Upper Bell Crank Tip (Handlebar-mounted)
+    // Frame is at p_crown + steering_head translation.
+    // We'll simplify to find Point B in Root coordinates.
+    // Upper arm is at frame position [riser_length/2, 0, 0] relative to frame header.
+    // Handlebar column is vertical in frame assembly.
+
+    // Position of Frame Header Plate in Root coords:
+    p_header = [
+        p_crown[0] + 0*cos(alpha) + (40 + head_tube_length/2)*sin(alpha),
+        0,
+        p_crown[2] - 0*sin(alpha) + (40 + head_tube_length/2)*cos(alpha)
+    ];
+
+    // Frame rotation is alpha (to make it horizontal again)
+    // Point B local to frame header:
+    p_b_frame_local = [riser_length/2 + steering_arm_len, 0, -50];
+
+    p_b = [
+        p_header[0] - p_b_frame_local[0], // Frame grows in -X relative to header in our assembly
+        0,
+        p_header[2] + p_b_frame_local[2]  // Adjusted to use p_header[2] for Z
+    ];
+
+    // Draw the rod connecting p_a and p_b
+    color("dimgray") {
+        translate(p_a) rod_end_m8();
+
+        // Use hull between two spheres for perfect visual alignment of the rod
+        hull() {
+            translate(p_a) sphere(d=steering_rod_dia);
+            translate(p_b) sphere(d=steering_rod_dia);
+        }
+
+        translate(p_b) rotate([0, 180, 0]) rod_end_m8();
     }
 }
 

@@ -68,7 +68,7 @@ module car_rim_half() {
             // 4. Main Mating Flange (8mm thick industrial plate)
             // Stretches inward to meet the motor flange
             translate([front_rim_dia/2 - 120, 0, 0])
-            square([120, 8]);
+            square([120, rim_flange_t]);
         }
         // Chamfers and fillets for tire mounting safety
         translate([front_rim_dia/2 + 25, 20, 0]) circle(r=5);
@@ -78,7 +78,7 @@ module car_rim_half() {
 
 module car_rim_13in_split() {
     color(color_fastener) {
-        // Half 1: Mates at Y=0 (Start of 16mm sandwich)
+        // Half 1: Mates at Y=0
         translate([0, 0, 0])
         car_rim_half();
 
@@ -138,14 +138,16 @@ module hub_motor_dd() {
     }
 
     // 3. INTEGRATED MOUNTING FLANGES (Heavy Duty)
-    // Inner faces at +/- 8mm to sandwich the 16mm rim.
-    // Flange centers at +/- 13mm. Flange thickness 10mm.
-    for(s=[-1, 1]) translate([0, s * (rim_sandwich_t/4 + 5), 0])
+    // The rim sandwich is rim_flange_t * 2 thick.
+    // Flanges are motor_flange_t thick.
+    // Placement: inner faces should be at +/- (rim_flange_t)
+    // Center of flange at +/- (rim_flange_t + motor_flange_t / 2)
+    for(s=[-1, 1]) translate([0, s * (rim_flange_t + motor_flange_t / 2), 0])
     rotate([90, 0, 0])
     color(color_subframe) {
-        cylinder(d=310, h=10, center=true);
+        cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
         // 6-Bolt M8 Pattern
-        for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 5*s])
+        for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, motor_flange_t/2*s])
         color(color_fastener) cylinder(d=13, h=6, $fn=6, center=false);
     }
 
@@ -161,12 +163,12 @@ module hub_motor_dd() {
         cube([10, 30, 30], center=true);
     }
 
-    // 5. DISC BRAKE ROTOR (180mm)
+    // 5. DISC BRAKE ROTOR
     translate([0, 45, 0]) // Mounted on left-side motor flange
     rotate([90, 0, 0])
     color("silver")
     difference() {
-        cylinder(d=180, h=2, center=true);
+        cylinder(d=brake_rotor_dia, h=2, center=true);
         // 6-bolt ISO mount
         for(a=[0:60:359]) rotate([0, 0, a]) translate([22, 0, 0])
         cylinder(d=5, h=10, center=true);
@@ -274,17 +276,19 @@ module motor_controller() {
 // ---------------------------------------------------------
 // UTILITY SHAPES
 // ---------------------------------------------------------
-module rect_tube(w, h, l, t=2.5) {
+module rect_tube(w, h, l, t=tube_wall_t) {
     difference() {
         cube([l, w, h], center=true);
-        cube([l+2, w-2*t, h-2*t], center=true);
+        // Epsilon added to avoid non-manifold faces
+        cube([l+0.1, w-2*t, h-2*t], center=true);
     }
 }
 
 module pipe(od, id, h) {
     difference() {
         cylinder(d=od, h=h, center=true);
-        cylinder(d=id, h=h+2, center=true);
+        // Epsilon added to avoid non-manifold faces
+        cylinder(d=id, h=h+0.1, center=true);
     }
 }
 
@@ -447,7 +451,7 @@ module cargo_box_assy() {
         for(z=[150, 450]) translate([bed_length/2, s * (internal_w/2 - 5), z + box_wall_t])
         rotate([0, 90, 0])
         difference() {
-            cube([10, 50, internal_l], center=true);
+            cube([10, etrack_width, internal_l], center=true);
             // Tie-down slots (E-track pattern)
             for(x=[-(internal_l/2 - 50) : 100 : (internal_l/2 - 50)])
             translate([0, 0, x]) cube([20, 15, 60], center=true);
@@ -462,8 +466,8 @@ module cargo_box_assy() {
         translate([bed_length/2, s * (bed_width/2), z])
         rotate([0, 90, 0])
         difference() {
-            cube([25, 25, bed_length], center=true);
-            translate([3, 3, 0]) cube([25, 25, bed_length + 2], center=true);
+            cube([steel_angle_size, steel_angle_size, bed_length], center=true);
+            translate([3, 3, 0]) cube([steel_angle_size, steel_angle_size, bed_length + 2], center=true);
         }
     }
 }

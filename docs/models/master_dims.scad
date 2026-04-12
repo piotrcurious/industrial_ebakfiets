@@ -29,8 +29,11 @@ head_tube_id = 35.05;
 head_tube_length = 200;
 
 // 5. FRAME
-bed_width = 834;  // Total width (810 internal + 2x12mm walls)
-bed_length = 1274; // Total length (1250 internal + 2x12mm walls)
+box_wall_t = 12; // Moved up to satisfy dependencies
+bed_internal_width = 810;
+bed_internal_length = 1250;
+bed_width = bed_internal_width + 2 * box_wall_t;  // Total width
+bed_length = bed_internal_length + 2 * box_wall_t; // Total length
 main_spar_size = 40;
 ground_clearance = 150;
 wheelbase = 1950;
@@ -43,7 +46,8 @@ bb_offset_x = 450;
 
 // 7. CARGO BOX
 box_height = 600;
-box_wall_t = 12;
+etrack_width = 50;
+steel_angle_size = 25;
 
 // 8. STABILIZERS
 stab_size = 35;
@@ -57,9 +61,13 @@ riser_length = 400;
 torque_arm_t = 6;
 rim_bolt_pcd = 270; // PCD for rim to motor bolts
 rim_sandwich_t = 16; // 8mm + 8mm flanges
+motor_flange_t = 10;
+rim_flange_t = 8;
+motor_flange_od = 290;
+tube_wall_t = 2.5;
 
 // 11. BRAKES & STEERING LINKAGE
-brake_rotor_dia = 180;
+brake_rotor_dia = 203;
 brake_caliper_offset = 51; // IS standard offset
 brake_mount_height = 80;
 steering_arm_len = 100;
@@ -67,7 +75,7 @@ steering_rod_dia = 15;
 
 // 12. DRIVETRAIN & COMFORT
 crank_length = 170;
-seat_post_dia = 27.2;
+seat_post_dia = 31.6;
 handlebar_dia = 22.2;
 stem_dia = 28.6;
 
