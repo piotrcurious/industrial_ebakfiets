@@ -91,3 +91,8 @@ kickstand_width = 400;
 mudguard_clearance = 20; // Distance from tire
 mudguard_width_front = 170;
 mudguard_width_rear = 60;
+
+// 15. ASSEMBLY SPECIFIC (Offsets and Extensions)
+rear_extension = 150;
+dropout_z_offset = -50;
+steering_arm_y_offset = 120;

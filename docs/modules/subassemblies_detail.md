@@ -28,4 +28,4 @@ Detailed technical specifications for custom-fabricated mechanical components.
 - **Fastening**: 6x M5 threaded radial holes.
 
 ## 6. Motor Flange Plates
-- **Material**: 5mm Steel Plate.
+- **Material**: 10mm Steel Plate.

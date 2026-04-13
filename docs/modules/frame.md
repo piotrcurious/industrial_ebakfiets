@@ -4,22 +4,22 @@ The frame of the industrial bakfiets is designed to be sturdy, repairable, and b
 
 ## Material Selection
 ### 1. Steel Rectangular Tubes (Main Spars & Gooseneck)
-- **Dimensions**: 40x20mm or 50x25mm with 2-3mm wall thickness.
-- **Gooseneck Riser**: 500mm vertical offset with 400mm horizontal reach to bridge high steering head to low bed. Reinforced with 10mm diagonal gussets.
+- **Dimensions**: 40x40mm with 2.5mm wall thickness.
+- **Gooseneck Riser**: 500mm vertical offset with 450mm horizontal reach to bridge high steering head to low bed. Reinforced with 10mm diagonal gussets.
 
 ### 2. Head Tube (Redesigned 7202 Setup)
 - **Standard**: **1-1/4\" Schedule 40 Steel Pipe** (Nominal ID: 35.05mm).
 
 ## Design Philosophy
 ### 1. Longitudinal Stiffness
-The main cargo bed is supported by two parallel rails. Total bed width is **834mm** (810mm internal + 12mm walls), and length is **1274mm** (1350mm internal).
+The main cargo bed is supported by two parallel rails. Total bed width is **834mm** (810mm internal + 12mm walls), and length is **1374mm** (1350mm internal).
 
 ### 2. Low Center of Gravity (16-inch Rear Wheel)
 The use of a **16-inch rear wheel** lowers the center of gravity and allows for a more compact rear frame design.
 
 ### 3. Bottom Bracket and Hanger Integration
 - **Bottom Bracket**: A standard BSA 68mm shell is welded to a **10mm steel bridge plate** positioned 85mm above the main rail centerline.
-- **Rear Triangle**: The main rails taper from 810mm width to **135mm width** at the rear dropouts using angled 40x20mm tube sections.
+- **Rear Triangle**: The main rails taper from 810mm width to **135mm width** at the rear dropouts using angled 40x40mm tube sections.
 - **Derailleur Hanger**: Integrated 8mm laser-cut hanger on the drive-side dropout.
 
 ### 4. Screw-Driven Cargo Bed Stabilizer System
