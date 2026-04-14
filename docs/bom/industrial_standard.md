@@ -5,10 +5,10 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | Category | Component | Specification | Estimated Cost |
 | --- | --- | --- | --- |
 | **Front Wheel** | Car Tire | 155/70 R13 (new) | $40 |
-| | Split Rim | 13-inch steel industrial split rim (6-bolt PCD 270) | $50 |
-| | Front Hub Motor | 250W Direct Drive (36V/48V, 175mm Dropout, M14) | $120 |
-| | Motor Flanges | 2x 10mm Steel plates (laser-cut, 290mm OD) | $40 |
-| | Torque Arm | 6mm steel laser-cut plate | $15 |
+| | Split Rim | 13-inch steel industrial split rim (6-bolt PCD 260) | $50 |
+| | Front Hub Motor | Golden Motor Magic Pie 5 (Fatbike 190mm Axle) | $320 |
+| | Motor Adapters | 2x 12mm Steel/Brass plates (laser-cut, 330mm OD) | $80 |
+| | Torque Arm | 10mm steel laser-cut plate | $25 |
 | **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type) | $50 |
 | | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm) | $180 |
 | | Rear Tire | 16x2.50 or 3.50-16 rugged tire | $40 |

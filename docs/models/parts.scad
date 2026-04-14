@@ -57,23 +57,26 @@ module car_tire_13in() {
 
 module car_rim_half() {
     rotate([90, 0, 0])
-    rotate_extrude($fn=64)
-    union() {
-        // Bead Seat (Aligned with front_rim_dia, origin is bead center)
-        translate([front_rim_dia/2 - 15, -15, 0]) square([20, 30]);
-        // Bead Flange
-        translate([front_rim_dia/2 + 5, -15, 0]) square([8, 35]);
+    difference() {
+        rotate_extrude($fn=64)
+        union() {
+            // Bead Seat (Aligned with front_rim_dia, origin is bead center)
+            translate([front_rim_dia/2 - 15, -15, 0]) square([20, 30]);
+            // Bead Flange
+            translate([front_rim_dia/2 + 5, -15, 0]) square([8, 35]);
 
-        // Mating Flange (Faces the motor at 50mm offset)
-        // Motor flange is at 50mm, 10mm thick. Outer face at 55mm.
-        // If rim module is translated by 50, local Z=5 is global 55.
-        translate([rim_bolt_pcd/2 - 20, 5, 0]) square([motor_flange_od/2 + 20 - (rim_bolt_pcd/2 - 20), rim_flange_t]);
+            // Mating Flange (Reinforced)
+            // Faces the motor at 50mm offset. Extended inwards to cover PCD.
+            translate([rim_bolt_pcd/2 - 35, 5, 0]) square([motor_flange_od/2 + 10 - (rim_bolt_pcd/2 - 35), rim_flange_t]);
 
-        // Transition Web
-        hull() {
-            translate([front_rim_dia/2 - 25, -10, 0]) square([15, 1]);
-            translate([rim_bolt_pcd/2 - 10, 5, 0]) square([10, 1]);
+            // Transition Web
+            hull() {
+                translate([front_rim_dia/2 - 25, -10, 0]) square([15, 1]);
+                translate([rim_bolt_pcd/2 - 15, 5, 0]) square([15, 1]);
+            }
         }
+        // Bolt Holes in the rim flange
+        for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0]) cylinder(d=8.5, h=100, center=true);
     }
 }
 
@@ -99,19 +102,29 @@ module rim_fastener_pattern() {
 }
 
 module hub_motor_dd() {
-    // Housing
+    // Magic Pie 5 Housing Profile
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
-        cylinder(d=240, h=100, center=true);
-        for(a=[0:10:359]) rotate([0, 0, a]) translate([120, 0, 0]) cube([15, 3, 95], center=true);
+        // Main Stator/Controller Housing
+        cylinder(d=310, h=65, center=true);
+        // External Cooling Fins/Ribs
+        for(a=[0:15:359]) rotate([0, 0, a]) translate([155, 0, 0]) cube([10, 4, 60], center=true);
     }
 
-    // Flanges
-    for(s=[-1, 1]) translate([0, s * 50, 0]) rotate([90, 0, 0]) color(color_subframe) {
+    // Custom Adapter Flanges (Magic Pie Spoke Flange to Car Rim)
+    for(s=[-1, 1]) translate([0, s * 50, 0]) rotate([90, 0, 0]) color(color_brass) {
         difference() {
+            // Heavy duty adapter plate
             cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
-            cylinder(d=50, h=motor_flange_t+1, center=true);
+            cylinder(d=100, h=motor_flange_t+1, center=true); // Center clearance
+
+            // Outer Bolt Pattern (Rim Mating)
+            for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0]) cylinder(d=8.5, h=30, center=true);
+
+            // Inner Bolt Pattern (Motor Spoke Flange Mating)
+            // Magic Pie has ~56 spoke holes. We use 12 for the adapter.
+            for(a=[0:30:359]) rotate([0, 0, a]) translate([front_hub_flange_dia/2 - 10, 0, 0]) cylinder(d=5.5, h=30, center=true);
         }
     }
 

@@ -7,9 +7,9 @@ front_tire_od = 548;
 front_tire_width = 155;
 front_rim_dia = 330;
 
-// 2. FRONT HUB / MOTOR
-front_hub_dropout = 175;
-front_hub_flange_dia = 180;
+// 2. FRONT HUB / MOTOR (Magic Pie 5 Specs)
+front_hub_dropout = 190; // Fatbike axle width
+front_hub_flange_dia = 320; // Spoke hole circle
 front_axle_dia = 14;
 
 // 3. FRONT FORK
@@ -58,12 +58,12 @@ riser_drop = 500;
 riser_length = 450;
 
 // 10. COMPONENTS & HARDWARE
-torque_arm_t = 6;
-rim_bolt_pcd = 270; // PCD for rim to motor bolts
-rim_sandwich_t = 16; // 8mm + 8mm flanges
-motor_flange_t = 10;
-rim_flange_t = 8;
-motor_flange_od = 290;
+torque_arm_t = 10; // Heavy duty 10mm steel
+rim_bolt_pcd = 260; // Slightly smaller to give more "meat" on flanges
+rim_sandwich_t = 24; // 8mm + 8mm flanges + 8mm adapter
+motor_flange_t = 12; // Beefy 12mm adapter plate
+rim_flange_t = 10;
+motor_flange_od = 330; // Matches/Exceeds Magic Pie flange
 tube_wall_t = 2.5;
 
 // 11. BRAKES & STEERING LINKAGE
