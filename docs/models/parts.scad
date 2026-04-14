@@ -37,12 +37,12 @@ module car_tire_13in() {
         rotate_extrude($fn=64)
         translate([front_rim_dia/2, 0, 0])
         union() {
-            // Beads (Dual bead for split rim)
-            for(s=[-1, 1]) translate([0, s * 45, 0]) circle(d=22);
+            // Beads (Dual bead for split rim) - Positioned at +/- 50mm
+            for(s=[-1, 1]) translate([0, s * 50, 0]) circle(d=22);
 
             // Sidewall and Tread Structure
             hull() {
-                for(s=[-1, 1]) translate([0, s * 45, 0]) circle(d=22);
+                for(s=[-1, 1]) translate([0, s * 50, 0]) circle(d=22);
                 translate([(front_tire_od - front_rim_dia)/2 - 20, 0, 0])
                 square([40, front_tire_width], center=true);
             }
@@ -59,22 +59,29 @@ module car_rim_half() {
     rotate([90, 0, 0])
     rotate_extrude($fn=64)
     union() {
-        // Bead Seat (Aligned with front_rim_dia)
-        translate([front_rim_dia/2 - 15, -12, 0]) square([20, 24]);
+        // Bead Seat (Aligned with front_rim_dia, origin is bead center)
+        translate([front_rim_dia/2 - 15, -15, 0]) square([20, 30]);
         // Bead Flange
-        translate([front_rim_dia/2 + 5, -12, 0]) square([8, 35]);
-        // Center Dish (Mating surface)
-        translate([front_rim_dia/2 - 140, -rim_flange_t, 0]) square([130, rim_flange_t]);
-        // Web (Support)
-        translate([front_rim_dia/2 - 20, -12, 0]) square([10, 50]);
+        translate([front_rim_dia/2 + 5, -15, 0]) square([8, 35]);
+
+        // Mating Flange (Faces the motor at 50mm offset)
+        // Motor flange is at 50mm, 10mm thick. Outer face at 55mm.
+        // If rim module is translated by 50, local Z=5 is global 55.
+        translate([rim_bolt_pcd/2 - 20, 5, 0]) square([motor_flange_od/2 + 20 - (rim_bolt_pcd/2 - 20), rim_flange_t]);
+
+        // Transition Web
+        hull() {
+            translate([front_rim_dia/2 - 25, -10, 0]) square([15, 1]);
+            translate([rim_bolt_pcd/2 - 10, 5, 0]) square([10, 1]);
+        }
     }
 }
 
 module car_rim_13in_split() {
     color(color_fastener) {
-        // Space them to sandwich the tire beads (~90mm spacing)
-        translate([0, 45, 0]) car_rim_half();
-        translate([0, -45, 0]) mirror([0, 1, 0]) car_rim_half();
+        // Space them to match tire beads at +/- 50mm
+        translate([0, 50, 0]) car_rim_half();
+        translate([0, -50, 0]) mirror([0, 1, 0]) car_rim_half();
     }
 }
 
@@ -87,7 +94,8 @@ module industrial_bolt(d=8, l=50, hex_d=13) {
 }
 
 module rim_fastener_pattern() {
-    for(a=[0:60:359]) rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0]) industrial_bolt(8, 110);
+    // Bolting through both rim halves and both motor flanges (Total span ~126mm)
+    for(a=[0:60:359]) rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0]) industrial_bolt(8, 140);
 }
 
 module hub_motor_dd() {
@@ -95,12 +103,12 @@ module hub_motor_dd() {
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
-        cylinder(d=240, h=80, center=true);
-        for(a=[0:10:359]) rotate([0, 0, a]) translate([120, 0, 0]) cube([15, 3, 75], center=true);
+        cylinder(d=240, h=100, center=true);
+        for(a=[0:10:359]) rotate([0, 0, a]) translate([120, 0, 0]) cube([15, 3, 95], center=true);
     }
 
     // Flanges
-    for(s=[-1, 1]) translate([0, s * 60, 0]) rotate([90, 0, 0]) color(color_subframe) {
+    for(s=[-1, 1]) translate([0, s * 50, 0]) rotate([90, 0, 0]) color(color_subframe) {
         difference() {
             cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
             cylinder(d=50, h=motor_flange_t+1, center=true);
@@ -287,12 +295,58 @@ module cargo_box_assy() {
     }
 }
 
-module mudguard(dia, width, clearance, angle_span) {
-    color([0.15, 0.15, 0.15]) rotate([90, 0, 0]) rotate([0, 0, -angle_span/2])
-    rotate_extrude(angle = angle_span) translate([dia/2 + clearance, 0, 0])
+module mudguard(dia, width, clearance, angle_span=180) {
+    total_r = dia/2 + clearance;
+
+    // 1. MAIN BLADE
+    color([0.1, 0.1, 0.1])
+    rotate([90, 0, 0]) // Move to XZ plane
+    rotate([0, 0, 30]) // Start 30 degrees from front-horizontal
+    rotate_extrude(angle = angle_span) translate([total_r, 0, 0])
     difference() {
-        circle(d=width);
-        circle(d=width-2);
+        circle(d=width, $fn=32);
+        circle(d=width-3, $fn=32);
         translate([-width/2, 0, 0]) square([width, width], center=true);
+    }
+}
+
+module mudguard_crown_bracket() {
+    color(color_fixed)
+    difference() {
+        union() {
+            // Plate on mudguard
+            translate([0, 0, -2]) rounded_box([60, 50, 4], r=5, center=true);
+            // Heavy duty offset bridge to reach the raked crown
+            // Target: [-93.3, 0, 350.5] from axle. Mudguard top is at 299.
+            // Relative target: [-93.3, 0, 51.5]
+            hull() {
+                translate([0, 0, 0]) sphere(d=10);
+                translate([-93.3, 0, 51.5]) sphere(d=14);
+            }
+            // Plate on fork crown
+            translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+            rounded_box([60, 80, 8], r=5, center=true);
+        }
+        // Mounting holes to mudguard
+        for(y=[-18, 18]) translate([10, y, -2]) cylinder(d=5.5, h=15, center=true);
+        // Mounting holes to fork crown (Matches fork_crown_width=250? No, this is central plate)
+        translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+        for(y=[-12, 12]) translate([0, y, 0]) cylinder(d=6.5, h=40, center=true);
+    }
+}
+
+module mudguard_stay(length, angle) {
+    color(color_fixed)
+    union() {
+        // Stay Rod
+        hull() {
+            sphere(d=8);
+            rotate([0, -angle, 0]) translate([length, 0, 0]) sphere(d=6);
+        }
+        // Eyelet to dropout
+        difference() {
+            sphere(d=14);
+            rotate([0, 90, 0]) cylinder(d=5.5, h=25, center=true);
+        }
     }
 }

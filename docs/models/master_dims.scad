@@ -39,7 +39,7 @@ ground_clearance = 150;
 wheelbase = 1950;
 
 // 6. REAR END
-rear_wheel_dia = 410;
+rear_wheel_dia = 560; // 16-inch moped tire OD
 rear_dropout_spacing = 135;
 bb_height = 285;
 bb_offset_x = 450;

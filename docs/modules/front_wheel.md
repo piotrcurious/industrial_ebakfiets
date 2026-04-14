@@ -10,7 +10,12 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 ### 2. Two-Part "Split" Rim
 - **Design**: Two halves bolted together (industrial type).
 - **Bolt Pattern**: 6x270mm PCD.
-- **Fasteners**: **6x M8x50mm Grade 10.9 Bolts** with heavy-duty washers and **M8 Nyloc nuts**. (Tighten to 25-30Nm).
+- **Fasteners**: **6x M8x140mm Grade 10.9 Bolts** with heavy-duty washers and **M8 Nyloc nuts**. (Tighten to 25-30Nm). These bolts sandwich both rim halves and both motor flanges for maximum rigidity.
+
+### 5. Front Mudguard Assembly
+- **Main Blade**: High-impact ABS or Aluminum (170mm width).
+- **Crown Mounting**: Heavy-duty offset bracket secured to the fork crown with **2x M6x20mm Grade 10.9 Bolts**.
+- **Stay Mounting**: Dual 8mm steel stays connecting the mudguard sides to the fork dropouts via **2x M5x12mm Bolts**.
 
 ### 3. Inner Tube
 - **Specification**: 13-inch automotive tube with Schrader valve.
@@ -29,7 +34,7 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 ### Assembly
 1. Deflate tube and sandwich tire/tube between rim halves.
 2. Align the assembly with the Hub Motor flanges (Sandwich: Flange-Rim-Rim-Flange).
-3. Pass 6x M8x50mm bolts through the pattern. Tighten to **30Nm**.
+3. Pass 6x M8x140mm bolts through the pattern. Tighten to **30Nm**.
 3. Slide axle into dropouts.
 4. Install torque arm on the axle and bolt to fork leg.
 5. Tighten M14 axle nuts to **50Nm**.

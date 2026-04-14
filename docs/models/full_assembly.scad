@@ -12,21 +12,45 @@ include <front_wheel_assy.scad>
 
 module full_bicycle_assembly() {
 
-    // 1. ROOT: Front Wheel (Includes Hub & Axle)
-    front_wheel_assy();
-
-    // Front Mudguard
-    mudguard(front_tire_od, mudguard_width_front, 20, 160);
-
-    // Torque Arm (Installed on axle)
-    translate([0, front_hub_dropout/2 + 12, 0])
-    rotate([90, 0, 180])
-    torque_arm();
-
-    // 2. FORK (Mated to Hub Axle center)
+    // 1. STEERED FRONT ASSEMBLY (Parented to Steering Axis)
     alpha = 90 - head_angle;
+
+    // Everything that turns with the handlebars
     rotate([0, -alpha, 0]) {
+        // The Fork itself
         front_fork_assy();
+
+        // Everything inside this block is relative to the FORK'S coordinate system
+        // Fork origin is the Axle Center.
+
+        // The Wheel (at fork origin)
+        rotate([0, alpha, 0]) // Re-align wheel to vertical plane (standard bike setup)
+        front_wheel_assy();
+
+        // Torque Arm (Installed on axle)
+        rotate([0, alpha, 0])
+        translate([0, front_hub_dropout/2 + 12, 0])
+        rotate([90, 0, 180])
+        torque_arm();
+
+        // Front Mudguard (Mounted to Fork Crown and Dropouts)
+        // Parented to FORK (already rotated by alpha)
+        // We position it relative to the axle [0,0,0]
+        rotate([0, alpha, 0]) {
+            mudguard(front_tire_od, mudguard_width_front, 25, 160);
+
+            // Top Mounting Bracket (Crown to Mudguard)
+            // Positioned at top of mudguard (radius)
+            translate([0, 0, front_tire_od/2 + 25])
+            mudguard_crown_bracket();
+
+            // Stays (Dropout to Mudguard)
+            for(s=[-1, 1]) {
+                translate([-25, s * (front_hub_dropout/2 + 10), -10])
+                rotate([90, 0, 0])
+                mudguard_stay(230, 140);
+            }
+        }
 
         // Disc Caliper (Mated to Fork Tabs)
         translate([0, -front_hub_dropout/2 - 20, brake_mount_height])
@@ -96,12 +120,15 @@ module full_bicycle_assembly() {
     translate([rear_x, 0, rear_z]) {
         rear_hub_motor_geared();
         rotate([90, 0, 0])
-        color("black", 0.7)
-        cylinder(d=rear_wheel_dia, h=40, center=true);
+        color(color_tire)
+        union() {
+            rotate_extrude($fn=64) translate([rear_wheel_dia/2 - 30, 0]) circle(d=60);
+            cylinder(d=rear_wheel_dia-40, h=50, center=true);
+        }
 
         // Rear Mudguard
         rotate([0, 0, 180])
-        mudguard(rear_wheel_dia, mudguard_width_rear, 30, 180);
+        mudguard(rear_wheel_dia, mudguard_width_rear, 35, 180);
     }
 
     // 6. STEERING LINKAGE (Dual Bell Crank System)

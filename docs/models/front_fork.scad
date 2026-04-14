@@ -19,6 +19,9 @@ module front_fork_assy() {
             if (s == 1) { // Right side torque arm mount
                 translate([0, 0, 40]) rotate([90, 0, 0]) cylinder(d=6.5, h=30, center=true);
             }
+
+            // Mudguard Stay Mounts (Rear of Dropout)
+            translate([-25, 0, -10]) rotate([90, 0, 0]) cylinder(d=5.5, h=30, center=true);
             if (s == -1) { // Left side IS brake mount
                 translate([0, 0, brake_mount_height]) {
                     translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
@@ -42,7 +45,11 @@ module front_fork_assy() {
     color(color_subframe)
     union() {
         // Main transverse member
-        rotate([0, 90, 0]) rect_tube(50, 70, fork_crown_width);
+        difference() {
+            rotate([0, 90, 0]) rect_tube(50, 70, fork_crown_width);
+            // Mudguard center mount holes
+            for(y=[-12, 12]) translate([0, y, 0]) rotate([0, 0, 0]) cylinder(d=6.5, h=100, center=true);
+        }
         // Gusseting
         hull() {
             for(s=[-1, 1]) translate([0, s * (fork_inner_spacing/2 + 20), -20]) sphere(d=45);
