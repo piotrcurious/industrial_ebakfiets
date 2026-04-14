@@ -12,7 +12,7 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type) | $50 |
 | | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm) | $180 |
 | | Rear Tire | 16x2.50 or 3.50-16 rugged tire | $40 |
-| **Frame** | Steel Tubing | 40x20x2.5mm rectangular + 1-1/4\" Sch 40 Pipe | $90 |
+| **Frame** | Steel Tubing | 40x40x2.5mm rectangular + 1-1/4\" Sch 40 Pipe | $90 |
 | | Steering Shaft | 15mm x 500mm Precision Steel Rod | $20 |
 | | Steering Bearings | Pair of 7202 Angular Contact (15x35x11) | $20 |
 | | Stopping Elements | 35mm OD steel collars (machined/laser-cut) | $15 |

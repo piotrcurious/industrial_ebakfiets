@@ -18,18 +18,16 @@ module frame_assy() {
 
     // Main Cargo Bed
     translate([riser_length, 0, -riser_drop]) {
-        translate([bed_length/2, 0, 0]) {
-            // Main Longitudinal Spars
-            for(s=[-1, 1]) translate([0, s * (bed_width/2 - main_spar_size/2), 0])
-            color(color_frame) rect_tube(main_spar_size, main_spar_size, bed_length);
+        // Main Longitudinal Spars
+        for(s=[-1, 1]) translate([bed_length/2, s * (bed_width/2 - main_spar_size/2), 0])
+        color(color_frame) rect_tube(main_spar_size, main_spar_size, bed_length);
 
-            // Cross Members
-            for(x=[-bed_length/2 + 100 : 400 : bed_length/2 - 100]) translate([x, 0, 0])
-            color(color_subframe) rect_tube(bed_width - 2*main_spar_size, 30, 40);
+        // Cross Members
+        for(x=[100 : 400 : bed_length - 100]) translate([x, 0, 0])
+        color(color_subframe) rect_tube(bed_width - 2*main_spar_size, 30, 40);
 
-            // Cable Guides
-            for(x=[-bed_length/2 + 200 : 300 : bed_length/2]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
-        }
+        // Cable Guides
+        for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
 
         // Rear Triangle Taper
         for(s=[-1, 1]) {

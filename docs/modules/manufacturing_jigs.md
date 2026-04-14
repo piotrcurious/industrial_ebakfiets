@@ -9,11 +9,11 @@ Building a precise industrial frame requires specialized jigs to ensure all comp
 
 ### 2. Spar Alignment Guides
 - **Components**: **50x50x5mm Steel Angle Iron** bolted to the base plate.
-- **Function**: These guides lock the two main 40x20mm spars in a perfectly parallel position at the exact 810mm internal width.
+- **Function**: These guides lock the two main 40x40mm spars in a perfectly parallel position. The outer width of the spars is set to 834mm to match the cargo box exterior.
 
 ### 3. Head Tube V-Block
 - **Material**: Machined steel or hardwood V-block.
-- **Function**: Centers the 1-1/4\" Sch 40 head tube pipe relative to the frame centerline and maintains the specified head angle (e.g., 70 degrees).
+- **Function**: Centers the 1-1/4\" Sch 40 head tube pipe relative to the frame centerline and maintains the specified head angle (68 degrees).
 
 ## Alignment Techniques
 ### 1. Dropout Squareness
@@ -24,7 +24,7 @@ Building a precise industrial frame requires specialized jigs to ensure all comp
 - **Tolerance**: The front and rear wheel tracks must be aligned within **+/- 2mm**.
 
 ### 3. Cargo Bed Flatness
-- **Method**: Check diagonal measurements corner-to-corner on the 1210mm x 810mm bed spars.
+- **Method**: Check diagonal measurements corner-to-corner on the 1350mm x 810mm bed spars.
 - **Tolerance**: Corner-to-corner difference should not exceed **3mm**.
 
 ## Assembly Tips

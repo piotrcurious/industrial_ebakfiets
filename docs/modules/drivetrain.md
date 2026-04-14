@@ -15,7 +15,7 @@ To ensure operator safety and minimize maintenance in industrial environments, t
 
 ### 2. Mounting Clips
 - **Design**: 3D-printable or steel-welded clips.
-- **Fastening**: Secured to the 40x20mm main frame spars using **M5 Socket Head Screws**.
+- **Fastening**: Secured to the 40x40mm main frame spars using **M5 Socket Head Screws**.
 - **Alignment**: Tubes must be aligned to maintain a maximum 10-degree chain entry/exit angle into the sprockets.
 
 ## Transmission Components

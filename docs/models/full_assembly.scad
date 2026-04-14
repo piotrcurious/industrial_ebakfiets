@@ -44,12 +44,12 @@ module full_bicycle_assembly() {
             union() {
                 frame_assy();
 
-                // CARGO BOX
-                translate([riser_length, 0, -riser_drop])
+                // CARGO BOX (Mounted on top of spars)
+                translate([riser_length, 0, -riser_drop + main_spar_size/2])
                 cargo_box_assy();
 
                 // DRIVETRAIN (At Bottom Bracket)
-                translate([riser_length + bed_length - 150, 0, -riser_drop + 85])
+                translate([riser_length + bed_length - 200, 0, -riser_drop + 85])
                 drivetrain_assy();
 
                 // SADDLE (At Seat Post Mast)

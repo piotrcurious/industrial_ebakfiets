@@ -13,7 +13,7 @@ The handling and stability of the industrial bakfiets depend on precise frame an
 To ensure the rider can pedal safely even when fully loaded:
 - **Bottom Bracket Height**: **285mm** from the ground.
 - **Pedal Clearance**: **115mm** with 170mm cranks at the 6 o'clock position (on level ground).
-- **BB Offset**: The BB shell is mounted **85mm** above the centerline of the 40x20mm main frame rails.
+- **BB Offset**: The BB shell is mounted **85mm** above the centerline of the 40x40mm main frame rails.
 
 ## Steering Linkage Geometry
 - **Steering Arms**: 10mm thick steel plates, **120mm length** from pivot center to rod end center.
