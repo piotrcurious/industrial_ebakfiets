@@ -18,13 +18,23 @@ module frame_assy() {
 
     // Main Cargo Bed
     translate([riser_length, 0, -riser_drop]) {
-        // Main Longitudinal Spars
+        // Main Longitudinal Spars (with Mounting Holes)
         for(s=[-1, 1]) translate([bed_length/2, s * (bed_width/2 - main_spar_size/2), 0])
-        color(color_frame) rect_tube(main_spar_size, main_spar_size, bed_length);
+        color(color_frame) difference() {
+            rect_tube(main_spar_size, main_spar_size, bed_length);
+            // Cargo Box Mounting Holes (M8)
+            for(x=[-bed_length/2 + 100 : 200 : bed_length/2 - 100])
+                translate([x, 0, 0]) cylinder(d=8.5, h=main_spar_size + 1, center=true);
+        }
 
-        // Cross Members
+        // Cross Members (with Electrical Mounting Holes)
         for(x=[100 : 400 : bed_length - 100]) translate([x, 0, 0])
-        color(color_subframe) rect_tube(bed_width - 2*main_spar_size, 30, 40);
+        color(color_subframe) difference() {
+            rect_tube(bed_width - 2*main_spar_size, 30, 40);
+            // M6 holes for Battery/Controller mounting
+            for(y=[-bed_width/4, bed_width/4])
+                rotate([90, 0, 90]) cylinder(d=6.5, h=50, center=true);
+        }
 
         // Cable Guides
         for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();

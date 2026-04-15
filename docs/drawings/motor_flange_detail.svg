@@ -1,31 +1,43 @@
 <svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
-  <!-- Scale: 1px = 1mm. First Angle Detail -->
-  <title>Motor Flange Detail Orthographic</title>
+  <!-- Scale: 1px = 1mm. Dimensional Update for v28 -->
+  <title>Motor Flange Detail Orthographic (Final)</title>
 
   <!-- 1. PLAN VIEW (Central) -->
   <g id="plan_view" transform="translate(150, 200)">
-    <!-- Flange OD 290 (R=145) -->
-    <circle r="145" fill="none" stroke="black" stroke-width="2" />
+    <!-- Flange OD 330 (R=165) -->
+    <circle r="165" fill="none" stroke="black" stroke-width="2" />
 
-    <!-- 6-Bolt pattern PCD 270 (R=135) -->
-    <circle cx="135" cy="0" r="4.5" fill="none" stroke="black" />
-    <circle cx="67.5" cy="116.9" r="4.5" fill="none" stroke="black" />
-    <circle cx="-67.5" cy="116.9" r="4.5" fill="none" stroke="black" />
-    <circle cx="-135" cy="0" r="4.5" fill="none" stroke="black" />
-    <circle cx="-67.5" cy="-116.9" r="4.5" fill="none" stroke="black" />
-    <circle cx="67.5" cy="-116.9" r="4.5" fill="none" stroke="black" />
+    <!-- 6-Bolt pattern PCD 260 (R=130) -->
+    <g id="bolt_pattern" stroke="red" fill="none">
+       <circle cx="130" cy="0" r="4.5" />
+       <circle cx="65" cy="112.58" r="4.5" />
+       <circle cx="-65" cy="112.58" r="4.5" />
+       <circle cx="-130" cy="0" r="4.5" />
+       <circle cx="-65" cy="-112.58" r="4.5" />
+       <circle cx="65" cy="-112.58" r="4.5" />
+    </g>
 
-    <circle r="7.5" fill="none" stroke="black" stroke-width="1" stroke-dasharray="2,2" /> <!-- Axle hole -->
-    <text x="0" y="170" font-family="Arial" font-size="14" text-anchor="middle">PLAN VIEW (290mm Flange)</text>
+    <!-- Spoke pattern PCD 320 (Inner circle of dots) -->
+    <circle r="160" stroke="#888" stroke-width="1" stroke-dasharray="2,2" fill="none" />
+
+    <!-- Central bore -->
+    <circle r="7.2" fill="none" stroke="black" stroke-width="1" stroke-dasharray="1,1" />
+
+    <!-- Annotations -->
+    <text x="0" y="185" font-family="Arial" font-size="12" text-anchor="middle">PLAN VIEW (330mm Flange OD)</text>
+    <text x="0" y="-135" font-family="Arial" font-size="10" fill="red" text-anchor="middle">PCD 260mm (6x M8 Holes)</text>
   </g>
 
   <!-- 2. SECTION VIEW (Right) -->
   <g id="section_view" transform="translate(450, 200)">
-    <rect x="-5" y="-145" width="10" height="290" fill="gray" stroke="black" />
-    <line x1="-15" y1="-135" x2="15" y2="-135" stroke="red" stroke-width="1" stroke-dasharray="2,2" />
-    <line x1="-15" y1="135" x2="15" y2="135" stroke="red" stroke-width="1" stroke-dasharray="2,2" />
-    <text x="0" y="170" font-family="Arial" font-size="14" text-anchor="middle">SECTION VIEW (10mm Steel)</text>
+    <!-- 12mm thickness -->
+    <rect x="-6" y="-165" width="12" height="330" fill="#ddd" stroke="black" />
+    <line x1="-20" y1="-130" x2="20" y2="-130" stroke="red" stroke-width="1" stroke-dasharray="3,3" />
+    <line x1="-20" y1="130" x2="20" y2="130" stroke="red" stroke-width="1" stroke-dasharray="3,3" />
+    <text x="0" y="185" font-family="Arial" font-size="12" text-anchor="middle">SECTION VIEW (12mm Steel)</text>
   </g>
 
-  <text x="300" y="40" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle">Motor Flange detail (Orthographic)</text>
+  <!-- Title & Legend -->
+  <text x="300" y="30" font-family="Arial" font-size="20" font-weight="bold" text-anchor="middle">Motor-to-Rim Adapter (13" Car Rim Interface)</text>
+  <text x="300" y="55" font-family="Arial" font-size="12" text-anchor="middle" fill="#666">Dimensions in mm. Material: Grade 43 Mild Steel or C45 Carbon Steel.</text>
 </svg>
