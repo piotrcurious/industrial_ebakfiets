@@ -9,7 +9,7 @@ The front wheel of the industrial bakfiets is designed for heavy-duty cargo tran
 
 ### 2. Two-Part "Split" Rim
 - **Design**: Two halves bolted together (industrial type).
-- **Bolt Pattern**: 6x270mm PCD.
+- **Bolt Pattern**: 6x260mm PCD.
 - **Fasteners**: **6x M8x140mm Grade 10.9 Bolts** with heavy-duty washers and **M8 Nyloc nuts**. (Tighten to 25-30Nm). These bolts sandwich both rim halves and both motor flanges for maximum rigidity.
 
 ### 5. Front Mudguard Assembly

@@ -29,8 +29,8 @@ module rounded_box(size, r, center=true) {
     }
 }
 
-module car_tire_13in() {
-    color(color_tire)
+module car_tire_13in(alpha=1.0) {
+    color(color_tire, alpha)
     rotate([90, 0, 0])
     union() {
         // Tire Body
@@ -53,6 +53,14 @@ module car_tire_13in() {
             rounded_box([12, front_tire_width - 30, 20], r=4, center=true);
         }
     }
+}
+
+module car_tube_13in(alpha=1.0) {
+    color("red", alpha)
+    rotate([90, 0, 0])
+    rotate_extrude($fn=64)
+    translate([front_rim_dia/2 + 30, 0, 0])
+    circle(d=80);
 }
 
 module car_rim_half() {
@@ -88,17 +96,31 @@ module car_rim_13in_split() {
     }
 }
 
-module industrial_bolt(d=8, l=50, hex_d=13) {
-    color(color_fixed) {
-        translate([0, 0, l/2]) rotate([0, 0, 30]) cylinder(d=hex_d, h=5, $fn=6);
+module socket_head_bolt(d=8, l=50) {
+    head_d = d * 1.5;
+    head_h = d;
+    color(color_fastener) {
+        // Bolt Head
+        translate([0, 0, l/2]) {
+            difference() {
+                cylinder(d=head_d, h=head_h);
+                // Hex socket
+                translate([0, 0, head_h - d/2]) cylinder(d=d*0.8, h=d, $fn=6);
+            }
+        }
+        // Shank
         cylinder(d=d, h=l, center=true);
-        translate([0, 0, -l/2 - 5]) rotate([0, 0, 30]) cylinder(d=hex_d, h=5, $fn=6);
+        // Nut
+        translate([0, 0, -l/2 - 6]) cylinder(d=d*1.6, h=6, $fn=6);
     }
 }
 
-module rim_fastener_pattern() {
-    // Bolting through both rim halves and both motor flanges (Total span ~126mm)
-    for(a=[0:60:359]) rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0]) industrial_bolt(8, 140);
+module rim_fastener_pattern(exploded=0) {
+    // Bolting through both rim halves and both motor adapter flanges
+    for(a=[0:60:359]) rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0]) {
+        translate([0, 0, exploded * 50])
+        socket_head_bolt(8, 140);
+    }
 }
 
 module hub_motor_dd() {
