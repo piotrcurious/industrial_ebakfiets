@@ -1,0 +1,27 @@
+<svg width="600" height="400" viewBox="0 0 600 400" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Front View -->
+
+  <!-- Main Frame Spar (Mounting base) -->
+  <rect x="200" y="50" width="200" height="20" fill="gray" />
+
+  <!-- Pivot Plate (8mm) -->
+  <rect id="pivot_plate" x="250" y="70" width="100" height="10" fill="black" />
+
+  <!-- 10mm Pivot Pin -->
+  <circle id="pivot_pin" cx="300" cy="80" r="5" fill="red" />
+
+  <!-- Bipod Legs (25mm tubing) -->
+  <!-- 350mm base width -->
+  <line id="leg_l" x1="300" y1="80" x2="125" y2="350" stroke="black" stroke-width="10" />
+  <line id="leg_r" x1="300" y1="80" x2="475" y2="350" stroke="black" stroke-width="10" />
+
+  <!-- Return Springs (2.5mm wire) -->
+  <path id="spring_l" d="M 280 80 Q 250 150 200 200" fill="none" stroke="blue" stroke-width="2" />
+  <path id="spring_r" d="M 320 80 Q 350 150 400 200" fill="none" stroke="blue" stroke-width="2" />
+
+  <!-- Feet -->
+  <rect x="110" y="350" width="30" height="10" fill="black" />
+  <rect x="460" y="350" width="30" height="10" fill="black" />
+
+  <text x="50" y="40" font-family="Arial" font-size="18" font-weight="bold">Bipod Kickstand Detail (350mm Base)</text>
+</svg>

@@ -5,14 +5,14 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | Category | Component | Specification | Estimated Cost |
 | --- | --- | --- | --- |
 | **Front Wheel** | Car Tire | 155/70 R13 (new) | $40 |
-| | Split Rim | 13-inch steel split rim (new/Piaggio type, 4x98) | $50 |
-| | Front Hub Motor | 250W Direct Drive (36V/48V, 175mm Dropout, M14) | $120 |
-| | Motor Flanges | 2x 5mm Steel plates (laser-cut) | $30 |
-| | Torque Arm | 6mm steel laser-cut plate | $15 |
+| | Split Rim | 13-inch steel industrial split rim (6-bolt PCD 260) | $50 |
+| | Front Hub Motor | Golden Motor Magic Pie 5 (Fatbike 190mm Axle) | $320 |
+| | Motor Adapters | 2x 12mm Steel/Brass plates (laser-cut, 330mm OD) | $80 |
+| | Torque Arm | 10mm steel laser-cut plate | $25 |
 | **Rear Wheel** | Rear Rim | 16-inch Steel Moped Rim (MZ ETZ 150/251 type) | $50 |
 | | Rear Hub Motor | 350W-500W Geared (36V/48V, 135mm) | $180 |
 | | Rear Tire | 16x2.50 or 3.50-16 rugged tire | $40 |
-| **Frame** | Steel Tubing | 40x20x2.5mm rectangular + 1-1/4\" Sch 40 Pipe | $90 |
+| **Frame** | Steel Tubing | 40x40x2.5mm rectangular + 1-1/4\" Sch 40 Pipe | $90 |
 | | Steering Shaft | 15mm x 500mm Precision Steel Rod | $20 |
 | | Steering Bearings | Pair of 7202 Angular Contact (15x35x11) | $20 |
 | | Stopping Elements | 35mm OD steel collars (machined/laser-cut) | $15 |
@@ -28,6 +28,7 @@ This BOM is for a build using primarily new industrial and bicycle components, b
 | **Lighting/Safe** | Lighting/Horn | Dual 10W LED + 110dB Horn + Mirrors | $55 |
 | **Ergonomics** | Seat/Stem/Bars | 31.6mm Post + Adjustable Stem + 720mm Bars | $85 |
 | **Cargo Box** | Panels/Steel | 12mm Marine Plywood + 25x25mm Steel Angle | $110 |
+| | Logistics Rails | 2m E-track (zinc plated steel) | $35 |
 | | Anchor Points | 4x D-ring rated for 250kg | $15 |
-| **Fasteners** | Structural | Grade 10.9 structural assortment (M8/M10/M14) | $40 |
-| **Total** | | | **~$1,940** |
+| **Fasteners** | Structural | Grade 10.9 structural assortment (M8x50, M10, M14) | $45 |
+| **Total** | | | **~$1,975** |

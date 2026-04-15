@@ -1,0 +1,55 @@
+<svg width="600" height="900" viewBox="0 0 600 900" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Front View -->
+  <title>Detailed Front Fork - Car Tire Ready</title>
+
+  <rect x="0" y="0" width="600" height="900" fill="#f9f9f9" />
+
+  <!-- STEERER SHAFT (15mm Precision Rod) -->
+  <rect id="steerer_shaft" x="292.5" y="50" width="15" height="300" fill="#95a5a6" stroke="black" stroke-width="1" />
+
+  <!-- STEERING ARM (100mm, 10mm Plate) -->
+  <rect id="steering_arm" x="300" y="340" width="100" height="10" fill="#e74c3c" stroke="black" stroke-width="1" />
+  <circle id="steering_arm_hole" cx="390" cy="345" r="5" fill="white" stroke="black" />
+
+  <!-- FORK CROWN (10mm Plate, 250mm Width) -->
+  <rect id="fork_crown" x="175" y="350" width="250" height="10" fill="#2c3e50" stroke="black" stroke-width="2" />
+  <!-- Reinforcement Plates -->
+  <path d="M 177.5 360 L 177.5 400 L 217.5 360 Z" fill="#2c3e50" opacity="0.5" />
+  <path d="M 422.5 360 L 422.5 400 L 382.5 360 Z" fill="#2c3e50" opacity="0.5" />
+
+  <!-- FORK LEGS (30mm Width Rectangular Tubing) -->
+  <!-- Inner width between legs: 185mm. Center 300. Inner edges at 207.5, 392.5 -->
+  <rect id="fork_leg_left" x="177.5" y="360" width="30" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
+  <rect id="fork_leg_right" x="392.5" y="360" width="30" height="400" fill="#7f8c8d" stroke="black" stroke-width="2" />
+
+  <!-- POST MOUNT BRAKE TABS (M6, 203mm rotor setup) -->
+  <rect id="brake_tab_upper" x="155" y="600" width="20" height="10" fill="#c0392b" stroke="black" />
+  <rect id="brake_tab_lower" x="155" y="660" width="20" height="10" fill="#c0392b" stroke="black" />
+
+  <!-- STEERING STOP PINS (10mm Steel) -->
+  <circle id="stop_pin_l" cx="225" cy="355" r="5" fill="#f1c40f" stroke="black" />
+  <circle id="stop_pin_r" cx="375" cy="355" r="5" fill="#f1c40f" stroke="black" />
+
+  <!-- TORQUE ARM MOUNTING TAB -->
+  <rect id="torque_arm_tab" x="175" y="720" width="10" height="30" fill="#2980b9" stroke="black" />
+  <circle cx="180" cy="735" r="3.25" fill="white" stroke="black" />
+
+  <!-- FRONT DROPOUTS (8mm Steel Plate) -->
+  <rect id="dropout_l" x="175" y="760" width="25" height="50" fill="#34495e" stroke="black" stroke-width="2" />
+  <rect id="dropout_r" x="400" y="760" width="25" height="50" fill="#34495e" stroke="black" stroke-width="2" />
+  <!-- M14 Axle Centerline -->
+  <line x1="150" y1="785" x2="450" y2="785" stroke="red" stroke-width="1" stroke-dasharray="5,2" />
+  <circle cx="187.5" cy="785" r="7" fill="white" stroke="black" />
+  <circle cx="412.5" cy="785" r="7" fill="white" stroke="black" />
+
+  <!-- ANNOTATIONS & DIMENSIONS -->
+  <text x="300" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle" fill="#2c3e50">Front Fork Construction Detail</text>
+
+  <line x1="207.5" y1="400" x2="392.5" y2="400" stroke="black" stroke-width="1" />
+  <text x="300" y="420" font-family="Arial" font-size="12" text-anchor="middle">185mm Inner Clearance</text>
+
+  <text x="410" y="345" font-family="Arial" font-size="12" fill="red">100mm Steering Arm</text>
+  <text x="145" y="635" font-family="Arial" font-size="12" text-anchor="end" fill="#c0392b">PM Brake Mount</text>
+
+  <text x="20" y="880" font-family="Arial" font-size="12" fill="#7f8c8d">Scale: 1px = 1mm | Optimized for 155mm Car Tire</text>
+</svg>

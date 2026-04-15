@@ -27,5 +27,9 @@ Detailed technical specifications for custom-fabricated mechanical components.
 - **OD**: 35.00mm.
 - **Fastening**: 6x M5 threaded radial holes.
 
-## 6. Motor Flange Plates
-- **Material**: 5mm Steel Plate.
+## 6. Motor-to-Rim Adapter Plates (Industrial Tier)
+- **Material**: 12mm Precision Steel or Brass Plate (Laser-cut).
+- **Interface (Inner)**: 56-hole pattern for Magic Pie 5 spoke flange integration.
+- **Interface (Outer)**: 6x260mm PCD pattern for the automotive split rim.
+- **Fasteners (Rim)**: 6x M8x140mm Grade 10.9 (Sandwich construction).
+- **Fasteners (Flange)**: 12x M5x20mm Grade 12.9 Socket Head Cap Screws per side.

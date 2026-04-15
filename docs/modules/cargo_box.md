@@ -22,8 +22,8 @@ To prevent cargo movement during transit, the box is equipped with an adjustable
 
 ## Dimensions and Compatibility
 - **Internal Width**: 810mm.
-- **Internal Length**: 1210mm.
-- **Standard Load**: Fits one **Standard Euro-pallet**.
+- **Internal Length**: 1350mm.
+- **Standard Load**: Fits one **Standard Euro-pallet** (with extra room for gear).
 
 ## Mounting and Security
 - **Frame Interface**: Secured via **8x M10 Grade 8.8 Bolts**.

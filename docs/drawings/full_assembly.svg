@@ -1,0 +1,88 @@
+<svg width="2500" height="1200" viewBox="0 0 2500 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- Scale: 1px = 1mm. Master Assembly Drawing v7 (Integrated Design) -->
+  <title>Master Assembly Drawing - Industrial E-Bakfiets</title>
+
+  <rect x="0" y="0" width="2500" height="1200" fill="#fdfdfd" />
+
+  <!-- Ground Plane -->
+  <line x1="100" y1="1100" x2="2400" y2="1100" stroke="#cccccc" stroke-width="2" />
+
+  <!-- 1. FRONT ANCHOR: 13" Car Tire (OD 548mm) -->
+  <!-- Contact point at y=1100, x=2100. Center at y=1100 - 274 = 826 -->
+  <g id="front_wheel_anchor">
+    <circle cx="2100" cy="826" r="274" fill="none" stroke="#333333" stroke-width="25" />
+    <circle cx="2100" cy="826" r="165" fill="none" stroke="#777" stroke-width="5" /> <!-- Rim -->
+    <circle cx="2100" cy="826" r="145" fill="#7f8c8d" stroke="black" stroke-width="2" /> <!-- Hub Flange 290mm -->
+    <circle cx="2100" cy="826" r="110" fill="#34495e" stroke="black" stroke-width="1" /> <!-- Hub Body 220mm -->
+    <circle cx="2100" cy="826" r="7" fill="black" /> <!-- Axle -->
+
+    <!-- Fasteners (PCD 270mm -> R=135) -->
+    <circle cx="2235" cy="826" r="4" fill="#444" />
+    <circle cx="1965" cy="826" r="4" fill="#444" />
+
+    <text x="2100" y="1130" font-family="Arial" font-size="16" text-anchor="middle">Anchor: 155/70 R13 Tire (Split Rim)</text>
+  </g>
+
+  <!-- 2. FRONT FORK (Tilted 68 deg from horiz, so 22 deg from vertical) -->
+  <g id="fork_layer" transform="rotate(-22 2100 826)">
+     <!-- Blade -->
+     <rect x="2085" y="466" width="30" height="360" fill="#555555" stroke="black" />
+     <!-- Crown -->
+     <rect x="2040" y="446" width="120" height="40" fill="#2c3e50" stroke="black" />
+     <!-- Steering Shaft -->
+     <rect x="2092" y="246" width="15" height="200" fill="#95a5a6" />
+  </g>
+
+  <!-- 3. STEERING HEAD & HT -->
+  <g id="steering_head_layer" transform="rotate(-22 2100 826)">
+    <rect x="2079" y="266" width="42" height="200" fill="none" stroke="firebrick" stroke-width="3" />
+    <!-- HT Gusset face -->
+    <rect x="2059" y="300" width="20" height="120" fill="firebrick" />
+    <!-- Reinforcing Gussets -->
+    <path d="M 2079 266 L 2039 266 L 2079 306 Z" fill="firebrick" opacity="0.4" />
+    <path d="M 2079 466 L 2039 466 L 2079 426 Z" fill="firebrick" opacity="0.4" />
+  </g>
+
+  <!-- 4. MAIN FRAME (Connects to Gusset) -->
+  <g id="frame_layer">
+    <!-- Main Rails (from HT area back) -->
+    <rect x="150" y="910" width="1910" height="40" fill="#000080" stroke="black" stroke-width="2" />
+    <!-- Cable Guides -->
+    <circle cx="1000" cy="955" r="3" fill="black" />
+    <circle cx="1300" cy="955" r="3" fill="black" />
+    <circle cx="1600" cy="955" r="3" fill="black" />
+    <!-- HT to Rails connection -->
+    <path d="M 2050 480 L 1800 910" fill="none" stroke="#000080" stroke-width="40" />
+
+    <!-- Cargo Box (Bed) -->
+    <rect x="400" y="760" width="1250" height="150" fill="#d2b48c" stroke="black" stroke-width="1" opacity="0.6" />
+    <text x="1025" y="840" font-family="Arial" font-size="24" text-anchor="middle">Cargo Bed (810mm Width)</text>
+  </g>
+
+  <!-- 5. REAR END -->
+  <g id="rear_layer">
+    <!-- Seat Mast -->
+    <rect x="350" y="610" width="35" height="300" fill="#000080" />
+    <path d="M 320 610 Q 365 560 410 610 Z" fill="#333" /> <!-- Saddle -->
+
+    <!-- Rear Wheel (16" ~410mm) -->
+    <!-- Center at y=1100 - 205 = 895. X at wheelbase 1950 from front contact -->
+    <!-- Front contact x=2100. Rear contact x = 2100 - 1950 = 150 -->
+    <circle cx="150" cy="895" r="205" fill="none" stroke="#333" stroke-width="15" />
+    <circle cx="150" cy="895" r="10" fill="#e74c3c" />
+    <text x="150" y="1130" font-family="Arial" font-size="16" text-anchor="middle">16" Rear Wheel</text>
+  </g>
+
+  <!-- 6. ANNOTATIONS -->
+  <text x="1250" y="80" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle" fill="#2c3e50">Integrated Surface-to-Surface Design</text>
+  <text x="1250" y="120" font-family="Arial" font-size="20" text-anchor="middle" fill="#7f8c8d">Master Assembly Drawing v7 | Industrial Refinement</text>
+
+  <!-- Dimension Lines -->
+  <g stroke="red" stroke-width="1">
+    <line x1="150" y1="1150" x2="2100" y2="1150" />
+    <line x1="150" y1="1140" x2="150" y2="1160" />
+    <line x1="2100" y1="1140" x2="2100" y2="1160" />
+    <text x="1125" y="1175" fill="red" font-size="20" text-anchor="middle">Wheelbase: 1950mm</text>
+  </g>
+
+</svg>

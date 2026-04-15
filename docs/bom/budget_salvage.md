@@ -9,7 +9,7 @@ This BOM is for a build that maximizes the use of salvaged bicycle and car parts
 | | Front Hub Motor | 250W Direct Drive (salvaged) | $60 |
 | **Rear Wheel** | Rear Rim | 16-inch Bicycle Rim (salvaged) | $0 |
 | | Rear Hub Motor | 300W-500W Geared (salvaged) | $80 |
-| **Frame** | Steel Tubing | 40x20x2mm steel (scrap/salvaged) | $20 |
+| **Frame** | Steel Tubing | 40x40x2mm steel (scrap/salvaged) | $20 |
 | | Steering Bearings | Pair of 7202 Angular Contact (new) | $15 |
 | | Stabilizer Screws | 4x M16 Threaded Rod (salvaged) | $10 |
 | **Brakes** | Calipers/Rotors | Disc Brake set (salvaged) | $30 |

@@ -15,7 +15,7 @@ To ensure operator safety and minimize maintenance in industrial environments, t
 
 ### 2. Mounting Clips
 - **Design**: 3D-printable or steel-welded clips.
-- **Fastening**: Secured to the 40x20mm main frame spars using **M5 Socket Head Screws**.
+- **Fastening**: Secured to the 40x40mm main frame spars using **M5 Socket Head Screws**.
 - **Alignment**: Tubes must be aligned to maintain a maximum 10-degree chain entry/exit angle into the sprockets.
 
 ## Transmission Components
@@ -24,3 +24,9 @@ To ensure operator safety and minimize maintenance in industrial environments, t
 
 ### 2. Bottom Bracket and Crankset
 - **Crankset**: 170mm or 175mm length, 42T steel chainring.
+
+## Rear Hub Motor
+### 1. Motor Specification
+- **Type**: 350W-500W Geared Hub Motor.
+- **Dropout Spacing**: 135mm.
+- **Mating**: Standard IS 6-bolt brake rotor mount.

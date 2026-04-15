@@ -1,0 +1,59 @@
+<svg width="2500" height="1500" viewBox="0 0 2500 1500" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1:1 Scale. ISO First Angle Ortho. v6 Integrated Design -->
+  <title>Main Frame Ortho - Verified</title>
+
+  <rect x="0" y="0" width="2500" height="1500" fill="#fcfcfc" />
+
+  <!-- SIDE VIEW -->
+  <g id="side_view" transform="translate(100, 200)">
+    <!-- Main Rails (Bed Length 1250) -->
+    <rect x="400" y="400" width="1250" height="40" fill="gray" stroke="black" stroke-width="2" />
+
+    <!-- Forward Spars to HT (200mm) -->
+    <rect x="1650" y="400" width="200" height="40" fill="gray" stroke="black" stroke-width="2" />
+
+    <!-- Header Plate (Mates to HT Gusset) -->
+    <rect x="1850" y="320" width="10" height="200" fill="#000080" stroke="black" />
+
+    <!-- HT Anchor Area (Reference) -->
+    <g transform="translate(1860, 420) rotate(-22)">
+       <rect x="0" y="-100" width="42.16" height="200" fill="none" stroke="firebrick" stroke-width="3" stroke-dasharray="5,2" />
+       <!-- HT Gusset face (Mating Surface) -->
+       <rect x="-10" y="-90" width="10" height="180" fill="firebrick" opacity="0.5"/>
+       <!-- Reinforcing Gussets -->
+       <path d="M 0 -100 L -40 -100 L 0 -60 Z" fill="firebrick" opacity="0.3" />
+       <path d="M 0 100 L -40 100 L 0 60 Z" fill="firebrick" opacity="0.3" />
+    </g>
+
+    <!-- Rear Subframe -->
+    <rect x="0" y="400" width="400" height="40" fill="gray" stroke="black" stroke-width="2" />
+    <!-- Seat Tube (Mast) -->
+    <rect x="100" y="100" width="35" height="300" fill="gray" stroke="black" />
+
+    <!-- Dimensions -->
+    <line x1="400" y1="460" x2="1650" y2="460" stroke="red" stroke-width="1" />
+    <text x="1025" y="480" font-family="Arial" font-size="20" text-anchor="middle" fill="red">1250mm Cargo Bed</text>
+
+    <line x1="1650" y1="460" x2="1850" y2="460" stroke="red" stroke-width="1" />
+    <text x="1750" y="480" font-family="Arial" font-size="18" text-anchor="middle" fill="red">200mm Transition</text>
+  </g>
+
+  <!-- TOP VIEW -->
+  <g id="top_view" transform="translate(100, 800)">
+    <!-- Main Rails spaced at bed_width=810 -->
+    <rect x="400" y="0" width="1250" height="40" fill="gray" stroke="black" />
+    <rect x="400" y="810" width="1250" height="40" fill="gray" stroke="black" />
+
+    <!-- Header Spars (tapering/narrowing to 100mm) -->
+    <path d="M 1650 0 L 1850 375 L 1850 475 L 1650 850 Z" fill="none" stroke="black" stroke-width="2" />
+
+    <!-- Header Plate -->
+    <rect x="1850" y="375" width="10" height="100" fill="#000080" stroke="black" />
+
+    <!-- Dimensions -->
+    <line x1="1500" y1="40" x2="1500" y2="810" stroke="red" stroke-width="1" />
+    <text x="1520" y="425" font-family="Arial" font-size="20" fill="red" text-anchor="start" transform="rotate(90 1520 425)">810mm Bed Width (Internal)</text>
+  </g>
+
+  <text x="1250" y="100" font-family="Arial" font-size="48" font-weight="bold" text-anchor="middle">Main Frame: Orthographic Detail (Verified v6)</text>
+</svg>

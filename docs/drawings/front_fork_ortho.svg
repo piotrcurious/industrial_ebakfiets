@@ -1,0 +1,60 @@
+<svg width="1000" height="1200" viewBox="0 0 1000 1200" xmlns="http://www.w3.org/2000/svg">
+  <!-- 1:1 Scale. ISO First Angle Ortho. v6 Integrated Design -->
+  <title>Front Fork Ortho - Verified v6</title>
+
+  <rect x="0" y="0" width="1000" height="1200" fill="#fcfcfc" />
+
+  <!-- FRONT VIEW -->
+  <g id="front_view" transform="translate(300, 400)">
+    <!-- Fork Crown (250mm Width) -->
+    <rect x="-125" y="0" width="250" height="40" fill="#2c3e50" stroke="black" stroke-width="2" />
+
+    <!-- Fork Blades (connecting to dropouts) -->
+    <!-- Inner spacing 185. Edges at +/- 92.5. Blade width 30. -->
+    <rect x="-122.5" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
+    <rect x="92.5" y="40" width="30" height="320" fill="gray" stroke="black" stroke-width="2" />
+
+    <!-- Steering Shaft (15mm OD) -->
+    <rect x="-7.5" y="-200" width="15" height="200" fill="silver" stroke="black" stroke-width="1" />
+
+    <!-- Crown-to-Blade Gussets -->
+    <path d="M -92.5 40 L -92.5 80 L -52.5 40 Z" fill="#2c3e50" opacity="0.6" stroke="black" />
+    <path d="M 92.5 40 L 92.5 80 L 52.5 40 Z" fill="#2c3e50" opacity="0.6" stroke="black" />
+
+    <!-- Dimensions -->
+    <line x1="-107.5" y1="380" x2="107.5" y2="380" stroke="red" stroke-width="1" />
+    <text x="0" y="400" font-family="Arial" font-size="14" text-anchor="middle" fill="red">215mm Center-to-Center</text>
+
+    <line x1="-125" y1="-20" x2="125" y2="-20" stroke="red" stroke-width="1" />
+    <text x="0" y="-30" font-family="Arial" font-size="14" text-anchor="middle" fill="red">250mm Crown Width</text>
+  </g>
+
+  <!-- SIDE VIEW -->
+  <g id="side_view" transform="translate(700, 400)">
+    <!-- Crown -->
+    <rect x="0" y="0" width="60" height="40" fill="#2c3e50" stroke="black" />
+
+    <!-- Blade (Tilted for Rake) -->
+    <!-- fork_rake = 45mm. fork_length = 360mm -->
+    <path d="M 15 40 L 45 40 L 90 360 L 60 360 Z" fill="gray" stroke="black" stroke-width="1" />
+
+    <!-- Dropout Plate -->
+    <rect x="50" y="340" width="60" height="80" fill="silver" stroke="black" />
+    <circle cx="80" cy="380" r="7" fill="white" stroke="black" /> <!-- Axle Hole -->
+
+    <!-- Steering Axis (Projected) -->
+    <line x1="30" y1="-100" x2="30" y2="500" stroke="red" stroke-width="1" stroke-dasharray="10,5" />
+
+    <!-- Rake Dimension -->
+    <line x1="30" y1="450" x2="80" y2="450" stroke="red" stroke-width="1" />
+    <line x1="30" y1="440" x2="30" y2="460" stroke="red" stroke-width="1" />
+    <line x1="80" y1="440" x2="80" y2="460" stroke="red" stroke-width="1" />
+    <text x="55" y="475" font-family="Arial" font-size="16" text-anchor="middle" fill="red">45mm Rake</text>
+
+    <!-- Length Dimension -->
+    <line x1="130" y1="40" x2="130" y2="400" stroke="red" stroke-width="1" />
+    <text x="145" y="220" font-family="Arial" font-size="16" transform="rotate(90 145 220)" fill="red">360mm Fork Length</text>
+  </g>
+
+  <text x="500" y="50" font-family="Arial" font-size="36" font-weight="bold" text-anchor="middle">Front Fork: Orthographic Detail (Verified v6)</text>
+</svg>
