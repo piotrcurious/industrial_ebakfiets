@@ -1,0 +1,30 @@
+<svg width="400" height="300" viewBox="0 0 400 300" xmlns="http://www.w3.org/2000/svg">
+  <title>Bearing Locking Collar (Element Detail)</title>
+
+  <!-- 1. FRONT VIEW (PCD) -->
+  <g transform="translate(120, 150)">
+    <circle r="17.5" fill="none" stroke="black" stroke-width="2" /> <!-- OD 35 -->
+    <circle r="7.55" fill="none" stroke="black" stroke-width="1" /> <!-- ID 15.1 -->
+
+    <!-- 6-Bolt pattern for set screws -->
+    <g stroke="red" fill="none" stroke-dasharray="2,1">
+      <circle cx="12" cy="0" r="1.5" />
+      <circle cx="6" cy="10.39" r="1.5" />
+      <circle cx="-6" cy="10.39" r="1.5" />
+      <circle cx="-12" cy="0" r="1.5" />
+      <circle cx="-6" cy="-10.39" r="1.5" />
+      <circle cx="6" cy="-10.39" r="1.5" />
+    </g>
+    <text x="0" y="45" font-family="Arial" font-size="12" text-anchor="middle">FRONT VIEW (OD 35mm)</text>
+  </g>
+
+  <!-- 2. SIDE VIEW -->
+  <g transform="translate(280, 150)">
+    <rect x="-7.5" y="-17.5" width="15" height="35" fill="#ddd" stroke="black" />
+    <line x1="-10" y1="0" x2="10" y2="0" stroke="red" stroke-dasharray="2,2" />
+    <text x="0" y="45" font-family="Arial" font-size="12" text-anchor="middle">SIDE VIEW (15mm Thk)</text>
+  </g>
+
+  <text x="200" y="30" font-family="Arial" font-size="18" font-weight="bold" text-anchor="middle">Bearing Locking Collar Detail</text>
+  <text x="200" y="55" font-family="Arial" font-size="10" text-anchor="middle" fill="#666">Holes: 6x M5 Threaded Radial. Material: 4140 Steel.</text>
+</svg>
