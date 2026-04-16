@@ -63,24 +63,25 @@ module car_tube_13in(alpha=1.0) {
     circle(d=80);
 }
 
-module car_rim_half() {
+module car_rim_half(thickness=10) {
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead Seat (Aligned with front_rim_dia, origin is bead center)
-            translate([front_rim_dia/2 - 15, -15, 0]) square([20, 30]);
+            // Bead Seat (Origin is the mating surface y=0)
+            // Offset from mating surface by thickness
+            translate([front_rim_dia/2 - 15, -50 + thickness, 0]) square([20, 40]);
+
             // Bead Flange
-            translate([front_rim_dia/2 + 5, -15, 0]) square([8, 35]);
+            translate([front_rim_dia/2 + 5, -50 + thickness, 0]) square([8, 45]);
 
-            // Mating Flange (Reinforced)
-            // Faces the motor at 50mm offset. Extended inwards to cover PCD.
-            translate([rim_bolt_pcd/2 - 35, 5, 0]) square([motor_flange_od/2 + 10 - (rim_bolt_pcd/2 - 35), rim_flange_t]);
+            // Mating Flange (Contact surface at y=0)
+            translate([rim_bolt_pcd/2 - 35, 0, 0]) square([motor_flange_od/2 + 10 - (rim_bolt_pcd/2 - 35), thickness]);
 
-            // Transition Web
+            // Transition Web (Hull between mating surface and bead seat)
             hull() {
-                translate([front_rim_dia/2 - 25, -10, 0]) square([15, 1]);
-                translate([rim_bolt_pcd/2 - 15, 5, 0]) square([15, 1]);
+                translate([front_rim_dia/2 - 25, -40 + thickness, 0]) square([15, 1]);
+                translate([rim_bolt_pcd/2 - 15, thickness-1, 0]) square([15, 1]);
             }
         }
         // Bolt Holes in the rim flange
@@ -90,9 +91,9 @@ module car_rim_half() {
 
 module car_rim_13in_split() {
     color(color_fastener) {
-        // Space them to match tire beads at +/- 50mm
-        translate([0, 50, 0]) car_rim_half();
-        translate([0, -50, 0]) mirror([0, 1, 0]) car_rim_half();
+        // Halves meet at y=0 (Surface 1)
+        car_rim_half(rim_flange_t);
+        mirror([0, 1, 0]) car_rim_half(rim_flange_t);
     }
 }
 
@@ -124,29 +125,36 @@ module rim_fastener_pattern(exploded=0) {
 }
 
 module hub_motor_dd() {
+    // Spoke flange spacing (surface where adapters mount)
+    motor_spoke_flange_dist = 2 * (rim_flange_t + motor_flange_t);
+
     // Magic Pie 5 Housing Profile
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
         // Main Stator/Controller Housing
-        cylinder(d=310, h=65, center=true);
+        cylinder(d=310, h=motor_spoke_flange_dist - 10, center=true);
         // External Cooling Fins/Ribs
-        for(a=[0:15:359]) rotate([0, 0, a]) translate([155, 0, 0]) cube([10, 4, 60], center=true);
+        for(a=[0:15:359]) rotate([0, 0, a]) translate([155, 0, 0]) cube([10, 4, motor_spoke_flange_dist - 15], center=true);
     }
 
-    // Custom Adapter Flanges (Magic Pie Spoke Flange to Car Rim)
-    for(s=[-1, 1]) translate([0, s * 50, 0]) rotate([90, 0, 0]) color(color_brass) {
-        difference() {
-            // Heavy duty adapter plate
-            cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
-            cylinder(d=100, h=motor_flange_t+1, center=true); // Center clearance
+    // Custom Adapter Flanges (Mated to Rim Flanges at +/- rim_flange_t)
+    for(s=[-1, 1]) translate([0, s * rim_flange_t, 0]) {
+        // Move to the outer face of the rim flange
+        // The adapter plate itself then extends outwards
+        translate([0, s * motor_flange_t/2, 0])
+        rotate([90, 0, 0]) color(color_brass) {
+            difference() {
+                // Heavy duty adapter plate
+                cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
+                cylinder(d=100, h=motor_flange_t+1, center=true); // Center clearance
 
-            // Outer Bolt Pattern (Rim Mating)
-            for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0]) cylinder(d=8.5, h=30, center=true);
+                // Outer Bolt Pattern (Rim Mating)
+                for(a=[0:60:359]) rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0]) cylinder(d=8.5, h=30, center=true);
 
-            // Inner Bolt Pattern (Motor Spoke Flange Mating)
-            // Magic Pie has ~56 spoke holes. We use 12 for the adapter.
-            for(a=[0:30:359]) rotate([0, 0, a]) translate([front_hub_flange_dia/2 - 10, 0, 0]) cylinder(d=5.5, h=30, center=true);
+                // Inner Bolt Pattern (Motor Spoke Flange Mating)
+                for(a=[0:30:359]) rotate([0, 0, a]) translate([front_hub_flange_dia/2 - 10, 0, 0]) cylinder(d=5.5, h=30, center=true);
+            }
         }
     }
 
