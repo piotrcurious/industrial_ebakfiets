@@ -45,6 +45,11 @@ Detailed descriptions of the core components and systems:
 - **[High-Torque Arm](docs/elements/torque_arm.md)**
 - **[Steering Bell Crank](docs/elements/steering_bell_crank.md)**
 - **[Bearing Locking Collar](docs/elements/bearing_collar.md)**
+- **[Steering Shaft](docs/elements/steering_shaft.md)**
+- **[Front & Rear Dropouts](docs/elements/front_dropout.md)**
+- **[Brake Mount Tabs](docs/elements/brake_mount_tab.md)**
+- **[Bipod Kickstand](docs/elements/bipod_kickstand.md)**
+- **[Stabilizer Units](docs/elements/stabilizer_unit.md)**
 - **[Mudguard Stays](docs/elements/mudguard_stay.md)**
 
 ### Systems, Software & Maintenance
@@ -58,13 +63,18 @@ Detailed descriptions of the core components and systems:
 
 ## Assembly & Operations
 - **[Assembly Guide](docs/assembly_guide.md)**
+- **[Operator's Manual](docs/operator_manual.md)**
 - **[Maintenance Log & Schedule](docs/modules/maintenance_log.md)**
+- **[Testing & Validation Protocols](docs/modules/testing_validation.md)**
+- **[Safety FMEA Analysis](docs/modules/safety_fmea.md)**
 - **[System Telemetry Software](docs/modules/system_telemetry.md)**
+- **[Electronics Wiring Pinout](docs/software/wiring_pinout.md)**
 
 ## Bill of Materials (BOM) Alternatives
 1. **[Industrial Standard](docs/bom/industrial_standard.md)** (~$1,975)
 2. **[Budget Salvage](docs/bom/budget_salvage.md)** (~$625)
 3. **[Heavy Duty](docs/bom/heavy_duty.md)** (~$3,275)
+4. **[Fastener Schedule & Torque Specs](docs/bom/fastener_schedule.md)**
 
 ---
 
