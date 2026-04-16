@@ -5,10 +5,10 @@ import os
 script_dir = os.path.dirname(os.path.abspath(__file__))
 
 renders = [
-    {"out": "../renders/full_assembly_perspective.png", "cam": "700,0,300,65,0,25,4500", "scad": "full_assembly.scad", "call": ""},
-    {"out": "../renders/final_side.png", "cam": "700,0,300,90,0,0,4500", "scad": "full_assembly.scad", "call": ""},
-    {"out": "../renders/final_top.png", "cam": "700,0,0,0,0,0,4500", "scad": "full_assembly.scad", "call": ""},
-    {"out": "../renders/final_front.png", "cam": "0,0,300,90,0,90,2500", "scad": "full_assembly.scad", "call": ""},
+    {"out": "../renders/full_assembly_perspective.png", "cam": "-1000,0,300,65,0,30,4500", "scad": "full_assembly.scad", "call": ""},
+    {"out": "../renders/final_side.png", "cam": "-1000,0,300,90,0,0,4500", "scad": "full_assembly.scad", "call": ""},
+    {"out": "../renders/final_top.png", "cam": "-1000,0,0,0,0,0,4500", "scad": "full_assembly.scad", "call": ""},
+    {"out": "../renders/final_front.png", "cam": "100,0,400,90,0,90,2500", "scad": "full_assembly.scad", "call": ""},
     {"out": "../renders/front_wheel_assy_perspective.png", "cam": "0,0,0,65,0,25,800", "scad": "front_wheel_assy.scad", "call": "front_wheel_assy();"},
     {"out": "../renders/front_wheel_exploded.png", "cam": "0,0,0,65,0,45,1500", "scad": "front_wheel_exploded.scad", "call": ""},
     {"out": "../renders/front_wheel_xray.png", "cam": "0,0,0,65,0,25,1200", "scad": "front_wheel_xray.scad", "call": ""},

@@ -27,9 +27,9 @@ module full_bicycle_assembly() {
         rotate([0, alpha, 0]) // Re-align wheel to vertical plane (standard bike setup)
         front_wheel_assy();
 
-        // Torque Arm (Installed on axle)
+        // Torque Arm (Installed on axle surface)
         rotate([0, alpha, 0])
-        translate([0, front_hub_dropout/2 + 12, 0])
+        translate([0, front_hub_dropout/2 + 5, 0]) // 5mm offset from dropout face
         rotate([90, 0, 180])
         torque_arm();
 
@@ -57,20 +57,26 @@ module full_bicycle_assembly() {
         rotate([0, 0, 0])
         disc_caliper();
 
-        // 3. STEERING HEAD (Mated to Fork Steering Shaft)
+        // 3. STEERING HEAD (Mated to top of Fork Crown stack)
+        // Stack: Axle -> Fork Length -> Bearing stack
         translate([fork_rake, 0, fork_length + 40 + head_tube_length/2]) {
             steering_head_assy();
 
-            // 4. FRAME (Mated to Steering Head Gusset Plate)
+            // 4. FRAME (Mated to Steering Head Gusset Plate Surface)
             rotate([0, alpha, 0])
-            translate([-(head_tube_od/2 + 10), 0, 0])
+            translate([-(head_tube_od/2 + 10), 0, 0]) // Contact surface of the 10mm header plate
             rotate([0, 0, 180])
             union() {
                 frame_assy();
 
-                // CARGO BOX (Mounted on top of spars)
-                translate([riser_length, 0, -riser_drop + main_spar_size/2])
-                cargo_box_assy();
+                // CARGO BOX (Mounted on top of spars with visible bolts)
+                translate([riser_length, 0, -riser_drop + main_spar_size/2]) {
+                    cargo_box_assy();
+                    // Visible M10 Mounting Bolts
+                    for(s=[-1, 1], x=[100 : 400 : bed_length - 100])
+                        translate([x, s * (bed_width/2 - main_spar_size/2), 0])
+                        socket_head_bolt(10, 60);
+                }
 
                 // DRIVETRAIN (At Bottom Bracket)
                 translate([riser_length + bed_length - 200, 0, -riser_drop + 85])

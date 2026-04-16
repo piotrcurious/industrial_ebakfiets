@@ -7,12 +7,19 @@ module frame_assy() {
     // Header Plate (Connects to Steering Head)
     color(color_critical) translate([5, 0, 0]) rounded_box([10, 110, head_tube_length], r=2, center=true);
 
-    // Gooseneck Riser (Tapered structural member)
+    // Gooseneck Riser (Tapered structural member with Gusseting)
     color(color_frame) for(s=[-1, 1]) {
+        // Main structural riser
         hull() {
             translate([10, s * 45, 0]) sphere(d=55);
             translate([riser_length/2, s * (bed_internal_width/5), -riser_drop/2]) sphere(d=50);
             translate([riser_length, s * (bed_width/2 - 25), -riser_drop]) sphere(d=main_spar_size + 15);
+        }
+        // Gusset Plate (Reinforcement at the steering head)
+        hull() {
+            translate([10, s * 45, 0]) sphere(d=10);
+            translate([10, s * 45, head_tube_length/2]) sphere(d=10);
+            translate([100, s * 55, -50]) sphere(d=10);
         }
     }
 
