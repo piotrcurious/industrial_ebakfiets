@@ -44,17 +44,15 @@ module car_tire_13in(alpha=1.0) {
     union() {
         // Main carcass
         rotate_extrude($fn=64)
-        translate([front_rim_dia/2, 0, 0])
         union() {
-            // FIX: bead positions derived from front_tire_width, not hardcoded 50 mm.
-            // Each bead circle (d=22) sits 11 mm inboard of the tyre edge.
-            bead_y = front_tire_width/2 - 11;
-            for(s=[-1,1]) translate([0, s*bead_y, 0]) circle(d=22);
+            // Bead centers - aligned with rim seats (approx front_rim_dia/2 + 10)
+            bead_y = front_tire_width/2 - 15;
+            for(s=[-1,1]) translate([front_rim_dia/2 + 10, s*bead_y, 0]) circle(d=22);
 
             hull() {
-                for(s=[-1,1]) translate([0, s*bead_y, 0]) circle(d=22);
-                translate([(front_tire_od - front_rim_dia)/2 - 20, 0, 0])
-                    square([40, front_tire_width - 22], center=true);
+                for(s=[-1,1]) translate([front_rim_dia/2 + 10, s*bead_y, 0]) circle(d=22);
+                translate([front_tire_od/2 - 20, 0, 0])
+                    square([40, front_tire_width - 10], center=true);
             }
         }
 
@@ -91,43 +89,39 @@ module car_tube_13in(alpha=1.0) {
 // Both halves are mirror-symmetric about Y=0 (the mating plane).
 
 module car_rim_half(thickness=10) {
+    rim_half_width = front_tire_width/2 - 10;
+
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead seat (flat surface the tyre bead rests on)
-            translate([front_rim_dia/2 - 15, -50 + thickness, 0]) square([20, 40]);
+            // Bead seat & flange
+            // Seat axial position: from (rim_half_width - 30) to rim_half_width
+            translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([25, 30]);
+            translate([front_rim_dia/2 + 15, rim_half_width - 10, 0]) square([10, 20]);
 
-            // Bead flange (outer lip preventing bead walkoff)
-            translate([front_rim_dia/2 + 5, -50 + thickness, 0]) square([8, 45]);
+            // ① Piaggio mating flange — must contain rim_clamp_pcd
+            // Increased radius to 215 to ensure bolts are clear of the tire bulge if possible.
+            translate([rim_bolt_pcd/2 - 20, 0, 0])
+                square([215 - (rim_bolt_pcd/2 - 20), thickness]);
 
-            // ① Piaggio mating flange — the large outer disc where the two
-            //   halves clamp face-to-face. Y=0 is the split/mating plane.
-            //   Extends from just inboard of rim_clamp_pcd to the outer rim edge.
-            translate([rim_clamp_pcd/2 - 25, 0, 0])
-                square([front_rim_dia/2 + 8 - (rim_clamp_pcd/2 - 25), thickness]);
-
-            // Transition web — slopes from bead seat down to mating flange
+            // Web transition
             hull() {
-                translate([front_rim_dia/2 - 25, -38 + thickness, 0]) square([15, 1]);
-                translate([rim_clamp_pcd/2 - 22,  thickness - 1,  0]) square([15, 1]);
+                translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([10, 1]);
+                translate([rim_bolt_pcd/2 + 20, thickness - 1, 0]) square([10, 1]);
             }
 
-            // ② Hub adapter web — inner disc for motor-adapter bolt circle.
-            //   Stays assembled when the rim is split for tyre service.
+            // ② Thickened boss around hub bolt holes
             translate([rim_bolt_pcd/2 - 20, 0, 0])
-                square([rim_clamp_pcd/2 - 26 - (rim_bolt_pcd/2 - 20), thickness]);
-            // Thickened boss around hub bolt holes
-            translate([rim_bolt_pcd/2 - 20, 0, 0])
-                square([38, motor_flange_t + thickness]);
+                square([40, motor_flange_t + thickness]);
         }
 
-        // ① Outer Piaggio clamp holes — remove these 12 bolts to split the rim
+        // ① Outer Piaggio clamp holes (rim-half joining)
         for(a=[0 : 360/rim_clamp_n : 359])
             rotate([0, 0, a]) translate([rim_clamp_pcd/2, 0, 0])
-            cylinder(d=8.5, h=thickness * 3 + 2, center=true);
+            cylinder(d=8.5, h=100, center=true);
 
-        // ② Inner hub adapter holes — 6× M8, NOT removed for tyre service
+        // ② Inner hub adapter holes (motor mounting)
         for(a=[0:60:359])
             rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
             cylinder(d=8.5, h=100, center=true);
@@ -162,8 +156,10 @@ module socket_head_bolt(d=8, l=50) {
 //   Clamp bolts (outer) — short, through rim flanges only.
 //   Hub bolts  (inner) — long, through rim flanges + motor adapter flanges.
 module rim_fastener_pattern(exploded=0) {
-    clamp_bolt_len = 2 * rim_flange_t + 20;
-    hub_bolt_len   = 2 * (rim_flange_t + motor_flange_t) + 30;
+    // Clamp bolts go through two rim halves (each thickness 10)
+    clamp_bolt_len = 2 * 10 + 15;
+    // Hub bolts go through two rim halves + two adapter flanges (each motor_flange_t)
+    hub_bolt_len   = 2 * (10 + motor_flange_t) + 20;
 
     // ① Piaggio clamp bolts (outer ring)
     for(a=[0 : 360/rim_clamp_n : 359])
