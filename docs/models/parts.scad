@@ -1,6 +1,7 @@
 include <master_dims.scad>
 
 $fn = 32;
+eps = 0.01;
 
 // ── Color Palette ─────────────────────────────────────────────────────────────
 color_frame    = [0.1, 0.2, 0.4];
@@ -14,11 +15,8 @@ color_brass    = [0.8, 0.6, 0.2];
 color_wood     = [0.6, 0.4, 0.2];
 
 // ── Piaggio Split-Rim Parameters ──────────────────────────────────────────────
-// Add to master_dims.scad if not present. rim_clamp_pcd must be larger than
-// motor_flange_od so the tyre-change bolts are accessible without disturbing
-// the motor adapter bolts at rim_bolt_pcd.
-rim_clamp_pcd = motor_flange_od + 40;   // Outer Piaggio clamp bolt PCD (rim-half joining)
-rim_clamp_n   = 12;                      // Clamp bolt count (12× for even clamping load)
+rim_clamp_pcd = motor_flange_od + 60;   // Outer clamp bolt PCD clear of motor
+rim_clamp_n   = 12;
 
 
 // ── Utility: Rounded Box ──────────────────────────────────────────────────────
@@ -45,26 +43,21 @@ module car_tire_13in(alpha=1.0) {
         // Main carcass
         rotate_extrude($fn=64)
         union() {
-            // Bead centers - aligned with rim seats (approx front_rim_dia/2 + 10)
             bead_y = front_tire_width/2 - 15;
-            for(s=[-1,1]) translate([front_rim_dia/2 + 10, s*bead_y, 0]) circle(d=22);
+            // Shift bead centers out slightly to avoid Z-fighting with rim seat
+            for(s=[-1,1]) translate([front_rim_dia/2 + 10 + eps, s*bead_y, 0]) circle(d=22);
 
             hull() {
-                for(s=[-1,1]) translate([front_rim_dia/2 + 10, s*bead_y, 0]) circle(d=22);
+                for(s=[-1,1]) translate([front_rim_dia/2 + 10 + eps, s*bead_y, 0]) circle(d=22);
                 translate([front_tire_od/2 - 20, 0, 0])
                     square([40, front_tire_width - 10], center=true);
             }
         }
 
-        // FIX: tread block axis order was wrong.
-        // In the pre-rotate frame (wheel flat in XY, axle = Z):
-        //   X = radial outward, Y = tangential, Z = axial (tyre width)
-        // rounded_box([radial_height, circumferential, axial_width])
-        // Original had [12, front_tire_width-30, 20] — Y was tyre-width-sized,
-        // Z was only 20 mm wide; both axes were swapped.
+        // Tread blocks
         for(a=[0:10:359]) rotate([0, 0, a])
             translate([front_tire_od/2, 0, 0])
-            rounded_box([8, 14, front_tire_width - 20], r=3, center=true);
+            rounded_box([10, 14, front_tire_width - 20], r=3, center=true);
     }
 }
 
@@ -79,49 +72,45 @@ module car_tube_13in(alpha=1.0) {
 
 
 // ── PIAGGIO SPLIT RIM ─────────────────────────────────────────────────────────
-// Architecture:
-//   ①  OUTER bolt circle (rim_clamp_pcd, rim_clamp_n bolts) — joins the two
-//       rim halves at their mating flanges.  Undo ONLY these to split the rim
-//       and remove the tyre/tube without a tyre machine.
-//   ②  INNER bolt circle (rim_bolt_pcd, 6 bolts) — attaches the motor adapter
-//       to the rim.  These are NOT disturbed during tyre service.
-//
-// Both halves are mirror-symmetric about Y=0 (the mating plane).
-
 module car_rim_half(thickness=10) {
     rim_half_width = front_tire_width/2 - 10;
+    // The rim half meets at Y=0 outside the motor radius.
+    // Inside the motor radius, it is offset to sit on the adapter.
+    adapter_offset = motor_flange_t + 10; // offset from center plane to adapter-rim interface
 
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead seat & flange
-            // Seat axial position: from (rim_half_width - 30) to rim_half_width
+            // 1. Bead seat & outer flange
             translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([25, 30]);
             translate([front_rim_dia/2 + 15, rim_half_width - 10, 0]) square([10, 20]);
 
-            // ① Piaggio mating flange — must contain rim_clamp_pcd
-            // Increased radius to 215 to ensure bolts are clear of the tire bulge if possible.
-            translate([rim_bolt_pcd/2 - 20, 0, 0])
-                square([215 - (rim_bolt_pcd/2 - 20), thickness]);
+            // 2. Mating flange (at Y=0, outside motor radius 155)
+            translate([170, 0, 0]) square([215-170, thickness]);
 
-            // Web transition
+            // 3. Adapter interface flange (at Y=adapter_offset)
+            translate([rim_bolt_pcd/2 - 20, adapter_offset, 0])
+                square([60, thickness]);
+
+            // 4. Web Transition 1 (Bead to Mating Flange)
             hull() {
-                translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([10, 1]);
-                translate([rim_bolt_pcd/2 + 20, thickness - 1, 0]) square([10, 1]);
+                translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([10, eps]);
+                translate([170, thickness - eps, 0]) square([10, eps]);
             }
-
-            // ② Thickened boss around hub bolt holes
-            translate([rim_bolt_pcd/2 - 20, 0, 0])
-                square([40, motor_flange_t + thickness]);
+            // 5. Web Transition 2 (Mating Flange to Adapter Interface)
+            hull() {
+                translate([170, thickness - eps, 0]) square([10, eps]);
+                translate([rim_bolt_pcd/2 - 20, adapter_offset + thickness - eps, 0]) square([10, eps]);
+            }
         }
 
-        // ① Outer Piaggio clamp holes (rim-half joining)
+        // ① Outer Piaggio clamp holes
         for(a=[0 : 360/rim_clamp_n : 359])
             rotate([0, 0, a]) translate([rim_clamp_pcd/2, 0, 0])
             cylinder(d=8.5, h=100, center=true);
 
-        // ② Inner hub adapter holes (motor mounting)
+        // ② Inner hub adapter holes
         for(a=[0:60:359])
             rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
             cylinder(d=8.5, h=100, center=true);
@@ -130,8 +119,9 @@ module car_rim_half(thickness=10) {
 
 module car_rim_13in_split() {
     color(color_fastener) {
-        car_rim_half(rim_flange_t);
-        mirror([0, 1, 0]) car_rim_half(rim_flange_t);
+        // Offset slightly to prevent Z-fighting at Y=0 if they weren't same color
+        translate([0, eps, 0]) car_rim_half(rim_flange_t);
+        mirror([0, 1, 0]) translate([0, eps, 0]) car_rim_half(rim_flange_t);
     }
 }
 
@@ -141,69 +131,71 @@ module socket_head_bolt(d=8, l=50) {
     head_d = d * 1.5;
     head_h = d;
     color(color_fastener) {
-        translate([0, 0, l/2]) {
+        translate([0, 0, l/2 - eps]) {
             difference() {
-                cylinder(d=head_d, h=head_h);
-                translate([0, 0, head_h - d/2]) cylinder(d=d*0.8, h=d, $fn=6);
+                cylinder(d=head_d, h=head_h + eps);
+                translate([0, 0, head_h - d/2 + eps]) cylinder(d=d*0.8, h=d, $fn=6);
             }
         }
-        cylinder(d=d, h=l, center=true);
+        cylinder(d=d, h=l + eps, center=true);
         translate([0, 0, -l/2 - 6]) cylinder(d=d*1.6, h=6, $fn=6);
     }
 }
 
-// FIX: Two distinct bolt patterns matching the split rim architecture.
-//   Clamp bolts (outer) — short, through rim flanges only.
-//   Hub bolts  (inner) — long, through rim flanges + motor adapter flanges.
 module rim_fastener_pattern(exploded=0) {
-    // Clamp bolts go through two rim halves (each thickness 10)
-    clamp_bolt_len = 2 * 10 + 15;
-    // Hub bolts go through two rim halves + two adapter flanges (each motor_flange_t)
-    hub_bolt_len   = 2 * (10 + motor_flange_t) + 20;
+    clamp_bolt_len = 2 * rim_flange_t + 15;
+    hub_bolt_len   = rim_flange_t + motor_flange_t + 20;
+    adapter_offset = motor_flange_t + 10;
 
-    // ① Piaggio clamp bolts (outer ring)
+    // ① Piaggio clamp bolts (outer ring) - join halves at Y=0
     for(a=[0 : 360/rim_clamp_n : 359])
         rotate([0, a, 0]) translate([rim_clamp_pcd/2, 0, 0]) rotate([90, 0, 0])
-        translate([0, 0, exploded * 40])
+        translate([0, 0, exploded * 80])
         socket_head_bolt(8, clamp_bolt_len);
 
-    // ② Hub adapter bolts (inner ring)
+    // ② Hub adapter bolts (inner ring) - join rim to adapter
+    for(s=[-1,1]) mirror([0, s==1?0:1, 0])
     for(a=[0:60:359])
         rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0])
-        translate([0, 0, exploded * 70])
+        translate([0, 0, adapter_offset + rim_flange_t/2 + exploded * 120])
         socket_head_bolt(8, hub_bolt_len);
 }
 
 
 // ── HUB MOTOR (DD, front) ────────────────────────────────────────────────────
 module hub_motor_dd() {
-    motor_spoke_flange_dist = 2 * (rim_flange_t + motor_flange_t);
+    hub_width = 40; // Internal hub body width
+    hub_flange_y = 10; // Flange position from center
 
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
-        cylinder(d=310, h=motor_spoke_flange_dist - 10, center=true);
+        cylinder(d=310, h=hub_width, center=true);
+        // Cooling fins
         for(a=[0:15:359]) rotate([0, 0, a])
             translate([155, 0, 0])
-            cube([10, 4, motor_spoke_flange_dist - 15], center=true);
+            cube([10, 4, hub_width - 5], center=true);
     }
 
-    // Motor adapter flanges
-    for(s=[-1,1]) translate([0, s*(rim_flange_t + motor_flange_t/2), 0])
+    // Motor adapter flanges (brass)
+    // Sits on hub flanges and provides rim mounting points
+    for(s=[-1,1]) translate([0, s*(hub_flange_y + motor_flange_t/2 + eps), 0])
         rotate([90, 0, 0]) color(color_brass) {
             difference() {
                 cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
-                cylinder(d=100, h=motor_flange_t+1, center=true);
+                cylinder(d=100, h=motor_flange_t+2, center=true);
+                // Bolt holes for rim (rim_bolt_pcd)
                 for(a=[0:60:359])
                     rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
-                    cylinder(d=8.5, h=30, center=true);
+                    cylinder(d=8.5, h=motor_flange_t+2, center=true);
+                // Bolt holes for hub (spoke holes)
                 for(a=[0:30:359])
                     rotate([0, 0, a]) translate([front_hub_flange_dia/2 - 10, 0, 0])
-                    cylinder(d=5.5, h=30, center=true);
+                    cylinder(d=5.5, h=motor_flange_t+2, center=true);
             }
         }
 
-    // Axle with flats
+    // Axle
     color("gray") rotate([90, 0, 0]) difference() {
         union() {
             cylinder(d=front_axle_dia, h=front_hub_dropout + 60, center=true);
@@ -213,8 +205,7 @@ module hub_motor_dd() {
             for(side=[-1,1]) translate([side*10, 0, 0]) cube([10, 30, 30], center=true);
     }
 
-    // FIX: disc rotor Y-position was hardcoded 70 mm — now derived from dropout.
-    // Rotor mounts outboard of the dropout face.
+    // Disc rotor
     translate([0, front_hub_dropout/2 + 15, 0])
     rotate([90, 0, 0]) color("silver") difference() {
         cylinder(d=203, h=2, center=true);
@@ -274,15 +265,10 @@ module rod_end_m8() {
     union() {
         difference() {
             sphere(d=22, $fn=16);
-            // Bore for the pivot pin
             rotate([0, 90, 0]) cylinder(d=14, h=30, center=true);
-            // FIX: flattening cuts were at z=±12 but sphere radius=11 — they
-            // fell entirely outside the geometry and removed nothing.
-            // Moved to z=±8 so each cut removes a 6 mm cap, creating proper flats.
             translate([0, 0,  8]) cube([30, 30, 20], center=true);
             translate([0, 0, -8]) cube([30, 30, 20], center=true);
         }
-        // Inner race / shank thread section
         color(color_brass) rotate([0, 90, 0]) difference() {
             cylinder(d=13.8, h=10, center=true);
             cylinder(d=8.1,  h=25, center=true);
@@ -377,14 +363,9 @@ module handlebars() {
 }
 
 
-// ── DRIVETRAIN (front chainring + cranks + pedals) ───────────────────────────
+// ── DRIVETRAIN ─────────────────────────────────────────────────────────────
 module drivetrain_assy() {
-    // Chainring
     color("silver") rotate([90, 0, 0]) cylinder(d=180, h=2, center=true);
-
-    // FIX: crank arm axial offset was in Z (vertical) — it must be in Y
-    // (the axle / lateral direction) to place each arm on the correct side of
-    // the bottom-bracket shell.
     for(a=[0, 180]) rotate([0, a, 0])
         translate([crank_length/2, (a==0 ? 10 : -10), 0]) {
             color(color_fixed)
@@ -396,7 +377,7 @@ module drivetrain_assy() {
 }
 
 
-// ── REAR GEARED HUB MOTOR ────────────────────────────────────────────────────
+// ── REAR HUB MOTOR ────────────────────────────────────────────────────────────
 module rear_hub_motor_geared() {
     color(color_fixed) rotate([90, 0, 0]) cylinder(d=150, h=135, center=true);
     color("black")    rotate([90, 0, 0]) cylinder(d=14,  h=200, center=true);
@@ -408,19 +389,13 @@ module bipod_kickstand(deployed=false) {
     angle = deployed ? 25 : -10;
     color(color_subframe)
     union() {
-        rotate([90, 0, 0]) pipe(40, 12, 120);   // Cross pivot tube
-
+        rotate([90, 0, 0]) pipe(40, 12, 120);
         for(s=[-1,1]) translate([0, s*45, 0])
             rotate([angle, 0, s*8])
             union() {
-                // FIX: rect_tube long axis is X (cube([l,w,h]) = cube([len,25,25])).
-                // Legs hang in the -Z direction, so the tube must be reoriented.
-                // rotate([0,90,0]) maps the X long-axis onto Z.
                 translate([0, 0, -kickstand_leg_len/2])
                     rotate([0, 90, 0])
                     rect_tube(25, 25, kickstand_leg_len);
-
-                // Foot pad
                 translate([0, 0, -kickstand_leg_len])
                     rounded_box([60, 80, 12], r=4, center=true);
             }
@@ -430,17 +405,14 @@ module bipod_kickstand(deployed=false) {
 
 // ── CARGO BOX ────────────────────────────────────────────────────────────────
 module cargo_box_assy() {
-    // Floor
     color(color_wood)
     translate([bed_length/2, 0, box_wall_t/2])
     cube([bed_length, bed_width, box_wall_t], center=true);
 
     color("ghostwhite", 0.8) {
-        // Front & rear walls
         for(x=[box_wall_t/2, bed_length - box_wall_t/2])
             translate([x, 0, box_height/2 + box_wall_t])
             cube([box_wall_t, bed_width, box_height], center=true);
-        // Side walls
         for(s=[-1,1])
             translate([bed_length/2, s*(bed_width/2 - box_wall_t/2), box_height/2 + box_wall_t])
             cube([bed_length, box_wall_t, box_height], center=true);
@@ -448,10 +420,9 @@ module cargo_box_assy() {
 }
 
 
-// ── MUDGUARD BLADE ────────────────────────────────────────────────────────────
+// ── MUDGUARD ─────────────────────────────────────────────────────────────────
 module mudguard(dia, width, clearance, angle_span=180) {
     total_r = dia/2 + clearance;
-
     color([0.1, 0.1, 0.1])
     rotate([90, 0, 0])
     rotate([0, 0, 30])
@@ -459,10 +430,7 @@ module mudguard(dia, width, clearance, angle_span=180) {
     translate([total_r, 0, 0])
     difference() {
         circle(d=width,   $fn=32);
-        // FIX: inner circle was (d=width-3) → wall = 1.5 mm, too thin for a
-        // structural blade mudguard. Changed to (d=width-6) → 3 mm wall.
         circle(d=width-6, $fn=32);
-        // Remove inner (wheel-facing) half to create open blade cross-section
         translate([-width/2, 0, 0]) square([width, width], center=true);
     }
 }
@@ -498,7 +466,6 @@ module mudguard_stay(length, angle) {
             sphere(d=8);
             rotate([0, -angle, 0]) translate([length, 0, 0]) sphere(d=6);
         }
-        // Eyelet to dropout
         difference() {
             sphere(d=14);
             rotate([0, 90, 0]) cylinder(d=5.5, h=25, center=true);

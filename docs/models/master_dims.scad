@@ -60,7 +60,7 @@ riser_length = 450;
 // 10. COMPONENTS & HARDWARE
 torque_arm_t = 10; // Heavy duty 10mm steel
 rim_bolt_pcd = 260; // Slightly smaller to give more "meat" on flanges
-rim_sandwich_t = 24; // 8mm + 8mm flanges + 8mm adapter
+rim_sandwich_t = 22; // 12mm adapter + 10mm rim flange
 motor_flange_t = 12; // Beefy 12mm adapter plate
 rim_flange_t = 10;
 motor_flange_od = 330; // Matches/Exceeds Magic Pie flange
