@@ -6,7 +6,8 @@ This document provides a consolidated list of all fasteners required to assemble
 
 | Location | Description | Grade | Qty | Torque |
 | --- | --- | --- | --- | --- |
-| **Front Wheel Rim** | M8 x 140mm SHCS | 10.9 | 6 | 30 Nm |
+| **Front Wheel Rim (Inner)** | M8 x 140mm SHCS | 10.9 | 6 | 30 Nm |
+| **Front Wheel Rim (Outer)** | M8 x 35mm SHCS | 10.9 | 10 | 25 Nm |
 | **Front Motor Flange** | M5 x 20mm SHCS | 12.9 | 24 | 8 Nm |
 | **Front Axle Nuts** | M14 x 1.5 Flange Nut | - | 2 | 50 Nm |
 | **Torque Arm Anchor** | M8 x 30mm Hex Bolt | 10.9 | 1 | 25 Nm |

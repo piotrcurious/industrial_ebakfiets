@@ -15,8 +15,8 @@ color_brass    = [0.8, 0.6, 0.2];
 color_wood     = [0.6, 0.4, 0.2];
 
 // ── Piaggio Split-Rim Parameters ──────────────────────────────────────────────
-rim_clamp_pcd = motor_flange_od + 60;   // Outer clamp bolt PCD clear of motor
-rim_clamp_n   = 12;
+rim_clamp_pcd = 640;   // Outer clamp bolt PCD clear of tire OD (548)
+rim_clamp_n   = 10;
 
 
 // ── Utility: Rounded Box ──────────────────────────────────────────────────────
@@ -40,18 +40,16 @@ module car_tire_13in(alpha=1.0) {
     color(color_tire, alpha)
     rotate([90, 0, 0])
     union() {
-        // Main carcass
+        // Main carcass (Balloon profile to clear bolts)
         rotate_extrude($fn=64)
-        union() {
-            bead_y = front_tire_width/2 - 15;
-            // Shift bead centers out slightly to avoid Z-fighting with rim seat
-            for(s=[-1,1]) translate([front_rim_dia/2 + 10 + eps, s*bead_y, 0]) circle(d=22);
-
-            hull() {
-                for(s=[-1,1]) translate([front_rim_dia/2 + 10 + eps, s*bead_y, 0]) circle(d=22);
-                translate([front_tire_od/2 - 20, 0, 0])
-                    square([40, front_tire_width - 10], center=true);
-            }
+        hull() {
+            // Beads (Narrower)
+            for(s=[-1,1]) translate([front_rim_dia/2 + 12, s*40, 0]) circle(d=24);
+            // Sidewall bulge (Reduced to clear rim better)
+            for(s=[-1,1]) translate([front_rim_dia/2 + 60, s*60, 0]) circle(d=35);
+            // Tread area
+            translate([front_tire_od/2 - 20, 0, 0])
+                square([40, front_tire_width - 45], center=true);
         }
 
         // Tread blocks
@@ -73,35 +71,40 @@ module car_tube_13in(alpha=1.0) {
 
 // ── PIAGGIO SPLIT RIM ─────────────────────────────────────────────────────────
 module car_rim_half(thickness=10) {
-    rim_half_width = front_tire_width/2 - 10;
-    // The rim half meets at Y=0 outside the motor radius.
-    // Inside the motor radius, it is offset to sit on the adapter.
-    adapter_offset = motor_flange_t + 10; // offset from center plane to adapter-rim interface
+    rim_half_width = 50; // Matches tire bead width
+    // The rim half meets at Y=0 outside the tire radius for access.
+    adapter_offset = motor_flange_t + 10;
 
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
             // 1. Bead seat & outer flange
-            translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([25, 30]);
-            translate([front_rim_dia/2 + 15, rim_half_width - 10, 0]) square([10, 20]);
+            translate([front_rim_dia/2 - 12, rim_half_width - 25, 0]) square([25, 25]);
+            translate([front_rim_dia/2 + 13, rim_half_width - 5, 0]) square([12, 20]);
 
-            // 2. Mating flange (at Y=0, outside motor radius 155)
-            translate([170, 0, 0]) square([215-170, thickness]);
+            // 2. Mating flange (at Y=0, outside TIRE radius 274)
+            translate([310, 0, 0]) square([340-310, thickness]);
 
             // 3. Adapter interface flange (at Y=adapter_offset)
-            translate([rim_bolt_pcd/2 - 20, adapter_offset, 0])
-                square([60, thickness]);
+            translate([rim_bolt_pcd/2 - 25, adapter_offset, 0])
+                square([70, thickness]);
 
-            // 4. Web Transition 1 (Bead to Mating Flange)
+            // 4. Structural Web (Sweep around tire)
+            // Bulge out to clear tire (Y=77.5)
             hull() {
-                translate([front_rim_dia/2 - 10, rim_half_width - 30, 0]) square([10, eps]);
-                translate([170, thickness - eps, 0]) square([10, eps]);
+                translate([front_rim_dia/2 - 12, rim_half_width - 5, 0]) square([10, 5]);
+                translate([230, 95, 0]) circle(d=10);
             }
-            // 5. Web Transition 2 (Mating Flange to Adapter Interface)
             hull() {
-                translate([170, thickness - eps, 0]) square([10, eps]);
-                translate([rim_bolt_pcd/2 - 20, adapter_offset + thickness - eps, 0]) square([10, eps]);
+                translate([230, 95, 0]) circle(d=10);
+                translate([310, thickness, 0]) square([10, eps]);
+            }
+
+            // 5. Connect to adapter interface
+            hull() {
+                translate([front_rim_dia/2 - 12, rim_half_width - 5, 0]) square([10, 5]);
+                translate([rim_bolt_pcd/2 - 25, adapter_offset + thickness, 0]) square([10, eps]);
             }
         }
 
