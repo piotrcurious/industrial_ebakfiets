@@ -15,7 +15,7 @@ color_brass    = [0.8, 0.6, 0.2];
 color_wood     = [0.6, 0.4, 0.2];
 
 // ── Piaggio Split-Rim Parameters ──────────────────────────────────────────────
-rim_clamp_pcd = 640;   // Outer clamp bolt PCD clear of tire OD (548)
+rim_clamp_pcd = 290;   // Inner clamp bolt PCD (inside 330mm bead)
 rim_clamp_n   = 10;
 
 
@@ -40,16 +40,16 @@ module car_tire_13in(alpha=1.0) {
     color(color_tire, alpha)
     rotate([90, 0, 0])
     union() {
-        // Main carcass (Balloon profile to clear bolts)
+        // Main carcass
         rotate_extrude($fn=64)
         hull() {
-            // Beads (Narrower)
-            for(s=[-1,1]) translate([front_rim_dia/2 + 12, s*40, 0]) circle(d=24);
-            // Sidewall bulge (Reduced to clear rim better)
-            for(s=[-1,1]) translate([front_rim_dia/2 + 60, s*60, 0]) circle(d=35);
+            // Beads (resting on rim R=165)
+            for(s=[-1,1]) translate([165 + 10, s*50, 0]) circle(d=20);
+            // Sidewall bulge
+            for(s=[-1,1]) translate([165 + 60, s*70, 0]) circle(d=30);
             // Tread area
             translate([front_tire_od/2 - 20, 0, 0])
-                square([40, front_tire_width - 45], center=true);
+                square([40, front_tire_width - 40], center=true);
         }
 
         // Tread blocks
@@ -71,41 +71,36 @@ module car_tube_13in(alpha=1.0) {
 
 // ── PIAGGIO SPLIT RIM ─────────────────────────────────────────────────────────
 module car_rim_half(thickness=10) {
-    rim_half_width = 50; // Matches tire bead width
-    // The rim half meets at Y=0 outside the tire radius for access.
-    adapter_offset = motor_flange_t + 10;
+    adapter_offset = motor_flange_t + 30;
 
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // 1. Bead seat & outer flange
-            translate([front_rim_dia/2 - 12, rim_half_width - 25, 0]) square([25, 25]);
-            translate([front_rim_dia/2 + 13, rim_half_width - 5, 0]) square([12, 20]);
+            // 1. Central mating flange (joins at Y=0)
+            // PCD is 290, so R=145. Flange extends from R=120 to R=160
+            translate([120, 0, 0]) square([40, thickness]);
 
-            // 2. Mating flange (at Y=0, outside TIRE radius 274)
-            translate([310, 0, 0]) square([340-310, thickness]);
+            // 2. Hub adapter interface (at Y=adapter_offset)
+            // PCD is 260, so R=130.
+            translate([110, adapter_offset, 0]) square([40, thickness]);
 
-            // 3. Adapter interface flange (at Y=adapter_offset)
-            translate([rim_bolt_pcd/2 - 25, adapter_offset, 0])
-                square([70, thickness]);
-
-            // 4. Structural Web (Sweep around tire)
-            // Bulge out to clear tire (Y=77.5)
+            // 3. Connecting web
             hull() {
-                translate([front_rim_dia/2 - 12, rim_half_width - 5, 0]) square([10, 5]);
-                translate([230, 95, 0]) circle(d=10);
-            }
-            hull() {
-                translate([230, 95, 0]) circle(d=10);
-                translate([310, thickness, 0]) square([10, eps]);
+                translate([120, thickness, 0]) square([10, eps]);
+                translate([120, adapter_offset, 0]) square([10, eps]);
             }
 
-            // 5. Connect to adapter interface
+            // 4. Rim Barrel and Bead Seat
+            // Transition from mating flange to bead seat (R=165)
             hull() {
-                translate([front_rim_dia/2 - 12, rim_half_width - 5, 0]) square([10, 5]);
-                translate([rim_bolt_pcd/2 - 25, adapter_offset + thickness, 0]) square([10, eps]);
+                translate([150, 0, 0]) square([5, thickness]);
+                translate([165, 40, 0]) square([5, thickness]);
             }
+            // Bead Seat Flat (starts at Y=40, goes to Y=70)
+            translate([165, 40, 0]) square([5, 30]);
+            // Rim Outer Lip (at R=165 to R=185)
+            translate([165, 70, 0]) square([20, 5]);
         }
 
         // ① Outer Piaggio clamp holes
@@ -147,8 +142,8 @@ module socket_head_bolt(d=8, l=50) {
 
 module rim_fastener_pattern(exploded=0) {
     clamp_bolt_len = 2 * rim_flange_t + 15;
-    hub_bolt_len   = rim_flange_t + motor_flange_t + 20;
-    adapter_offset = motor_flange_t + 10;
+    hub_bolt_len   = 140; // Documentation standard M8x140mm
+    adapter_offset = motor_flange_t + 30;
 
     // ① Piaggio clamp bolts (outer ring) - join halves at Y=0
     for(a=[0 : 360/rim_clamp_n : 359])
@@ -157,18 +152,17 @@ module rim_fastener_pattern(exploded=0) {
         socket_head_bolt(8, clamp_bolt_len);
 
     // ② Hub adapter bolts (inner ring) - join rim to adapter
-    for(s=[-1,1]) mirror([0, s==1?0:1, 0])
     for(a=[0:60:359])
         rotate([0, a, 0]) translate([rim_bolt_pcd/2, 0, 0]) rotate([90, 0, 0])
-        translate([0, 0, adapter_offset + rim_flange_t/2 + exploded * 120])
+        translate([0, 0, exploded * 120])
         socket_head_bolt(8, hub_bolt_len);
 }
 
 
 // ── HUB MOTOR (DD, front) ────────────────────────────────────────────────────
 module hub_motor_dd() {
-    hub_width = 40; // Internal hub body width
-    hub_flange_y = 10; // Flange position from center
+    hub_width = 80; // Internal hub body width
+    hub_flange_y = 30; // Flange position from center
 
     color(color_fixed)
     rotate([90, 0, 0])
