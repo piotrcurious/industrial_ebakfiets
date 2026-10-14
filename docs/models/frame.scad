@@ -23,6 +23,11 @@ module frame_assy() {
         }
     }
 
+    // Driver Steering Column Mast Tube (Connects gooseneck riser to handlebars)
+    translate([riser_length/2, 0, -riser_drop/4])
+    color(color_subframe)
+    pipe(38, 31.8, riser_drop/2 + 40);
+
     // Main Cargo Bed
     translate([riser_length, 0, -riser_drop]) {
         // Main Longitudinal Spars (with Mounting Holes)

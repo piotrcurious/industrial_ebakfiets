@@ -14,10 +14,8 @@ color_brass    = [0.8, 0.6, 0.2];
 color_wood     = [0.6, 0.4, 0.2];
 
 // ── Piaggio Split-Rim Parameters ──────────────────────────────────────────────
-// Add to master_dims.scad if not present. rim_clamp_pcd must be larger than
-// motor_flange_od so the tyre-change bolts are accessible without disturbing
-// the motor adapter bolts at rim_bolt_pcd.
-rim_clamp_pcd = motor_flange_od + 40;   // Outer Piaggio clamp bolt PCD (rim-half joining)
+// Outer Piaggio clamp bolt PCD (rim-half joining) located inside the 330mm rim bead
+rim_clamp_pcd = 290;
 rim_clamp_n   = 12;                      // Clamp bolt count (12× for even clamping load)
 
 
@@ -181,23 +179,28 @@ module rim_fastener_pattern(exploded=0) {
 
 // ── HUB MOTOR (DD, front) ────────────────────────────────────────────────────
 module hub_motor_dd() {
-    motor_spoke_flange_dist = 2 * (rim_flange_t + motor_flange_t);
+    hub_width = 76; // Distance between spoke flanges (Magic Pie 5 Fatbike)
 
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
-        cylinder(d=310, h=motor_spoke_flange_dist - 10, center=true);
+        // Main stator housing (clears inner bore of adapter plate)
+        cylinder(d=210, h=hub_width, center=true);
+        // Spoke flange rings at hub ends
+        for(s=[-1,1]) translate([0, 0, s*hub_width/2])
+            cylinder(d=front_hub_flange_dia, h=4, center=true);
+        // External Cooling Fins/Ribs on housing
         for(a=[0:15:359]) rotate([0, 0, a])
-            translate([155, 0, 0])
-            cube([10, 4, motor_spoke_flange_dist - 15], center=true);
+            translate([105, 0, 0])
+            cube([8, 3, hub_width - 10], center=true);
     }
 
-    // Motor adapter flanges
+    // Motor adapter flanges (Mated to Rim Flanges)
     for(s=[-1,1]) translate([0, s*(rim_flange_t + motor_flange_t/2), 0])
         rotate([90, 0, 0]) color(color_brass) {
             difference() {
                 cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
-                cylinder(d=100, h=motor_flange_t+1, center=true);
+                cylinder(d=105, h=motor_flange_t+1, center=true);
                 for(a=[0:60:359])
                     rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
                     cylinder(d=8.5, h=30, center=true);
@@ -230,15 +233,15 @@ module hub_motor_dd() {
 
 
 // ── TORQUE ARM ────────────────────────────────────────────────────────────────
-module torque_arm() {
+module torque_arm(l=40) {
     color(color_fixed)
     difference() {
         hull() {
             cylinder(d=45, h=torque_arm_t);
-            translate([70, 0, 0]) cylinder(d=25, h=torque_arm_t);
+            translate([l, 0, 0]) cylinder(d=25, h=torque_arm_t);
         }
         cube([10.2, 14.2, 20], center=true);
-        translate([70, 0, 0]) cylinder(d=6.5, h=20, center=true);
+        translate([l, 0, 0]) cylinder(d=6.5, h=20, center=true);
     }
 }
 
@@ -252,7 +255,8 @@ module disc_caliper() {
             translate([0, 0, 25]) rounded_box([90, 15, 12], r=3, center=true);
         }
         translate([0, 0, -10]) cube([12, 50, 60], center=true);
-        for(s=[-1,1]) translate([s*25.5, 0, 25]) rotate([90, 0, 0])
+        // ISO tab mounting holes (51mm spacing along Z, matching fork ISO tabs)
+        for(s=[-1,1]) translate([0, 0, 25 + s*25.5]) rotate([0, 90, 0])
             cylinder(d=6.2, h=30, center=true);
     }
 }
@@ -474,20 +478,23 @@ module mudguard(dia, width, clearance, angle_span=180) {
 
 // ── MUDGUARD CROWN BRACKET ────────────────────────────────────────────────────
 module mudguard_crown_bracket() {
+    // Offset vector from mudguard top [0,0,front_tire_od/2 + mudguard_clearance]
+    // to fork crown [fork_rake, 0, fork_length]
+    dz = fork_length - (front_tire_od/2 + 25);
     color(color_fixed)
     difference() {
         union() {
             translate([0, 0, -2]) rounded_box([60, 50, 4], r=5, center=true);
             hull() {
                 translate([0, 0, 0])         sphere(d=10);
-                translate([-93.3, 0, 51.5])  sphere(d=14);
+                translate([fork_rake, 0, dz]) sphere(d=14);
             }
-            translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+            translate([fork_rake, 0, dz]) rotate([0, 90 - head_angle, 0])
             rounded_box([60, 80, 8], r=5, center=true);
         }
         for(y=[-18, 18])
             translate([10, y, -2]) cylinder(d=5.5, h=15, center=true);
-        translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+        translate([fork_rake, 0, dz]) rotate([0, 90 - head_angle, 0])
         for(y=[-12, 12])
             translate([0, y, 0]) cylinder(d=6.5, h=40, center=true);
     }
@@ -502,10 +509,10 @@ module mudguard_stay(length, angle) {
             sphere(d=8);
             rotate([0, -angle, 0]) translate([length, 0, 0]) sphere(d=6);
         }
-        // Eyelet to dropout
+        // Eyelet to dropout (hole along Y axis)
         difference() {
             sphere(d=14);
-            rotate([0, 90, 0]) cylinder(d=5.5, h=25, center=true);
+            rotate([90, 0, 0]) cylinder(d=5.5, h=25, center=true);
         }
     }
 }

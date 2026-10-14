@@ -27,44 +27,39 @@ module full_bicycle_assembly() {
         rotate([0, alpha, 0]) // Re-align wheel to vertical plane (standard bike setup)
         front_wheel_assy();
 
-        // Torque Arm (Installed on axle surface)
+        // Torque Arm (Installed on right axle dropout face)
         rotate([0, alpha, 0])
-        translate([0, front_hub_dropout/2 + 5, 0]) // 5mm offset from dropout face
-        rotate([90, 0, 180])
-        torque_arm();
+        translate([0, front_hub_dropout/2 + 12, 0])
+        rotate([90, 0, 90])
+        torque_arm(40);
 
         // Front Mudguard (Mounted to Fork Crown and Dropouts)
         // Parented to FORK (already rotated by alpha)
-        // We position it relative to the axle [0,0,0]
         rotate([0, alpha, 0]) {
             mudguard(front_tire_od, mudguard_width_front, 25, 160);
 
             // Top Mounting Bracket (Crown to Mudguard)
-            // Positioned at top of mudguard (radius)
             translate([0, 0, front_tire_od/2 + 25])
             mudguard_crown_bracket();
 
             // Stays (Dropout to Mudguard)
             for(s=[-1, 1]) {
                 translate([-25, s * (front_hub_dropout/2 + 10), -10])
-                rotate([90, 0, 0])
-                mudguard_stay(230, 140);
+                mudguard_stay(290, 135);
             }
         }
 
-        // Disc Caliper (Mated to Fork Tabs)
-        translate([0, -front_hub_dropout/2 - 20, brake_mount_height])
-        rotate([0, 0, 0])
+        // Disc Caliper (Mated to Left Fork ISO Tabs)
+        translate([0, -front_hub_dropout/2 - 6, brake_mount_height - 25])
         disc_caliper();
 
         // 3. STEERING HEAD (Mated to top of Fork Crown stack)
-        // Stack: Axle -> Fork Length -> Bearing stack
         translate([fork_rake, 0, fork_length + 40 + head_tube_length/2]) {
             steering_head_assy();
 
-            // 4. FRAME (Mated to Steering Head Gusset Plate Surface)
+            // 4. FRAME (Mated to Steering Head Gusset Plate Surface at -(head_tube_od/2 + 12))
             rotate([0, alpha, 0])
-            translate([-(head_tube_od/2 + 10), 0, 0]) // Contact surface of the 10mm header plate
+            translate([-(head_tube_od/2 + 12), 0, 0]) // Flush contact surface with 12mm gusset
             rotate([0, 0, 180])
             union() {
                 frame_assy();
@@ -89,9 +84,9 @@ module full_bicycle_assembly() {
                 // HANDLEBARS (At Steering Column Post)
                 translate([riser_length/2, 0, 0]) {
                     handlebars();
-                    // Upper Steering Bell Crank
+                    // Upper Steering Bell Crank (rotates arm to Y = +120mm)
                     translate([0, 0, -50])
-                    rotate([0, 0, -90])
+                    rotate([0, 0, 90])
                     steering_arm(120);
                 }
 
@@ -114,11 +109,8 @@ module full_bicycle_assembly() {
     p_ht_global_x = fork_rake * cos(alpha) - (fork_length + 40 + head_tube_length/2) * sin(alpha);
     p_ht_global_z = fork_rake * sin(alpha) + (fork_length + 40 + head_tube_length/2) * cos(alpha);
 
-    frame_origin_x = p_ht_global_x - (head_tube_od/2 + 10);
+    frame_origin_x = p_ht_global_x - (head_tube_od/2 + 12);
     frame_origin_z = p_ht_global_z;
-
-    rear_extension = 150;
-    dropout_z_offset = -50;
 
     rear_x = frame_origin_x - (riser_length + bed_length + rear_extension);
     rear_z = frame_origin_z - riser_drop + dropout_z_offset;
@@ -148,12 +140,12 @@ module full_bicycle_assembly() {
         p_a_fork_local_tip[0] * sin(alpha) + p_a_fork_local_tip[2] * cos(alpha)
     ];
 
-    // Point B: Upper Bell Crank Tip (Handlebar-mounted)
-    p_b_frame = [riser_length/2, steering_arm_y_offset, -45];
+    // Point B: Upper Bell Crank Tip (Handlebar-mounted, local Y = -120 so after rotate(180) Y = +120)
+    p_b_frame = [riser_length/2, -steering_arm_y_offset, -50];
 
     // Transform p_b from frame to global
     p_b_1 = [-p_b_frame[0], -p_b_frame[1], p_b_frame[2]];
-    p_b_2 = [p_b_1[0] - (head_tube_od/2 + 10), p_b_1[1], p_b_1[2]];
+    p_b_2 = [p_b_1[0] - (head_tube_od/2 + 12), p_b_1[1], p_b_1[2]];
     p_b_3 = [
         p_b_2[0] * cos(alpha) + p_b_2[2] * sin(alpha),
         p_b_2[1],
