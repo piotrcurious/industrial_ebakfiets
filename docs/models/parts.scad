@@ -44,9 +44,8 @@ module car_tire_13in(alpha=1.0) {
         rotate_extrude($fn=64)
         translate([front_rim_dia/2, 0, 0])
         union() {
-            // FIX: bead positions derived from front_tire_width, not hardcoded 50 mm.
-            // Each bead circle (d=22) sits 11 mm inboard of the tyre edge.
-            bead_y = front_tire_width/2 - 11;
+            // Bead positions at rim bead flanges Y = ±50mm
+            bead_y = 50;
             for(s=[-1,1]) translate([0, s*bead_y, 0]) circle(d=22);
 
             hull() {
@@ -56,12 +55,7 @@ module car_tire_13in(alpha=1.0) {
             }
         }
 
-        // FIX: tread block axis order was wrong.
-        // In the pre-rotate frame (wheel flat in XY, axle = Z):
-        //   X = radial outward, Y = tangential, Z = axial (tyre width)
-        // rounded_box([radial_height, circumferential, axial_width])
-        // Original had [12, front_tire_width-30, 20] — Y was tyre-width-sized,
-        // Z was only 20 mm wide; both axes were swapped.
+        // Tread blocks
         for(a=[0:10:359]) rotate([0, 0, a])
             translate([front_tire_od/2, 0, 0])
             rounded_box([8, 14, front_tire_width - 20], r=3, center=true);
@@ -93,26 +87,23 @@ module car_rim_half(thickness=10) {
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead seat (flat surface the tyre bead rests on)
-            translate([front_rim_dia/2 - 15, -50 + thickness, 0]) square([20, 40]);
+            // Bead seat (flat surface extending from Y = thickness to Y = 50mm)
+            translate([front_rim_dia/2 - 15, thickness, 0]) square([20, 40]);
 
-            // Bead flange (outer lip preventing bead walkoff)
-            translate([front_rim_dia/2 + 5, -50 + thickness, 0]) square([8, 45]);
+            // Bead flange (outer lip preventing bead walkoff at Y = 45 to 50mm)
+            translate([front_rim_dia/2 + 5, 45, 0]) square([8, 45]);
 
-            // ① Piaggio mating flange — the large outer disc where the two
-            //   halves clamp face-to-face. Y=0 is the split/mating plane.
-            //   Extends from just inboard of rim_clamp_pcd to the outer rim edge.
+            // ① Piaggio mating flange — large outer disc clamping face-to-face at Y = 0 to thickness
             translate([rim_clamp_pcd/2 - 25, 0, 0])
                 square([front_rim_dia/2 + 8 - (rim_clamp_pcd/2 - 25), thickness]);
 
-            // Transition web — slopes from bead seat down to mating flange
+            // Transition web — slopes from mating flange to bead seat
             hull() {
-                translate([front_rim_dia/2 - 25, -38 + thickness, 0]) square([15, 1]);
-                translate([rim_clamp_pcd/2 - 22,  thickness - 1,  0]) square([15, 1]);
+                translate([front_rim_dia/2 - 25, thickness, 0]) square([15, 1]);
+                translate([rim_clamp_pcd/2 - 22, thickness - 1, 0]) square([15, 1]);
             }
 
-            // ② Hub adapter web — inner disc for motor-adapter bolt circle.
-            //   Stays assembled when the rim is split for tyre service.
+            // ② Hub adapter web — inner disc for motor-adapter bolt circle
             translate([rim_bolt_pcd/2 - 20, 0, 0])
                 square([rim_clamp_pcd/2 - 26 - (rim_bolt_pcd/2 - 20), thickness]);
             // Thickened boss around hub bolt holes
