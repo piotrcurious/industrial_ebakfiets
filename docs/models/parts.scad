@@ -91,7 +91,7 @@ module car_rim_half(thickness=10) {
             translate([front_rim_dia/2 - 15, thickness, 0]) square([20, 40]);
 
             // Bead flange (outer lip preventing bead walkoff at Y = 45 to 50mm)
-            translate([front_rim_dia/2 + 5, 45, 0]) square([8, 45]);
+            translate([front_rim_dia/2 + 5, 45, 0]) square([8, 5]);
 
             // ① Piaggio mating flange — large outer disc clamping face-to-face at Y = 0 to thickness
             translate([rim_clamp_pcd/2 - 25, 0, 0])
