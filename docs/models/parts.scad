@@ -35,6 +35,85 @@ module rounded_box(size, r, center=true) {
 }
 
 
+// ── RIDER MANNEQUIN & LEG MOTION SCOPE ────────────────────────────────────────
+// 50th percentile adult rider seated on saddle with feet on pedals.
+// Origin = Saddle Top / Seating Reference Point (0,0,0)
+module rider_mannequin(pedal_angle=30) {
+    color([0.8, 0.6, 0.4, 0.7]) // Semi-transparent skin tone
+    union() {
+        // Torso & Pelvis
+        translate([20, 0, 250])
+        rotate([0, 15, 0]) { // Seated forward lean angle
+            // Torso
+            rounded_box([180, 360, 480], r=20, center=true);
+            // Neck & Head
+            translate([0, 0, 300]) {
+                cylinder(d=110, h=80, center=true); // Neck
+                translate([0, 0, 120]) sphere(d=190); // Head
+            }
+            // Shoulders & Arms to Handlebars
+            for(s=[-1,1]) translate([-20, s*180, 180]) {
+                sphere(d=80); // Shoulder
+                hull() { // Upper arm
+                    sphere(d=70);
+                    translate([-200, s*50, -220]) sphere(d=60); // Elbow
+                }
+                hull() { // Forearm to handlebar grips
+                    translate([-200, s*50, -220]) sphere(d=60);
+                    translate([-450, s*80, -320]) sphere(d=45); // Hand grip
+                }
+            }
+        }
+
+        // Hips / Pelvis Base
+        translate([0, 0, 40]) rounded_box([220, 300, 100], r=15, center=true);
+
+        // Legs (Pivoting from hip to crank position)
+        // BB is roughly at [bb_x_rel, 0, bb_z_rel] relative to saddle
+        for(s=[-1, 1]) {
+            side_angle = (s == 1) ? pedal_angle : pedal_angle + 180;
+            p_x = 100 + crank_length * cos(side_angle);
+            p_z = -600 + crank_length * sin(side_angle);
+
+            hip_p = [20, s*120, -20];
+            pedal_p = [p_x, s*150, p_z];
+
+            // Knee calculation via 2D inverse kinematics (Thigh = 450mm, Calf = 430mm)
+            translate(hip_p) {
+                sphere(d=90);
+                hull() {
+                    sphere(d=85);
+                    translate([(p_x - 20)/2 + 80, 0, (p_z + 20)/2 + 80]) sphere(d=75); // Knee
+                }
+                hull() {
+                    translate([(p_x - 20)/2 + 80, 0, (p_z + 20)/2 + 80]) sphere(d=75); // Knee
+                    translate([p_x - 20, s*30, p_z + 20]) sphere(d=65); // Ankle / Foot
+                }
+                // Foot
+                translate([p_x - 20 + 40, s*30, p_z])
+                rounded_box([180, 90, 40], r=5, center=true);
+            }
+        }
+    }
+}
+
+// Full 360-degree leg pedaling motion envelope (Swept volume around bottom bracket)
+module leg_motion_scope() {
+    color([1.0, 0.2, 0.2, 0.25]) // Translucent red clearance zone
+    rotate([90, 0, 0])
+    union() {
+        // Leg motion sweep disc around crank circle (Crank R = 170mm + leg/knee sweep)
+        cylinder(r=crank_length + 180, h=360, center=true);
+
+        // Thigh / Knee clearance cone from saddle to BB
+        hull() {
+            translate([0, 300, 0]) cylinder(r=150, h=300, center=true);
+            cylinder(r=280, h=360, center=true);
+        }
+    }
+}
+
+
 // ── TYRE ──────────────────────────────────────────────────────────────────────
 module car_tire_13in(alpha=1.0) {
     color(color_tire, alpha)

@@ -94,6 +94,6 @@ mudguard_width_front = 170;
 mudguard_width_rear = 60;
 
 // 15. ASSEMBLY SPECIFIC (Offsets and Extensions)
-rear_extension = 150;
+rear_extension = 350;
 dropout_z_offset = -24.45; // Sets rear axle at Z=280mm (both wheels on ground at Z=0)
 steering_arm_y_offset = 120;

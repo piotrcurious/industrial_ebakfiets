@@ -74,15 +74,22 @@ module full_bicycle_assembly() {
                 }
 
                 // DRIVETRAIN (At Bottom Bracket behind cargo bed)
-                translate([riser_length + bed_length + 150, 0, -riser_drop + 85])
-                drivetrain_assy();
+                translate([riser_length + bed_length + 180, 0, -riser_drop + 85]) {
+                    drivetrain_assy();
+                    // Leg Motion Scope (Pedaling clearance volume around BB)
+                    %leg_motion_scope();
+                }
 
                 // SADDLE (At Seat Post Mast behind cargo bed)
-                translate([riser_length + bed_length + 250, 0, -riser_drop + 350])
-                saddle();
+                translate([riser_length + bed_length + 280, 0, -riser_drop + 350]) {
+                    saddle();
+                    // RIDER MANNEQUIN (Seated on saddle with feet on pedals)
+                    translate([0, 0, 300])
+                    rider_mannequin(pedal_angle=30);
+                }
 
                 // HANDLEBARS (At Steering Column Post behind cargo bed)
-                translate([riser_length + bed_length + 30, 0, -riser_drop + 380]) {
+                translate([riser_length + bed_length + 80, 0, -riser_drop + 380]) {
                     handlebars();
                     // Upper Steering Bell Crank (rotates arm to Y = +120mm)
                     translate([0, 0, -100])
@@ -141,7 +148,7 @@ module full_bicycle_assembly() {
     ];
 
     // Point B: Upper Bell Crank Tip (Handlebar-mounted behind cargo bed, local Y = -120 so after rotate(180) Y = +120)
-    p_b_frame = [riser_length + bed_length + 30, -steering_arm_y_offset, -riser_drop + 280];
+    p_b_frame = [riser_length + bed_length + 80, -steering_arm_y_offset, -riser_drop + 280];
 
     // Transform p_b from frame to global
     p_b_1 = [-p_b_frame[0], -p_b_frame[1], p_b_frame[2]];

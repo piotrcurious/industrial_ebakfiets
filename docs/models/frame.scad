@@ -47,7 +47,7 @@ module frame_assy() {
         for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
 
         // Driver Steering Column Mast Tube (Located behind cargo bed)
-        translate([bed_length + 30, 0, 200])
+        translate([bed_length + 80, 0, 200])
         color(color_subframe)
         pipe(38, 31.8, 400);
 
@@ -62,11 +62,11 @@ module frame_assy() {
         }
 
         // Bottom Bracket Shell (Located behind cargo bed under rider)
-        translate([bed_length + 150, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
+        translate([bed_length + 180, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
 
         // Seat Post Tube & Brace (Located behind cargo bed)
-        translate([bed_length + 250, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
-        translate([bed_length + 150, 0, 180]) color(color_frame) rotate([0, 45, 0]) pipe(45, 40, 200);
+        translate([bed_length + 280, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
+        translate([bed_length + 180, 0, 180]) color(color_frame) rotate([0, 45, 0]) pipe(45, 40, 200);
 
         // Rear Dropouts
         translate([bed_length + rear_extension, 0, 0]) {
