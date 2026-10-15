@@ -83,9 +83,10 @@ module full_bicycle_assembly() {
                 // SADDLE (At Seat Post Mast behind cargo bed)
                 translate([riser_length + bed_length + 280, 0, -riser_drop + 350]) {
                     saddle();
-                    // RIDER MANNEQUIN (Seated on saddle with feet on pedals)
+                    // RIDER MANNEQUIN (Seated on saddle with feet on pedals & hands on handlebars)
+                    // Handlebar offset relative to saddle SRP: [-200, 0, 300]
                     translate([0, 0, 300])
-                    rider_mannequin(pedal_angle=30);
+                    rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]);
                 }
 
                 // HANDLEBARS (At Steering Column Post behind cargo bed)
@@ -130,6 +131,10 @@ module full_bicycle_assembly() {
             rotate_extrude($fn=64) translate([rear_wheel_dia/2 - 30, 0]) circle(d=60);
             cylinder(d=rear_wheel_dia-40, h=50, center=true);
         }
+
+        // Rear Disc Caliper (Mounted to Left Rear Dropout ISO tab)
+        translate([0, -(rear_dropout_spacing/2 + 6), brake_mount_height - 25])
+        disc_caliper();
 
         // Rear Mudguard
         rotate([0, 0, 180])

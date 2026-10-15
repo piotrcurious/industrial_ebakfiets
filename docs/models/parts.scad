@@ -38,60 +38,75 @@ module rounded_box(size, r, center=true) {
 // ── RIDER MANNEQUIN & LEG MOTION SCOPE ────────────────────────────────────────
 // 50th percentile adult rider seated on saddle with feet on pedals.
 // Origin = Saddle Top / Seating Reference Point (0,0,0)
-module rider_mannequin(pedal_angle=30) {
-    color([0.8, 0.6, 0.4, 0.7]) // Semi-transparent skin tone
+// Handlebars are located at [bb_x_rel + 100, 0, 300] relative to saddle SRP
+module rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]) {
+    color([0.8, 0.6, 0.4, 0.85]) // Semi-transparent skin tone
     union() {
         // Torso & Pelvis
-        translate([20, 0, 250])
-        rotate([0, 15, 0]) { // Seated forward lean angle
+        translate([10, 0, 220])
+        rotate([0, 10, 0]) { // Seated forward lean angle
             // Torso
-            rounded_box([180, 360, 480], r=20, center=true);
+            rounded_box([160, 320, 420], r=20, center=true);
             // Neck & Head
-            translate([0, 0, 300]) {
-                cylinder(d=110, h=80, center=true); // Neck
-                translate([0, 0, 120]) sphere(d=190); // Head
+            translate([0, 0, 260]) {
+                cylinder(d=100, h=70, center=true); // Neck
+                translate([0, 0, 110]) sphere(d=180); // Head
             }
-            // Shoulders & Arms to Handlebars
-            for(s=[-1,1]) translate([-20, s*180, 180]) {
-                sphere(d=80); // Shoulder
+            // Shoulders & Arms to Handlebars (Grip target relative to shoulder)
+            for(s=[-1,1]) translate([0, s*160, 160]) {
+                sphere(d=75); // Shoulder
+                target_grip = [hb_offset[0] - 10, s*200 - s*160, hb_offset[2] - 380];
+                elbow_p = [target_grip[0]/2 - 80, s*40, target_grip[2]/2 - 100];
+
                 hull() { // Upper arm
                     sphere(d=70);
-                    translate([-200, s*50, -220]) sphere(d=60); // Elbow
+                    translate(elbow_p) sphere(d=55); // Elbow
                 }
-                hull() { // Forearm to handlebar grips
-                    translate([-200, s*50, -220]) sphere(d=60);
-                    translate([-450, s*80, -320]) sphere(d=45); // Hand grip
+                hull() { // Forearm
+                    translate(elbow_p) sphere(d=55);
+                    translate(target_grip) sphere(d=45); // Hand gripping handlebar
                 }
             }
         }
 
         // Hips / Pelvis Base
-        translate([0, 0, 40]) rounded_box([220, 300, 100], r=15, center=true);
+        translate([0, 0, 20]) rounded_box([200, 260, 80], r=15, center=true);
 
         // Legs (Pivoting from hip to crank position)
-        // BB is roughly at [bb_x_rel, 0, bb_z_rel] relative to saddle
+        // BB is at [-100, 0, -265] relative to saddle top
+        bb_rel_x = -100;
+        bb_rel_z = -265;
+
         for(s=[-1, 1]) {
             side_angle = (s == 1) ? pedal_angle : pedal_angle + 180;
-            p_x = 100 + crank_length * cos(side_angle);
-            p_z = -600 + crank_length * sin(side_angle);
+            p_x = bb_rel_x + crank_length * cos(side_angle);
+            p_z = bb_rel_z + crank_length * sin(side_angle);
 
-            hip_p = [20, s*120, -20];
-            pedal_p = [p_x, s*150, p_z];
+            hip_p = [0, s*100, -20];
+            pedal_p = [p_x, s*110, p_z];
 
-            // Knee calculation via 2D inverse kinematics (Thigh = 450mm, Calf = 430mm)
+            // Knee placement via 2D IK (Thigh L=420, Calf L=400)
+            dx = pedal_p[0] - hip_p[0];
+            dz = pedal_p[2] - hip_p[2];
+            dist = sqrt(dx*dx + dz*dz);
+            // Knee bend forward and upward offset
+            knee_x = hip_p[0] + dx/2 + 180 * (1 - dist/800);
+            knee_z = hip_p[2] + dz/2 + 80 * (1 - dist/800);
+
             translate(hip_p) {
-                sphere(d=90);
-                hull() {
-                    sphere(d=85);
-                    translate([(p_x - 20)/2 + 80, 0, (p_z + 20)/2 + 80]) sphere(d=75); // Knee
+                sphere(d=85);
+                hull() { // Thigh
+                    sphere(d=80);
+                    translate([knee_x - hip_p[0], 0, knee_z - hip_p[2]]) sphere(d=70);
                 }
-                hull() {
-                    translate([(p_x - 20)/2 + 80, 0, (p_z + 20)/2 + 80]) sphere(d=75); // Knee
-                    translate([p_x - 20, s*30, p_z + 20]) sphere(d=65); // Ankle / Foot
+                hull() { // Calf
+                    translate([knee_x - hip_p[0], 0, knee_z - hip_p[2]]) sphere(d=70);
+                    translate([p_x - hip_p[0], s*10, p_z - hip_p[2] + 30]) sphere(d=60);
                 }
-                // Foot
-                translate([p_x - 20 + 40, s*30, p_z])
-                rounded_box([180, 90, 40], r=5, center=true);
+                // Foot on pedal
+                translate([p_x - hip_p[0] + 30, s*10, p_z - hip_p[2] + 15])
+                rotate([0, -10, 0])
+                rounded_box([160, 85, 35], r=5, center=true);
             }
         }
     }
@@ -291,9 +306,8 @@ module hub_motor_dd() {
             for(side=[-1,1]) translate([side*10, 0, 0]) cube([10, 30, 30], center=true);
     }
 
-    // FIX: disc rotor Y-position was hardcoded 70 mm — now derived from dropout.
-    // Rotor mounts outboard of the dropout face.
-    translate([0, front_hub_dropout/2 + 15, 0])
+    // Front Disc Rotor (LEFT side Y = -(front_hub_dropout/2 + 6), aligned with ISO caliper)
+    translate([0, -(front_hub_dropout/2 + 6), 0])
     rotate([90, 0, 0]) color("silver") difference() {
         cylinder(d=203, h=2, center=true);
         for(a=[0:60:359])
@@ -479,6 +493,15 @@ module drivetrain_assy() {
 module rear_hub_motor_geared() {
     color(color_fixed) rotate([90, 0, 0]) cylinder(d=150, h=135, center=true);
     color("black")    rotate([90, 0, 0]) cylinder(d=14,  h=200, center=true);
+
+    // Rear Disc Rotor (LEFT side Y = -(rear_dropout_spacing/2 + 6))
+    translate([0, -(rear_dropout_spacing/2 + 6), 0])
+    rotate([90, 0, 0]) color("silver") difference() {
+        cylinder(d=203, h=2, center=true);
+        for(a=[0:60:359])
+            rotate([0, 0, a]) translate([22, 0, 0]) cylinder(d=5.5, h=10, center=true);
+        cylinder(d=44, h=10, center=true);
+    }
 }
 
 

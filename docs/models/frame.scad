@@ -78,6 +78,13 @@ module frame_assy() {
                     rotate([90, 0, 0]) cylinder(d=14.2, h=30, center=true);
                     // Lightening holes
                     translate([25, 0, 30]) rotate([90, 0, 0]) cylinder(d=15, h=30, center=true);
+
+                    if (s == -1) { // Left side ISO brake mount tabs (51mm spacing)
+                        translate([0, 0, brake_mount_height]) {
+                            translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
+                            translate([0, 0, 25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
+                        }
+                    }
                 }
             }
         }
