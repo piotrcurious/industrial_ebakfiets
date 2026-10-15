@@ -73,19 +73,19 @@ module full_bicycle_assembly() {
                         socket_head_bolt(10, 60);
                 }
 
-                // DRIVETRAIN (At Bottom Bracket)
-                translate([riser_length + bed_length - 200, 0, -riser_drop + 85])
+                // DRIVETRAIN (At Bottom Bracket behind cargo bed)
+                translate([riser_length + bed_length + 150, 0, -riser_drop + 85])
                 drivetrain_assy();
 
-                // SADDLE (At Seat Post Mast)
-                translate([riser_length + bed_length + 150 - 400, 0, -riser_drop + 350])
+                // SADDLE (At Seat Post Mast behind cargo bed)
+                translate([riser_length + bed_length + 250, 0, -riser_drop + 350])
                 saddle();
 
-                // HANDLEBARS (At Steering Column Post)
-                translate([riser_length/2, 0, 0]) {
+                // HANDLEBARS (At Steering Column Post behind cargo bed)
+                translate([riser_length + bed_length + 30, 0, -riser_drop + 380]) {
                     handlebars();
                     // Upper Steering Bell Crank (rotates arm to Y = +120mm)
-                    translate([0, 0, -50])
+                    translate([0, 0, -100])
                     rotate([0, 0, 90])
                     steering_arm(120);
                 }
@@ -133,15 +133,15 @@ module full_bicycle_assembly() {
     steering_arm_y_offset = 120;
 
     // Point A: Lower Bell Crank Tip (Fork-mounted)
-    p_a_fork_local_tip = [fork_rake, steering_arm_y_offset, fork_length + 15 + 5];
+    p_a_fork_local_tip = [fork_rake, steering_arm_y_offset, fork_length + 15];
     p_a = [
         p_a_fork_local_tip[0] * cos(alpha) - p_a_fork_local_tip[2] * sin(alpha),
         p_a_fork_local_tip[1],
         p_a_fork_local_tip[0] * sin(alpha) + p_a_fork_local_tip[2] * cos(alpha)
     ];
 
-    // Point B: Upper Bell Crank Tip (Handlebar-mounted, local Y = -120 so after rotate(180) Y = +120)
-    p_b_frame = [riser_length/2, -steering_arm_y_offset, -50];
+    // Point B: Upper Bell Crank Tip (Handlebar-mounted behind cargo bed, local Y = -120 so after rotate(180) Y = +120)
+    p_b_frame = [riser_length + bed_length + 30, -steering_arm_y_offset, -riser_drop + 280];
 
     // Transform p_b from frame to global
     p_b_1 = [-p_b_frame[0], -p_b_frame[1], p_b_frame[2]];

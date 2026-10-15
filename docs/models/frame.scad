@@ -23,11 +23,6 @@ module frame_assy() {
         }
     }
 
-    // Driver Steering Column Mast Tube (Connects gooseneck riser to handlebars)
-    translate([riser_length/2, 0, -riser_drop/4])
-    color(color_subframe)
-    pipe(38, 31.8, riser_drop/2 + 40);
-
     // Main Cargo Bed
     translate([riser_length, 0, -riser_drop]) {
         // Main Longitudinal Spars (with Mounting Holes)
@@ -51,6 +46,11 @@ module frame_assy() {
         // Cable Guides
         for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
 
+        // Driver Steering Column Mast Tube (Located behind cargo bed)
+        translate([bed_length + 30, 0, 200])
+        color(color_subframe)
+        pipe(38, 31.8, 400);
+
         // Rear Triangle Taper
         for(s=[-1, 1]) {
             color(color_frame) hull() {
@@ -61,14 +61,15 @@ module frame_assy() {
             }
         }
 
-        // Rear Mast and Dropouts
-        translate([bed_length + rear_extension, 0, 0]) {
-            // Seat Post Tube
-            translate([-350, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
-            // Brace
-            translate([-350, 0, 100]) color(color_frame) rotate([0, 90, 0]) pipe(45, 40, 250);
+        // Bottom Bracket Shell (Located behind cargo bed under rider)
+        translate([bed_length + 150, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
 
-            // Heavy Duty Dropouts
+        // Seat Post Tube & Brace (Located behind cargo bed)
+        translate([bed_length + 250, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
+        translate([bed_length + 150, 0, 180]) color(color_frame) rotate([0, 45, 0]) pipe(45, 40, 200);
+
+        // Rear Dropouts
+        translate([bed_length + rear_extension, 0, 0]) {
             for(s=[-1, 1]) {
                 translate([0, s*(rear_dropout_spacing/2 + 6), dropout_z_offset])
                 color(color_fastener) difference() {
@@ -80,8 +81,5 @@ module frame_assy() {
                 }
             }
         }
-
-        // Bottom Bracket Shell
-        translate([bed_length - 200, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
     }
 }
