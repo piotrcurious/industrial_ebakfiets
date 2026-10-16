@@ -14,10 +14,8 @@ color_brass    = [0.8, 0.6, 0.2];
 color_wood     = [0.6, 0.4, 0.2];
 
 // ── Piaggio Split-Rim Parameters ──────────────────────────────────────────────
-// Add to master_dims.scad if not present. rim_clamp_pcd must be larger than
-// motor_flange_od so the tyre-change bolts are accessible without disturbing
-// the motor adapter bolts at rim_bolt_pcd.
-rim_clamp_pcd = motor_flange_od + 40;   // Outer Piaggio clamp bolt PCD (rim-half joining)
+// Outer Piaggio clamp bolt PCD (rim-half joining) located inside the 330mm rim bead
+rim_clamp_pcd = 290;
 rim_clamp_n   = 12;                      // Clamp bolt count (12× for even clamping load)
 
 
@@ -37,6 +35,100 @@ module rounded_box(size, r, center=true) {
 }
 
 
+// ── RIDER MANNEQUIN & LEG MOTION SCOPE ────────────────────────────────────────
+// 50th percentile adult rider seated on saddle with feet on pedals.
+// Origin = Saddle Top / Seating Reference Point (0,0,0)
+// Handlebars are located at [bb_x_rel + 100, 0, 300] relative to saddle SRP
+module rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]) {
+    color([0.8, 0.6, 0.4, 0.85]) // Semi-transparent skin tone
+    union() {
+        // Torso & Pelvis
+        translate([10, 0, 220])
+        rotate([0, 10, 0]) { // Seated forward lean angle
+            // Torso
+            rounded_box([160, 320, 420], r=20, center=true);
+            // Neck & Head
+            translate([0, 0, 260]) {
+                cylinder(d=100, h=70, center=true); // Neck
+                translate([0, 0, 110]) sphere(d=180); // Head
+            }
+            // Shoulders & Arms to Handlebars (Grip target relative to shoulder)
+            for(s=[-1,1]) translate([0, s*160, 160]) {
+                sphere(d=75); // Shoulder
+                target_grip = [hb_offset[0] - 10, s*200 - s*160, hb_offset[2] - 380];
+                elbow_p = [target_grip[0]/2 - 80, s*40, target_grip[2]/2 - 100];
+
+                hull() { // Upper arm
+                    sphere(d=70);
+                    translate(elbow_p) sphere(d=55); // Elbow
+                }
+                hull() { // Forearm
+                    translate(elbow_p) sphere(d=55);
+                    translate(target_grip) sphere(d=45); // Hand gripping handlebar
+                }
+            }
+        }
+
+        // Hips / Pelvis Base
+        translate([0, 0, 20]) rounded_box([200, 260, 80], r=15, center=true);
+
+        // Legs (Pivoting from hip to crank position)
+        // BB is at [-100, 0, -265] relative to saddle top
+        bb_rel_x = -100;
+        bb_rel_z = -265;
+
+        for(s=[-1, 1]) {
+            side_angle = (s == 1) ? pedal_angle : pedal_angle + 180;
+            p_x = bb_rel_x + crank_length * cos(side_angle);
+            p_z = bb_rel_z + crank_length * sin(side_angle);
+
+            hip_p = [0, s*100, -20];
+            pedal_p = [p_x, s*110, p_z];
+
+            // Knee placement via 2D IK (Thigh L=420, Calf L=400)
+            dx = pedal_p[0] - hip_p[0];
+            dz = pedal_p[2] - hip_p[2];
+            dist = sqrt(dx*dx + dz*dz);
+            // Knee bend forward and upward offset
+            knee_x = hip_p[0] + dx/2 + 180 * (1 - dist/800);
+            knee_z = hip_p[2] + dz/2 + 80 * (1 - dist/800);
+
+            translate(hip_p) {
+                sphere(d=85);
+                hull() { // Thigh
+                    sphere(d=80);
+                    translate([knee_x - hip_p[0], 0, knee_z - hip_p[2]]) sphere(d=70);
+                }
+                hull() { // Calf
+                    translate([knee_x - hip_p[0], 0, knee_z - hip_p[2]]) sphere(d=70);
+                    translate([p_x - hip_p[0], s*10, p_z - hip_p[2] + 30]) sphere(d=60);
+                }
+                // Foot on pedal
+                translate([p_x - hip_p[0] + 30, s*10, p_z - hip_p[2] + 15])
+                rotate([0, -10, 0])
+                rounded_box([160, 85, 35], r=5, center=true);
+            }
+        }
+    }
+}
+
+// Full 360-degree leg pedaling motion envelope (Swept volume around bottom bracket)
+module leg_motion_scope() {
+    color([1.0, 0.2, 0.2, 0.25]) // Translucent red clearance zone
+    rotate([90, 0, 0])
+    union() {
+        // Leg motion sweep disc around crank circle (Crank R = 170mm + leg/knee sweep)
+        cylinder(r=crank_length + 180, h=360, center=true);
+
+        // Thigh / Knee clearance cone from saddle to BB
+        hull() {
+            translate([0, 300, 0]) cylinder(r=150, h=300, center=true);
+            cylinder(r=280, h=360, center=true);
+        }
+    }
+}
+
+
 // ── TYRE ──────────────────────────────────────────────────────────────────────
 module car_tire_13in(alpha=1.0) {
     color(color_tire, alpha)
@@ -46,9 +138,8 @@ module car_tire_13in(alpha=1.0) {
         rotate_extrude($fn=64)
         translate([front_rim_dia/2, 0, 0])
         union() {
-            // FIX: bead positions derived from front_tire_width, not hardcoded 50 mm.
-            // Each bead circle (d=22) sits 11 mm inboard of the tyre edge.
-            bead_y = front_tire_width/2 - 11;
+            // Bead positions at rim bead flanges Y = ±50mm
+            bead_y = 50;
             for(s=[-1,1]) translate([0, s*bead_y, 0]) circle(d=22);
 
             hull() {
@@ -58,12 +149,7 @@ module car_tire_13in(alpha=1.0) {
             }
         }
 
-        // FIX: tread block axis order was wrong.
-        // In the pre-rotate frame (wheel flat in XY, axle = Z):
-        //   X = radial outward, Y = tangential, Z = axial (tyre width)
-        // rounded_box([radial_height, circumferential, axial_width])
-        // Original had [12, front_tire_width-30, 20] — Y was tyre-width-sized,
-        // Z was only 20 mm wide; both axes were swapped.
+        // Tread blocks
         for(a=[0:10:359]) rotate([0, 0, a])
             translate([front_tire_od/2, 0, 0])
             rounded_box([8, 14, front_tire_width - 20], r=3, center=true);
@@ -88,38 +174,35 @@ module car_tube_13in(alpha=1.0) {
 //   ②  INNER bolt circle (rim_bolt_pcd, 6 bolts) — attaches the motor adapter
 //       to the rim.  These are NOT disturbed during tyre service.
 //
-// Both halves are mirror-symmetric about Y=0 (the mating plane).
+// Mated outboard of motor adapter plates at Y = ±(hub_width/2 + motor_flange_t)
 
 module car_rim_half(thickness=10) {
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead seat (flat surface the tyre bead rests on)
-            translate([front_rim_dia/2 - 15, -50 + thickness, 0]) square([20, 40]);
+            // Bead seat (flat surface extending from Y = 0 to Y = 40mm)
+            translate([front_rim_dia/2 - 15, 0, 0]) square([20, 40]);
 
-            // Bead flange (outer lip preventing bead walkoff)
-            translate([front_rim_dia/2 + 5, -50 + thickness, 0]) square([8, 45]);
+            // Bead flange (outer lip preventing bead walkoff at Y = 0 to 5mm)
+            translate([front_rim_dia/2 + 5, 0, 0]) square([8, 5]);
 
-            // ① Piaggio mating flange — the large outer disc where the two
-            //   halves clamp face-to-face. Y=0 is the split/mating plane.
-            //   Extends from just inboard of rim_clamp_pcd to the outer rim edge.
+            // ① Piaggio mating flange — outer disc clamping face-to-face
             translate([rim_clamp_pcd/2 - 25, 0, 0])
                 square([front_rim_dia/2 + 8 - (rim_clamp_pcd/2 - 25), thickness]);
 
-            // Transition web — slopes from bead seat down to mating flange
+            // Transition web — slopes from mating flange to bead seat
             hull() {
-                translate([front_rim_dia/2 - 25, -38 + thickness, 0]) square([15, 1]);
-                translate([rim_clamp_pcd/2 - 22,  thickness - 1,  0]) square([15, 1]);
+                translate([front_rim_dia/2 - 25, thickness, 0]) square([15, 1]);
+                translate([rim_clamp_pcd/2 - 22, 0, 0]) square([15, 1]);
             }
 
-            // ② Hub adapter web — inner disc for motor-adapter bolt circle.
-            //   Stays assembled when the rim is split for tyre service.
+            // ② Hub adapter web — inner disc for motor-adapter bolt circle
             translate([rim_bolt_pcd/2 - 20, 0, 0])
                 square([rim_clamp_pcd/2 - 26 - (rim_bolt_pcd/2 - 20), thickness]);
             // Thickened boss around hub bolt holes
             translate([rim_bolt_pcd/2 - 20, 0, 0])
-                square([38, motor_flange_t + thickness]);
+                square([38, thickness + 4]);
         }
 
         // ① Outer Piaggio clamp holes — remove these 12 bolts to split the rim
@@ -135,9 +218,10 @@ module car_rim_half(thickness=10) {
 }
 
 module car_rim_13in_split() {
+    adapter_offset = 76/2 + motor_flange_t; // Y = 38 + 12 = 50mm
     color(color_fastener) {
-        car_rim_half(rim_flange_t);
-        mirror([0, 1, 0]) car_rim_half(rim_flange_t);
+        translate([0, adapter_offset, 0]) car_rim_half(rim_flange_t);
+        translate([0, -adapter_offset, 0]) mirror([0, 1, 0]) car_rim_half(rim_flange_t);
     }
 }
 
@@ -181,23 +265,28 @@ module rim_fastener_pattern(exploded=0) {
 
 // ── HUB MOTOR (DD, front) ────────────────────────────────────────────────────
 module hub_motor_dd() {
-    motor_spoke_flange_dist = 2 * (rim_flange_t + motor_flange_t);
+    hub_width = 76; // Distance between spoke flanges (Magic Pie 5 Fatbike)
 
     color(color_fixed)
     rotate([90, 0, 0])
     union() {
-        cylinder(d=310, h=motor_spoke_flange_dist - 10, center=true);
+        // Main stator housing
+        cylinder(d=210, h=hub_width, center=true);
+        // Spoke flange rings at hub ends
+        for(s=[-1,1]) translate([0, 0, s*hub_width/2])
+            cylinder(d=front_hub_flange_dia, h=4, center=true);
+        // External Cooling Fins/Ribs on housing
         for(a=[0:15:359]) rotate([0, 0, a])
-            translate([155, 0, 0])
-            cube([10, 4, motor_spoke_flange_dist - 15], center=true);
+            translate([105, 0, 0])
+            cube([8, 3, hub_width - 10], center=true);
     }
 
-    // Motor adapter flanges
-    for(s=[-1,1]) translate([0, s*(rim_flange_t + motor_flange_t/2), 0])
+    // Motor adapter flanges (Mated outboard of hub motor flanges at Y = ±(38 + 6) = ±44mm)
+    for(s=[-1,1]) translate([0, s*(hub_width/2 + motor_flange_t/2), 0])
         rotate([90, 0, 0]) color(color_brass) {
             difference() {
                 cylinder(d=motor_flange_od, h=motor_flange_t, center=true);
-                cylinder(d=100, h=motor_flange_t+1, center=true);
+                cylinder(d=105, h=motor_flange_t+1, center=true);
                 for(a=[0:60:359])
                     rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
                     cylinder(d=8.5, h=30, center=true);
@@ -217,9 +306,8 @@ module hub_motor_dd() {
             for(side=[-1,1]) translate([side*10, 0, 0]) cube([10, 30, 30], center=true);
     }
 
-    // FIX: disc rotor Y-position was hardcoded 70 mm — now derived from dropout.
-    // Rotor mounts outboard of the dropout face.
-    translate([0, front_hub_dropout/2 + 15, 0])
+    // Front Disc Rotor (LEFT side Y = -(front_hub_dropout/2 + 6), aligned with ISO caliper)
+    translate([0, -(front_hub_dropout/2 + 6), 0])
     rotate([90, 0, 0]) color("silver") difference() {
         cylinder(d=203, h=2, center=true);
         for(a=[0:60:359])
@@ -230,15 +318,15 @@ module hub_motor_dd() {
 
 
 // ── TORQUE ARM ────────────────────────────────────────────────────────────────
-module torque_arm() {
+module torque_arm(l=40) {
     color(color_fixed)
     difference() {
         hull() {
             cylinder(d=45, h=torque_arm_t);
-            translate([70, 0, 0]) cylinder(d=25, h=torque_arm_t);
+            translate([l, 0, 0]) cylinder(d=25, h=torque_arm_t);
         }
         cube([10.2, 14.2, 20], center=true);
-        translate([70, 0, 0]) cylinder(d=6.5, h=20, center=true);
+        translate([l, 0, 0]) cylinder(d=6.5, h=20, center=true);
     }
 }
 
@@ -252,7 +340,8 @@ module disc_caliper() {
             translate([0, 0, 25]) rounded_box([90, 15, 12], r=3, center=true);
         }
         translate([0, 0, -10]) cube([12, 50, 60], center=true);
-        for(s=[-1,1]) translate([s*25.5, 0, 25]) rotate([90, 0, 0])
+        // ISO tab mounting holes (51mm spacing along Z, matching fork ISO tabs)
+        for(s=[-1,1]) translate([0, 0, 25 + s*25.5]) rotate([0, 90, 0])
             cylinder(d=6.2, h=30, center=true);
     }
 }
@@ -364,17 +453,42 @@ module saddle() {
 
 
 // ── HANDLEBARS ────────────────────────────────────────────────────────────────
+// Mates into 31.8mm ID steering column mast.
+// Stem quill/shaft (28.6mm OD) + Threadless Clamp (31.8mm bar clamp)
 module handlebars() {
     color(color_fixed) {
-        cylinder(d=stem_dia+5, h=40);
-        translate([30, 0, 50]) rotate([0, 60, 0]) cylinder(d=35, h=80, center=true);
+        // Quill/steerer insert shaft into steering column (28.6mm OD x 100mm height)
+        cylinder(d=stem_dia, h=100, center=false);
+
+        // Stem body & clamp
+        translate([0, 0, 100]) {
+            cylinder(d=stem_dia + 6, h=40, center=false); // Steerer clamp
+            hull() {
+                translate([0, 0, 20]) sphere(d=35);
+                translate([50, 0, 35]) sphere(d=38); // Forward extension (50mm reach, 15° rise)
+            }
+            // Bar clamp (31.8mm clamp OD = 42mm, width = 45mm)
+            translate([50, 0, 35]) rotate([90, 0, 0]) pipe(42, 31.8, 45);
+        }
     }
-    translate([65, 0, 75]) {
+
+    // Handlebar tubing (31.8mm center clamp section, tapering to 22.2mm grip ends)
+    translate([50, 0, 135]) {
         color("black") rotate([90, 0, 0]) {
+            // Center clamp area (31.8mm OD x 120mm width)
             cylinder(d=31.8, h=120, center=true);
-            for(s=[-1,1]) rotate([s*5, 0, 0]) translate([0, 0, s*180]) {
-                cylinder(d=22.2, h=350, center=true);
-                translate([0, 0, s*250]) color([0.1,0.1,0.1]) cylinder(d=30, h=120, center=true);
+
+            // Left & Right swept wings (680mm total width, 12° backsweep, 20mm rise)
+            for(s=[-1,1]) {
+                translate([0, 0, s*60])
+                rotate([s*6, 12, 0]) // Backsweep + subtle rise
+                translate([0, 0, s*140]) {
+                    cylinder(d=22.2, h=280, center=true);
+                    // Rubber hand grips (30mm OD x 130mm length)
+                    translate([0, 0, s*100])
+                        color([0.1, 0.1, 0.1])
+                        cylinder(d=30, h=130, center=true);
+                }
             }
         }
     }
@@ -404,6 +518,15 @@ module drivetrain_assy() {
 module rear_hub_motor_geared() {
     color(color_fixed) rotate([90, 0, 0]) cylinder(d=150, h=135, center=true);
     color("black")    rotate([90, 0, 0]) cylinder(d=14,  h=200, center=true);
+
+    // Rear Disc Rotor (LEFT side Y = -(rear_dropout_spacing/2 + 6))
+    translate([0, -(rear_dropout_spacing/2 + 6), 0])
+    rotate([90, 0, 0]) color("silver") difference() {
+        cylinder(d=203, h=2, center=true);
+        for(a=[0:60:359])
+            rotate([0, 0, a]) translate([22, 0, 0]) cylinder(d=5.5, h=10, center=true);
+        cylinder(d=44, h=10, center=true);
+    }
 }
 
 
@@ -474,20 +597,23 @@ module mudguard(dia, width, clearance, angle_span=180) {
 
 // ── MUDGUARD CROWN BRACKET ────────────────────────────────────────────────────
 module mudguard_crown_bracket() {
+    // Offset vector from mudguard top [0,0,front_tire_od/2 + mudguard_clearance]
+    // to fork crown [fork_rake, 0, fork_length]
+    dz = fork_length - (front_tire_od/2 + 25);
     color(color_fixed)
     difference() {
         union() {
             translate([0, 0, -2]) rounded_box([60, 50, 4], r=5, center=true);
             hull() {
                 translate([0, 0, 0])         sphere(d=10);
-                translate([-93.3, 0, 51.5])  sphere(d=14);
+                translate([fork_rake, 0, dz]) sphere(d=14);
             }
-            translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+            translate([fork_rake, 0, dz]) rotate([0, 90 - head_angle, 0])
             rounded_box([60, 80, 8], r=5, center=true);
         }
         for(y=[-18, 18])
             translate([10, y, -2]) cylinder(d=5.5, h=15, center=true);
-        translate([-93.3, 0, 51.5]) rotate([0, 22, 0])
+        translate([fork_rake, 0, dz]) rotate([0, 90 - head_angle, 0])
         for(y=[-12, 12])
             translate([0, y, 0]) cylinder(d=6.5, h=40, center=true);
     }
@@ -502,10 +628,10 @@ module mudguard_stay(length, angle) {
             sphere(d=8);
             rotate([0, -angle, 0]) translate([length, 0, 0]) sphere(d=6);
         }
-        // Eyelet to dropout
+        // Eyelet to dropout (hole along Y axis)
         difference() {
             sphere(d=14);
-            rotate([0, 90, 0]) cylinder(d=5.5, h=25, center=true);
+            rotate([90, 0, 0]) cylinder(d=5.5, h=25, center=true);
         }
     }
 }

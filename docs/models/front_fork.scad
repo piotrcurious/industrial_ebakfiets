@@ -5,9 +5,9 @@ include <parts.scad>
 // Origin = FRONT AXLE CENTER (0,0,0)
 module front_fork_assy() {
 
-    // 1. DROPOUT PLATES (Mated to Axle ends)
+    // 1. DROPOUT PLATES (Mated to Axle ends at front_hub_dropout/2 = 95mm)
     for(s=[-1, 1]) {
-        translate([0, s * (front_hub_dropout/2 + 8), 0])
+        translate([0, s * (front_hub_dropout/2 + 6), 0])
         color(color_fastener)
         difference() {
             rounded_box([70, 12, 120], r=5, center=true);
@@ -16,13 +16,13 @@ module front_fork_assy() {
             // Lightening holes
             translate([20, 0, 30]) rotate([90, 0, 0]) cylinder(d=15, h=30, center=true);
 
-            if (s == 1) { // Right side torque arm mount
+            if (s == 1) { // Right side torque arm mount hole
                 translate([0, 0, 40]) rotate([90, 0, 0]) cylinder(d=6.5, h=30, center=true);
             }
 
             // Mudguard Stay Mounts (Rear of Dropout)
             translate([-25, 0, -10]) rotate([90, 0, 0]) cylinder(d=5.5, h=30, center=true);
-            if (s == -1) { // Left side IS brake mount
+            if (s == -1) { // Left side IS brake mount (51mm ISO hole spacing)
                 translate([0, 0, brake_mount_height]) {
                     translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
                     translate([0, 0, 25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
@@ -35,7 +35,7 @@ module front_fork_assy() {
     for(s=[-1, 1]) {
         color(color_frame)
         hull() {
-            translate([0, s * (front_hub_dropout/2 + 8), 50]) sphere(d=35);
+            translate([0, s * (front_hub_dropout/2 + 6), 50]) sphere(d=35);
             translate([fork_rake, s * (fork_inner_spacing/2 + 20), fork_length - 20]) sphere(d=45);
         }
     }
