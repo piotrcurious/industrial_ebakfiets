@@ -453,17 +453,42 @@ module saddle() {
 
 
 // ── HANDLEBARS ────────────────────────────────────────────────────────────────
+// Mates into 31.8mm ID steering column mast.
+// Stem quill/shaft (28.6mm OD) + Threadless Clamp (31.8mm bar clamp)
 module handlebars() {
     color(color_fixed) {
-        cylinder(d=stem_dia+5, h=40);
-        translate([30, 0, 50]) rotate([0, 60, 0]) cylinder(d=35, h=80, center=true);
+        // Quill/steerer insert shaft into steering column (28.6mm OD x 100mm height)
+        cylinder(d=stem_dia, h=100, center=false);
+
+        // Stem body & clamp
+        translate([0, 0, 100]) {
+            cylinder(d=stem_dia + 6, h=40, center=false); // Steerer clamp
+            hull() {
+                translate([0, 0, 20]) sphere(d=35);
+                translate([50, 0, 35]) sphere(d=38); // Forward extension (50mm reach, 15° rise)
+            }
+            // Bar clamp (31.8mm clamp OD = 42mm, width = 45mm)
+            translate([50, 0, 35]) rotate([90, 0, 0]) pipe(42, 31.8, 45);
+        }
     }
-    translate([65, 0, 75]) {
+
+    // Handlebar tubing (31.8mm center clamp section, tapering to 22.2mm grip ends)
+    translate([50, 0, 135]) {
         color("black") rotate([90, 0, 0]) {
+            // Center clamp area (31.8mm OD x 120mm width)
             cylinder(d=31.8, h=120, center=true);
-            for(s=[-1,1]) rotate([s*5, 0, 0]) translate([0, 0, s*180]) {
-                cylinder(d=22.2, h=350, center=true);
-                translate([0, 0, s*250]) color([0.1,0.1,0.1]) cylinder(d=30, h=120, center=true);
+
+            // Left & Right swept wings (680mm total width, 12° backsweep, 20mm rise)
+            for(s=[-1,1]) {
+                translate([0, 0, s*60])
+                rotate([s*6, 12, 0]) // Backsweep + subtle rise
+                translate([0, 0, s*140]) {
+                    cylinder(d=22.2, h=280, center=true);
+                    // Rubber hand grips (30mm OD x 130mm length)
+                    translate([0, 0, s*100])
+                        color([0.1, 0.1, 0.1])
+                        cylinder(d=30, h=130, center=true);
+                }
             }
         }
     }
