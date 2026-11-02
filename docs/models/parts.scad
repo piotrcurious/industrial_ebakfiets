@@ -456,23 +456,70 @@ module saddle() {
 }
 
 
+// ── DRIVER STEERING COLUMN ASSEMBLY ──────────────────────────────────────────
+// Complete engineered steering column:
+// Outer Housing (1-1/4" Sched 40) + Pair of 7202 Bearings + 15mm Shaft + Locking Collars + Lower Bell Crank
+module steering_column_assy(h=680) {
+    // 1. Outer Housing Mast Tube (1-1/4" Schedule 40 Steel Pipe: OD 42.16mm, ID 35.05mm)
+    color(color_subframe)
+    translate([0, 0, h/2])
+    pipe(head_tube_od, head_tube_id, h);
+
+    // 2. Internal 7202 Angular Contact Bearings (35mm OD, 15mm ID, 11mm H)
+    // Top Bearing (takes upward/thrust loads)
+    translate([0, 0, h - 15])
+    color(color_brass)
+    pipe(bearing_od, steering_shaft_dia + 0.1, bearing_h);
+
+    // Bottom Bearing (takes downward/thrust loads)
+    translate([0, 0, 15])
+    color(color_brass)
+    pipe(bearing_od, steering_shaft_dia + 0.1, bearing_h);
+
+    // 3. Central 15mm Precision Steering Shaft
+    color(color_fastener)
+    translate([0, 0, (h + 60)/2 - 30])
+    cylinder(d=steering_shaft_dia, h=h + 60, center=true);
+
+    // 4. Bearing Locking Collars (35mm OD, 15.1mm ID, 12mm H with M5 set screws)
+    for(z=[h - 15 + 12, 15 - 12])
+        translate([0, 0, z])
+        color(color_fixed)
+        difference() {
+            pipe(bearing_od, steering_shaft_dia + 0.1, 12);
+            for(a=[0, 120, 240]) rotate([0, 0, a])
+                translate([bearing_od/4, 0, 0]) rotate([0, 90, 0])
+                cylinder(d=5, h=25, center=true);
+        }
+
+    // 5. Lower Steering Bell Crank (Clamped to 15mm shaft below the frame at Z = -30mm)
+    translate([0, 0, -30]) {
+        rotate([0, 0, 90])
+        steering_arm(120);
+        // Shaft clamp boss
+        color(color_fixed) pipe(30, 15.1, 12);
+    }
+}
+
+
 // ── HANDLEBARS ────────────────────────────────────────────────────────────────
-// Mates into 31.8mm ID steering column mast.
-// Stem quill/shaft (28.6mm OD) + Threadless Clamp (31.8mm bar clamp)
+// Mates directly onto the top of the 15mm precision steering shaft
 module handlebars() {
     color(color_fixed) {
-        // Quill/steerer insert shaft into steering column (28.6mm OD x 100mm height)
-        cylinder(d=stem_dia, h=100, center=false);
+        // Shaft clamp interface (connects to 15mm steering shaft)
+        difference() {
+            cylinder(d=stem_dia + 6, h=50, center=false);
+            translate([0, 0, -1]) cylinder(d=steering_shaft_dia + 0.1, h=40, center=false);
+        }
 
         // Stem body & clamp
-        translate([0, 0, 100]) {
-            cylinder(d=stem_dia + 6, h=40, center=false); // Steerer clamp
+        translate([0, 0, 40]) {
             hull() {
-                translate([0, 0, 20]) sphere(d=35);
-                translate([50, 0, 35]) sphere(d=38); // Forward extension (50mm reach, 15° rise)
+                translate([0, 0, 10]) sphere(d=35);
+                translate([-50, 0, 25]) sphere(d=38); // Forward extension towards -X
             }
             // Bar clamp (31.8mm clamp OD = 42mm, width = 45mm)
-            translate([50, 0, 35]) rotate([90, 0, 0]) pipe(42, 31.8, 45);
+            translate([-50, 0, 25]) rotate([90, 0, 0]) pipe(42, 31.8, 45);
         }
     }
 
