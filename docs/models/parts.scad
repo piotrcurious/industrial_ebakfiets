@@ -171,36 +171,35 @@ module car_tube_13in(alpha=1.0) {
 
 // ── PIAGGIO SPLIT RIM ─────────────────────────────────────────────────────────
 // Architecture:
-//   ①  OUTER bolt circle (rim_clamp_pcd, rim_clamp_n bolts) — joins the two
-//       rim halves at their mating flanges.  Undo ONLY these to split the rim
-//       and remove the tyre/tube without a tyre machine.
-//   ②  INNER bolt circle (rim_bolt_pcd, 6 bolts) — attaches the motor adapter
-//       to the rim.  These are NOT disturbed during tyre service.
+//   ①  OUTER bolt circle (rim_clamp_pcd, 12 bolts) — joins the two rim halves
+//       at their central mating flanges (Y = 0). Undo these to split the rim
+//       and change the tyre/tube without a tyre machine.
+//   ②  INNER bolt circle (rim_bolt_pcd, 6 bolts) — attaches the 12mm motor adapter
+//       plates to the rim halves.
 //
-// Mated outboard of motor adapter plates at Y = ±(hub_width/2 + motor_flange_t)
-
+// Both halves meet face-to-face at Y = 0 (the split plane).
 module car_rim_half(thickness=10) {
     rotate([90, 0, 0])
     difference() {
         rotate_extrude($fn=64)
         union() {
-            // Bead seat (flat surface extending from Y = 0 to Y = 40mm)
-            translate([front_rim_dia/2 - 15, 0, 0]) square([20, 40]);
+            // Bead seat (flat surface extending from Y = thickness to Y = 50mm)
+            translate([front_rim_dia/2 - 15, thickness, 0]) square([20, 50 - thickness]);
 
-            // Bead flange (outer lip preventing bead walkoff at Y = 0 to 5mm)
-            translate([front_rim_dia/2 + 5, 0, 0]) square([8, 5]);
+            // Bead flange (outer lip preventing bead walkoff at Y = 45 to 50mm)
+            translate([front_rim_dia/2 + 5, 45, 0]) square([8, 5]);
 
-            // ① Piaggio mating flange — outer disc clamping face-to-face
+            // ① Piaggio mating flange — disc clamping face-to-face at Y = 0 to thickness
             translate([rim_clamp_pcd/2 - 25, 0, 0])
                 square([front_rim_dia/2 + 8 - (rim_clamp_pcd/2 - 25), thickness]);
 
             // Transition web — slopes from mating flange to bead seat
             hull() {
                 translate([front_rim_dia/2 - 25, thickness, 0]) square([15, 1]);
-                translate([rim_clamp_pcd/2 - 22, 0, 0]) square([15, 1]);
+                translate([rim_clamp_pcd/2 - 22, thickness - 1, 0]) square([15, 1]);
             }
 
-            // ② Hub adapter web — inner disc for motor-adapter bolt circle
+            // ② Hub adapter web — inner disc for motor-adapter bolt circle (Y = 0 to thickness)
             translate([rim_bolt_pcd/2 - 20, 0, 0])
                 square([rim_clamp_pcd/2 - 26 - (rim_bolt_pcd/2 - 20), thickness]);
             // Thickened boss around hub bolt holes
@@ -208,12 +207,12 @@ module car_rim_half(thickness=10) {
                 square([38, thickness + 4]);
         }
 
-        // ① Outer Piaggio clamp holes — remove these 12 bolts to split the rim
+        // ① Outer Piaggio clamp holes (12× M8 at rim_clamp_pcd)
         for(a=[0 : 360/rim_clamp_n : 359])
             rotate([0, 0, a]) translate([rim_clamp_pcd/2, 0, 0])
             cylinder(d=8.5, h=thickness * 3 + 2, center=true);
 
-        // ② Inner hub adapter holes — 6× M8, NOT removed for tyre service
+        // ② Inner hub adapter holes (6× M8 at rim_bolt_pcd)
         for(a=[0:60:359])
             rotate([0, 0, a]) translate([rim_bolt_pcd/2, 0, 0])
             cylinder(d=8.5, h=100, center=true);
@@ -221,10 +220,9 @@ module car_rim_half(thickness=10) {
 }
 
 module car_rim_13in_split() {
-    adapter_offset = 76/2 + motor_flange_t; // Y = 38 + 12 = 50mm
     color(color_fastener) {
-        translate([0, adapter_offset, 0]) car_rim_half(rim_flange_t);
-        translate([0, -adapter_offset, 0]) mirror([0, 1, 0]) car_rim_half(rim_flange_t);
+        car_rim_half(rim_flange_t);
+        mirror([0, 1, 0]) car_rim_half(rim_flange_t);
     }
 }
 
