@@ -46,6 +46,17 @@ module frame_assy() {
         // Cable Guides
         for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
 
+        // Driver Steering Column Mast Tube (Extends above 600mm cargo box wall for full turning clearance)
+        translate([bed_length + 120, 0, 325])
+        color(color_subframe)
+        pipe(38, 31.8, 650);
+
+        // Steering column diagonal brace to main spars
+        translate([bed_length + 60, 0, 150])
+        color(color_frame)
+        rotate([0, 30, 0])
+        pipe(38, 31.8, 250);
+
         // Rear Triangle Taper
         for(s=[-1, 1]) {
             color(color_frame) hull() {
@@ -56,14 +67,15 @@ module frame_assy() {
             }
         }
 
-        // Rear Mast and Dropouts
-        translate([bed_length + rear_extension, 0, 0]) {
-            // Seat Post Tube
-            translate([-350, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
-            // Brace
-            translate([-350, 0, 100]) color(color_frame) rotate([0, 90, 0]) pipe(45, 40, 250);
+        // Bottom Bracket Shell (Located behind cargo bed under rider)
+        translate([bed_length + 220, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
 
-            // Heavy Duty Dropouts
+        // Seat Post Tube & Brace (Located behind cargo bed)
+        translate([bed_length + 320, 0, 300]) color(color_subframe) pipe(38, 31.8, 550);
+        translate([bed_length + 220, 0, 180]) color(color_frame) rotate([0, 45, 0]) pipe(45, 40, 200);
+
+        // Rear Dropouts
+        translate([bed_length + rear_extension, 0, 0]) {
             for(s=[-1, 1]) {
                 translate([0, s*(rear_dropout_spacing/2 + 6), dropout_z_offset])
                 color(color_fastener) difference() {
@@ -72,11 +84,15 @@ module frame_assy() {
                     rotate([90, 0, 0]) cylinder(d=14.2, h=30, center=true);
                     // Lightening holes
                     translate([25, 0, 30]) rotate([90, 0, 0]) cylinder(d=15, h=30, center=true);
+
+                    if (s == -1) { // Left side ISO brake mount tabs (51mm spacing)
+                        translate([0, 0, brake_mount_height]) {
+                            translate([0, 0, -25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
+                            translate([0, 0, 25.5]) rotate([0, 90, 0]) cylinder(d=6.5, h=30, center=true);
+                        }
+                    }
                 }
             }
         }
-
-        // Bottom Bracket Shell
-        translate([bed_length - 200, 0, 85]) rotate([90, 0, 0]) color(color_brass) pipe(42, 34, 68);
     }
 }

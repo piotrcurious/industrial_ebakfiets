@@ -530,7 +530,7 @@ module wheel_section() {
 // ║  after  include <wheel_155_75_r13.scad>                     ║
 // ╚══════════════════════════════════════════════════════════════╝
 
-wheel_assembly();
+// wheel_assembly();
 // wheel_exploded(gap = 80);
 // wheel_xray();
 // wheel_section();

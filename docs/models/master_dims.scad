@@ -54,12 +54,13 @@ stab_size = 35;
 stab_deploy_len = 250;
 
 // 9. FRAME RISER (Gooseneck)
-riser_drop = 500;
+riser_drop = 450;
 riser_length = 450;
 
 // 10. COMPONENTS & HARDWARE
 torque_arm_t = 10; // Heavy duty 10mm steel
-rim_bolt_pcd = 260; // Slightly smaller to give more "meat" on flanges
+rim_bolt_pcd = 260; // Inner pattern for motor adapter to rim
+rim_clamp_pcd = 290; // Outer Piaggio clamp bolt PCD (inside 330mm rim bead)
 rim_sandwich_t = 24; // 8mm + 8mm flanges + 8mm adapter
 motor_flange_t = 12; // Beefy 12mm adapter plate
 rim_flange_t = 10;
@@ -93,6 +94,6 @@ mudguard_width_front = 170;
 mudguard_width_rear = 60;
 
 // 15. ASSEMBLY SPECIFIC (Offsets and Extensions)
-rear_extension = 150;
-dropout_z_offset = -50;
+rear_extension = 350;
+dropout_z_offset = -24.45; // Sets rear axle at Z=280mm (both wheels on ground at Z=0)
 steering_arm_y_offset = 120;
