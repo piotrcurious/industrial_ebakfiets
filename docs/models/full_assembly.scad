@@ -84,9 +84,9 @@ module full_bicycle_assembly() {
                 translate([riser_length + bed_length + 280, 0, -riser_drop + 350]) {
                     saddle();
                     // RIDER MANNEQUIN (Seated on saddle with feet on pedals & hands on handlebars)
-                    // Handlebar offset relative to saddle SRP: [-200, 0, 300]
+                    // Exact grip offset relative to saddle SRP: [-150, 0, -135]
                     translate([0, 0, 300])
-                    rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]);
+                    rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, -135]);
                 }
 
                 // HANDLEBARS (At Steering Column Post behind cargo bed)

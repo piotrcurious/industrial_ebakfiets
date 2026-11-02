@@ -38,13 +38,13 @@ module rounded_box(size, r, center=true) {
 // ── RIDER MANNEQUIN & LEG MOTION SCOPE ────────────────────────────────────────
 // 50th percentile adult rider seated on saddle with feet on pedals.
 // Origin = Saddle Top / Seating Reference Point (0,0,0)
-// Handlebars are located at [bb_x_rel + 100, 0, 300] relative to saddle SRP
-module rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]) {
+// Handlebars are located at hb_offset relative to saddle SRP
+module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, -135]) {
     color([0.8, 0.6, 0.4, 0.85]) // Semi-transparent skin tone
     union() {
         // Torso & Pelvis
         translate([10, 0, 220])
-        rotate([0, 10, 0]) { // Seated forward lean angle
+        rotate([0, 12, 0]) { // Seated forward lean angle
             // Torso
             rounded_box([160, 320, 420], r=20, center=true);
             // Neck & Head
@@ -52,20 +52,23 @@ module rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 300]) {
                 cylinder(d=100, h=70, center=true); // Neck
                 translate([0, 0, 110]) sphere(d=180); // Head
             }
-            // Shoulders & Arms to Handlebars (Grip target relative to shoulder)
-            for(s=[-1,1]) translate([0, s*160, 160]) {
-                sphere(d=75); // Shoulder
-                target_grip = [hb_offset[0] - 10, s*200 - s*160, hb_offset[2] - 380];
-                elbow_p = [target_grip[0]/2 - 80, s*40, target_grip[2]/2 - 100];
+        }
 
-                hull() { // Upper arm
-                    sphere(d=70);
-                    translate(elbow_p) sphere(d=55); // Elbow
-                }
-                hull() { // Forearm
-                    translate(elbow_p) sphere(d=55);
-                    translate(target_grip) sphere(d=45); // Hand gripping handlebar
-                }
+        // Shoulders & Arms to Handlebars (Grip target relative to saddle SRP)
+        // Shoulder in SRP coords: [10 - 220*sin(12) + 160*sin(12), ±160, 220*cos(12) + 160*cos(12)] ≈ [0, ±160, 370]
+        for(s=[-1,1]) {
+            shoulder_p = [-10, s*160, 360];
+            grip_p = [hb_offset[0], s*200, hb_offset[2]];
+            elbow_p = [(shoulder_p[0] + grip_p[0])/2 - 60, s*180, (shoulder_p[2] + grip_p[2])/2 - 50];
+
+            translate(shoulder_p) sphere(d=75); // Shoulder
+            hull() { // Upper arm
+                translate(shoulder_p) sphere(d=70);
+                translate(elbow_p) sphere(d=55); // Elbow
+            }
+            hull() { // Forearm
+                translate(elbow_p) sphere(d=55);
+                translate(grip_p) sphere(d=45); // Hand gripping handlebar
             }
         }
 
