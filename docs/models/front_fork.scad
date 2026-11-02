@@ -29,6 +29,13 @@ module front_fork_assy() {
                 }
             }
         }
+
+        // Left-side integrated steering arm (extends rearward from left dropout plate under the frame)
+        if (s == -1) {
+            translate([-50, -(front_hub_dropout/2 + 12), 20])
+            rotate([0, 0, 180])
+            steering_arm(120);
+        }
     }
 
     // 2. FORK BLADES (Tapered)
@@ -66,8 +73,5 @@ module front_fork_assy() {
         translate([0, 0, 20]) color(color_fastener) pipe(32, 15.1, 12);
     }
 
-    // 5. LOWER STEERING BELL CRANK (Under the frame / at lower crown level)
-    translate([fork_rake, 0, 100])
-    rotate([0, 0, 90])
-    steering_arm(steering_arm_len);
+    // (Lower steering arm is now integrated into left dropout plate for true under-frame linkage)
 }
