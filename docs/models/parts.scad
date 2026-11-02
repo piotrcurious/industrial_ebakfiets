@@ -39,12 +39,12 @@ module rounded_box(size, r, center=true) {
 // 50th percentile adult rider seated on saddle with feet on pedals.
 // Origin = Saddle Top / Seating Reference Point (0,0,0)
 // Handlebars are located at hb_offset relative to saddle SRP
-module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, -135]) {
+module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]) {
     color([0.8, 0.6, 0.4, 0.85]) // Semi-transparent skin tone
     union() {
         // Torso & Pelvis
         translate([10, 0, 220])
-        rotate([0, 12, 0]) { // Seated forward lean angle
+        rotate([0, 10, 0]) { // Seated forward lean angle
             // Torso
             rounded_box([160, 320, 420], r=20, center=true);
             // Neck & Head
@@ -55,11 +55,10 @@ module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, -135]) {
         }
 
         // Shoulders & Arms to Handlebars (Grip target relative to saddle SRP)
-        // Shoulder in SRP coords: [10 - 220*sin(12) + 160*sin(12), ±160, 220*cos(12) + 160*cos(12)] ≈ [0, ±160, 370]
         for(s=[-1,1]) {
             shoulder_p = [-10, s*160, 360];
             grip_p = [hb_offset[0], s*200, hb_offset[2]];
-            elbow_p = [(shoulder_p[0] + grip_p[0])/2 - 60, s*180, (shoulder_p[2] + grip_p[2])/2 - 50];
+            elbow_p = [(shoulder_p[0] + grip_p[0])/2 - 40, s*180, (shoulder_p[2] + grip_p[2])/2 - 60];
 
             translate(shoulder_p) sphere(d=75); // Shoulder
             hull() { // Upper arm
@@ -500,19 +499,29 @@ module handlebars() {
 
 // ── DRIVETRAIN (front chainring + cranks + pedals) ───────────────────────────
 module drivetrain_assy() {
-    // Chainring
-    color("silver") rotate([90, 0, 0]) cylinder(d=180, h=2, center=true);
+    // Front Chainring (42T, ~180mm PCD, 2.5mm thickness, mounted to drive side Y = +38mm)
+    color("silver")
+    translate([0, 38, 0])
+    rotate([90, 0, 0])
+    difference() {
+        cylinder(d=180, h=3, center=true);
+        cylinder(d=120, h=4, center=true);
+        for(a=[0:72:359]) rotate([0, 0, a])
+            translate([45, 0, 0]) cylinder(d=10, h=5, center=true);
+    }
 
-    // FIX: crank arm axial offset was in Z (vertical) — it must be in Y
-    // (the axle / lateral direction) to place each arm on the correct side of
-    // the bottom-bracket shell.
+    // Cranks & Pedals on both sides of 68mm BB shell
     for(a=[0, 180]) rotate([0, a, 0])
-        translate([crank_length/2, (a==0 ? 10 : -10), 0]) {
+        translate([crank_length/2, (a==0 ? 44 : -44), 0]) {
+            // Crank Arm
             color(color_fixed)
-                rounded_box([crank_length + 20, 12, 30], r=3, center=true);
-            translate([crank_length/2, 0, 0])
+                rounded_box([crank_length + 20, 14, 28], r=4, center=true);
+            // Pedal Spindle & Body
+            translate([crank_length/2, (a==0 ? 25 : -25), 0]) {
+                color("silver") rotate([90, 0, 0]) cylinder(d=12, h=40, center=true);
                 color([0.2, 0.2, 0.2])
-                rounded_box([80, 90, 20], r=4, center=true);
+                rounded_box([85, 95, 20], r=4, center=true);
+            }
         }
 }
 
@@ -522,7 +531,18 @@ module rear_hub_motor_geared() {
     color(color_fixed) rotate([90, 0, 0]) cylinder(d=150, h=135, center=true);
     color("black")    rotate([90, 0, 0]) cylinder(d=14,  h=200, center=true);
 
-    // Rear Disc Rotor (LEFT side Y = -(rear_dropout_spacing/2 + 6))
+    // Rear Sprocket / Cassette (RIGHT drive side Y = +(rear_dropout_spacing/2 - 15) = +52.5mm)
+    translate([0, rear_dropout_spacing/2 - 15, 0])
+    rotate([90, 0, 0]) color("dimgray") difference() {
+        union() {
+            cylinder(d=100, h=2, center=true); // 24T low gear
+            translate([0, 0, 5]) cylinder(d=80, h=2, center=true); // 18T mid gear
+            translate([0, 0, 10]) cylinder(d=60, h=2, center=true); // 14T high gear
+        }
+        cylinder(d=35, h=30, center=true);
+    }
+
+    // Rear Disc Rotor (LEFT brake side Y = -(rear_dropout_spacing/2 + 6))
     translate([0, -(rear_dropout_spacing/2 + 6), 0])
     rotate([90, 0, 0]) color("silver") difference() {
         cylinder(d=203, h=2, center=true);

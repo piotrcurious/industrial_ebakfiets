@@ -66,8 +66,8 @@ module front_fork_assy() {
         translate([0, 0, 20]) color(color_fastener) pipe(32, 15.1, 12);
     }
 
-    // 5. LOWER STEERING BELL CRANK
-    translate([fork_rake, 0, fork_length + 15])
+    // 5. LOWER STEERING BELL CRANK (Under the frame / at lower crown level)
+    translate([fork_rake, 0, 100])
     rotate([0, 0, 90])
     steering_arm(steering_arm_len);
 }
