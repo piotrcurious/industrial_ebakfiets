@@ -89,15 +89,13 @@ module full_bicycle_assembly() {
                     rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 135]);
                 }
 
-                // HANDLEBARS (At Steering Column Post behind cargo bed, elevated above box)
-                translate([riser_length + bed_length + 120, 0, -riser_drop + 650]) {
-                    handlebars();
-                }
+                // DRIVER STEERING COLUMN (Complete engineered assembly with 7202 bearings and 15mm shaft)
+                translate([riser_length + bed_length + 120, 0, -riser_drop]) {
+                    steering_column_assy(650);
 
-                // Rear Steering Bell Crank (At base of steering column under the frame)
-                translate([riser_length + bed_length + 120, 0, -riser_drop - 30]) {
-                    rotate([0, 0, 90])
-                    steering_arm(120);
+                    // HANDLEBARS (Mounted to top of 15mm steering shaft above cargo box)
+                    translate([0, 0, 650])
+                    handlebars();
                 }
 
                 // KICKSTAND (Under Bed)

@@ -46,16 +46,18 @@ module frame_assy() {
         // Cable Guides
         for(x=[200 : 300 : bed_length]) translate([x, -bed_width/2 - 12, -15]) cable_guide();
 
-        // Driver Steering Column Mast Tube (Extends above 600mm cargo box wall for full turning clearance)
-        translate([bed_length + 120, 0, 325])
-        color(color_subframe)
-        pipe(38, 31.8, 650);
-
-        // Steering column diagonal brace to main spars
-        translate([bed_length + 60, 0, 150])
-        color(color_frame)
-        rotate([0, 30, 0])
-        pipe(38, 31.8, 250);
+        // Steering column bridge plate & mounting gussets to main spars
+        translate([bed_length + 120, 0, 0]) {
+            color(color_frame) {
+                // Cross bridge member between left and right spars
+                rect_tube(bed_width - 2*main_spar_size, 40, 50);
+                // Diagonal triangulation braces from spars to steering column mast
+                for(s=[-1, 1])
+                    translate([-20, s * (bed_width/4), 140])
+                    rotate([s * 15, 25, 0])
+                    pipe(35, 30, 320);
+            }
+        }
 
         // Rear Triangle Taper
         for(s=[-1, 1]) {
