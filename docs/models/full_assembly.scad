@@ -83,10 +83,10 @@ module full_bicycle_assembly() {
                 // SADDLE (At Seat Post Mast behind cargo bed)
                 translate([riser_length + bed_length + 320, 0, -riser_drop + 350]) {
                     saddle();
-                    // RIDER MANNEQUIN (Seated on saddle with feet on pedals & hands on handlebars)
-                    // Grip offset relative to saddle SRP: [-150, 0, 135]
+                    // RIDER MANNEQUIN (Seated on saddle facing forward with feet on pedals & hands on handlebars)
+                    // Grip offset relative to saddle SRP: [-200, 0, 135]
                     translate([0, 0, 300])
-                    rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]);
+                    rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 135]);
                 }
 
                 // HANDLEBARS (At Steering Column Post behind cargo bed, elevated above box)
@@ -105,14 +105,14 @@ module full_bicycle_assembly() {
                 bipod_kickstand(deployed=true);
 
                 // ELECTRONICS (Mounted at the front of the frame / gooseneck riser protected from impact)
-                // Front dual battery packs mounted between the gooseneck riser members and front cargo bulkhead
+                // Dual battery packs aligned precisely with the 45-degree slope of the gooseneck riser
                 for(s=[-1, 1])
-                    translate([riser_length/2 + 80, s * (battery_box_w/2 + 20), -riser_drop/3])
-                    rotate([0, -20, 0])
+                    translate([riser_length/2 + 30, s * (bed_internal_width/5), -riser_drop/2 + 30])
+                    rotate([0, 45, 0]) // Exactly aligned with the 45° frame riser slope
                     battery_pack();
 
-                // Front and Rear motor controllers mounted securely on front frame bulkhead
-                translate([riser_length - 40, 0, -riser_drop + 150])
+                // Motor controllers mounted securely behind the front cargo bulkhead inside the frame
+                translate([riser_length - 30, 0, -riser_drop + 120])
                 rotate([0, 90, 0])
                 motor_controller();
             }
@@ -148,19 +148,19 @@ module full_bicycle_assembly() {
         mudguard(rear_wheel_dia, mudguard_width_rear, 35, 180);
     }
 
-    // 6. STEERING LINKAGE UNDER THE FRAME
-    steering_arm_y_offset = 120;
-
-    // Point A: Lower Bell Crank Tip (Fork-mounted under the frame)
-    p_a_fork_local_tip = [fork_rake, steering_arm_y_offset, 100];
+    // 6. LOW-SLUNG STEERING LINKAGE UNDER THE CARGO BED
+    // Point A: Left fork dropout steering arm tip
+    // Left dropout arm is at [-50 - 120, -(front_hub_dropout/2 + 12), 20] in fork coords
+    p_a_fork_local_tip = [-170, -(front_hub_dropout/2 + 12), 20];
     p_a = [
         p_a_fork_local_tip[0] * cos(alpha) - p_a_fork_local_tip[2] * sin(alpha),
         p_a_fork_local_tip[1],
         p_a_fork_local_tip[0] * sin(alpha) + p_a_fork_local_tip[2] * cos(alpha)
     ];
 
-    // Point B: Rear Bell Crank Tip (Under frame at base of steering column)
-    p_b_frame = [riser_length + bed_length + 120, -steering_arm_y_offset, -riser_drop - 30];
+    // Point B: Rear steering column bell crank tip under the frame
+    // In frame coords: [riser_length + bed_length + 120, -(front_hub_dropout/2 + 12), -riser_drop - 30]
+    p_b_frame = [riser_length + bed_length + 120, -(front_hub_dropout/2 + 12), -riser_drop - 30];
 
     // Transform p_b from frame to global
     p_b_1 = [-p_b_frame[0], -p_b_frame[1], p_b_frame[2]];
@@ -177,7 +177,7 @@ module full_bicycle_assembly() {
         p_b_4[0] * sin(alpha) + p_b_4[2] * cos(alpha)
     ];
 
-    // Draw the steering pushrod connecting p_a and p_b under the frame
+    // Draw low-slung tie-rod running under the cargo bed
     color("dimgray") {
         translate(p_a) rod_end_m8();
         hull() {

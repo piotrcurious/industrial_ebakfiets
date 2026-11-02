@@ -36,15 +36,15 @@ module rounded_box(size, r, center=true) {
 
 
 // ── RIDER MANNEQUIN & LEG MOTION SCOPE ────────────────────────────────────────
-// 50th percentile adult rider seated on saddle with feet on pedals.
+// 50th percentile adult rider seated on saddle, FACING FORWARD (-X direction)
 // Origin = Saddle Top / Seating Reference Point (0,0,0)
-// Handlebars are located at hb_offset relative to saddle SRP
-module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]) {
+// Forward is -X, Up is +Z, Lateral is Y.
+module rider_mannequin(pedal_angle=30, hb_offset=[-200, 0, 135]) {
     color([0.8, 0.6, 0.4, 0.85]) // Semi-transparent skin tone
     union() {
-        // Torso & Pelvis
-        translate([10, 0, 220])
-        rotate([0, 10, 0]) { // Seated forward lean angle
+        // Torso & Pelvis - leaning FORWARD towards -X
+        translate([-10, 0, 220])
+        rotate([0, -12, 0]) { // Seated forward lean angle (-12 deg towards -X)
             // Torso
             rounded_box([160, 320, 420], r=20, center=true);
             // Neck & Head
@@ -54,11 +54,14 @@ module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]) {
             }
         }
 
+        // Hips / Pelvis Base
+        translate([0, 0, 20]) rounded_box([200, 260, 80], r=15, center=true);
+
         // Shoulders & Arms to Handlebars (Grip target relative to saddle SRP)
         for(s=[-1,1]) {
-            shoulder_p = [-10, s*160, 360];
+            shoulder_p = [-40, s*160, 360];
             grip_p = [hb_offset[0], s*200, hb_offset[2]];
-            elbow_p = [(shoulder_p[0] + grip_p[0])/2 - 40, s*180, (shoulder_p[2] + grip_p[2])/2 - 60];
+            elbow_p = [(shoulder_p[0] + grip_p[0])/2 - 50, s*190, (shoulder_p[2] + grip_p[2])/2 - 60];
 
             translate(shoulder_p) sphere(d=75); // Shoulder
             hull() { // Upper arm
@@ -71,28 +74,26 @@ module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]) {
             }
         }
 
-        // Hips / Pelvis Base
-        translate([0, 0, 20]) rounded_box([200, 260, 80], r=15, center=true);
-
-        // Legs (Pivoting from hip to crank position)
-        // BB is at [-100, 0, -265] relative to saddle top
+        // Legs (Pivoting from hip to crank pedal position)
+        // BB center is at [-100, 0, -565] relative to saddle SRP
         bb_rel_x = -100;
-        bb_rel_z = -265;
+        bb_rel_z = -565;
 
         for(s=[-1, 1]) {
+            // Pedal crank rotation angle (Forward pedaling)
             side_angle = (s == 1) ? pedal_angle : pedal_angle + 180;
-            p_x = bb_rel_x + crank_length * cos(side_angle);
-            p_z = bb_rel_z + crank_length * sin(side_angle);
+            p_x = bb_rel_x - crank_length * sin(side_angle);
+            p_z = bb_rel_z + crank_length * cos(side_angle);
 
-            hip_p = [0, s*100, -20];
-            pedal_p = [p_x, s*110, p_z];
+            hip_p = [-10, s*110, -20];
+            pedal_p = [p_x, s*69, p_z]; // Pedal spindle center at Y = ±69mm
 
-            // Knee placement via 2D IK (Thigh L=420, Calf L=400)
+            // Knee placement via 2D IK (Thigh L=430, Calf L=420)
             dx = pedal_p[0] - hip_p[0];
             dz = pedal_p[2] - hip_p[2];
             dist = sqrt(dx*dx + dz*dz);
-            // Knee bend forward and upward offset
-            knee_x = hip_p[0] + dx/2 + 180 * (1 - dist/800);
+            // Knee bends forward towards -X and slightly upward
+            knee_x = hip_p[0] + dx/2 - 160 * (1 - dist/800);
             knee_z = hip_p[2] + dz/2 + 80 * (1 - dist/800);
 
             translate(hip_p) {
@@ -103,11 +104,11 @@ module rider_mannequin(pedal_angle=30, hb_offset=[-150, 0, 135]) {
                 }
                 hull() { // Calf
                     translate([knee_x - hip_p[0], 0, knee_z - hip_p[2]]) sphere(d=70);
-                    translate([p_x - hip_p[0], s*10, p_z - hip_p[2] + 30]) sphere(d=60);
+                    translate([pedal_p[0] - hip_p[0], pedal_p[1] - hip_p[1], pedal_p[2] - hip_p[2] + 30]) sphere(d=60);
                 }
-                // Foot on pedal
-                translate([p_x - hip_p[0] + 30, s*10, p_z - hip_p[2] + 15])
-                rotate([0, -10, 0])
+                // Foot on pedal - Toes pointing FORWARD (-X)
+                translate([pedal_p[0] - hip_p[0] - 25, pedal_p[1] - hip_p[1], pedal_p[2] - hip_p[2] + 15])
+                rotate([0, 10, 0])
                 rounded_box([160, 85, 35], r=5, center=true);
             }
         }
@@ -438,6 +439,7 @@ module cable_guide() {
 
 
 // ── SADDLE ────────────────────────────────────────────────────────────────────
+// Nose points forward towards -X (in local frame coordinates)
 module saddle() {
     color(color_fastener) cylinder(d=seat_post_dia, h=300);
     translate([0, 0, 300]) {
@@ -446,9 +448,9 @@ module saddle() {
             cylinder(d=6, h=200, center=true);
         color([0.15, 0.15, 0.15])
         hull() {
-            translate([-100, 0,   5]) sphere(d=50, $fn=16);
-            translate([   0, 0,  15]) sphere(d=80, $fn=16);
-            translate([ 150, 0,   5]) sphere(d=25, $fn=16);
+            translate([ 100, 0,   5]) sphere(d=50, $fn=16); // Rear cantle
+            translate([   0, 0,  15]) sphere(d=80, $fn=16); // Mid saddle
+            translate([-150, 0,   5]) sphere(d=25, $fn=16); // Front nose pointing forward (-X)
         }
     }
 }
